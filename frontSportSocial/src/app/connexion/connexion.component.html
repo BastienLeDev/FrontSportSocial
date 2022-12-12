@@ -1,0 +1,28 @@
+<br>
+<br>
+<div style="margin: auto; width: 30%">
+    <form>
+        <!-- ng form est capable de fournir toutes les informations du formulaire à flogin-->
+        <!-- f.value prend chaque valeur du formulaire -->
+        <div class="card p-3">
+
+            <div class="md-form">
+                <label>Login :</label>
+                <input name="login" ngModel="" type="text" class="form-control">
+            </div>
+            <div class="md-form">
+                <label>Passworld :</label>
+                <input name="password" ngModel="" type="password" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-secondary btn-block btn-sm">Connexion</button>
+            <button type="button" class="btn btn-link btn-block btn-sm">Inscription ?</button>
+            <br>
+
+            <div class="alert alert-danger text-center" *ngIf="msgErr != ''">
+                {{msgErr}}
+            </div>
+        </div>
+    </form>
+
+</div>
