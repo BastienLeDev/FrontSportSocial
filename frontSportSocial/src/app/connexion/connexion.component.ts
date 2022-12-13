@@ -1,6 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-connexion',
@@ -12,8 +13,8 @@ export class ConnexionComponent {
   user: any;
   msgErr = '';
 
-  /*
-  constructor(private http: HttpClient, private route: Router) { }
+
+  constructor(private http: HttpClient, private route: Router, private authService: AuthService) { }
 
 
 
@@ -22,15 +23,15 @@ export class ConnexionComponent {
       next: (data) => {
         this.user = data;
         if (this.user != null) {
-
-          this.route.navigateByUrl('');
+          this.authService.setUserSession(this.user);
+          this.route.navigateByUrl('home');
         } else {
-          this.msgErr = 'Identifiant ou mot de passe incorrect'
+          this.msgErr = 'Identifiant ou mot de passe incorrect';
         }
-      }
+      },
       error: (err) => { console.log(err) },
 
     })
   }
-*/
+
 }

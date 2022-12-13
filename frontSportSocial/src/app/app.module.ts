@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConnexionComponent } from './connexion/connexion.component';
@@ -15,6 +15,7 @@ import { ShopComponent } from './shop/shop.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { ClubComponent } from './club/club.component';
 import { EventComponent } from './event/event.component';
+
 
 @NgModule({
   declarations: [
@@ -30,11 +31,12 @@ import { EventComponent } from './event/event.component';
     RankingComponent,
     ClubComponent,
     EventComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-
+    HttpClientModule,
     FormsModule
   ],
   providers: [],
