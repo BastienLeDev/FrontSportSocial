@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClubComponent } from './club/club.component';
 import { ConnexionComponent } from './connexion/connexion.component';
+import { EventComponent } from './event/event.component';
 import { FriendComponent } from './friend/friend.component';
 import { HomeComponent } from './home/home.component';
 import { InscriptionComponent } from './inscription/inscription.component';
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'profil', component: ProfilComponent },
   { path: 'shop', component: ShopComponent },
   { path: 'ranking', component: RankingComponent },
-  { path: 'club', component: ClubComponent }
+  { path: 'club', component: ClubComponent },
+  { path: 'event', component: EventComponent }
 ];
 
 @NgModule({

@@ -14,6 +14,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { ShopComponent } from './shop/shop.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { ClubComponent } from './club/club.component';
+import { EventComponent } from './event/event.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ClubComponent } from './club/club.component';
     ProfilComponent,
     ShopComponent,
     RankingComponent,
-    ClubComponent
+    ClubComponent,
+    EventComponent
   ],
   imports: [
     BrowserModule,
