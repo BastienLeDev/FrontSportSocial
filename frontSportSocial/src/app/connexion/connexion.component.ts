@@ -19,9 +19,11 @@ export class ConnexionComponent {
 
 
   connexion(val: any) {
+    console.log(val);
     this.http.post('http://localhost:8300/user', val).subscribe({
       next: (data) => {
         this.user = data;
+        console.log(this.user);
         if (this.user != null) {
           this.authService.setUserSession(this.user);
           this.route.navigateByUrl('home');
