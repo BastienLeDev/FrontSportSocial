@@ -1,7 +1,7 @@
     /* CSS du schedule*/
 table, th, td {
     border:1px solid black;
-    height: 120px;
+    height: 115px;
   }
 
     /* CSS de la table contenant le titre + search bar + boutton */
