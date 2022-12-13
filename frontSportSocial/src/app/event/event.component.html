@@ -28,9 +28,7 @@
                 </div>
                 <div class="md-form">
                     <span class="input-group-btn" style="width:39px">
-                        <button id="search-this" type="button" class="pull-right btn search-btn">
-                            <i>Send</i>
-                        </button>
+                        <button type="submit" class="btn btn-secondary btn-block btn-sm">Add</button>
                     </span>
                 </div>
             </div>
@@ -40,11 +38,64 @@
 
         <div class="col-9 p-4 ">
             <div class="card p-3 m-3">
-                <div class="md-form">
-                    <h3>Personal data</h3>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-9 ">
+                            <div class="container">
+                                <div id="content">
+                                    <form class='form-inline'>
+                                        <div class="input-group">
+                                            <input type='text' id='search' class="form-control search-form"
+                                                placeholder="Search...">
+                                            <span class="input-group-btn" style="width:39px">
+                                                <button id="search-this" type="button"
+                                                    class="pull-right btn search-btn">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 ">
+                            <form>
+                                <label for="sports">Choose a sport:</label>
+                                <select name="sports" id="sports">
+                                    <option value="Running">Running</option>
+                                    <option value="Swimming">Swimming</option>
+                                    <option value="Football">Football</option>
+                                    <option value="Basketball">Basketball</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 p-4">
+                        <div class="card p-3 m-3">
+                            <div class="row">
+                                <div class="col-9 p-4">
+                                    <div class="card p-3 m-3">
+                                        <h4>Event photo</h4>
+                                    </div>
+                                </div>
+                                <div class="col-3 p-4">
+                                    <div class="card p-3 m-3">
+                                        <h4>Event Description</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Friends list : </p>
+                            <span class="input-group-btn" style="width: 50%;">
+                                <button type="submit" class="btn btn-secondary btn-block btn-sm">Delete</button>
+                            </span>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
