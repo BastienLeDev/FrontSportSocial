@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+  /* CSS de la nav bar*/
+>>>>>>> a13e2daee61faea08bdafbfb85e45093ea978271
   .well {
     background-color: #ffffee
   }
@@ -28,13 +32,20 @@
 
   }
 
+<<<<<<< HEAD
 
 
   .anyClass {
     height: 805px;
+=======
+  /* CSS du scroll */
+.anyClass {
+    height:805px;
+>>>>>>> a13e2daee61faea08bdafbfb85e45093ea978271
     overflow-y: scroll;
   }
 
-  #schedule {
-    font-size: 80%;
+  table, th, td {
+    border:1px solid black;
+    font-size: 85%;
   }
