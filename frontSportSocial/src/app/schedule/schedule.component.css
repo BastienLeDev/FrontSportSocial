@@ -1,3 +1,46 @@
+    /* CSS du schedule*/
 table, th, td {
     border:1px solid black;
+    height: 120px;
+  }
+
+    /* CSS de la table contenant le titre + search bar + boutton */
+#title-table{
+    border:none;
+    height: 60px;
+}
+
+   /* CSS de la nav bar*/
+   .well {
+    background-color: #ffffee
+  }
+  
+  
+  .search-form {
+    border-radius: 30px 0 0 30px;
+    margin : 6px;
+  }
+  
+  .input-group {
+    width:90%;
+  }
+  
+  input-group-btn {
+    max-width:38px;
+  }
+  
+  #search {
+    border: 1px;
+  }
+  
+  .search-btn {
+    cursor:pointer;
+    border-radius: 0 30px 30px 0; 
+    background-color:rgb(206, 179, 120);
+    color:rgb(255, 255, 255);
+    
+  }
+  
+  .text-center {
+    color: #fff;
   }
