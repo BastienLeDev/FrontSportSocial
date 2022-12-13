@@ -1,4 +1,4 @@
-  
+  /* CSS de la nav bar*/
   .well {
     background-color: #ffffee
   }
@@ -33,11 +33,13 @@
     color: #fff;
   }
 
+  /* CSS du scroll */
 .anyClass {
     height:805px;
     overflow-y: scroll;
   }
 
-  #schedule {
-    font-size: 80%;
+  table, th, td {
+    border:1px solid black;
+    font-size: 85%;
   }
