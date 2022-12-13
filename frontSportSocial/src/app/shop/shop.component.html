@@ -9,14 +9,16 @@
                 </div>
 
                 <div class="col-2">
-                    <button type="submit" class="btn btn-secondary btn-block btn-sm">Coach :</button>
+                    <button (click)="showHideCoach()" type="submit" class="btn btn-secondary btn-block btn-sm">Coach
+                        :</button>
                 </div>
 
                 <div class="col-2">
 
                 </div>
                 <div class="col-2">
-                    <button type="submit" class="btn btn-secondary btn-block btn-sm">Avatar :</button>
+                    <button (click)="showHideAvatar()" type="submit" class="btn btn-secondary btn-block btn-sm">Avatar
+                        :</button>
                 </div>
 
                 <div class="col-2">
@@ -24,7 +26,8 @@
                 </div>
 
                 <div class="col-2">
-                    <button type="submit" class="btn btn-secondary btn-block btn-sm">Tokens :</button>
+                    <button (click)="showHideTokens()" type="submit" class="btn btn-secondary btn-block btn-sm">Tokens
+                        :</button>
                 </div>
             </div>
         </div>
@@ -34,8 +37,8 @@
     </div>
 </div>
 
-<!--Page coach
-<div class="card p-3 m-3">
+<!--Page coach-->
+<div class="card p-3 m-3" *ngIf="visibleCoach">
     <div class="md-form">
         <h3 class="alignement">Coach :</h3>
 
@@ -74,11 +77,11 @@
     </div>
 </div>
 
--->
 
 
-<!--Page Avatar
-<div class="card p-3 m-3">
+
+<!--Page Avatar-->
+<div class="card p-3 m-3" *ngIf="visibleAvatar">
     <div class="md-form">
         <h3 class="alignement">Avatar :</h3>
 
@@ -110,11 +113,11 @@
     </div>
 </div>
 
--->
 
 
 
-<div class="card p-3 m-3">
+<!--Page Token-->
+<div class="card p-3 m-3" *ngIf="visibleTokens">
     <div class="md-form">
         <h3 class="alignement">Tokens :</h3>
         <div class="card p-3 m-3">
