@@ -1,6 +1,6 @@
 <div class="back">
 
-  <div class="text-center">
+  <div class="text-center" *ngIf="authService.isConnected()">
     <ul class="nav nav-fill w-100 orange z-depth-2">
       <li class="nav-item">
         <a routerLink="home" routerLinkActive="menu-active" class="nav-link white-text">Home</a>
