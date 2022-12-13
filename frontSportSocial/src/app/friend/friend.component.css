@@ -155,3 +155,17 @@ input-group-btn {
 #card_principal_amis {
     min-height: 865px;
 }
+
+
+/* CSS du scroll */
+.anyClass {
+    height: auto;
+    overflow-y: scroll;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    font-size: 85%;
+}
