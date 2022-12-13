@@ -43,3 +43,12 @@
     border:1px solid black;
     font-size: 85%;
   }
+  /* Card size  */
+
+  .card {
+    width: min(100%, 500px);
+  }
+
+ #inside-card{
+    width: min(95%);
+ }
