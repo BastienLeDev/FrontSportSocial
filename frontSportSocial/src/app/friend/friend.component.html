@@ -1,27 +1,115 @@
 <div class="container-fluid">
     <div class="row">
         <div id="gauche" class="col-3 p-4">
-            <p>youhou</p>
-            <p>youhou</p>
-            <p>youhou</p>
-            <p>youhou</p>
+            <!-- zone d'affichage des amis et des conversations-->
+            <div id="card_principal_amis" class="card p-3">
+                <p class="text-center">Mes amis</p>
 
+                <!-- card demande d'un ami-->
+                <div class="card p-1 m-1">
+
+                    <div class="container">
+
+                        <div class="row">
+                            <!-- photo de profil -->
+                            <div class="col-3">
+                                <img class="photo_profil image-rond image-rond-bg"
+                                    src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                                    alt="">
+                            </div>
+                            <!-- nom user -->
+                            <div class="col-9">
+                                <p id="add_friend_username">User name</p>
+                                <p>Mon dernier message avec toi</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- card demande d'un ami-->
+                <div class="card p-1 m-1">
+
+                    <div class="container">
+
+                        <div class="row">
+                            <!-- photo de profil -->
+                            <div class="col-3">
+                                <img class="photo_profil image-rond image-rond-bg"
+                                    src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                                    alt="">
+                            </div>
+                            <!-- nom user -->
+                            <div class="col-9">
+                                <p id="add_friend_username">User name</p>
+                                <p>Mon dernier message avec toi</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
         </div>
+
         <div id="centre" class="col-6 p-4">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus ab, blanditiis officiis deserunt odio
-                recusandae eius sapiente, ratione omnis nemo dolore quidem deleniti cupiditate placeat minima vitae
-                praesentium sequi perferendis?Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta eligendi in
-                laboriosam natus! Tenetur similique soluta dolorum nisi ex nulla amet aliquid alias repellendus. Minus
-                nisi laboriosam totam architecto vel?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint, a.
-                Voluptatibus molestias amet natus libero vero dignissimos facilis totam beatae earum impedit dolores
-                expedita sint, architecto consequatur, fuga qui nostrum!Lorem</p>
+            <!-- zone d'affichage des messages-->
+            <div id="card_principal_messages" class="card p-3">
+                <p class="text-center">Discussion avec Jean-Eudes</p>
+
+                <div class="container lighter">
+                    <img src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                        class="photo_conversation">
+                    <p>Hello. How are you today?</p>
+                    <span class="time-right">11:00</span>
+                </div>
+
+                <div class="container darker">
+                    <img src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                        class="right photo_conversation">
+                    <p>Hey! I'm fine. Thanks for asking!</p>
+                    <span class="time-left">11:01</span>
+                </div>
+
+                <div class="container lighter">
+                    <img src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                        class="photo_conversation">
+                    <p>Sweet! So, what do you wanna do today?</p>
+                    <span class="time-right ">11:02</span>
+                </div>
+
+                <div class="container darker">
+                    <img src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                        class="right photo_conversation">
+                    <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
+                    <span class="time-left">11:05</span>
+                </div>
+
+            </div>
+
+            <!-- Zone de saisie de messages -->
+            <div id="zone_saisie_message" class="card p-1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-10">
+                            <input name="message" ngModel="" type="text" class="form-control">
+                        </div>
+                        <div class="col-2">
+                            <button type="submit" class="btn btn-secondary btn-block btn-sm">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
 
         <div id="droite" class="col-3 p-4">
 
             <!-- card gobale des demandes d'amis-->
-            <div class="card p-3 m-2">
+            <div id="demande_amis" class="card p-3">
                 <p class="text-center">Demandes d'amis</p>
                 <!-- card demande d'un ami-->
                 <div class="card p-1 m-1">
@@ -82,10 +170,29 @@
             </div>
 
             <!-- card ajouter et rechercher un ami -->
-            <div class="card p-3 m-2">
-
-
+            <div id="ajout_amis" class="card p-3">
                 <p class="text-center">Ajouter un ami</p>
+
+
+                <!-- ajout barre de recherche -->
+                <!--Search bar : centrée, avec bouton "search" à droite-->
+                <div class="container">
+                    <div id="content">
+                        <form class='form-inline'>
+                            <div class="input-group">
+                                <input type='text' id='search' class="form-control search-form" placeholder="Search...">
+                                <span class="input-group-btn" style="width:39px">
+                                    <button id="search-this" type="button" class="pull-right btn search-btn">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+
                 <!-- card demande d'un ami-->
                 <div class="card p-1 m-1">
 
