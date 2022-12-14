@@ -4,39 +4,15 @@
             <!-- zone d'affichage des amis et des conversations-->
             <div id="card_principal_amis" class="card p-3">
                 <div class="card-header">
-                    <p class="text-center">Mes amis</p>
+                    <p class="text-center">Friends</p>
                 </div>
 
 
                 <!-- card demande d'un ami-->
                 <div class="anyClass">
-                    <div class="card p-1 m-1">
+                    <div class="card p-1 m-1"  *ngFor="let m of sendmessages; let i = index">
 
-                        <div class="container">
-
-                            <div class="row">
-                                <!-- photo de profil -->
-                                <div class="col-3">
-                                    <img class="photo_profil image-rond image-rond-bg"
-                                        src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
-                                        alt="">
-                                </div>
-                                <!-- nom user -->
-                                <div class="col-9">
-                                    <p id="add_friend_username">User name</p>
-                                    <p>Mon dernier message avec toi</p>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <!-- card demande d'un ami-->
-                    <div class="card p-1 m-1">
-
-                        <div class="container">
+                        <div class="container" *ngIf="(sendmessages.length>1 && sendmessages.length-i <=1) || sendmessages.length<=1 ">
 
                             <div class="row">
                                 <!-- photo de profil -->
@@ -47,8 +23,8 @@
                                 </div>
                                 <!-- nom user -->
                                 <div class="col-9">
-                                    <p id="add_friend_username">User name</p>
-                                    <p>Mon dernier message avec toi</p>
+                                    <p id="add_friend_username" style="font-weight: bold;">{{m.message.expediteurMessage.loginUser}}</p>
+                                    <p>{{m.message.contentMessage}}</p>
                                 </div>
 
                             </div>
@@ -56,6 +32,8 @@
                         </div>
 
                     </div>
+
+                    
                 </div>
 
             </div>
@@ -64,38 +42,27 @@
         <div id="centre" class="col-6 p-4">
             <!-- zone d'affichage des messages-->
             <div id="card_principal_messages" class="card p-3">
-                <div class="card-header" *ngFor="let m of messages">
-                    <p class="text-center">Discussion with : {{m.destinataire.loginUser}}</p>
+                <div class="card-header" *ngFor="let m of sendmessages ; let i = index">
+                    <div *ngIf="(sendmessages.length>1 && sendmessages.length-i <=1) || sendmessages.length<=1 ">
+                    <p class="text-center " >Discussion with : {{m.message.expediteurMessage.loginUser}}</p>
+                </div>
                 </div>
 
                 <div class="anyClass">
-                    <div class="container lighter" *ngFor="let m of messages">
+                    <div class="container lighter" *ngFor="let m of sendmessages">
                         <img src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
                             class="photo_conversation">
                         <span>{{m.message.contentMessage}}</span>
                         <span class="time-right">{{m.message.dateSendMessage |date}}</span>
                     </div>
 
-                    <div class="container darker">
+                    <div class="container darker" *ngFor="let m of receivedmessages">
                         <img src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
                             class="right photo_conversation">
-                        <p>Hey! I'm fine. Thanks for asking!</p>
-                        <span class="time-left">11:01</span>
+                        <p>{{m.message.contentMessage}}</p>
+                        <span class="time-left">{{m.message.dateSendMessage |date}}</span>
                     </div>
 
-                    <div class="container lighter">
-                        <img src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
-                            class="photo_conversation">
-                        <p>Sweet! So, what do you wanna do today?</p>
-                        <span class="time-right ">11:02</span>
-                    </div>
-
-                    <div class="container darker">
-                        <img src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
-                            class="right photo_conversation">
-                        <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
-                        <span class="time-left">11:05</span>
-                    </div>
                 </div>
 
 
@@ -189,7 +156,7 @@
             <!-- card ajouter et rechercher un ami -->
             <div id="ajout_amis" class="card p-3">
                 <div class="card-header">
-                    <p class="text-center">Ajouter un ami</p>
+                    <p class="text-center">Add friends</p>
                 </div>
 
                 <div class="anyClass">
@@ -225,34 +192,6 @@
                         </div>
                     </div>
 
-
-                    <!-- card demande d'un ami-->
-                    <div class="card p-1 m-1">
-
-                        <div class="container">
-
-                            <div class="row">
-                                <!-- photo de profil -->
-                                <div class="col-3">
-                                    <img class="photo_profil image-rond image-rond-bg"
-                                        src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
-                                        alt="">
-                                </div>
-                                <!-- nom user -->
-                                <div class="col-6">
-                                    <p id="add_friend_username">User name</p>
-                                </div>
-
-                                <!-- bouton add -->
-                                <div class="col-3">
-                                    <button type="submit" class="btn btn-secondary btn-block btn-sm">Add</button>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
 
                     <!-- card demande d'un ami-->
                     <div class="card p-1 m-1">

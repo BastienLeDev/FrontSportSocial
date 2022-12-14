@@ -10,25 +10,38 @@ import { AuthService } from '../services/auth.service';
 })
 export class FriendComponent implements OnInit {
 
-  messages : any;
+  sendmessages : any;
+  receivedmessages : any;
   id : any;
 
 
   constructor (private http : HttpClient, public authService: AuthService) {}
 
   ngOnInit() : void {
-    this.listMessages();
+    this.listSendMessages();
+    this.listReceivedMessages();
 
   }
 
-  listMessages(){
+  listSendMessages(){
 
   this.http.get('http://localhost:8300/message/me/' + this.authService.getUserConnect().idUser).subscribe({
-    next: (data) => {this.messages = data},
+    next: (data) => {this.sendmessages = data},
     error: (err) => {console.log(err)}
   });
 
 }
+
+  listReceivedMessages(){
+
+  this.http.get('http://localhost:8300/message/wrote/' + this.authService.getUserConnect().idUser).subscribe({
+    next: (data) => {this.receivedmessages = data},
+    error: (err) => {console.log(err)}
+  });
+
+}
+
+
 
 }
 
