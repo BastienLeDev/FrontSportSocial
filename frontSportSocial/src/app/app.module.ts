@@ -15,6 +15,8 @@ import { ShopComponent } from './shop/shop.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { ClubComponent } from './club/club.component';
 import { EventComponent } from './event/event.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import { EventComponent } from './event/event.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
