@@ -27,7 +27,7 @@
         <a routerLink="profil" routerLinkActive="menu-active" class="nav-link white-text">Profile</a>
       </li>
       <li class="nav-item">
-        <a routerLink="" class="nav-link">
+        <a routerLink="" (click)="authService.logout()" class="nav-link">
           <i class="fas fa-power-off white-text"></i>
         </a>
       </li>
