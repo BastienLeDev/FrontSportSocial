@@ -78,10 +78,12 @@
                 <div class="row">
                     <div class="col-12 p-4">
                         <div class="card p-3 m-3" *ngFor="let e of events">
+
                             <div class="container">
+
                                 <div class="row">
-                                    <div class = "col-12 justify-content-center">
-                                        <h2 class="">{{e.titleEvent}}</h2>
+                                    <div class = "col-12">
+                                        <h1 class="text-center">{{e.titleEvent}}</h1>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -90,31 +92,24 @@
                                         src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
                                         alt="">
                                     </div>
-                                    <div class ="col-8">
+                                    <div class ="col-4">
                                         <p>{{e.descriptionEvent}}</p>
                                     </div>
-                                </div>
-                                
+                                    <div class="col-4">
+                                        <div class="container">
+                                            <div class="row">
+                                                <p>Start time : {{e.dateStart}}</p>
+                                            </div>
+                                            <div class="row">
+                                                <p>End time : {{e.dateEnd}}</p>
+                                            </div>
 
 
+                                        </div>
 
-                            </div>
-                            <!--<div class="row">
-                                <div class="col-9 p-4">
-                                    <div class="card p-3 m-3">
-                                        <h4>Event photo</h4>
-                                    </div>
-                                </div>
-                                <div class="col-3 p-4">
-                                    <div class="card p-3 m-3">
-                                        <h4>Event Description</h4>
                                     </div>
                                 </div>
                             </div>
-                            <p>Friends list : </p>
-                            <span class="input-group-btn" style="width: 50%;">
-                                <button type="submit" class="btn btn-secondary btn-block btn-sm">Delete</button>
-                            </span>-->
                         </div>
 
                     </div>
