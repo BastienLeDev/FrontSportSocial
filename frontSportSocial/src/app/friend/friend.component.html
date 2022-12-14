@@ -65,7 +65,7 @@
             <!-- zone d'affichage des messages-->
             <div id="card_principal_messages" class="card p-3">
                 <div class="card-header" *ngFor="let m of messages">
-                    <p class="text-center">Discussion with : {{m.message.expediteurMessage.loginUser}}</p>
+                    <p class="text-center">Discussion with : {{m.destinataire.loginUser}}</p>
                 </div>
 
                 <div class="anyClass">
