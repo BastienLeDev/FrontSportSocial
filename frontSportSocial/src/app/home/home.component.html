@@ -15,14 +15,45 @@
                     <p>Login : {{authService.getUserConnect().loginUser}}</p>
                 </div>
             </div>
-            <div class="card p-3 m-3">
-                <div class="md-form">
-                    <h3>List friends</h3>
+
+
+            <div id="card_principal_amis" class="card p-3 m-3">
+                <div class="card-header">
+                    <p class="text-center">Mes amis</p>
                 </div>
-                <div class="md-form" *ngFor="let f of friends">
-                    <p>{{f.firstNameUser}}</p>
+
+                <!-- card demande d'un ami-->
+                <div class="anyClass">
+                    <div class="card p-1 m-1" *ngFor="let f of friends">
+
+                        <div class="container">
+
+                            <div class="row">
+                                <!-- photo de profil -->
+                                <div class="col-3">
+                                    <img class="photo_profil image-rond image-rond-bg"
+                                        src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                                        alt="">
+                                </div>
+                                <!-- nom user -->
+                                <div class="col-9">
+                                    <p id="add_friend_username"> {{f.firstNameUser}}</p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
                 </div>
+
             </div>
+
+
+
             <div class="card p-3 m-3">
                 <div class="md-form">
                     <h3>Ranking</h3>

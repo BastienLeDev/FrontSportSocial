@@ -43,3 +43,175 @@ td {
   font-size: 85%;
 }
 
+
+
+
+
+
+
+
+
+#droite {
+  background-color: grey;
+}
+
+#gauche {
+  background-color: grey;
+}
+
+
+#centre {
+  background-color: rgb(255, 255, 255);
+}
+
+.photo_profil {
+  height: 60px;
+  width: 60px;
+  background-size: contain;
+  background-position: 50% 50%;
+  display: inline-block;
+  border: none;
+  -moz-border-radius: 75px;
+  -webkit-border-radius: 75px;
+  border-radius: 75px;
+}
+
+#add_friend_username {
+  text-align: center;
+  vertical-align: middle;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#demande_amis {
+  height: 200 px;
+  margin-bottom: 30px;
+}
+
+#ajout_amis {
+  height: 615px;
+}
+
+#card_principal_messages {
+  min-height: 800px;
+}
+
+/* CSS de la bare de recherche
+*/
+
+.well {
+  background-color: #ffffee
+}
+
+
+.search-form {
+  border-radius: 30px 0 0 30px;
+  margin: 10px;
+}
+
+.input-group {
+  width: 90%;
+}
+
+input-group-btn {
+  max-width: 38px;
+}
+
+#search {
+  border: 1px;
+}
+
+.search-btn {
+  cursor: pointer;
+  border-radius: 0 30px 30px 0;
+  background-color: rgb(206, 179, 120);
+  color: rgb(255, 255, 255);
+
+}
+
+
+/* CHAT */
+/* Chat containers */
+.lighter {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+/* Darker chat container */
+.darker {
+  border: 2px solid #dedede;
+  border-color: rgb(180, 180, 180);
+  background-color: #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+/* Clear floats */
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Style images */
+.container img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+/* Style the right image */
+.container img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right: 0;
+}
+
+/* Style time text */
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+  float: left;
+  color: #999;
+}
+
+.photo_conversation {
+  height: 60px;
+  width: 60px;
+  background-size: contain;
+  background-position: 50% 50%;
+  display: inline-block;
+  border: none;
+  -moz-border-radius: 75px;
+  -webkit-border-radius: 75px;
+  border-radius: 75px;
+}
+
+#zone_saisie_message {
+  margin-top: 10px;
+}
+
+
+
+/* CSS zone de visalisation des amis */
+
+#card_principal_amis {
+  min-height: 865px;
+}
+
+
+/* CSS du scroll */
+.anyClass {
+  height: auto;
+  overflow-y: scroll;
+}
