@@ -36,6 +36,16 @@ export class ShopComponent {
     }
   }
 
-
+  showHideAll() {
+    if (this.visibleCoach == true) {
+      this.visibleCoach = false;
+    }
+    if (this.visibleTokens == true) {
+      this.visibleTokens = false;
+    }
+    if (this.visibleAvatar == true) {
+      this.visibleAvatar = false;
+    }
+  }
 
 }

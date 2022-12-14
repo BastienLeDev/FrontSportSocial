@@ -36,4 +36,8 @@ export class ConnexionComponent {
     })
   }
 
+  goToInscription() {
+    this.route.navigateByUrl('inscription');
+  }
+
 }
