@@ -12,7 +12,7 @@
                 <div class="anyClass">
                     <div class="card p-1 m-1"  *ngFor="let m of sendmessages; let i = index">
 
-                        <div class="container" *ngIf="(sendmessages.length>1 && sendmessages.length-i <=1) || sendmessages.length<=1 ">
+                        <div class="container" *ngIf="(sendmessages.length>0 && sendmessages.length-i <=2) || sendmessages.length<=2 " >
 
                             <div class="row">
                                 <!-- photo de profil -->
@@ -25,6 +25,8 @@
                                 <div class="col-9">
                                     <p id="add_friend_username" style="font-weight: bold;">{{m.message.expediteurMessage.loginUser}}</p>
                                     <p>{{m.message.contentMessage}}</p>
+                                    <button (click)="showHideMessage()" type="submit" class="btn btn-secondary btn-block btn-sm">see conversation
+                                        :</button>
                                 </div>
 
                             </div>
@@ -39,11 +41,17 @@
             </div>
         </div>
 
-        <div id="centre" class="col-6 p-4">
+        <div id="centre" class="col-6 p-4" *ngIf="!visibleMessage">
             <!-- zone d'affichage des messages-->
             <div id="card_principal_messages" class="card p-3">
-                <div class="card-header" *ngFor="let m of sendmessages ; let i = index">
-                    <div *ngIf="(sendmessages.length>1 && sendmessages.length-i <=1) || sendmessages.length<=1 ">
+            </div>
+        </div>
+
+        <div id="centre" class="col-6 p-4" *ngIf="visibleMessage">
+            <!-- zone d'affichage des messages-->
+            <div id="card_principal_messages" class="card p-3">
+                <div class="card-header" *ngFor="let m of sendmessages ">
+                    <div >
                     <p class="text-center " >Discussion with : {{m.message.expediteurMessage.loginUser}}</p>
                 </div>
                 </div>
@@ -164,12 +172,12 @@
                     <!--Search bar : centrée, avec bouton "search" à droite-->
                     <div class="container">
                         <div id="content">
-                            <form class='form-inline'>
+                            <form #infosFriend="ngForm" (ngSubmit)="addFriend(infosFriend.value)">
                                 <div class="input-group">
                                     <input type='text' id='search' class="form-control search-form"
                                         placeholder="Search...">
                                     <span class="input-group-btn" style="width:39px">
-                                        <button id="search-this" type="button" class="pull-right btn search-btn">
+                                        <button id="search-this" type="button" class="pull-right btn search-btn" type="submit">
                                             <i class="fa fa-search"></i>
                                         </button>
                                     </span>
