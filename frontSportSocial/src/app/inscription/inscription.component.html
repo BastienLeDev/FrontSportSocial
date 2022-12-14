@@ -1,31 +1,31 @@
 <br>
 <br>
 <div style="margin : auto; width : 30%">
-    <form>
+    <form #infosUser="ngForm" (ngSubmit)="inscription(infosUser.value)">
         <div class="card p-3">
             <div class="md-form">
                 <label>Last name</label>
-                <input name="lastName" type="text" class="form-control">
+                <input name="lastNameUser" type="text" class="form-control">
             </div>
             <div class="md-form">
                 <label>First name</label>
-                <input name="firstName" type="text" class="form-control">
+                <input name="firstNameUser" type="text" class="form-control">
             </div>
             <div class="md-form">
                 <label>Birth date</label>
-                <input name="birthDate" type="text" class="form-control">
+                <input name="birthDateUser" type="text" class="form-control">
             </div>
             <div class="md-form">
                 <label>Login</label>
-                <input name="login" type="text" class="form-control">
+                <input name="loginUser" type="text" class="form-control">
             </div>
             <div class="md-form">
                 <label>Password</label>
-                <input name="password" type="password" class="form-control">
+                <input name="passwordUser" type="password" class="form-control">
             </div>
             <div class="md-form">
                 <label>Address</label>
-                <input name="Address" type="text" class="form-control">
+                <input name="addressUser" type="text" class="form-control">
             </div>
             <button type="submit" class="btn btn-secondary btn-block btn-sm">Registry</button>
             <button (click)="goToConnexion()" type="button" class="btn btn-link btn-block btn-sm">Back to
