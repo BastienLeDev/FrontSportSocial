@@ -64,16 +64,16 @@
         <div id="centre" class="col-6 p-4">
             <!-- zone d'affichage des messages-->
             <div id="card_principal_messages" class="card p-3">
-                <div class="card-header">
-                    <p class="text-center">Discussion avec Jean-Eudes</p>
+                <div class="card-header" *ngFor="let m of messages">
+                    <p class="text-center">Discussion with : {{m.message.expediteurMessage.loginUser}}</p>
                 </div>
 
                 <div class="anyClass">
-                    <div class="container lighter">
+                    <div class="container lighter" *ngFor="let m of messages">
                         <img src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
                             class="photo_conversation">
-                        <p>Hello. How are you today?</p>
-                        <span class="time-right">11:00</span>
+                        <span>{{m.message.contentMessage}}</span>
+                        <span class="time-right">{{m.message.dateSendMessage |date}}</span>
                     </div>
 
                     <div class="container darker">
@@ -97,7 +97,6 @@
                         <span class="time-left">11:05</span>
                     </div>
                 </div>
-
 
 
             </div>
