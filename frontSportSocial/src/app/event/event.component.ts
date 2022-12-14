@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class EventComponent implements OnInit{
 
   events : any;
+  event : any;
 
   constructor(private http: HttpClient, private route: Router) { }
 
@@ -20,7 +21,13 @@ export class EventComponent implements OnInit{
 
 
   createEvent(val: any) {
-    this.http.post('http://localhost:8300/event/create', val).subscribe({})
+    this.http.post('http://localhost:8300/event/create', val).subscribe({
+      next:(data)=>{
+        this.event = data;
+        console.log(this.event);
+      },
+      error: (err) => { console.log(err) },
+    })
 
   }
 
