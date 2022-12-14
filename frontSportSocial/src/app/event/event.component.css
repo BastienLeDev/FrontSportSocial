@@ -32,3 +32,12 @@
   .text-center {
     color: #fff;
   }
+
+.photo_event{
+  height: 100px;
+
+  background-size: contain;
+  background-position: 50% 50%;
+  border: none;
+  border-radius: 5px;
+}
