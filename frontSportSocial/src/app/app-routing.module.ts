@@ -23,7 +23,8 @@ const routes: Routes = [
   { path: 'shop', component: ShopComponent },
   { path: 'ranking', component: RankingComponent },
   { path: 'club', component: ClubComponent },
-  { path: 'event', component: EventComponent }
+  { path: 'event', component: EventComponent },
+  { path: '', redirectTo: 'connexion', pathMatch: 'full' }
 ];
 
 @NgModule({
