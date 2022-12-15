@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { PopUpProfilComponent } from '../pop-up-profil/pop-up-profil.component';
 import { AuthService } from '../services/auth.service';
@@ -28,5 +28,6 @@ export class ProfilComponent implements OnInit {
   openModifDonneesPersosModal() {
     const dialogRef = this.dialog.open(PopUpProfilComponent)
   }
+
 
 }
