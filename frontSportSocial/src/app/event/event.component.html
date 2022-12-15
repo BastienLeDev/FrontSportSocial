@@ -10,9 +10,11 @@
                         <input placeholder="Title" name="titleEvent" ngModel="" type="text" class="form-control">
                     </div>
                     <div class="md-form">
+                        <p>Sport : 
                         <select name="sportEvent" ngModel="">
                             <option [ngValue]="s" *ngFor="let s of sports">{{s.nameSport}}</option>
                         </select>
+                    </p>
                     </div>
                     <div class="md-form">
                         <input placeholder="Start date" name="dateStart" ngModel="" type="datetime-local"
