@@ -11,7 +11,9 @@ import { AuthService } from '../services/auth.service';
 export class FriendComponent implements OnInit {
 
   sendmessages : any;
+  sendmessagesasc : any;
   receivedmessages : any;
+  receivedmessagesasc : any;
   id : any;
   visibleMessage = false;
   friend : any;
@@ -23,7 +25,6 @@ export class FriendComponent implements OnInit {
 
   ngOnInit() : void {
     this.listSendMessages();
-    this.listReceivedMessages();
 
   }
 
@@ -36,14 +37,6 @@ export class FriendComponent implements OnInit {
 
 }
 
-  listReceivedMessages(){
-
-  this.http.get('http://localhost:8300/message/wrote/' + this.authService.getUserConnect().idUser).subscribe({
-    next: (data) => {this.receivedmessages = data},
-    error: (err) => {console.log(err)}
-  });
-
-}
 
 showHideMessage(val : any) {
   this.name = val;
@@ -52,6 +45,9 @@ showHideMessage(val : any) {
   } else {
     this.visibleMessage = false;
   }
+
+  this.listSendMessagesAsc();
+  this.listReceivedMessagesAsc();
 }
 
 addFriend(val :any) {
@@ -65,6 +61,23 @@ addFriend(val :any) {
   })
 }
 
+listSendMessagesAsc(){
+
+  this.http.get('http://localhost:8300/message/me/' + this.authService.getUserConnect().idUser +'/' +  this.name.message.expediteurMessage.idUser +'/asc').subscribe({
+    next: (data) => {this.sendmessagesasc = data},
+    error: (err) => {console.log(err)}
+  });
+
+}
+
+listReceivedMessagesAsc(){
+
+  this.http.get('http://localhost:8300/message/me/' + this.name.message.expediteurMessage.idUser +'/' + this.authService.getUserConnect().idUser +'/asc').subscribe({
+    next: (data) => {this.receivedmessagesasc = data},
+    error: (err) => {console.log(err)}
+  });
+
+}
 
 
 }

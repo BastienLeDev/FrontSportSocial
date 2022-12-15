@@ -25,7 +25,7 @@
                                 <div class="col-9">
                                     <p id="add_friend_username" style="font-weight: bold;">{{m.message.expediteurMessage.loginUser}}</p>
                                     <p>{{m.message.contentMessage}}</p>
-                                    <button (click)="showHideMessage(m.message.expediteurMessage.loginUser)" type="submit" class="btn btn-secondary btn-block btn-sm" >see conversation :
+                                    <button (click)="showHideMessage(m)" type="submit" class="btn btn-secondary btn-block btn-sm" >see conversation :
                                     </button>
                                 </div>
                             </div>
@@ -52,19 +52,19 @@
             <div id="card_principal_messages" class="card p-3">
                 <div class="card-header">
                     <div >
-                    <p class="text-center " >Discussion with : <b>{{name}}</b></p>
+                    <p class="text-center " >Discussion avec : <b>{{name.message.expediteurMessage.loginUser}}</b></p>
                 </div>
                 </div>
 
                 <div class="anyClass">
-                    <div class="container lighter" *ngFor="let m of sendmessages">
+                    <div class="container lighter" *ngFor="let m of sendmessagesasc">
                         <img src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
                             class="photo_conversation">
                         <span>{{m.message.contentMessage}}</span>
                         <span class="time-right">{{m.message.dateSendMessage |date}}</span>
                     </div>
 
-                    <div class="container darker" *ngFor="let m of receivedmessages">
+                    <div class="container darker" *ngFor="let m of receivedmessagesasc">
                         <img src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
                             class="right photo_conversation">
                         <p>{{m.message.contentMessage}}</p>
