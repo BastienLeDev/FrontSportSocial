@@ -12,7 +12,7 @@
                 <div class="anyClass">
                     <div class="card p-1 m-1"  *ngFor="let m of sendmessages; let i = index">
 
-                        <div class="container" *ngIf="(sendmessages.length>0 && sendmessages.length-i <=2) || sendmessages.length<=2 " >
+                        <div class="container" *ngIf="(sendmessages.length>0 && sendmessages.length-i <=3) || sendmessages.length<=3 " >
 
                             <div class="row">
                                 <!-- photo de profil -->
@@ -25,46 +25,46 @@
                                 <div class="col-9">
                                     <p id="add_friend_username" style="font-weight: bold;">{{m.message.expediteurMessage.loginUser}}</p>
                                     <p>{{m.message.contentMessage}}</p>
-                                    <button (click)="showHideMessage()" type="submit" class="btn btn-secondary btn-block btn-sm">see conversation
-                                        :</button>
+                                    <button (click)="showHideMessage(m)" type="submit" class="btn btn-secondary btn-block btn-sm" >see conversation :
+                                    </button>
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
-
-                    
                 </div>
-
             </div>
         </div>
 
         <div id="centre" class="col-6 p-4" *ngIf="!visibleMessage">
             <!-- zone d'affichage des messages-->
-            <div id="card_principal_messages" class="card p-3">
+            <div id="card_principal_messages" class="card p-3" *ngFor="let m of sendmessages ">
+                <!-- Exemple - A RETIRER A LA FIN !!!!
+                <button (change)="selectFriend($event)">
+                <option >{{m.message.expediteurMessage.loginUser}}</option>
+                </button>
+                <p><span>You selected: </span><b>{{selectedFriend}}</b></p>
+                -->
             </div>
         </div>
 
         <div id="centre" class="col-6 p-4" *ngIf="visibleMessage">
             <!-- zone d'affichage des messages-->
             <div id="card_principal_messages" class="card p-3">
-                <div class="card-header" *ngFor="let m of sendmessages ">
+                <div class="card-header">
                     <div >
-                    <p class="text-center " >Discussion with : {{m.message.expediteurMessage.loginUser}}</p>
+                    <p class="text-center " >Discussion avec : <b>{{name.message.expediteurMessage.loginUser}}</b></p>
                 </div>
                 </div>
 
                 <div class="anyClass">
-                    <div class="container lighter" *ngFor="let m of sendmessages">
+                    <div class="container lighter" *ngFor="let m of sendmessagesasc">
                         <img src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
                             class="photo_conversation">
                         <span>{{m.message.contentMessage}}</span>
                         <span class="time-right">{{m.message.dateSendMessage |date}}</span>
                     </div>
 
-                    <div class="container darker" *ngFor="let m of receivedmessages">
+                    <div class="container darker" *ngFor="let m of receivedmessagesasc">
                         <img src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
                             class="right photo_conversation">
                         <p>{{m.message.contentMessage}}</p>
@@ -84,7 +84,7 @@
                             <input name="message" ngModel="" type="text" class="form-control">
                         </div>
                         <div class="col-2">
-                            <button type="submit" class="btn btn-secondary btn-block btn-sm">Send</button>
+                            <button onclick="selected" type="submit" class="btn btn-secondary btn-block btn-sm">Send</button>
                         </div>
                     </div>
                 </div>

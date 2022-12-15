@@ -3,23 +3,30 @@
         <div class="col-3 p-4">
             <div class="card p-3 m-3">
                 <div class="md-form">
-                    <h3>Event creation form</h3>  
+                    <h3>Event creation form</h3>
                 </div>
                 <form #infosEvent="ngForm" (ngSubmit)="createEvent(infosEvent.value)">
                     <div class="md-form">
                         <input placeholder="Title" name="titleEvent" ngModel="" type="text" class="form-control">
                     </div>
                     <div class="md-form">
-                        <input placeholder="Sport" name="sport" ngModel="" type="text" class="form-control">
+                        <p>Sport : 
+                        <select name="sportEvent" ngModel="">
+                            <option [ngValue]="s" *ngFor="let s of sports">{{s.nameSport}}</option>
+                        </select>
+                    </p>
                     </div>
                     <div class="md-form">
-                        <input placeholder="Start date" name="dateStart" ngModel="" type="datetime-local" class="form-control">
+                        <input placeholder="Start date" name="dateStart" ngModel="" type="datetime-local"
+                            class="form-control">
                     </div>
                     <div class="md-form">
-                        <input placeholder="End date" name="dateEnd" ngModel="" type="datetime-local" class="form-control">
+                        <input placeholder="End date" name="dateEnd" ngModel="" type="datetime-local"
+                            class="form-control">
                     </div>
                     <div class="md-form">
-                        <input placeholder="Description" name="descriptionEvent" ngModel="" type="text" class="form-control">
+                        <input placeholder="Description" name="descriptionEvent" ngModel="" type="text"
+                            class="form-control">
                     </div>
                     <div class="md-form">
                         <input placeholder="Prix" name="priceEvent" ngModel="" type="number" class="form-control">
@@ -67,10 +74,7 @@
                             <form>
                                 <label for="sports">Choose a sport:</label>
                                 <select name="sports" id="sports">
-                                    <option value="Running">Running</option>
-                                    <option value="Swimming">Swimming</option>
-                                    <option value="Football">Football</option>
-                                    <option value="Basketball">Basketball</option>
+                                    <option [ngValue]="s" *ngFor="let s of sports">{{s.nameSport}}</option>
                                 </select>
                             </form>
                         </div>
@@ -78,26 +82,29 @@
                 </div>
                 <div class="row">
                     <div class="col-12 p-4">
-                        <div class="card p-3 m-3" *ngFor="let e of events">
 
+                        <div class="card p-3 m-3" *ngFor="let e of events">
                             <div class="container">
 
                                 <div class="row">
-                                    <div class = "col-12">
-                                        <h1 class="text-center title-event">{{e.titleEvent}}</h1>
+                                    <div class="col-3">
+                                        <h2>{{e.sportEvent.nameSport}}</h2>
+                                    </div>
+                                    <div class="col-9">
+                                        <h1 class="title-event">{{e.titleEvent}}</h1>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class ="col-4">
+                                    <div class="col-4">
                                         <img class="photo_event"
-                                        src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
-                                        alt="">
+                                            src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                                            alt="">
                                     </div>
-                                    <div class ="col-4">
+                                    <div class="col-4">
                                         <p>{{e.descriptionEvent}}</p>
                                     </div>
                                     <div class="col-4">
-                           
+
                                         <div class="container">
                                             <div class="row">
                                                 <p>Start : {{e.dateStart | date: 'd MMM y H:mm'}}</p>
@@ -108,10 +115,7 @@
                                             <div class="row">
                                                 <p>Price : {{e.priceEvent}} €</p>
                                             </div>
-
-
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
