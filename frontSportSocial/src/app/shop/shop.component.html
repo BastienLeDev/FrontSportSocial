@@ -110,26 +110,29 @@
     <div class="md-form">
         <h3 class="alignement">Avatar :</h3>
 
-        <div class="card p-3 m-3">
+        <div class="card p-3 m-3 anyClass">
             <div class="md-form">
-                <div class="card p-4 m-2" *ngFor="let a of avatars">
-                    <div class="row">
-                        <div class="col-1">
-                            <img class="photo_profil image-rond image-rond-bg"
-                                src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
-                                alt="">
-                        </div>
-                        <div class="col-3">
-                            <strong>Description</strong>
-                            <p>{{a.descriptionProduit}}</p>
-                        </div>
-                        <div class="col-3">
-                            <strong>Prix</strong>
-                            <p>{{a.prixTokenProduit}} Token</p>
+                <div class="row">
+                    <div class="col-2" *ngFor="let a of avatars">
+                        <div class="card p-5 m-1">
+                            <div class="row justify-content-center">
+                                <img class="photo_profil image-rond image-rond-bg"
+                                    src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                                    alt="">
+                            </div>
+                            <br>
+                            <div class="row">
+                                <strong>Description :</strong>
+                                <p>{{a.descriptionProduit}}</p>
+                            </div>
+                            <div class="row">
+                                <strong>Prix :</strong>
+                                <p>{{a.prixTokenProduit}} Token</p>
+                            </div>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
 
