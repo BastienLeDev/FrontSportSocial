@@ -3,21 +3,23 @@
         <div class="col-9 p-4">
             <div class="card p-3 m-3">
                 <h4>Leader bord</h4>
-                
+
                 <div class="row">
                     <div class="col-12 p-4">
                         <div class="card p-3 m-3">
                             <h4>World ranking</h4>
-                            <form>
+                            <form (ngSubmit)="ListRankingdesc(sports.value)">
                                 <label for="sports">Choose a sport: </label>
-                                <select name="sports" id="sports">
-                                    <option value="Running">Running</option>
-                                    <option value="Swimming">Swimming</option>
-                                    <option value="Football">Football</option>
-                                    <option value="Basketball">Basketball</option>
+                                <select ngModel="" name="sports" id="sports">
+                                    <option *ngFor="let sp of sports" value="">{{sp.nameSport}}</option>
                                 </select>
+
+                                <button type="submit" class="btn btn-secondary btn-block btn-sm">Valider</button>
                             </form>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et alias assumenda dolores, numquam, quae autem velit, aspernatur explicabo amet nisi tempore delectus libero mollitia eos voluptatem nulla ipsum omnis modi.</p>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et alias assumenda dolores,
+                                numquam, quae autem velit, aspernatur explicabo amet nisi tempore delectus libero
+                                mollitia eos voluptatem nulla ipsum omnis modi.</p>
+
                         </div>
                     </div>
                 </div>
@@ -25,7 +27,23 @@
                     <div class="col-12 p-4">
                         <div class="card p-3 m-3">
                             <h4>Activity ranking</h4>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis omnis unde deleniti placeat ad? Similique corrupti nihil animi in saepe, quibusdam consequuntur inventore reprehenderit placeat voluptatum eaque, modi, quod cum?</p>
+                            <div class="card p-3 m-3" *ngFor="let s of score">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12 justify-content-center">
+                                            <h2 class="">{{s.user.loginUser}}</h2>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+
+                                        </div>
+                                        <div class="col-8">
+                                            <p>score : {{s.score}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -49,8 +67,8 @@
                     </div>
                 </div>
                 <form>
-                    <label for="sports">Choose a sport: </label>
-                    <select name="sports" id="sports">
+                    <label for="sportsa">Choose a sport: </label>
+                    <select name="sportsa" id="sports">
                         <option value="Running">Running</option>
                         <option value="Swimming">Swimming</option>
                         <option value="Football">Football</option>
@@ -61,7 +79,9 @@
                     <div class="col-12 p-4">
                         <div class="card p-3 m-3">
                             <h4>World ranking</h4>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et alias assumenda dolores, numquam, quae autem velit, aspernatur explicabo amet nisi tempore delectus libero mollitia eos voluptatem nulla ipsum omnis modi.</p>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et alias assumenda dolores,
+                                numquam, quae autem velit, aspernatur explicabo amet nisi tempore delectus libero
+                                mollitia eos voluptatem nulla ipsum omnis modi.</p>
                         </div>
                     </div>
                 </div>
@@ -69,11 +89,9 @@
                     <div class="col-12 p-4">
                         <div class="card p-3 m-3">
                             <h4>Activity ranking</h4>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis omnis unde deleniti placeat ad? Similique corrupti nihil animi in saepe, quibusdam consequuntur inventore reprehenderit placeat voluptatum eaque, modi, quod cum?</p>
+                            <p>lorem ipsum quelque chose</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
