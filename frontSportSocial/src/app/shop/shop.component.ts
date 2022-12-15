@@ -51,35 +51,33 @@ export class ShopComponent {
   }
 
   coachs: any;
+  coach: any;
   avatars: any;
 
   constructor(private http: HttpClient, public authService: AuthService) { }
 
   ngOnInit(): void {
+    this.listCoachs()
     this.listAvatars()
   }
 
   listCoachs() {
-
     this.http.get('http://localhost:8300/coach').subscribe({
-      next: (data) => { this.coachs = data },
+      next: (data) => {
+        this.coach = data
+      },
       error: (err) => { console.log(err); }
     });
   }
 
   listCoachsBySport(val: any) {
-    if (val != null) {
-      this.http.get('http://localhost:8300/coach/' + val).subscribe({
-        next: (data) => {
-          this.coachs = data,
-            console.log(this.coachs)
-        },
-        error: (err) => { console.log(err); }
-      })
-    } else {
-      this.listCoachs()
-    }
-
+    this.http.get('http://localhost:8300/coach/' + val).subscribe({
+      next: (data) => {
+        this.coachs = data,
+          console.log(this.coachs)
+      },
+      error: (err) => { console.log(err); }
+    })
   }
 
   listAvatars() {
@@ -89,6 +87,15 @@ export class ShopComponent {
       },
       error: (err) => { console.log(err); }
     });
+  }
+
+  listAvatarDescription(val: any) {
+    this.http.get('http://localhost:8300/avatar/' + val).subscribe({
+      next: (data) => {
+        this.avatars = data
+      },
+      error: (err) => { console.log(err); }
+    })
   }
 
 }
