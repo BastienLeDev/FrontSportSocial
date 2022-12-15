@@ -15,7 +15,9 @@ export class FriendComponent implements OnInit {
   id : any;
   visibleMessage = false;
   friend : any;
-
+  selectedFriend : any;
+  name: any;
+  
 
   constructor (private http : HttpClient, public authService: AuthService) {}
 
@@ -43,7 +45,8 @@ export class FriendComponent implements OnInit {
 
 }
 
-showHideMessage() {
+showHideMessage(val : any) {
+  this.name = val;
   if (this.visibleMessage == false) {
     this.visibleMessage = true;
   } else {
