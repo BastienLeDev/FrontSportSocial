@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { NewEventComponent } from '../new-event/new-event.component';
 
 @Component({
   selector: 'app-event',
@@ -13,20 +15,11 @@ export class EventComponent implements OnInit{
   event : any;
   sports : any;
 
-  constructor(private http: HttpClient, private route: Router) { }
+  constructor(private http: HttpClient, private route: Router, private dialog : MatDialog) { }
 
   ngOnInit(): void {
     this.listEventToCome();
     this.listSport();
-  }
-
-
-
-  createEvent(val: any) {
-    console.log(val)
-    this.http.post('http://localhost:8300/event/create', val).subscribe({
-      error: (err) => { console.log(err) },
-    });
   }
 
   listEventToCome(){
@@ -41,6 +34,10 @@ export class EventComponent implements OnInit{
       next: (data) => { this.sports = data },
       error: (err) => { console.log(err); }
     });
+  }
+
+  openNewUserModal(){
+    const dialogRef = this.dialog.open(NewEventComponent);
   }
 
 }
