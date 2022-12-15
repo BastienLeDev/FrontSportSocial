@@ -49,6 +49,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    MatDialogModule,
 
     CalendarModule.forRoot({
       provide: DateAdapter,
