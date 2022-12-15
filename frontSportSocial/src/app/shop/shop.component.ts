@@ -54,7 +54,6 @@ export class ShopComponent implements OnInit {
   }
 
   coachs: any;
-  coach: any;
   avatars: any;
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router) { }
@@ -68,7 +67,7 @@ export class ShopComponent implements OnInit {
   listCoachs() {
     this.http.get('http://localhost:8300/coach').subscribe({
       next: (data) => {
-        this.coach = data
+        this.coachs = data
       },
       error: (err) => { console.log(err); }
     });
