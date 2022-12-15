@@ -16,6 +16,8 @@ import { RankingComponent } from './ranking/ranking.component';
 import { ClubComponent } from './club/club.component';
 import { EventComponent } from './event/event.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PopUpProfilComponent } from './pop-up-profil/pop-up-profil.component';
 
 
 
@@ -32,7 +34,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ShopComponent,
     RankingComponent,
     ClubComponent,
-    EventComponent
+    EventComponent,
+    PopUpProfilComponent
+
 
   ],
   imports: [
@@ -40,7 +44,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

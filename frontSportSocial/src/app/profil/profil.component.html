@@ -14,7 +14,8 @@
                     <p *ngIf="authService.getUserConnect().addressUser != null">Adresse :
                         {{authService.getUserConnect().addressUser}}</p>
                     <p *ngIf="authService.getUserConnect().addressUser == null">Adresse : Non précisée</p>
-                    <button type="submit" class="btn btn-secondary btn-block btn-sm">Modifier les données
+                    <button (click)="openModifDonneesPersosModal()" type="submit"
+                        class="btn btn-secondary btn-block btn-sm">Modifier les données
                         personnelles</button>
                     <button type="button" class="btn btn-link btn-block btn-sm">Changer le mot de passe</button>
                 </div>
