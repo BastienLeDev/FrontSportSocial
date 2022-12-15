@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -8,6 +9,9 @@ import { AuthService } from '../services/auth.service';
 })
 export class ProfilComponent {
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, private route: Router) { }
 
+  goToRanking() {
+    this.route.navigateByUrl('ranking');
+  }
 }
