@@ -13,7 +13,11 @@ export class FriendComponent implements OnInit {
   sendmessages : any;
   receivedmessages : any;
   id : any;
-
+  visibleMessage = false;
+  friend : any;
+  selectedFriend : any;
+  name: any;
+  
 
   constructor (private http : HttpClient, public authService: AuthService) {}
 
@@ -39,6 +43,26 @@ export class FriendComponent implements OnInit {
     error: (err) => {console.log(err)}
   });
 
+}
+
+showHideMessage(val : any) {
+  this.name = val;
+  if (this.visibleMessage == false) {
+    this.visibleMessage = true;
+  } else {
+    this.visibleMessage = false;
+  }
+}
+
+addFriend(val :any) {
+  this.http.post('http://localhost:8300/friend', val).subscribe({
+    next: (data) => {
+      this.friend = data;
+      console.log(this.friend);
+    },
+    error : (err) => {console.log(err)},
+
+  })
 }
 
 

@@ -44,3 +44,18 @@ input-group-btn {
 .text-center {
     color: #fff;
 }
+
+/* Style images */
+img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+/* CSS du scroll */
+.anyClass {
+    height: auto;
+    overflow-y: scroll;
+}

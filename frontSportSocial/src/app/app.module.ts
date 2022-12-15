@@ -1,3 +1,5 @@
+
+
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,6 +17,12 @@ import { ShopComponent } from './shop/shop.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { ClubComponent } from './club/club.component';
 import { EventComponent } from './event/event.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PopUpProfilComponent } from './pop-up-profil/pop-up-profil.component';
+
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 
 @NgModule({
@@ -30,14 +38,24 @@ import { EventComponent } from './event/event.component';
     ShopComponent,
     RankingComponent,
     ClubComponent,
-    EventComponent
+    EventComponent,
+    PopUpProfilComponent
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    })
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

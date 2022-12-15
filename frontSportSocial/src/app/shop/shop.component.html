@@ -48,11 +48,12 @@
     <div class="md-form">
         <h3 class="alignement">Coach :</h3>
 
-        <form class='form-inline, alignement'>
+        <form class='form-inline, alignement' #namesport="ngForm" (ngSubmit)="listCoachsBySport(nameSportIn.value)">
             <div class="input-group">
-                <input type='text' id='search' class="form-control search-form" placeholder="Search...">
+                <input ngModel="" #nameSportIn name="nameSport" type='text' id='nameSport'
+                    class="form-control search-form" placeholder="Search...">
                 <span class="input-group-btn" style="width:39px">
-                    <button id="search-this" type="button" class="pull-right btn search-btn">
+                    <button id="search-this" type="submit" class="pull-right btn search-btn">
                         <i class="fa fa-search"></i>
                     </button>
                 </span>
@@ -60,10 +61,28 @@
         </form>
 
         <div class="card p-3 m-3">
-            <div class="md-form">
+            <div class="md-form anyClass">
                 <h3 class="alignement">Profil coach</h3>
-                <p>Description profil</p>
+                <div class="card p-4 m-2" *ngFor="let c of coachs">
 
+                    <div class="row">
+                        <div class="col-1">
+                            <img class="photo_profil image-rond image-rond-bg"
+                                src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                                alt="">
+                        </div>
+                        <div *ngIf="nameSportIn.value != null">
+                            <p>Prénom : {{c.user.firstNameUser}}</p>
+                            <p>Nom : {{c.user.lastNameUser}}</p>
+                            <p>Login : {{c.user.loginUser}}</p>
+                        </div>
+                        <div *ngIf="nameSportIn.value == null">
+                            <p>Prénom : {{c.user.firstNameUser}}</p>
+                            <p>Nom : {{c.user.lastNameUser}}</p>
+                            <p>Login : {{c.user.loginUser}}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -91,12 +110,28 @@
     <div class="md-form">
         <h3 class="alignement">Avatar :</h3>
 
-        <div class="card p-3 m-3">
+        <div class="card p-3 m-3 anyClass">
             <div class="md-form">
-
-                <p>Avatar 1</p>
-                <p>Avatar 2</p>
-                <p>Avatar 3</p>
+                <div class="row">
+                    <div class="col-2" *ngFor="let a of avatars">
+                        <div class="card p-5 m-1">
+                            <div class="row justify-content-center">
+                                <img class="photo_profil image-rond image-rond-bg"
+                                    src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                                    alt="">
+                            </div>
+                            <br>
+                            <div class="row">
+                                <strong>Description :</strong>
+                                <p>{{a.descriptionProduit}}</p>
+                            </div>
+                            <div class="row">
+                                <strong>Prix :</strong>
+                                <p>{{a.prixTokenProduit}} Token</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
