@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -7,7 +8,9 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.css']
 })
-export class ShopComponent {
+export class ShopComponent implements OnInit {
+
+
 
   visibleCoach = false;
   visibleAvatar = false;
@@ -53,10 +56,15 @@ export class ShopComponent {
   coachs: any;
   avatars: any;
 
-  constructor(private http: HttpClient, public authService: AuthService) { }
+  constructor(private http: HttpClient, public authService: AuthService, private route: Router) { }
 
   ngOnInit(): void {
+    if (!this.authService.isConnected()) {
+      this.route.navigateByUrl('connexion')
+    }
+
     this.listAvatars()
+
   }
 
   listCoachs() {

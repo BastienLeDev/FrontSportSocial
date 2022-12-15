@@ -4,125 +4,84 @@
             <tr id="title-table">
                 <th id="title-table">
                     <h3>Schedule</h3>
-                </th >
-                <th id="title-table"><div class="container">
-                    <div id="content">
-                        <form class='form-inline'>
-                            <div class="input-group">
-                                <input type='text' id='search' class="form-control search-form"
-                                    placeholder="Search...">
-                                <span class="input-group-btn" style="width:39px">
-                                    <button id="search-this" type="button" class="pull-right btn search-btn">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </form>
-
-                    </div>
-                </div></th>
+                </th>
                 <th id="title-table">
-                    <button type="submit" class="btn btn-secondary btn-block btn-sm">Add</button></th>
+                    <div class="container">
+                        <div id="content">
+                            <form class='form-inline'>
+                                <div class="input-group">
+                                    <input type='text' id='search' class="form-control search-form"
+                                        placeholder="Search...">
+                                    <span class="input-group-btn" style="width:39px">
+                                        <button id="search-this" type="button" class="pull-right btn search-btn">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </th>
+                <th id="title-table">
+                    <button type="submit" class="btn btn-secondary btn-block btn-sm">Add</button>
+                </th>
             </tr>
         </table>
     </div>
-    <div class="md-form">
-        <div>
-            <table style="width:100%">
-                <tr>
-                    <th>
-                        <p>Heures</p>
-                    </th>
-                    <th>
-                        <p>Lundi</p>
-                    </th>
-                    <th>
-                        <p>Mardi</p>
-                    </th>
-                    <th>
-                        <p>Mercredi</p>
-                    </th>
-                    <th>
-                        <p>Jeudi</p>
-                    </th>
-                    <th>
-                        <p>Vendredi</p>
-                    </th>
-                    <th>
-                        <p>Samedi</p>
-                    </th>
-                    <th>
-                        <p>Dimanche</p>
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        <p>10h</p>
-                    </td>
-                    <td>
-                        <p>Running</p>
-                    </td>
-                    <td>
-                        <p>Natation</p>
-                    </td>
-                    <td>
-                        <p>Repos</p>
-                    </td>
-                    <td>
-                        <p>Box</p>
-                    </td>
-                    <td>
-                        <p>Dance</p>
-                    </td>
-                    <td>
-                        <p>Repos</p>
-                    </td>
-                    <td>
-                        <p>Repos</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>12h</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>14h</p>
-                    </td>
-                    <td>
-                        <p>Running</p>
-                    </td>
-                    <td>
-                        <p>Natation</p>
-                    </td>
-                    <td>
-                        <p>Repos</p>
-                    </td>
-                    <td>
-                        <p>Box</p>
-                    </td>
-                    <td>
-                        <p>Dance</p>
-                    </td>
-                    <td>
-                        <p>Repos</p>
-                    </td>
-                    <td>
-                        <p>Repos</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>16h</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>18h</p>
-                    </td>
-                </tr>
-            </table>
+
+
+
+
+
+    <div class="row text-center">
+
+        <div class="col-md-4">
+            <div class="btn-group">
+                <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate">
+                    Previous
+                </div>
+                <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
+                    Today
+                </div>
+                <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate">
+                    Next
+                </div>
+            </div>
         </div>
+
+        <div class="col-md-4">
+            <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+        </div>
+
+        <div class="col-md-4">
+            <div class="btn-group">
+                <div class="btn btn-primary" (click)="setView(CalendarView.Month)"
+                    [class.active]="view === CalendarView.Month">
+                    Month
+                </div>
+                <div class="btn btn-primary" (click)="setView(CalendarView.Week)"
+                    [class.active]="view === CalendarView.Week">
+                    Week
+                </div>
+                <div class="btn btn-primary" (click)="setView(CalendarView.Day)"
+                    [class.active]="view === CalendarView.Day">
+                    Day
+                </div>
+            </div>
+        </div>
+
+
     </div>
-</div>
+
+    <div [ngSwitch]="view">
+
+        <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate">
+        </mwl-calendar-month-view>
+
+        <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate">
+        </mwl-calendar-week-view>
+
+        <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate">
+        </mwl-calendar-day-view>
+
+    </div>
