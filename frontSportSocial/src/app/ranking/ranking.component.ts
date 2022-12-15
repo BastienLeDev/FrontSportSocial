@@ -1,6 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-ranking',
@@ -9,13 +9,40 @@ import { AuthService } from '../services/auth.service';
 })
 export class RankingComponent implements OnInit {
 
-  constructor(private authService: AuthService, private route: Router) { }
+  score: any;
+  texte = "";
+  sports: any;
+
+  constructor(private http: HttpClient, private route: Router) { }
 
   ngOnInit(): void {
-    if (!this.authService.isConnected()) {
-      this.route.navigateByUrl('connexion')
-    }
-
+    this.ListRankingdesc(null);
+    this.ListSport();
   }
 
+  ListSport() {
+
+
+    this.http.get('http://localhost:8300/sport').subscribe({
+
+      next: (dataa) => {
+        this.sports = dataa
+        console.log(this.sports)
+      },
+      error: (err) => { console.log(err); }
+    });
+  }
+
+  ListRankingdesc(val: any) {
+    //this.http.get('http://localhost:8300/classement/Swimming/desc').subscribe({
+
+    this.http.get('http://localhost:8300/classement/' + val + '/desc').subscribe({
+
+      next: (data) => {
+        this.score = data
+        console.log(this.score)
+      },
+      error: (err) => { console.log(err); }
+    });
+  }
 }

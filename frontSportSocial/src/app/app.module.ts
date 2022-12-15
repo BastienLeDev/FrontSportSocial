@@ -21,6 +21,7 @@ import { PopUpProfilComponent } from './pop-up-profil/pop-up-profil.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
