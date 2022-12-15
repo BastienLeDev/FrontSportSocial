@@ -59,35 +59,28 @@ export class ShopComponent implements OnInit {
   constructor(private http: HttpClient, public authService: AuthService, private route: Router) { }
 
   ngOnInit(): void {
-    if (!this.authService.isConnected()) {
-      this.route.navigateByUrl('connexion')
-    }
-
+    this.listCoachs()
     this.listAvatars()
 
   }
 
   listCoachs() {
-
     this.http.get('http://localhost:8300/coach').subscribe({
-      next: (data) => { this.coachs = data },
+      next: (data) => {
+        this.coachs = data
+      },
       error: (err) => { console.log(err); }
     });
   }
 
   listCoachsBySport(val: any) {
-    if (val != null) {
-      this.http.get('http://localhost:8300/coach/' + val).subscribe({
-        next: (data) => {
-          this.coachs = data,
-            console.log(this.coachs)
-        },
-        error: (err) => { console.log(err); }
-      })
-    } else {
-      this.listCoachs()
-    }
-
+    this.http.get('http://localhost:8300/coach/' + val).subscribe({
+      next: (data) => {
+        this.coachs = data,
+          console.log(this.coachs)
+      },
+      error: (err) => { console.log(err); }
+    })
   }
 
   listAvatars() {
@@ -97,6 +90,15 @@ export class ShopComponent implements OnInit {
       },
       error: (err) => { console.log(err); }
     });
+  }
+
+  listAvatarDescription(val: any) {
+    this.http.get('http://localhost:8300/avatar/' + val).subscribe({
+      next: (data) => {
+        this.avatars = data
+      },
+      error: (err) => { console.log(err); }
+    })
   }
 
 }

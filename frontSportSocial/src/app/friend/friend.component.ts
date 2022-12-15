@@ -12,11 +12,11 @@ export class FriendComponent implements OnInit {
 
   sendmessages : any;
   sendmessagesasc : any;
-  receivedmessages : any;
   receivedmessagesasc : any;
   id : any;
   visibleMessage = false;
   friend : any;
+  friends: any;
   selectedFriend : any;
   name: any;
   
@@ -25,6 +25,7 @@ export class FriendComponent implements OnInit {
 
   ngOnInit() : void {
     this.listSendMessages();
+    this.listFriends();
 
   }
 
@@ -77,6 +78,17 @@ listReceivedMessagesAsc(){
     error: (err) => {console.log(err)}
   });
 
+}
+
+listFriends() {
+
+
+
+  this.http.get('http://localhost:8300/friend/receiver/' + this.authService.getUserConnect().idUser).subscribe({
+    next: (data) => { this.friends = data },
+    error: (err) => { console.log(err); }
+
+  });
 }
 
 

@@ -10,9 +10,11 @@
                         <input placeholder="Title" name="titleEvent" ngModel="" type="text" class="form-control">
                     </div>
                     <div class="md-form">
+                        <p>Sport : 
                         <select name="sportEvent" ngModel="">
                             <option [ngValue]="s" *ngFor="let s of sports">{{s.nameSport}}</option>
                         </select>
+                    </p>
                     </div>
                     <div class="md-form">
                         <input placeholder="Start date" name="dateStart" ngModel="" type="datetime-local"
@@ -36,7 +38,7 @@
                     -->
                     <div class="md-form">
                         <span class="input-group-btn" style="width:39px">
-                            <button type="submit" class="btn btn-secondary btn-block btn-sm">Add</button>
+                            <button type="submit" class="btn btn-secondary btn-block btn-sm">Create Event</button>
                         </span>
                     </div>
                 </form>
@@ -49,7 +51,7 @@
             <div class="card p-3 m-3">
                 <div class="container">
                     <div class="row">
-                        <div class="col-9 ">
+                        <div class="col-6 ">
                             <div class="container">
                                 <div id="content">
                                     <form class='form-inline'>
@@ -76,6 +78,12 @@
                                 </select>
                             </form>
                         </div>
+                        <div class="col-3">
+                        
+                        <a mat-mini-fab matTooltip="Link" routerLink="." aria-label="Example mini fab with a heart icon">
+                          <mat-icon>favorite</mat-icon>
+                        </a>
+                      </div>
                     </div>
                 </div>
                 <div class="row">
