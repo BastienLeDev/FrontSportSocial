@@ -63,7 +63,7 @@
         <div class="card p-3 m-3">
             <div class="md-form anyClass">
                 <h3 class="alignement">Profil coach</h3>
-                <div class="card p-4 m-2" *ngFor="let c of coach">
+                <div class="card p-4 m-2" *ngFor="let c of coachs">
 
                     <div class="row">
                         <div class="col-1">
@@ -71,12 +71,7 @@
                                 src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
                                 alt="">
                         </div>
-                        <div *ngIf="nameSportIn.value != null">
-                            <p>Prénom : {{c.user.firstNameUser}}</p>
-                            <p>Nom : {{c.user.lastNameUser}}</p>
-                            <p>Login : {{c.user.loginUser}}</p>
-                        </div>
-                        <div *ngIf="nameSportIn.value == null">
+                        <div>
                             <p>Prénom : {{c.firstNameUser}}</p>
                             <p>Nom : {{c.lastNameUser}}</p>
                             <p>Login : {{c.loginUser}}</p>

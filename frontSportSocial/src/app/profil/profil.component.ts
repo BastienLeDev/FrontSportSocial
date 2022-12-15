@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { PopUpProfilComponent } from '../pop-up-profil/pop-up-profil.component';
 import { AuthService } from '../services/auth.service';
 import { OnInit } from '@angular/core';
+import { PopUpModifMdpComponent } from '../pop-up-modif-mdp/pop-up-modif-mdp.component';
 
 @Component({
   selector: 'app-profil',
@@ -27,6 +28,10 @@ export class ProfilComponent implements OnInit {
 
   openModifDonneesPersosModal() {
     const dialogRef = this.dialog.open(PopUpProfilComponent)
+  }
+
+  openChangerMdp() {
+    const dialogRef = this.dialog.open(PopUpModifMdpComponent)
   }
 
 

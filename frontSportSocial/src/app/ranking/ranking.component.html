@@ -8,10 +8,10 @@
                     <div class="col-12 p-4">
                         <div class="card p-3 m-3">
                             <h4>World ranking</h4>
-                            <form (ngSubmit)="ListRankingdesc(sports.value)">
-                                <label for="sports">Choose a sport: </label>
+                            <form #choixSport="ngForm" (ngSubmit)="ListRankingdesc(choixSport.value)">
+                                <label for=" sports">Choose a sport: </label>
                                 <select ngModel="" name="sports" id="sports">
-                                    <option *ngFor="let sp of sports" value="">{{sp.nameSport}}</option>
+                                    <option [ngValue]="sp" *ngFor="let sp of sports" value="">{{sp.nameSport}}</option>
                                 </select>
 
                                 <button type="submit" class="btn btn-secondary btn-block btn-sm">Valider</button>
@@ -19,7 +19,6 @@
                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et alias assumenda dolores,
                                 numquam, quae autem velit, aspernatur explicabo amet nisi tempore delectus libero
                                 mollitia eos voluptatem nulla ipsum omnis modi.</p>
-
                         </div>
                     </div>
                 </div>
@@ -36,7 +35,9 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-4">
-
+                                            <img class="photo_event"
+                                                src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                                                alt="">
                                         </div>
                                         <div class="col-8">
                                             <p>score : {{s.score}}</p>

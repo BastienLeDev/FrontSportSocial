@@ -2,19 +2,23 @@
     <div class="card p-3">
         <div class="md-form">
             <label>Last name</label>
-            <input name="lastNameUser" ngModel="" type="text" class="form-control">
+            <input name="lastNameUser" [(ngModel)]="authService.getUserConnect().firstNameUser" type="text"
+                class="form-control">
         </div>
         <div class="md-form">
             <label>First name</label>
-            <input name="firstNameUser" ngModel="" type="text" class="form-control">
+            <input name="firstNameUser" [(ngModel)]="authService.getUserConnect().lastNameUser" type="text"
+                class="form-control">
         </div>
         <div class="md-form">
             <label>Birth date</label>
-            <input name="birthDateUser" ngModel="" type="text" class="form-control">
+            <input name="birthDateUser" [(ngModel)]="authService.getUserConnect().birthDateUser" type="text"
+                class="form-control">
         </div>
         <div class="md-form">
             <label>Login</label>
-            <input name="loginUser" ngModel="" type="text" class="form-control">
+            <input name="loginUser" [(ngModel)]="authService.getUserConnect().loginUser" type="text"
+                class="form-control">
         </div>
         <div mat-dialog-actions>
             <button (click)="goToProfil()" type=" submit" class="mat-button mat-dialog-close">Registry</button>
