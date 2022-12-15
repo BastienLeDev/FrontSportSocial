@@ -18,7 +18,8 @@ import { RankingComponent } from './ranking/ranking.component';
 import { ClubComponent } from './club/club.component';
 import { EventComponent } from './event/event.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { PopUpProfilComponent } from './pop-up-profil/pop-up-profil.component';
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
@@ -37,7 +38,9 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     ShopComponent,
     RankingComponent,
     ClubComponent,
-    EventComponent
+    EventComponent,
+    PopUpProfilComponent
+
 
   ],
   imports: [
