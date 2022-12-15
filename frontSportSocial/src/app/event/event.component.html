@@ -3,25 +3,28 @@
         <div class="col-3 p-4">
             <div class="card p-3 m-3">
                 <div class="md-form">
-                    <h3>Event creation form</h3>  
+                    <h3>Event creation form</h3>
                 </div>
                 <form #infosEvent="ngForm" (ngSubmit)="createEvent(infosEvent.value)">
                     <div class="md-form">
                         <input placeholder="Title" name="titleEvent" ngModel="" type="text" class="form-control">
                     </div>
-                    <div class ="md-form">
+                    <div class="md-form">
                         <select name="sportEvent" ngModel="">
                             <option [ngValue]="s" *ngFor="let s of sports">{{s.nameSport}}</option>
                         </select>
                     </div>
                     <div class="md-form">
-                        <input placeholder="Start date" name="dateStart" ngModel="" type="datetime-local" class="form-control">
+                        <input placeholder="Start date" name="dateStart" ngModel="" type="datetime-local"
+                            class="form-control">
                     </div>
                     <div class="md-form">
-                        <input placeholder="End date" name="dateEnd" ngModel="" type="datetime-local" class="form-control">
+                        <input placeholder="End date" name="dateEnd" ngModel="" type="datetime-local"
+                            class="form-control">
                     </div>
                     <div class="md-form">
-                        <input placeholder="Description" name="descriptionEvent" ngModel="" type="text" class="form-control">
+                        <input placeholder="Description" name="descriptionEvent" ngModel="" type="text"
+                            class="form-control">
                     </div>
                     <div class="md-form">
                         <input placeholder="Prix" name="priceEvent" ngModel="" type="number" class="form-control">
@@ -82,24 +85,24 @@
                             <div class="container">
 
                                 <div class="row">
-                                    <div class = "col-3">
+                                    <div class="col-3">
                                         <h2>{{e.sportEvent.nameSport}}</h2>
                                     </div>
-                                    <div class = "col-9">
+                                    <div class="col-9">
                                         <h1 class="title-event">{{e.titleEvent}}</h1>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class ="col-4">
+                                    <div class="col-4">
                                         <img class="photo_event"
-                                        src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
-                                        alt="">
+                                            src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                                            alt="">
                                     </div>
-                                    <div class ="col-4">
+                                    <div class="col-4">
                                         <p>{{e.descriptionEvent}}</p>
                                     </div>
                                     <div class="col-4">
-                           
+
                                         <div class="container">
                                             <div class="row">
                                                 <p>Start : {{e.dateStart | date: 'd MMM y H:mm'}}</p>
