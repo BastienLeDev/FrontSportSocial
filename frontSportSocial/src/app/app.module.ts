@@ -19,10 +19,13 @@ import { ClubComponent } from './club/club.component';
 import { EventComponent } from './event/event.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { PopUpProfilComponent } from './pop-up-profil/pop-up-profil.component';
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NewEventComponent } from './new-event/new-event.component';
 
 
 @NgModule({
@@ -39,7 +42,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     RankingComponent,
     ClubComponent,
     EventComponent,
-    PopUpProfilComponent
+    PopUpProfilComponent,
+    NewEventComponent
 
 
   ],
@@ -50,6 +54,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
 
     CalendarModule.forRoot({
       provide: DateAdapter,

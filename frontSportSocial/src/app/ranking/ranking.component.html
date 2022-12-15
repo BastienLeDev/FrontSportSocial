@@ -8,13 +8,14 @@
                     <div class="col-12 p-4">
                         <div class="card p-3 m-3">
                             <h4>World ranking</h4>
-                            <form (ngSubmit)="ListRankingdesc(sports.value)">
-                                <label for="sports">Choose a sport: </label>
-                                <select ngModel="" name="sports" id="sports">
-                                    <option *ngFor="let sp of sports" value="">{{sp.nameSport}}</option>
+                            <form #choixSport="ngForm">
+                                <label for=" sports">Choose a sport: </label>
+                                <select (change)="selectSport($event)" name="sports" id="sports">
+                                    <option [ngValue]="sp" *ngFor="let sp of sports" value="">{{sp.nameSport}}</option>
                                 </select>
 
-                                <button type="submit" class="btn btn-secondary btn-block btn-sm">Valider</button>
+                                <button (click)="ListRankingdesc(sports.value)" type="submit"
+                                    class="btn btn-secondary btn-block btn-sm">Valider</button>
                             </form>
                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et alias assumenda dolores,
                                 numquam, quae autem velit, aspernatur explicabo amet nisi tempore delectus libero
