@@ -12,11 +12,12 @@ export class RankingComponent implements OnInit {
   score: any;
   texte = "";
   sports: any;
+  selectedSport: any;
 
   constructor(private http: HttpClient, private route: Router) { }
 
   ngOnInit(): void {
-    this.ListRankingdesc(null);
+
     this.ListSport();
   }
 
@@ -34,9 +35,10 @@ export class RankingComponent implements OnInit {
   }
 
   ListRankingdesc(val: any) {
+    this.sports = val;
     //this.http.get('http://localhost:8300/classement/Swimming/desc').subscribe({
 
-    this.http.get('http://localhost:8300/classement/' + val + '/desc').subscribe({
+    this.http.get('http://localhost:8300/classement/' + this.sports.nameSport + '/desc').subscribe({
 
       next: (data) => {
         this.score = data
@@ -45,4 +47,9 @@ export class RankingComponent implements OnInit {
       error: (err) => { console.log(err); }
     });
   }
+  selectSport(event: any) {
+    this.selectedSport = event.target.value;
+
+  }
+
 }
