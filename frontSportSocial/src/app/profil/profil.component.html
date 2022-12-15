@@ -7,13 +7,15 @@
                 </div>
 
                 <div class="md-form">
-                    <p>First name : {{authService.getUserConnect().firstNameUser}} </p>
-                    <p>Last name : {{authService.getUserConnect().lastNameUser}}</p>
+                    <p>Last name : {{authService.getUserConnect().firstNameUser}} </p>
+                    <p>First name : {{authService.getUserConnect().lastNameUser}}</p>
                     <p>Birthdate : {{authService.getUserConnect().birthDateUser}}</p>
                     <p>Login : {{authService.getUserConnect().loginUser}}</p>
                     <p>Coach : {{authService.getUserConnect().coachUser}}</p>
                     <p *ngIf="authService.getUserConnect().addressUser != null">Adresse :
-                        {{authService.getUserConnect().addressUser}}</p>
+                        {{authService.getUserConnect().addressUser.streetAddress}}</p>
+                    <p>{{authService.getUserConnect().addressUser.zipCodeAddress}}
+                        {{authService.getUserConnect().addressUser.cityAddress}}</p>
                     <p *ngIf="authService.getUserConnect().addressUser == null">Adresse : Non précisée</p>
                     <button (click)="openModifDonneesPersosModal()" type="submit"
                         class="btn btn-secondary btn-block btn-sm">Modifier les données
