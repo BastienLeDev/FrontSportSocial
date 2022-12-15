@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3 p-4">
+        <!--<div class="col-3 p-4">
             <div class="card p-3 m-3">
                 <div class="md-form">
                     <h3>Event creation form</h3>
@@ -31,11 +31,11 @@
                     <div class="md-form">
                         <input placeholder="Prix" name="priceEvent" ngModel="" type="number" class="form-control">
                     </div>
-                    <!--
+                    
                     <div class="md-form">
                         <input placeholder="Image" name="imageEvent" ngModel="" type="text" class="form-control">
                     </div>
-                    -->
+                    
                     <div class="md-form">
                         <span class="input-group-btn" style="width:39px">
                             <button type="submit" class="btn btn-secondary btn-block btn-sm">Create Event</button>
@@ -43,12 +43,12 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div>-->
 
 
 
-        <div class="col-9 p-4 ">
-            <div class="card p-3 m-3">
+        <div class="col-12 p-4 ">
+            <div class="p-1 m-1 ">
                 <div class="container">
                     <div class="row">
                         <div class="col-6 ">
@@ -70,26 +70,40 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-3 ">
-                            <form>
-                                <label for="sports">Choose a sport:</label>
-                                <select name="sports" id="sports">
-                                    <option [ngValue]="s" *ngFor="let s of sports">{{s.nameSport}}</option>
-                                </select>
-                            </form>
+                        <div class="col-2">
+                            <div class="container">
+
+                                <form>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <label for="sports">Filter by sport:</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="text-center">
+                                                <select name="sports" id="sports">
+                                                    <option [ngValue]="s" *ngFor="let s of sports">{{s.nameSport}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        <div class="col-3">
-                        
-                        <a mat-mini-fab matTooltip="Link" routerLink="." aria-label="Example mini fab with a heart icon">
-                          <mat-icon>favorite</mat-icon>
-                        </a>
-                      </div>
+                        <div class="col-4">
+                            <span> Create your own event!</span>
+                            <a mat-mini-fab (click)="openNewUserModal()">
+                                <mat-icon>add</mat-icon>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="card row">
                     <div class="col-12 p-4">
 
-                        <div class="card p-3 m-3" *ngFor="let e of events">
+                        <div class="card p-1 m-3" *ngFor="let e of events">
                             <div class="container">
 
                                 <div class="row">
