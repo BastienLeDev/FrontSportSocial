@@ -3,7 +3,7 @@
         <table id="title-table" style="width:100%">
             <tr id="title-table">
                 <th id="title-table">
-                    <h3>Schedule</h3>
+                    <h3>Calendrier</h3>
                 </th>
                 <th id="title-table">
                     <div class="container">
@@ -11,7 +11,7 @@
                             <form class='form-inline'>
                                 <div class="input-group">
                                     <input type='text' id='search' class="form-control search-form"
-                                        placeholder="Search...">
+                                        placeholder="Recherche...">
                                     <span class="input-group-btn" style="width:39px">
                                         <button id="search-this" type="button" class="pull-right btn search-btn">
                                             <i class="fa fa-search"></i>
@@ -23,12 +23,12 @@
                     </div>
                 </th>
                 <th id="title-table">
-                    <button type="submit" class="btn btn-secondary btn-block btn-sm">Add</button>
+                    <button (click)="openModifDonneesPersosModal()" type="submit"
+                        class="btn btn-secondary btn-block btn-sm">Ajouter un event</button>
                 </th>
             </tr>
         </table>
     </div>
-
 
 
 
@@ -38,13 +38,13 @@
         <div class="col-md-4">
             <div class="btn-group">
                 <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate">
-                    Previous
+                    Précédent
                 </div>
                 <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
-                    Today
+                    Aujourd'hui
                 </div>
                 <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate">
-                    Next
+                    Suivant
                 </div>
             </div>
         </div>
@@ -57,15 +57,15 @@
             <div class="btn-group">
                 <div class="btn btn-primary" (click)="setView(CalendarView.Month)"
                     [class.active]="view === CalendarView.Month">
-                    Month
+                    Mois
                 </div>
                 <div class="btn btn-primary" (click)="setView(CalendarView.Week)"
                     [class.active]="view === CalendarView.Week">
-                    Week
+                    Semaine
                 </div>
                 <div class="btn btn-primary" (click)="setView(CalendarView.Day)"
                     [class.active]="view === CalendarView.Day">
-                    Day
+                    Jour
                 </div>
             </div>
         </div>
@@ -75,13 +75,14 @@
 
     <div [ngSwitch]="view">
 
-        <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate">
+        <mwl-calendar-month-view (dayClicked)="dayClicked($event.day)" *ngSwitchCase="CalendarView.Month"
+            [viewDate]="viewDate" [events]="events">
         </mwl-calendar-month-view>
 
-        <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate">
+        <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events">
         </mwl-calendar-week-view>
 
-        <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate">
+        <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events">
         </mwl-calendar-day-view>
 
     </div>
