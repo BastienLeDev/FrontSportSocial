@@ -11,7 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class PopUpProfilComponent {
 
-  constructor(private http: HttpClient, private route: Router, private authService: AuthService, private dialog: MatDialog) { }
+  constructor(private http: HttpClient, private route: Router, public authService: AuthService, private dialog: MatDialog) { }
 
   user: any;
 
@@ -31,5 +31,6 @@ export class PopUpProfilComponent {
   goToProfil() {
     this.dialog.closeAll()
   }
+
 
 }

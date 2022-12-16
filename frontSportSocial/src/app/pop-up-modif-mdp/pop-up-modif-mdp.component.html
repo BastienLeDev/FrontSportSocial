@@ -1,0 +1,16 @@
+<form #infosUser="ngForm" (ngSubmit)="modifMdp(infosUser.value)">
+    <div class="card p-3">
+        <div class="md-form">
+            <label>Ancien mot de passe</label>
+            <input #ancien name="passwordUser" type="text" class="form-control">
+            <p *ngIf="ancien != authService.getUserConnect().passwordUser"> Le mot de passe ne correspond pas !</p>
+        </div>
+        <div class="md-form">
+            <label>Nouveau mot de passe</label>
+            <input name="passwordUser" ngModel="" type="text" class="form-control">
+        </div>
+        <div mat-dialog-actions>
+            <button (click)="goToProfil()" type=" submit" class="mat-button mat-dialog-close">Registry</button>
+        </div>
+    </div>
+</form>

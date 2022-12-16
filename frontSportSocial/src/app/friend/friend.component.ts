@@ -1,6 +1,10 @@
 import { AnimateTimings } from '@angular/animations';
+import { NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { PopUpMessageComponent } from '../pop-up-message/pop-up-message.component';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -12,19 +16,21 @@ export class FriendComponent implements OnInit {
 
   sendmessages : any;
   sendmessagesasc : any;
-  receivedmessages : any;
   receivedmessagesasc : any;
   id : any;
   visibleMessage = false;
   friend : any;
+  friends: any;
   selectedFriend : any;
   name: any;
+  mess : any;
   
 
-  constructor (private http : HttpClient, public authService: AuthService) {}
+  constructor (private http : HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog) {}
 
   ngOnInit() : void {
     this.listSendMessages();
+    this.listFriends();
 
   }
 
@@ -46,9 +52,11 @@ showHideMessage(val : any) {
     this.visibleMessage = false;
   }
 
-  this.listSendMessagesAsc();
-  this.listReceivedMessagesAsc();
+  this.listSendAndReceivedMessagesAsc();
+  /* this.listReceivedMessagesAsc(); */
 }
+
+
 
 addFriend(val :any) {
   this.http.post('http://localhost:8300/friend', val).subscribe({
@@ -61,15 +69,14 @@ addFriend(val :any) {
   })
 }
 
-listSendMessagesAsc(){
-
-  this.http.get('http://localhost:8300/message/me/' + this.authService.getUserConnect().idUser +'/' +  this.name.message.expediteurMessage.idUser +'/asc').subscribe({
+listSendAndReceivedMessagesAsc(){
+  this.http.get('http://localhost:8300/message/me/' + this.authService.getUserConnect().idUser +'/' +  this.name.message.expediteurMessage.idUser +'/combine').subscribe({
     next: (data) => {this.sendmessagesasc = data},
     error: (err) => {console.log(err)}
   });
 
 }
-
+/*
 listReceivedMessagesAsc(){
 
   this.http.get('http://localhost:8300/message/me/' + this.name.message.expediteurMessage.idUser +'/' + this.authService.getUserConnect().idUser +'/asc').subscribe({
@@ -77,6 +84,38 @@ listReceivedMessagesAsc(){
     error: (err) => {console.log(err)}
   });
 
+}
+*/
+
+listFriends() {
+
+
+
+  this.http.get('http://localhost:8300/friend/receiver/' + this.authService.getUserConnect().idUser).subscribe({
+    next: (data) => { this.friends = data },
+    error: (err) => { console.log(err); }
+
+  });
+}
+
+sendMess(val : any) {
+
+  let messag = {contentMessage: val.message};
+  let messagerie = {message: messag};
+
+  this.http.post('http://localhost:8300/message/envoyer/' + this.name.message.expediteurMessage.idUser +'/' +  this.authService.getUserConnect().idUser , messagerie).subscribe({
+    next: (data) => {
+      this.mess = data;
+      this.ngOnInit();
+    },
+    error: (err) => { console.log(err) },
+
+  })
+
+}
+
+openNewMessage() {
+  const dialogRef = this.dialog.open(PopUpMessageComponent)
 }
 
 

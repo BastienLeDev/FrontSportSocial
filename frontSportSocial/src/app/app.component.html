@@ -1,30 +1,30 @@
 <div class="back">
 
   <div class="text-center" *ngIf="authService.isConnected()">
-    <ul class="nav nav-fill w-100 orange z-depth-2">
+    <ul class="nav navbar nav-fill w-100 z-depth-2">
       <li class="nav-item">
-        <a routerLink="home" routerLinkActive="menu-active" class="nav-link white-text">Home</a>
+        <a routerLink="home" routerLinkActive="menu-active" class="nav-link white-text">Accueil</a>
       </li>
       <li class="nav-item">
-        <a routerLink="schedule" routerLinkActive="menu-active" class="nav-link white-text">Schedule</a>
+        <a routerLink="schedule" routerLinkActive="menu-active" class="nav-link white-text">Planning</a>
       </li>
       <li class="nav-item">
-        <a routerLink="friend" routerLinkActive="menu-active" class="nav-link white-text">Friends</a>
+        <a routerLink="friend" routerLinkActive="menu-active" class="nav-link white-text">Amis</a>
       </li>
       <li class="nav-item">
         <a routerLink="club" routerLinkActive="menu-active" class="nav-link white-text">Club</a>
       </li>
       <li class="nav-item">
-        <a routerLink="event" routerLinkActive="menu-active" class="nav-link white-text">Event</a>
+        <a routerLink="event" routerLinkActive="menu-active" class="nav-link white-text">Evenements</a>
       </li>
       <li class="nav-item">
-        <a routerLink="map" routerLinkActive="menu-active" class="nav-link white-text">Map</a>
+        <a routerLink="map" routerLinkActive="menu-active" class="nav-link white-text">Carte</a>
       </li>
       <li class="nav-item">
-        <a routerLink="shop" routerLinkActive="menu-active" class="nav-link white-text">Shop</a>
+        <a routerLink="shop" routerLinkActive="menu-active" class="nav-link white-text">Boutique</a>
       </li>
       <li class="nav-item">
-        <a routerLink="profil" routerLinkActive="menu-active" class="nav-link white-text">Profile</a>
+        <a routerLink="profil" routerLinkActive="menu-active" class="nav-link white-text">Profil</a>
       </li>
       <li class="nav-item">
         <a routerLink="" (click)="authService.logout()" class="nav-link">
