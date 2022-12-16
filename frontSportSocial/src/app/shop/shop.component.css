@@ -10,7 +10,9 @@
 }
 
 
-/* CSS de la search bar*/
+/* CSS de la bare de recherche
+*/
+
 .well {
     background-color: #ffffee
 }
@@ -18,7 +20,7 @@
 
 .search-form {
     border-radius: 30px 0 0 30px;
-    margin: 6px;
+    margin: 5px;
 }
 
 .input-group {
@@ -31,12 +33,16 @@ input-group-btn {
 
 #search {
     border: 1px;
+    background-color: #FCECDD;
+}
+
+#search-this {
+    background-color: #FFC288;
 }
 
 .search-btn {
     cursor: pointer;
     border-radius: 0 30px 30px 0;
-    background-color: rgb(206, 179, 120);
     color: rgb(255, 255, 255);
 
 }
@@ -65,4 +71,8 @@ img {
 .card-header {
     background-color: #FCECDD;
     color: black;
+}
+
+#header {
+    margin: 10px;
 }

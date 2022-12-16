@@ -29,13 +29,13 @@
 
                             <div class="row">
                                 <!-- photo de profil -->
-                                <div class="col-3">
+                                <div class="col-6">
                                     <img class="photo_profil image-rond image-rond-bg"
                                         src="https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg"
                                         alt="">
                                 </div>
                                 <!-- nom user -->
-                                <div class="col-9">
+                                <div class="col-6">
                                     <p id="add_friend_username"> {{f.firstNameUser}}</p>
 
                                 </div>
@@ -128,13 +128,9 @@
 
                 </div>
             </div>
-            <div class="card p-3 m-3">
-                <div class="card-header">
-                    <h3 class="text-center">Classement </h3>
-                </div>
-                <div class="md-form">
-                    <p>N°1 : </p>
-                </div>
+            <div class="btnRang">
+                <button (click)="goToRanking()" type="submit" class="btn btnPrincipal btn-block btn-lg">Classement
+                    Personnel <i class="fas fa-crown" style="color: yellow;"></i></button>
             </div>
 
         </div>

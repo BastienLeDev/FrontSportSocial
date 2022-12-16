@@ -58,4 +58,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  goToRanking() {
+    this.route.navigateByUrl('ranking');
+  }
+
 }
