@@ -26,11 +26,8 @@
                     <div class="col-3 p-4">
                         <form>
                             <label for="sports">Sélectionner un sport: </label>
-                            <select name="sports" id="sports">
-                                <option value="Running">Course à pied</option>
-                                <option value="Swimming">Natation</option>
-                                <option value="Football">Football</option>
-                                <option value="Basketball">Basketball</option>
+                            <select class="box" ngModel="" required>
+                                <option *ngFor="let s of sports">{{s.nameSport}}</option>
                             </select>
                         </form>
                     </div>

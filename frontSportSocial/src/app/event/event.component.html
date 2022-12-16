@@ -15,15 +15,15 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="text-center">
-                                                <select name="sportEvent" ngModel="" required>
-                                                    <option [ngValue]="s" *ngFor="let s of sports">{{s.nameSport}}
-                                                    </option>
+                                                <select class="box" ngModel="" required>
+                                                    <option *ngFor="let s of sports">{{s.nameSport}}</option>
                                                 </select>
                                                 <!--<mat-select name="sports" id="sports">
                                                     <mat-option [value]="s" *ngFor="let s of sports">{{s.nameSport}}
                                                     </mat-option>
                                                 </mat-select>-->
                                             </div>
+
                                         </div>
                                     </div>
                                 </form>

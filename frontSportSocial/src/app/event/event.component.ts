@@ -10,6 +10,7 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './event.component.html',
   styleUrls: ['./event.component.css']
 })
+
 export class EventComponent implements OnInit {
 
   events: any;

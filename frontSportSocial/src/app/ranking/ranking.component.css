@@ -80,3 +80,13 @@ input-group-btn {
   -webkit-border-radius: 75px;
   border-radius: 75px;
 }
+
+
+.box {
+  width: 180px;
+  height: 30px;
+  font-size: 15px;
+  color: #ffffff;
+  background-color: #FFC288;
+  border-radius: 5px;
+}

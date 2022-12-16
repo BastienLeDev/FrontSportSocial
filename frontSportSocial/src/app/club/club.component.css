@@ -59,3 +59,12 @@ input-group-btn {
 .btnRang {
   padding-left: 30px;
 }
+
+.box {
+  width: 180px;
+  height: 30px;
+  font-size: 15px;
+  color: #ffffff;
+  background-color: #FFC288;
+  border-radius: 5px;
+}

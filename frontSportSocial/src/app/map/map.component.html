@@ -20,16 +20,13 @@
                 </div>
                 <form>
                     <label for="sports">Choisissez un sport: </label>
-                    <select name="sports" id="sports">
-                        <option value="Running">Course à pied</option>
-                        <option value="Swimming">Natation</option>
-                        <option value="Football">Football</option>
-                        <option value="Basketball">Basketball</option>
+                    <select class="box" ngModel="" required>
+                        <option *ngFor="let s of sports">{{s.nameSport}}</option>
                     </select>
                 </form>
                 <form>
-                    <label for="distance">Distance maximale : </label>
-                    <select name="distance" id="distance">
+                    <label class="distance" for="distance">Distance maximale : </label>
+                    <select class="box">
                         <option value="1km">1km</option>
                         <option value="1km">2km</option>
                         <option value="1km">5km</option>

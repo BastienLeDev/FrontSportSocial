@@ -34,3 +34,12 @@ input-group-btn {
   color: rgb(255, 255, 255);
 
 }
+
+.box {
+  width: 180px;
+  height: 30px;
+  font-size: 15px;
+  color: #ffffff;
+  background-color: #FFC288;
+  border-radius: 5px;
+}

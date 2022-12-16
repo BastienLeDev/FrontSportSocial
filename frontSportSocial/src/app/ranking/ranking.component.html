@@ -12,7 +12,7 @@
                             <p>Vous souhaitez connaître le classement des meilleurs utilisateurs par sport ? </p>
                             <form #choixSport="ngForm" (ngSubmit)="ListRankingdesc(choixSport.value)">
                                 <label for=" sports">Choix du Sport: </label>
-                                <select ngModel="" name="sports" id="sports">
+                                <select class="box" ngModel="" name="sports" id="sports">
                                     <option [ngValue]="sp" *ngFor="let sp of sports" value="">{{sp.nameSport}}</option>
                                 </select>
                                 <div class="col-3">
