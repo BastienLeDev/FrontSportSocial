@@ -21,8 +21,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PopUpProfilComponent } from './pop-up-profil/pop-up-profil.component';
 
+
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { PopUpScheduleComponent } from './pop-up-schedule/pop-up-schedule.component';
+
 
 
 @NgModule({
@@ -39,7 +42,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     RankingComponent,
     ClubComponent,
     EventComponent,
-    PopUpProfilComponent
+    PopUpProfilComponent,
+    PopUpScheduleComponent
 
 
   ],
@@ -51,10 +55,13 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     BrowserAnimationsModule,
     MatDialogModule,
 
+
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
     })
+
+
 
 
   ],
