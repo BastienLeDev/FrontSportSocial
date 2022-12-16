@@ -1,6 +1,10 @@
 .navbar {
   overflow: hidden;
-  background-color: #FF6701;
+
+  background-color: #f07422;
+
+  background-color: #ff7b23;
+
 }
 
 .navbar a {
@@ -32,7 +36,7 @@
 
 .navbar a:hover,
 .subnav:hover .subnavbtn {
-  background-color: #FEA82F;
+  background-color: #FFC288;
   ;
 }
 
@@ -40,7 +44,7 @@
   display: none;
   position: absolute;
   left: 0;
-  background-color: #FEA82F;
+  background-color: #FFC288;
   width: 100%;
   z-index: 1;
 }
@@ -63,7 +67,7 @@
 .menu-active {
   letter-spacing: 2px;
   color: rgb(49, 49, 49) !important;
-  background-color: #FEA82F;
+  background-color: #FFC288;
   ;
 
 }

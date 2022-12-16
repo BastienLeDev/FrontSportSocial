@@ -10,8 +10,10 @@ import { AuthService } from '../services/auth.service';
 })
 export class HomeComponent implements OnInit {
 
+  events: any;
   friends: any;
   id: any;
+  activite: any;
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router
   ) { }
@@ -22,11 +24,22 @@ export class HomeComponent implements OnInit {
     }
 
     this.listFriends();
+    this.listActivite();
+
+    this.listEventToCome();
 
 
   }
 
+  listActivite() {
 
+    this.http.get('http://localhost:8300/activity/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => { this.activite = data, console.log(this.activite); },
+
+      error: (err) => { console.log(err); }
+
+    });
+  }
   listFriends() {
 
 
@@ -35,6 +48,13 @@ export class HomeComponent implements OnInit {
       next: (data) => { this.friends = data },
       error: (err) => { console.log(err); }
 
+    });
+  }
+
+  listEventToCome() {
+    this.http.get('http://localhost:8300/event/tocome').subscribe({
+      next: (data) => { this.events = data },
+      error: (err) => { console.log(err); }
     });
   }
 
