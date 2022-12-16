@@ -191,106 +191,15 @@
         <div class="col-3 p-4">
             <div class="card p-3 m-3">
                 <div class="card-header">
-                    <h3 class="text-center">Planning</h3>
+                    <h3 class="text-center">Prochains évènements</h3>
                 </div>
-                <div class="md-form">
-                    <div>
-                        <table id="schedule" style="width:100%">
-                            <tr>
-                                <th>
-                                    <p>Heure</p>
-                                </th>
-                                <th>
-                                    <p>Lundi</p>
-                                </th>
-                                <th>
-                                    <p>Mardi</p>
-                                </th>
-                                <th>
-                                    <p>Mercredi</p>
-                                </th>
-                                <th>
-                                    <p>Jeudi</p>
-                                </th>
-                                <th>
-                                    <p>Vendredi</p>
-                                </th>
-                                <th>
-                                    <p>Samedi</p>
-                                </th>
-                                <th>
-                                    <p>Dimanche</p>
-                                </th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>10h</p>
-                                </td>
-                                <td>
-                                    <p>Running</p>
-                                </td>
-                                <td>
-                                    <p>Natation</p>
-                                </td>
-                                <td>
-                                    <p>Repos</p>
-                                </td>
-                                <td>
-                                    <p>Box</p>
-                                </td>
-                                <td>
-                                    <p>Dance</p>
-                                </td>
-                                <td>
-                                    <p>Repos</p>
-                                </td>
-                                <td>
-                                    <p>Repos</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>12h</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>14h</p>
-                                </td>
-                                <td>
-                                    <p>Running</p>
-                                </td>
-                                <td>
-                                    <p>Natation</p>
-                                </td>
-                                <td>
-                                    <p>Repos</p>
-                                </td>
-                                <td>
-                                    <p>Box</p>
-                                </td>
-                                <td>
-                                    <p>Dance</p>
-                                </td>
-                                <td>
-                                    <p>Repos</p>
-                                </td>
-                                <td>
-                                    <p>Repos</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>16h</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>18h</p>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+
+                <div class="card p-3 m-3" *ngFor="let e of events">
+
+                    <h3 class="text-center">{{e.titleEvent}}</h3>
+                    <p>Start : {{e.dateStart | date: 'd MMM y H:mm'}} </p>
+                    <p>End : {{e.dateEnd | date: 'd MMM y H:mm'}}</p>
+
                 </div>
             </div>
             <div class="card p-3 m-3">
