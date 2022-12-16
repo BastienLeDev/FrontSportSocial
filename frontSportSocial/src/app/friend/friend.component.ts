@@ -77,16 +77,6 @@ listSendAndReceivedMessagesAsc(){
   });
 
 }
-/*
-listReceivedMessagesAsc(){
-
-  this.http.get('http://localhost:8300/message/me/' + this.name.message.expediteurMessage.idUser +'/' + this.authService.getUserConnect().idUser +'/asc').subscribe({
-    next: (data) => {this.receivedmessagesasc = data},
-    error: (err) => {console.log(err)}
-  });
-
-}
-*/
 
 listFriends() {
 
@@ -126,6 +116,7 @@ sendMess(val : any) {
   })
 
 }
+
 
 
 
