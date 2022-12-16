@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
+
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
@@ -55,6 +56,8 @@ export class ShopComponent implements OnInit {
 
   coachs: any;
   avatars: any;
+  transaction: any;
+
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router) { }
 
@@ -99,6 +102,26 @@ export class ShopComponent implements OnInit {
       },
       error: (err) => { console.log(err); }
     })
+  }
+
+  achatTokenEuro(val: any) {
+    this.http.get('http://localhost:8300/boutique/achat/euro/' + this.authService.getUserConnect().idUser + '/' + val).subscribe({
+      next: (data) => {
+        this.transaction = data
+      },
+      error: (err) => { console.log(err); }
+    })
+
+  }
+
+  achatToken(val: any) {
+    this.http.get('http://localhost:8300/boutique/achat/' + this.authService.getUserConnect().idUser + '/' + val).subscribe({
+      next: (data) => {
+        this.transaction = data
+      },
+      error: (err) => { console.log(err); }
+    })
+
   }
 
 }
