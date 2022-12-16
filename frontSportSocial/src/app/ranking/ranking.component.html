@@ -30,26 +30,35 @@
 
                             <div class="container">
 
-                                <div class="card p-3 m-3 col-11" *ngFor="let s of score let a of position">
 
-                                    <div class="row">
-                                        <div class="col-12 justify-content-center">
-                                            <h2 class="">Pseudo : {{s.user.loginUser}}</h2>
+
+
+                                <div class="card p-3 m-3 col-11" *ngFor="let s of score;  ">
+                                    <ng-template #t [ngTemplateOutlet]="t" let-position
+                                        [ngTemplateOutletContext]="{ $implicit: position+1 }">
+                                        <div>
+                                            <span>{{position}}</span>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <img class="photo_event"
-                                                src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
-                                                alt="">
+                                        <div class="row">
+                                            <div class="col-12 justify-content-center">
+                                                <h2 class="">Pseudo : {{s.user.loginUser}}</h2>
+                                            </div>
                                         </div>
-                                        <div class="col-8">
-                                            <p>score : {{s.score}}</p>
-                                            <p>Catégorie : {{s.sport.nameSport}}</p>
-                                            <p>Position : {{a.value}}</p>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <img class="photo_event"
+                                                    src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                                                    alt="">
+                                            </div>
+                                            <div class="col-8">
+                                                <p>score : {{s.score}}</p>
+                                                <p>Catégorie : {{s.sport.nameSport}}</p>
+                                                <p>Position : {{position}}</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </ng-template>
                                 </div>
+
                             </div>
                         </div>
                     </div>
