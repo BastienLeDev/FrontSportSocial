@@ -1,28 +1,30 @@
+
+<div class="p-2 m-2 popup_event">
 <div class="md-form">
-    <h3>Event creation form</h3>
+    <h2 class="text-center">Create new event</h2>
 </div>
 <form #infosEvent="ngForm" (ngSubmit)="createEvent(infosEvent.value)">
     <div class="md-form">
-        <input placeholder="Title" name="titleEvent" ngModel="" type="text" class="form-control">
+        <input placeholder="Title" name="titleEvent" ngModel="" type="text" class="form-control" required>
     </div>
     <div class="md-form">
         <p>Sport : 
-        <select name="sportEvent" ngModel="">
+        <select name="sportEvent" ngModel="" required>
             <option [ngValue]="s" *ngFor="let s of sports">{{s.nameSport}}</option>
         </select>
     </p>
     </div>
     <div class="md-form">
         <input placeholder="Start date" name="dateStart" ngModel="" type="datetime-local"
-            class="form-control">
+            class="form-control" required>
     </div>
     <div class="md-form">
         <input placeholder="End date" name="dateEnd" ngModel="" type="datetime-local"
-            class="form-control">
+            class="form-control" required>
     </div>
     <div class="md-form">
         <input placeholder="Description" name="descriptionEvent" ngModel="" type="text"
-            class="form-control">
+            class="form-control" required>
     </div>
     <div class="md-form">
         <input placeholder="Prix" name="priceEvent" ngModel="" type="number" class="form-control">
@@ -34,7 +36,8 @@
     -->
     <div class="md-form">
         <span class="input-group-btn" style="width:39px">
-            <button type="submit" class="btn btn-secondary btn-block btn-sm">Create Event</button>
+            <button [disabled]="!infosEvent.form.valid" type="submit" class="btn btn-secondary btn-block btn-sm">Create Event</button>
         </span>
     </div>
 </form>
+</div>
