@@ -10,6 +10,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class HomeComponent implements OnInit {
 
+  events: any;
   friends: any;
   id: any;
   activite: any;
@@ -24,6 +25,8 @@ export class HomeComponent implements OnInit {
 
     this.listFriends();
     this.listActivite();
+
+    this.listEventToCome();
 
 
   }
@@ -45,6 +48,13 @@ export class HomeComponent implements OnInit {
       next: (data) => { this.friends = data },
       error: (err) => { console.log(err); }
 
+    });
+  }
+
+  listEventToCome() {
+    this.http.get('http://localhost:8300/event/tocome').subscribe({
+      next: (data) => { this.events = data },
+      error: (err) => { console.log(err); }
     });
   }
 

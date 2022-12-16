@@ -24,10 +24,14 @@
                                 <div class="col-9">
                                     <b id="add_friend_username"> {{f.loginUser}}</b>
 
-                                </div>
-                                <button (click)="getLogin(f)" type="submit"
-                                        class="btn btn-secondary btn-block btn-sm">Afficher :
+                                    <div class="row">
+
+                                    </div>
+                                    <button (click)="getLogin(f)" type="submit"
+                                        class="btn btn-secondary btn-block btn-sm">Afficher la conversation
                                     </button>
+
+                                </div>
 
                             </div>
 
@@ -88,7 +92,7 @@
                     <div class="row">
                         <form #mess="ngForm" (ngSubmit)="sendMess(mess.value)">
                             <div class="col-10">
-                                <input name="message" ngModel="" type="text" class="form-control"
+                                <input name="message" ngModel="" type="text" class="form-control" placeholder="..."
                                     style="width: 850px; margin: 5px;">
                             </div>
                             <div class="col-2">
@@ -111,7 +115,7 @@
 
                 <div class="anyClass">
                     <!-- card demande d'un ami-->
-                    <div class="card p-1 m-1">
+                    <div class="card p-1 m-1" *ngFor="let nf of notfriends">
 
                         <div class="container">
 
@@ -123,17 +127,15 @@
                                         alt="">
                                 </div>
                                 <!-- nom user -->
-                                <div class="col-3">
-                                    <p id="add_friend_username">User name</p>
-                                </div>
+                                <div class="col-9">
+                                    <b id="add_friend_username"> {{nf.loginUser}}</b>
 
-                                <!-- bouton add -->
-                                <div class="col-3">
-                                    <button type="submit" class="btn btn-secondary btn-block btn-sm"
-                                        style="font-size: 60%;">Ajouter</button>
-                                </div>
-                                <div class="col-1">
-                                    <button type="submit" class="btn btn-danger btn-block btn-sm">x</button>
+                                    <div class="row">
+                                    </div>
+                                    <button type="submit"
+                                        class="btn btn-secondary btn-block btn-sm"> Ajouter
+                                    </button>
+
                                 </div>
 
                             </div>
