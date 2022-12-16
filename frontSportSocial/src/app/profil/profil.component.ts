@@ -5,6 +5,7 @@ import { PopUpProfilComponent } from '../pop-up-profil/pop-up-profil.component';
 import { AuthService } from '../services/auth.service';
 import { OnInit } from '@angular/core';
 import { PopUpModifMdpComponent } from '../pop-up-modif-mdp/pop-up-modif-mdp.component';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -14,13 +15,14 @@ import { PopUpModifMdpComponent } from '../pop-up-modif-mdp/pop-up-modif-mdp.com
 })
 export class ProfilComponent implements OnInit {
 
-  constructor(public authService: AuthService, private route: Router, private dialog: MatDialog) { }
+  activite: any;
+  constructor(public authService: AuthService, private route: Router, private dialog: MatDialog, private http: HttpClient) { }
 
   ngOnInit(): void {
     if (!this.authService.isConnected()) {
       this.route.navigateByUrl('connexion')
     }
-
+    this.listActivite();
   }
 
   goToRanking() {
@@ -39,5 +41,14 @@ export class ProfilComponent implements OnInit {
     this.route.navigateByUrl('shop');
   }
 
+  listActivite() {
+
+    this.http.get('http://localhost:8300/activity/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => { this.activite = data, console.log(this.activite); },
+
+      error: (err) => { console.log(err); }
+
+    });
+  }
 
 }
