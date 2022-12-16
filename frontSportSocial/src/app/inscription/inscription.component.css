@@ -1,8 +1,9 @@
 body {
-    background-image: url(https://img.freepik.com/photos-gratuite/silhouette-jeune-homme-fitness-cours-execution-lever-du-soleil_1150-14615.jpg?w=1380&t=st=1671181021~exp=1671181621~hmac=a60cfe1a660a9c9c52401728298a4c04ba9c530d649fa3ac8c121746444c8a4a);
+    background-image: url(https://img.freepik.com/vecteurs-libre/illustration-concept-exercices-etirement_114360-8922.jpg?w=996&t=st=1671233382~exp=1671233982~hmac=04c3c08f6be3e5d83ffd96e77a45d3799da4ce61237bcfb9cd91fdb1d9bf9adb);
     background-repeat: no-repeat;
 
-    background-size: 100% 100%;
+    background-size: 40% 40%;
+    background-position: 11px;
 
 
 
@@ -10,15 +11,27 @@ body {
 
 }
 
+.formulaireConnexion {
+    width: 30%;
+    margin: auto;
+    margin-top: 20px;
+    box-shadow: 0px 0px 20px #FEA82F;
+
+}
+
+#titre {
+    text-align: center;
+    font-size: 85px;
+    font-family: 'Zen Dots', cursive;
+    color: black;
+}
 
 .btnPrincipal {
     background-color: #FFC288 !important;
 }
 
-.formulaireInscription {
-    width: 30%;
-    margin: auto;
-    margin-top: 150px;
-    box-shadow: 0px 0px 20px #FEA82F;
+#cardTitre {
+    color: #ff7b23e5;
+    background-color: #ff7b23e5;
 
 }
