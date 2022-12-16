@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { PopUpProfilComponent } from './pop-up-profil/pop-up-profil.component';
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -58,6 +59,7 @@ import { PopUpModifMdpComponent } from './pop-up-modif-mdp/pop-up-modif-mdp.comp
     MatDialogModule,
     MatButtonModule,
     MatIconModule,
+    MatFormFieldModule,
 
     CalendarModule.forRoot({
       provide: DateAdapter,
