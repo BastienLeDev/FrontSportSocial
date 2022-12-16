@@ -28,6 +28,7 @@ import { AuthService } from '../services/auth.service';
 })
 
 
+
 export class ScheduleComponent {
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog) { }
@@ -57,16 +58,11 @@ export class ScheduleComponent {
   ]
 
 
-
-
-
-
-
-
-
   listSchedule() {
     this.http.get('http://localhost:8300/schedule/' + this.authService.getUserConnect().idUser).subscribe({
-      next: (data) => { this.schedules = data },
+      next: (data) => {
+        this.schedules = data
+      },
       error: (err) => { console.log(err); }
     });
   }
