@@ -9,34 +9,34 @@ import { NewEventComponent } from '../new-event/new-event.component';
   templateUrl: './event.component.html',
   styleUrls: ['./event.component.css']
 })
-export class EventComponent implements OnInit{
+export class EventComponent implements OnInit {
 
-  events : any;
-  event : any;
-  sports : any;
+  events: any;
+  event: any;
+  sports: any;
 
-  constructor(private http: HttpClient, private route: Router, private dialog : MatDialog) { }
+  constructor(private http: HttpClient, private route: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.listEventToCome();
     this.listSport();
   }
 
-  listEventToCome(){
+  listEventToCome() {
     this.http.get('http://localhost:8300/event/tocome').subscribe({
       next: (data) => { this.events = data },
       error: (err) => { console.log(err); }
     });
   }
 
-  listSport(){
+  listSport() {
     this.http.get('http://localhost:8300/sport').subscribe({
       next: (data) => { this.sports = data },
       error: (err) => { console.log(err); }
     });
   }
 
-  openNewUserModal(){
+  openNewEventModal() {
     const dialogRef = this.dialog.open(NewEventComponent);
   }
 
