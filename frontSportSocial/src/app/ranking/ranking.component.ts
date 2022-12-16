@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-ranking',
@@ -14,13 +15,15 @@ export class RankingComponent implements OnInit {
   sports: any;
   sporta: any;
   selectedSport: any;
-  position = 1;
+  position = 0;
+  individu: any;
 
-  constructor(private http: HttpClient, private route: Router) { }
+  constructor(private http: HttpClient, private route: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
 
     this.ListSport();
+    this.ListSportIndividu();
   }
   goToShop() {
     this.route.navigateByUrl('shop');
@@ -38,7 +41,18 @@ export class RankingComponent implements OnInit {
     });
   }
 
+  ListSportIndividu() {
+    this.http.get('http://localhost:8300/classement/me/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (dataaa) => {
+        this.individu = dataaa
+        console.log(this.sports)
+      },
+      error: (err) => { console.log(err); }
+    });
+  }
+
   ListRankingdesc(val: any) {
+
     this.sporta = val;
     console.log(val);
     console.log(this.sporta);

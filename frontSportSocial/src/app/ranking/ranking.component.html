@@ -30,7 +30,8 @@
 
                             <div class="container">
 
-                                <div class="card p-3 m-3 col-11" *ngFor="let s of score let a of position">
+
+                                <div class="card p-3 m-3 col-11" *ngFor="let s of score;  ">
 
                                     <div class="row">
                                         <div class="col-12 justify-content-center">
@@ -46,10 +47,12 @@
                                         <div class="col-8">
                                             <p>score : {{s.score}}</p>
                                             <p>Catégorie : {{s.sport.nameSport}}</p>
-                                            <p>Position : {{a.value}}</p>
+                                            <p>Position : {{position}}</p>
                                         </div>
                                     </div>
+
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -88,21 +91,32 @@
 
                     </div>
                 </div>
-                <form #choixSport="ngForm" (ngSubmit)="ListRankingdesc(choixSport.value)">
-                    <label for=" sports">Choix du sport </label>
-                    <select ngModel="" name="sports" id="sports">
-                        <option [ngValue]="sp" *ngFor="let sp of sports" value="">{{sp.nameSport}}</option>
-                    </select>
 
-                    <button type="submit" class="btn btn-secondary btn-block btn-sm">Valider</button>
-                </form>
                 <div class="row">
                     <div class="col-12 p-4">
                         <div class="card p-3 m-3">
-                            <h4>Classement</h4>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et alias assumenda dolores,
-                                numquam, quae autem velit, aspernatur explicabo amet nisi tempore delectus libero
-                                mollitia eos voluptatem nulla ipsum omnis modi.</p>
+                            <h2>Vos Scores</h2>
+                            <div class="card p-3 m-3 col-11" *ngFor="let i of individu;  ">
+
+                                <div class="row">
+                                    <div class="col-12 justify-content-center">
+                                        <h2 class=""> {{i.user.loginUser}}</h2>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <img class="photo_event"
+                                            src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                                            alt="">
+                                    </div>
+                                    <div class="col-8">
+                                        <p>score : {{i.score}}</p>
+                                        <p>Catégorie : {{i.sport.nameSport}}</p>
+
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>

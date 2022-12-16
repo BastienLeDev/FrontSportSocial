@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { PopUpMessageComponent } from '../pop-up-message/pop-up-message.component';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -24,6 +23,7 @@ export class FriendComponent implements OnInit {
   selectedFriend : any;
   name: any;
   mess : any;
+  login : any;
   
 
   constructor (private http : HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog) {}
@@ -31,6 +31,7 @@ export class FriendComponent implements OnInit {
   ngOnInit() : void {
     this.listSendMessages();
     this.listFriends();
+    this.getLogin(this.visibleMessage = true);
 
   }
 
@@ -43,9 +44,8 @@ export class FriendComponent implements OnInit {
 
 }
 
-
-showHideMessage(val : any) {
-  this.name = val;
+getLogin(val : any){
+  this.login = val;
   if (this.visibleMessage == false) {
     this.visibleMessage = true;
   } else {
@@ -53,7 +53,6 @@ showHideMessage(val : any) {
   }
 
   this.listSendAndReceivedMessagesAsc();
-  /* this.listReceivedMessagesAsc(); */
 }
 
 
@@ -70,7 +69,7 @@ addFriend(val :any) {
 }
 
 listSendAndReceivedMessagesAsc(){
-  this.http.get('http://localhost:8300/message/me/' + this.authService.getUserConnect().idUser +'/' +  this.name.message.expediteurMessage.idUser +'/combine').subscribe({
+  this.http.get('http://localhost:8300/message/me/' + this.authService.getUserConnect().idUser +'/' +  this.login.idUser +'/combine').subscribe({
     next: (data) => {this.sendmessagesasc = data},
     error: (err) => {console.log(err)}
   });
@@ -89,8 +88,6 @@ listReceivedMessagesAsc(){
 
 listFriends() {
 
-
-
   this.http.get('http://localhost:8300/friend/receiver/' + this.authService.getUserConnect().idUser).subscribe({
     next: (data) => { this.friends = data },
     error: (err) => { console.log(err); }
@@ -103,20 +100,20 @@ sendMess(val : any) {
   let messag = {contentMessage: val.message};
   let messagerie = {message: messag};
 
-  this.http.post('http://localhost:8300/message/envoyer/' + this.name.message.expediteurMessage.idUser +'/' +  this.authService.getUserConnect().idUser , messagerie).subscribe({
+  this.http.post('http://localhost:8300/message/envoyer/' + this.login.idUser +'/' +  this.authService.getUserConnect().idUser , messagerie).subscribe({
     next: (data) => {
       this.mess = data;
-      this.ngOnInit();
+      this.visibleMessage = true;
+      // this.ngOnInit();
     },
     error: (err) => { console.log(err) },
+    
+    
 
   })
 
 }
 
-openNewMessage() {
-  const dialogRef = this.dialog.open(PopUpMessageComponent)
-}
 
 
 }

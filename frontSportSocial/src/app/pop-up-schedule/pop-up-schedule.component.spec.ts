@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PopUpMessageComponent } from './pop-up-message.component';
+import { PopUpScheduleComponent } from './pop-up-schedule.component';
 
-describe('PopUpMessageComponent', () => {
-  let component: PopUpMessageComponent;
-  let fixture: ComponentFixture<PopUpMessageComponent>;
+describe('PopUpScheduleComponent', () => {
+  let component: PopUpScheduleComponent;
+  let fixture: ComponentFixture<PopUpScheduleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PopUpMessageComponent ]
+      declarations: [ PopUpScheduleComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PopUpMessageComponent);
+    fixture = TestBed.createComponent(PopUpScheduleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

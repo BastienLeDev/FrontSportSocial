@@ -25,11 +25,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { PopUpProfilComponent } from './pop-up-profil/pop-up-profil.component';
 
+
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { PopUpScheduleComponent } from './pop-up-schedule/pop-up-schedule.component';
+
 import { NewEventComponent } from './new-event/new-event.component';
 import { PopUpModifMdpComponent } from './pop-up-modif-mdp/pop-up-modif-mdp.component';
-import { PopUpMessageComponent } from './pop-up-message/pop-up-message.component';
 
 
 @NgModule({
@@ -47,9 +49,9 @@ import { PopUpMessageComponent } from './pop-up-message/pop-up-message.component
     ClubComponent,
     EventComponent,
     PopUpProfilComponent,
+    PopUpScheduleComponent,
     NewEventComponent,
     PopUpModifMdpComponent,
-    PopUpMessageComponent,
 
 
   ],
@@ -65,10 +67,13 @@ import { PopUpMessageComponent } from './pop-up-message/pop-up-message.component
     MatFormFieldModule,
     MatSelectModule,
 
+
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
     })
+
+
 
 
   ],
