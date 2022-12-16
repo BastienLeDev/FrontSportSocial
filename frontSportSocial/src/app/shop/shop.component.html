@@ -6,7 +6,7 @@
             <div class="row">
 
                 <div class="col-2">
-                    <button (click)="showHideCoach()" type="submit" class="btn btn-secondary btn-block btn-sm">Coach
+                    <button (click)="showHideCoach()" type="submit" class="btn btnPrincipal btn-block btn-sm">Coachs
                         :</button>
                 </div>
 
@@ -14,16 +14,7 @@
 
                 </div>
                 <div class="col-2">
-                    <button (click)="showHideAvatar()" type="submit" class="btn btn-secondary btn-block btn-sm">Avatar
-                        :</button>
-                </div>
-
-                <div class="col-1">
-
-                </div>
-
-                <div class="col-2">
-                    <button (click)="showHideTokens()" type="submit" class="btn btn-secondary btn-block btn-sm">Tokens
+                    <button (click)="showHideAvatar()" type="submit" class="btn btnPrincipal btn-block btn-sm">Avatar
                         :</button>
                 </div>
 
@@ -32,7 +23,16 @@
                 </div>
 
                 <div class="col-2">
-                    <button (click)="showHideAll()" type="submit" class="btn btn-secondary btn-block btn-sm">Fermer tous
+                    <button (click)="showHideTokens()" type="submit" class="btn btnPrincipal btn-block btn-sm">Tokens
+                        :</button>
+                </div>
+
+                <div class="col-1">
+
+                </div>
+
+                <div class="col-2">
+                    <button (click)="showHideAll()" type="submit" class="btn btnPrincipal btn-block btn-sm">Tout fermer
                         :</button>
                 </div>
             </div>
@@ -46,12 +46,15 @@
 <!--Page coach-->
 <div class="card p-3 m-3" *ngIf="visibleCoach">
     <div class="md-form">
-        <h3 class="alignement" style="font-weight: bold;">Coach :</h3>
+        <div class="card-header">
+            <h3 class="alignement text-center" style=" font-weight: bold;">Coachs :</h3>
+        </div>
+
 
         <form class='form-inline, alignement' #namesport="ngForm" (ngSubmit)="listCoachsBySport(nameSportIn.value)">
             <div class="input-group">
                 <input ngModel="" #nameSportIn name="nameSport" type='text' id='nameSport'
-                    class="form-control search-form" placeholder="Search...">
+                    class="form-control search-form" placeholder="Recherche...">
                 <span class="input-group-btn" style="width:39px">
                     <button id="search-this" type="submit" class="pull-right btn search-btn">
                         <i class="fa fa-search"></i>
@@ -60,36 +63,36 @@
             </div>
         </form>
 
-        <div class="card p-3 m-3">
-            <div class="md-form anyClass">
-                <h3 class="alignement" style="font-weight: bold;">Profil coach</h3>
-                <div class="card p-4 m-2" *ngFor="let c of coachs">
 
-                    <div class="row">
-                        <div class="col-1">
-                            <img class="photo_profil image-rond image-rond-bg"
-                                src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
-                                alt="">
-                        </div>
-                        <div>
-                            <p>Prénom : {{c.firstNameUser}}</p>
-                            <p>Nom : {{c.lastNameUser}}</p>
-                            <p>Login : {{c.loginUser}}</p>
-                        </div>
+        <div class="md-form anyClass">
+
+            <div class="card p-4 m-2" *ngFor="let c of coachs">
+
+                <div class="row">
+                    <div class="col-1">
+                        <img class="photo_profil image-rond image-rond-bg"
+                            src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                            alt="">
+                    </div>
+                    <div>
+                        <p>Prénom : {{c.firstNameUser}}</p>
+                        <p>Nom : {{c.lastNameUser}}</p>
+                        <p>Login : {{c.loginUser}}</p>
                     </div>
                 </div>
             </div>
         </div>
 
 
+
         <table id="title-table" style="width:100%">
             <tr id="title-table">
 
                 <th id="title-table" form>
-                    <button type="submit" class="btn btn-secondary btn-block btn-sm">Contacter</button>
+                    <button type="submit" class="btn btnPrincipal btn-block btn-sm">Contacter</button>
                 </th>
                 <th id="title-table">
-                    <button type="submit" class="btn btn-secondary btn-block btn-sm">Payer</button>
+                    <button type="submit" class="btn btnPrincipal btn-block btn-sm">Payer</button>
                 </th>
             </tr>
         </table>
@@ -105,7 +108,7 @@
     <div class="md-form">
         <h3 class="alignement" style="font-weight: bold;">Avatar :</h3>
 
-        <form class='form-inline, alignement' #avata="ngForm" (ngSubmit)="listAvatarDescription(avatar.value)">
+        <form class='form-inline, alignement' (ngSubmit)="listAvatarDescription(avatar.value)">
             <div class="input-group">
                 <input ngModel="" #avatar name="avatar" type='text' id='avatar' class="form-control search-form"
                     placeholder="Search...">
@@ -149,7 +152,7 @@
 
                 </div>
                 <div class="col-2">
-                    <button type="submit" class="btn btn-secondary btn-block btn-sm">Acheter</button>
+                    <button type="submit" class="btn btnPrincipal btn-block btn-sm">Acheter</button>
                 </div>
 
                 <div class="col-5">
@@ -188,7 +191,7 @@
                 <p>La transaction refusée.</p>
             </div>
             <button (click)="achatTokenEuro(transactEuro.value)" (click)="achatToken(transact.value)" type="submit"
-                class="btn btn-secondary btn-block btn-sm">Payer</button>
+                class="btn btnPrincipal btn-block btn-sm">Payer</button>
         </div>
     </div>
 </div>
