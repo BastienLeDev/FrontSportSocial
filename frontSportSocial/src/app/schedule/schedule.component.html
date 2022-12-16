@@ -11,7 +11,7 @@
                             <form class='form-inline'>
                                 <div class="input-group">
                                     <input type='text' id='search' class="form-control search-form"
-                                        placeholder="Recherche...">
+                                        placeholder="Rechercher...">
                                     <span class="input-group-btn" style="width:39px">
                                         <button id="search-this" type="button" class="pull-right btn search-btn">
                                             <i class="fa fa-search"></i>
@@ -19,12 +19,13 @@
                                     </span>
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </th>
                 <th id="title-table">
-                    <button (click)="openModifDonneesPersosModal()" type="submit"
-                        class="btn btn-secondary btn-block btn-sm">Ajouter un event</button>
+                    <button (click)="openModifDonneesPersosModal()" type="submit" class="btn btnPrincipal btn-block "
+                        style="font-size: 60%;">Ajouter un évènement</button>
                 </th>
             </tr>
         </table>
@@ -35,36 +36,39 @@
 
     <div class="row text-center">
 
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="btn-group">
-                <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate">
+                <div class="btn btnPrincipal btn-block " mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+                    style="height: 50px; font-size: 60%;">
                     Précédent
                 </div>
-                <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
+                <div class="btn btnPrincipal btn-block " mwlCalendarToday [(viewDate)]="viewDate"
+                    style="height: 50px; font-size: 60%;">
                     Aujourd'hui
                 </div>
-                <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate">
+                <div class="btn btnPrincipal btn-block " mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+                    style="height: 50px;  font-size: 60%;">
                     Suivant
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-2">
             <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
         </div>
 
         <div class="col-md-4">
             <div class="btn-group">
-                <div class="btn btn-primary" (click)="setView(CalendarView.Month)"
-                    [class.active]="view === CalendarView.Month">
+                <div class="btn btnPrincipal btn-block " (click)="setView(CalendarView.Month)"
+                    [class.active]="view === CalendarView.Month" style="height: 50px;  font-size: 60%;">
                     Mois
                 </div>
-                <div class="btn btn-primary" (click)="setView(CalendarView.Week)"
-                    [class.active]="view === CalendarView.Week">
+                <div class="btn btnPrincipal btn-block " (click)="setView(CalendarView.Week)"
+                    [class.active]="view === CalendarView.Week" style="height: 50px;  font-size: 60%;">
                     Semaine
                 </div>
-                <div class="btn btn-primary" (click)="setView(CalendarView.Day)"
-                    [class.active]="view === CalendarView.Day">
+                <div class="btn btnPrincipal btn-block " (click)="setView(CalendarView.Day)"
+                    [class.active]="view === CalendarView.Day" style="height: 50px;  font-size: 60%;">
                     Jour
                 </div>
             </div>

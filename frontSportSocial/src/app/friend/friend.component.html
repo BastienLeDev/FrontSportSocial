@@ -17,7 +17,7 @@
                                 <!-- photo de profil -->
                                 <div class="col-3">
                                     <img class="photo_profil image-rond image-rond-bg"
-                                        src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                                        src="https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg"
                                         alt="">
                                 </div>
                                 <!-- nom user -->
@@ -26,9 +26,11 @@
 
                                     <div class="row">
 
+
                                     </div>
-                                    <button (click)="getLogin(f)" type="submit"
-                                        class="btn btn-secondary btn-block btn-sm">Afficher la conversation
+                                    <button (click)="getLogin(f)" type="submit" class="btn btnPrincipal btn-block "
+                                        style="font-size: 60%;">Afficher la
+                                        conversation
                                     </button>
 
                                 </div>
@@ -64,7 +66,7 @@
                     <div *ngFor="let m of sendmessagesasc">
                         <div class="container lighter darker"
                             *ngIf="m.destinataire.idUser != authService.getUserConnect().idUser">
-                            <img src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                            <img src="https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg"
                                 class="right photo_conversation">
                             <b>{{m.message.expediteurMessage.loginUser}} : </b>
                             <p>{{m.message.contentMessage}}</p>
@@ -73,7 +75,7 @@
 
                         <div class="container lighter "
                             *ngIf="(!(m.destinataire.idUser != authService.getUserConnect().idUser))">
-                            <img src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                            <img src="https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg"
                                 class="photo_conversation">
                             <b>{{m.message.expediteurMessage.loginUser}} : </b>
                             <p>{{m.message.contentMessage}}</p>
@@ -93,10 +95,11 @@
                         <form #mess="ngForm" (ngSubmit)="sendMess(mess.value)">
                             <div class="col-10">
                                 <input name="message" ngModel="" type="text" class="form-control" placeholder="..."
-                                    style="width: 850px; margin: 5px;">
+                                    style="width: 600px; margin: 5px;">
                             </div>
                             <div class="col-2">
-                                <button type="submit" class="btn btn-secondary btn-block btn-sm">Envoyer</button>
+                                <button type="submit" class="btn btnPrincipal btn-block "
+                                    style="font-size: 60%;">Envoyer</button>
                             </div>
                         </form>
                     </div>
@@ -123,7 +126,7 @@
                                 <!-- photo de profil -->
                                 <div class="col-3">
                                     <img class="photo_profil image-rond image-rond-bg"
-                                        src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                                        src="https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg"
                                         alt="">
                                 </div>
                                 <!-- nom user -->
@@ -132,10 +135,11 @@
 
                                     <div class="row">
                                         <div class="col-6">
-                                            <button type="submit" class="btn btn-secondary btn-block btn-sm"> Ajouter
+                                            <button type="submit" class="btn btnPrincipal btn-block "
+                                                style="font-size: 60%;"> Ajouter
                                             </button>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-2">
                                             <button type="submit" class="btn btn-danger btn-block btn-sm"> x
                                             </button>
                                         </div>
@@ -168,8 +172,8 @@
                             <form #infosFriend="ngForm" (ngSubmit)="addFriend(infosFriend.value)">
                                 <div class="input-group">
                                     <input type='text' id='search' class="form-control search-form"
-                                        placeholder="Search...">
-                                    <span class="input-group-btn" style="width:39px">
+                                        placeholder="Rechercher...">
+                                    <span class="input-group-btn" style="width:30px">
                                         <button id="search-this" type="button" class="pull-right btn search-btn"
                                             type="submit">
                                             <i class="fa fa-search"></i>
@@ -183,13 +187,16 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-4">
-                                <button type="submit" class="btn btn-secondary btn-block btn-sm">Sport</button>
+                                <button type="submit" class="btn btnPrincipal btn-block "
+                                    style="font-size: 60%;">Sport</button>
                             </div>
                             <div class="col-4">
-                                <button type="submit" class="btn btn-secondary btn-block btn-sm">Distance</button>
+                                <button type="submit" class="btn btnPrincipal btn-block "
+                                    style="font-size: 60%;">Distance</button>
                             </div>
                             <div class="col-4">
-                                <button type="submit" class="btn btn-secondary btn-block btn-sm">Autre</button>
+                                <button type="submit" class="btn btnPrincipal btn-block "
+                                    style="font-size: 60%;">Autre</button>
                             </div>
                         </div>
                     </div>
@@ -204,18 +211,24 @@
                                 <!-- photo de profil -->
                                 <div class="col-3">
                                     <img class="photo_profil image-rond image-rond-bg"
-                                        src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                                        src="https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg"
                                         alt="">
                                 </div>
                                 <!-- nom user -->
-                                <div class="col-6">
-                                    <p id="add_friend_username">User name</p>
+
+                                <div class="col-9">
+                                    <b id="add_friend_username"> User name</b>
+
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <button type="submit" class="btn btnPrincipal btn-block "
+                                                style="font-size: 60%;"> Ajouter
+                                            </button>
+                                        </div>
+                                    </div>
+
                                 </div>
 
-                                <!-- bouton add -->
-                                <div class="col-3">
-                                    <button type="submit" class="btn btn-secondary btn-block btn-sm">Ajouter</button>
-                                </div>
 
                             </div>
 
