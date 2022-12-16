@@ -20,8 +20,24 @@
             <input name="loginUser" [(ngModel)]="authService.getUserConnect().loginUser" type="text"
                 class="form-control">
         </div>
+        <!--  
+        <div class="md-form">
+            <label>Rue</label>
+            <input name="streetAddress" [(ngModel)]="authService.getUserConnect().addressUser.streetAddress" type="text"
+                class="form-control">
+        </div>
+        <div class="md-form">
+            <label>Code postal</label>
+            <input name="zipCodeAddress" [(ngModel)]="authService.getUserConnect().addressUser.zipCodeAddress"
+                type="text" class="form-control">
+        </div>
+        <div class="md-form">
+            <label>Ville</label>
+            <input name="cityAddress" [(ngModel)]="authService.getUserConnect().addressUser.cityAddress" type="text"
+                class="form-control">
+        </div> -->
         <div mat-dialog-actions>
-            <button (click)="goToProfil()" type=" submit" class="mat-button mat-dialog-close">Registry</button>
+            <button (click)="goToProfil()" type=" submit" class="btn btnPrincipal btn-block btn-sm">Registry</button>
         </div>
 
 
