@@ -209,6 +209,14 @@
                 <div class="md-form">
                 </div>
             </div>
+            <div class="card p-3 m-3">
+                <div class="md-form">
+                    <h3>Token </h3>
+                    <p>{{authService.getUserConnect().token}} </p>
+                    <button (click)="goToShop()" type="submit" class="btn btn-secondary btn-block btn-sm"> Acheter des
+                        tokens</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

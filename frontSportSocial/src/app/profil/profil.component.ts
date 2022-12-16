@@ -6,6 +6,7 @@ import { AuthService } from '../services/auth.service';
 import { OnInit } from '@angular/core';
 import { PopUpModifMdpComponent } from '../pop-up-modif-mdp/pop-up-modif-mdp.component';
 
+
 @Component({
   selector: 'app-profil',
   templateUrl: './profil.component.html',
@@ -32,6 +33,10 @@ export class ProfilComponent implements OnInit {
 
   openChangerMdp() {
     const dialogRef = this.dialog.open(PopUpModifMdpComponent)
+  }
+
+  goToShop() {
+    this.route.navigateByUrl('shop');
   }
 
 
