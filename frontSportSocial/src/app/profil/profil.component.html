@@ -3,14 +3,14 @@
         <div class="col-3 p-4">
             <div class="card p-3 m-3">
                 <div class="md-form">
-                    <h3>Personal data</h3>
+                    <h3>Données personnelles</h3>
                 </div>
 
                 <div class="md-form">
-                    <p>Last name : {{authService.getUserConnect().firstNameUser}} </p>
-                    <p>First name : {{authService.getUserConnect().lastNameUser}}</p>
-                    <p>Birthdate : {{authService.getUserConnect().birthDateUser}}</p>
-                    <p>Login : {{authService.getUserConnect().loginUser}}</p>
+                    <p>Nom : {{authService.getUserConnect().firstNameUser}} </p>
+                    <p>Prénom : {{authService.getUserConnect().lastNameUser}}</p>
+                    <p>Date de naissance: {{authService.getUserConnect().birthDateUser}}</p>
+                    <p>Pseudo : {{authService.getUserConnect().loginUser}}</p>
                     <p>Coach : {{authService.getUserConnect().coachUser}}</p>
                     <p *ngIf="authService.getUserConnect().addressUser != null">Adresse :
                         {{authService.getUserConnect().addressUser.streetAddress}}</p>
@@ -26,12 +26,12 @@
             </div>
             <div class="card p-3 m-3">
                 <div class="md-form">
-                    <h3>Personal ranking</h3>
+                    <h3>Rang personnel</h3>
                 </div>
                 <div class="md-form">
                     <p>Sport : </p>
-                    <button (click)="goToRanking()" type="submit" class="btn btn-secondary btn-block btn-sm">World
-                        ranking</button>
+                    <button (click)="goToRanking()" type="submit" class="btn btn-secondary btn-block btn-sm">Rang
+                        mondial</button>
                 </div>
             </div>
         </div>
@@ -158,23 +158,23 @@
             </ul>
         </div>
 
-        <div class="col-3 p-4">
+        <div class="col-3 p-3">
             <div class="card p-3 m-3">
                 <div class="md-form">
-                    <h3>Statistical</h3>
+                    <h3>Statistiques</h3>
                     <div class="md-form">
                         <div id="inside-card" class="card p-3 m-3">
                             <div class="md-form">
-                                <h4>Per month</h4>
-                                <p>Running : </p>
+                                <h4>Par mois</h4>
+                                <p>Course : </p>
                             </div>
                         </div>
                     </div>
                     <div class="md-form">
                         <div id="inside-card" class="card p-3 m-3">
                             <div class="md-form">
-                                <h4>Per sport</h4>
-                                <p>Running : </p>
+                                <h4>Par sport</h4>
+                                <p>Course : </p>
                             </div>
                         </div>
                     </div>
@@ -183,21 +183,21 @@
 
             <div class="card p-3 m-3">
                 <div class="md-form">
-                    <h3>Training</h3>
+                    <h3>Entrainement</h3>
                     <button type="submit" class="btn btn-secondary btn-block btn-sm">Add</button>
                     <div class="md-form">
                         <div id="inside-card" class="card p-3 m-3">
                             <div class="md-form">
-                                <h4>Per month</h4>
-                                <p>Running : </p>
+                                <h4>Par mois</h4>
+                                <p>Course : </p>
                             </div>
                         </div>
                     </div>
                     <div id="inside-card" class="md-form">
                         <div class="card p-3 m-3">
                             <div class="md-form">
-                                <h4>Per sport</h4>
-                                <p>Running : </p>
+                                <h4>Par sport</h4>
+                                <p>Course : </p>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quas labore
                                     consequuntur? Repudiandae molestias dolores labore ea sed quibusdam libero
                                     reprehenderit harum autem nam, nemo accusantium, tenetur, asperiores unde tempore.
