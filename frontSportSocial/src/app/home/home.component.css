@@ -51,12 +51,6 @@ td {
 
 
 
-
-
-
-
-
-
 #droite {
   background-color: grey;
 }
@@ -209,11 +203,6 @@ input-group-btn {
 
 
 
-/* CSS zone de visalisation des amis */
-
-#card_principal_amis {
-  min-height: 865px;
-}
 
 
 /* CSS du scroll */
@@ -229,4 +218,15 @@ input-group-btn {
 
 .btnPrincipal {
   background-color: #FFC288 !important;
+}
+
+
+/* CSS zone de visalisation des amis */
+
+#card_principal_amis {
+  min-height: 350px;
+}
+
+#card_data {
+  min-height: 200px;
 }
