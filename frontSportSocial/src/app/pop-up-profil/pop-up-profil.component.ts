@@ -25,8 +25,10 @@ export class PopUpProfilComponent {
       error: (err) => { console.log(err) },
 
     })
-
   }
+
+
+
 
   goToProfil() {
     this.dialog.closeAll()

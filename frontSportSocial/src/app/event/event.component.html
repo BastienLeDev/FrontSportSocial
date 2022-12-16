@@ -73,10 +73,10 @@
                                             src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
                                             alt="">
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <p>{{e.descriptionEvent}}</p>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
 
                                         <div class="container">
                                             <div class="row">
@@ -89,6 +89,12 @@
                                                 <p>Prix : {{e.priceEvent}} €</p>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <a mat-raised-button (click)="addEventToUser(e)">
+                                            S'inscrire à l'événement
+                                            <mat-icon>add</mat-icon>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

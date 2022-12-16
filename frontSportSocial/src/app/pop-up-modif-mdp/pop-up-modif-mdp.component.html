@@ -2,15 +2,17 @@
     <div class="card p-3">
         <div class="md-form">
             <label>Ancien mot de passe</label>
-            <input #ancien name="passwordUser" type="text" class="form-control">
-            <p *ngIf="ancien != authService.getUserConnect().passwordUser"> Le mot de passe ne correspond pas !</p>
+            <input name="passwordUser" type="password" class="form-control">
+            <!--     <div *ngIf="ancien != authService.getUserConnect().passwordUser">
+                <p> Le mot de passe ne correspond pas !</p>
+            </div>-->
         </div>
         <div class="md-form">
             <label>Nouveau mot de passe</label>
-            <input name="passwordUser" ngModel="" type="text" class="form-control">
+            <input name="passwordUser" ngModel="" type="password" class="form-control">
         </div>
         <div mat-dialog-actions>
-            <button (click)="goToProfil()" type=" submit" class="mat-button mat-dialog-close">Registry</button>
+            <button (click)="goToProfil()" type=" submit" class="btn btnPrincipal btn-block btn-sm">Registry</button>
         </div>
     </div>
 </form>
