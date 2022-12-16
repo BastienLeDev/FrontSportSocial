@@ -4,15 +4,15 @@
             <!-- zone d'affichage des amis et des conversations-->
             <div id="card_principal_amis" class="card p-3">
                 <div class="card-header">
-                    <p class="text-center">Friends</p>
+                    <p class="text-center">Discussions actives</p>
                 </div>
 
 
                 <!-- card demande d'un ami-->
                 <div class="anyClass">
-                    <div class="card p-1 m-1"  *ngFor="let m of sendmessages">
+                    <div class="card p-1 m-1" *ngFor="let m of sendmessages">
 
-                        <div class="container" >
+                        <div class="container">
 
                             <div class="row">
                                 <!-- photo de profil -->
@@ -23,215 +23,211 @@
                                 </div>
                                 <!-- nom user -->
                                 <div class="col-9">
-                                    <p id="add_friend_username" style="font-weight: bold;">{{m.message.expediteurMessage.loginUser}}</p>
+                                    <p id="add_friend_username" style="font-weight: bold;">
+                                        {{m.message.expediteurMessage.loginUser}}</p>
                                     <p>{{m.message.contentMessage}}</p>
-                                    <button (click)="showHideMessage(m)" type="submit" class="btn btn-secondary btn-block btn-sm" >see conversation :
+                                    <button (click)="showHideMessage(m)" type="submit"
+                                        class="btn btn-secondary btn-block btn-sm">Afficher :
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+            
+                <div class="card p-1 m-5">
+
+                    <div class="container">
+
+                        <button  type="submit" (click)="openNewMessage()"
+                            class="btn btn-secondary btn-block btn-sm">Nouvelle conversation
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </div>
+    </div>
 
-        <div id="centre" class="col-6 p-4" *ngIf="!visibleMessage">
-            <!-- zone d'affichage des messages-->
-            <div id="card_principal_messages" class="card p-3" *ngFor="let m of sendmessages ">
-                <!-- Exemple - A RETIRER A LA FIN !!!!
-                <button (change)="selectFriend($event)">
-                <option >{{m.message.expediteurMessage.loginUser}}</option>
-                </button>
-                <p><span>You selected: </span><b>{{selectedFriend}}</b></p>
-                -->
-            </div>
+    <div id="centre" class="col-6 p-4" *ngIf="!visibleMessage">
+        <!-- zone d'affichage des messages-->
+        <div id="card_empty_messages" class="card p-4">
+            <p style="text-align: center;">Veuillez selectionner une conversation !</p>
         </div>
+    </div>
 
-        <div id="centre" class="col-6 p-4" *ngIf="visibleMessage">
-            <!-- zone d'affichage des messages-->
-            <div id="card_principal_messages" class="card p-3">
-                <div class="card-header">
-                    <div >
-                    <p class="text-center " >Discussion avec : <b>{{name.message.expediteurMessage.loginUser}}</b></p>
+    <div id="centre" class="col-6 p-4" *ngIf="visibleMessage">
+        <!-- zone d'affichage des messages-->
+        <div id="card_principal_messages" class="card p-3">
+            <div class="card-header">
+                <div>
+                    <p class="text-center ">Discussion avec : <b>{{name.message.expediteurMessage.loginUser}}</b>
+                    </p>
                 </div>
-                </div>
+            </div>
 
-                <div class="anyClass">
-                    <div class="container lighter" *ngFor="let m of sendmessagesasc">
+            <div class="anyClass">
+                <div *ngFor="let m of sendmessagesasc">
+                    <div class="container lighter darker"
+                        *ngIf="m.destinataire.idUser != authService.getUserConnect().idUser">
                         <img src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
-                            class="photo_conversation">
-                        <span>{{m.message.contentMessage}}</span>
+                            class="right photo_conversation">
+                        <b>{{m.message.expediteurMessage.loginUser}} : </b>
+                        <p>{{m.message.contentMessage}}</p>
                         <span class="time-right">{{m.message.dateSendMessage |date}}</span>
                     </div>
 
-                    <div class="container darker" *ngFor="let m of receivedmessagesasc">
+                    <div class="container lighter "
+                        *ngIf="(m.message.expediteurMessage.idUser != authService.getUserConnect().idUser)">
                         <img src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
-                            class="right photo_conversation">
+                            class="photo_conversation">
+                        <b>{{m.message.expediteurMessage.loginUser}} : </b>
                         <p>{{m.message.contentMessage}}</p>
                         <span class="time-left">{{m.message.dateSendMessage |date}}</span>
                     </div>
-
                 </div>
-
 
             </div>
 
-            <!-- Zone de saisie de messages -->
-            <div id="zone_saisie_message" class="card p-1">
-                <div class="container">
-                    <div class="row">
+
+        </div>
+
+        <!-- Zone de saisie de messages -->
+        <div id="zone_saisie_message" class="card p-1">
+            <div class="container">
+                <div class="row">
+                    <form #mess="ngForm" (ngSubmit)="sendMess(mess.value)">
                         <div class="col-10">
-                            <input name="message" ngModel="" type="text" class="form-control">
+                            <input name="message" ngModel="" type="text" class="form-control"
+                                style="width: 850px; margin: 5px;">
                         </div>
                         <div class="col-2">
-                            <button onclick="selected" type="submit" class="btn btn-secondary btn-block btn-sm">Send</button>
+                            <button type="submit" class="btn btn-secondary btn-block btn-sm">Envoyer</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
-        </div>
-
-
-        <div id="droite" class="col-3 p-4">
-
-            <!-- card gobale des demandes d'amis-->
-            <div id="demande_amis" class="card p-3">
-                <div class="card-header">
-                    <p class="text-center">Demandes d'amis</p>
-                </div>
-
-                <div class="anyClass">
-                    <!-- card demande d'un ami-->
-                    <div class="card p-1 m-1">
-
-                        <div class="container">
-
-                            <div class="row">
-                                <!-- photo de profil -->
-                                <div class="col-3">
-                                    <img class="photo_profil image-rond image-rond-bg"
-                                        src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
-                                        alt="">
-                                </div>
-                                <!-- nom user -->
-                                <div class="col-6">
-                                    <p id="add_friend_username">User name</p>
-                                </div>
-
-                                <!-- bouton add -->
-                                <div class="col-3">
-                                    <button type="submit" class="btn btn-secondary btn-block btn-sm">Add</button>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <!-- card demande d'un ami-->
-                    <div class="card p-1 m-1">
-
-                        <div class="container">
-
-                            <div class="row">
-                                <!-- photo de profil -->
-                                <div class="col-3">
-                                    <img class="photo_profil image-rond image-rond-bg"
-                                        src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
-                                        alt="">
-                                </div>
-                                <!-- nom user -->
-                                <div class="col-6">
-                                    <p id="add_friend_username">User name</p>
-                                </div>
-
-                                <!-- bouton add -->
-                                <div class="col-3">
-                                    <button type="submit" class="btn btn-secondary btn-block btn-sm">Add</button>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-
-            </div>
-
-            <!-- card ajouter et rechercher un ami -->
-            <div id="ajout_amis" class="card p-3">
-                <div class="card-header">
-                    <p class="text-center">Add friends</p>
-                </div>
-
-                <div class="anyClass">
-                    <!-- ajout barre de recherche -->
-                    <!--Search bar : centrée, avec bouton "search" à droite-->
-                    <div class="container">
-                        <div id="content">
-                            <form #infosFriend="ngForm" (ngSubmit)="addFriend(infosFriend.value)">
-                                <div class="input-group">
-                                    <input type='text' id='search' class="form-control search-form"
-                                        placeholder="Search...">
-                                    <span class="input-group-btn" style="width:39px">
-                                        <button id="search-this" type="button" class="pull-right btn search-btn" type="submit">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-4">
-                                <button type="submit" class="btn btn-secondary btn-block btn-sm">Sport</button>
-                            </div>
-                            <div class="col-4">
-                                <button type="submit" class="btn btn-secondary btn-block btn-sm">Distance</button>
-                            </div>
-                            <div class="col-4">
-                                <button type="submit" class="btn btn-secondary btn-block btn-sm">Autre</button>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- card demande d'un ami-->
-                    <div class="card p-1 m-1">
-
-                        <div class="container">
-
-                            <div class="row">
-                                <!-- photo de profil -->
-                                <div class="col-3">
-                                    <img class="photo_profil image-rond image-rond-bg"
-                                        src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
-                                        alt="">
-                                </div>
-                                <!-- nom user -->
-                                <div class="col-6">
-                                    <p id="add_friend_username">User name</p>
-                                </div>
-
-                                <!-- bouton add -->
-                                <div class="col-3">
-                                    <button type="submit" class="btn btn-secondary btn-block btn-sm">Add</button>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-
-            </div>
-
         </div>
     </div>
+
+
+    <div id="droite" class="col-3 p-4">
+
+        <!-- card gobale des demandes d'amis-->
+        <div id="demande_amis" class="card p-3">
+            <div class="card-header">
+                <p class="text-center">Demandes d'amis</p>
+            </div>
+
+            <div class="anyClass">
+                <!-- card demande d'un ami-->
+                <div class="card p-1 m-1">
+
+                    <div class="container">
+
+                        <div class="row">
+                            <!-- photo de profil -->
+                            <div class="col-3">
+                                <img class="photo_profil image-rond image-rond-bg"
+                                    src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                                    alt="">
+                            </div>
+                            <!-- nom user -->
+                            <div class="col-3">
+                                <p id="add_friend_username">User name</p>
+                            </div>
+
+                            <!-- bouton add -->
+                            <div class="col-3">
+                                <button type="submit" class="btn btn-secondary btn-block btn-sm"
+                                    style="font-size: 60%;">Ajouter</button>
+                            </div>
+                            <div class="col-1">
+                                <button type="submit" class="btn btn-danger btn-block btn-sm">x</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <!-- card ajouter et rechercher un ami -->
+        <div id="ajout_amis" class="card p-3">
+            <div class="card-header">
+                <p class="text-center">Ajouter un ami</p>
+            </div>
+
+            <div class="anyClass">
+                <!-- ajout barre de recherche -->
+                <!--Search bar : centrée, avec bouton "search" à droite-->
+                <div class="container">
+                    <div id="content">
+                        <form #infosFriend="ngForm" (ngSubmit)="addFriend(infosFriend.value)">
+                            <div class="input-group">
+                                <input type='text' id='search' class="form-control search-form" placeholder="Search...">
+                                <span class="input-group-btn" style="width:39px">
+                                    <button id="search-this" type="button" class="pull-right btn search-btn"
+                                        type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-secondary btn-block btn-sm">Sport</button>
+                        </div>
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-secondary btn-block btn-sm">Distance</button>
+                        </div>
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-secondary btn-block btn-sm">Autre</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- card demande d'un ami-->
+                <div class="card p-1 m-1">
+
+                    <div class="container">
+
+                        <div class="row">
+                            <!-- photo de profil -->
+                            <div class="col-3">
+                                <img class="photo_profil image-rond image-rond-bg"
+                                    src="https://images.unsplash.com/photo-1520271348391-049dd132bb7c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+                                    alt="">
+                            </div>
+                            <!-- nom user -->
+                            <div class="col-6">
+                                <p id="add_friend_username">User name</p>
+                            </div>
+
+                            <!-- bouton add -->
+                            <div class="col-3">
+                                <button type="submit" class="btn btn-secondary btn-block btn-sm">Ajouter</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
