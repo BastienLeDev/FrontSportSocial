@@ -2,7 +2,9 @@ import { AnimateTimings } from '@angular/animations';
 import { NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { PopUpMessageComponent } from '../pop-up-message/pop-up-message.component';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -24,7 +26,7 @@ export class FriendComponent implements OnInit {
   mess : any;
   
 
-  constructor (private http : HttpClient, public authService: AuthService, private route: Router) {}
+  constructor (private http : HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog) {}
 
   ngOnInit() : void {
     this.listSendMessages();
@@ -110,6 +112,10 @@ sendMess(val : any) {
 
   })
 
+}
+
+openNewMessage() {
+  const dialogRef = this.dialog.open(PopUpMessageComponent)
 }
 
 
