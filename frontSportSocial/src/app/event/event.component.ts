@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NewEventComponent } from '../new-event/new-event.component';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-event',
@@ -15,7 +16,7 @@ export class EventComponent implements OnInit {
   event: any;
   sports: any;
 
-  constructor(private http: HttpClient, private route: Router, private dialog: MatDialog) { }
+  constructor(private http: HttpClient, private route: Router, private dialog: MatDialog, public authService: AuthService) { }
 
   ngOnInit(): void {
     this.listEventToCome();
@@ -38,6 +39,14 @@ export class EventComponent implements OnInit {
 
   openNewEventModal() {
     const dialogRef = this.dialog.open(NewEventComponent);
+  }
+
+  addEventToUser(val: any) {
+    this.http.post('http://localhost:8300/event/ajouter/' + this.authService.getUserConnect().idUser, val).subscribe({
+      error: (err) => { console.log(err) },
+    });
+    console.log(val);
+    console.log(this.authService.getUserConnect().idUser);
   }
 
 }
