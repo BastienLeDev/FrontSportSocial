@@ -1,0 +1,24 @@
+body {
+    background-image: url(https://img.freepik.com/photos-gratuite/silhouette-jeune-homme-fitness-cours-execution-lever-du-soleil_1150-14615.jpg?w=1380&t=st=1671181021~exp=1671181621~hmac=a60cfe1a660a9c9c52401728298a4c04ba9c530d649fa3ac8c121746444c8a4a);
+    background-repeat: no-repeat;
+
+    background-size: 100% 100%;
+
+
+
+
+
+}
+
+
+.btnPrincipal {
+    background-color: #FFC288 !important;
+}
+
+.formulaireInscription {
+    width: 30%;
+    margin: auto;
+    margin-top: 150px;
+    box-shadow: 0px 0px 20px #FEA82F;
+
+}

@@ -1,31 +1,36 @@
 <br>
 <br>
-<div style="margin : auto; width : 30%">
-    <form #infosUser="ngForm" (ngSubmit)="inscription(infosUser.value)">
-        <div class="card p-3">
-            <div class="md-form">
-                <label>Last name</label>
-                <input name="lastNameUser" ngModel="" type="text" class="form-control">
-            </div>
-            <div class="md-form">
-                <label>First name</label>
-                <input name="firstNameUser" ngModel="" type="text" class="form-control">
-            </div>
-            <div class="md-form">
-                <label>Birth date</label>
-                <input name="birthDateUser" ngModel="" type="text" class="form-control">
-            </div>
-            <div class="md-form">
-                <label>Login</label>
-                <input name="loginUser" ngModel="" type="text" class="form-control">
-            </div>
-            <div class="md-form">
-                <label>Password</label>
-                <input name="passwordUser" ngModel="" type="password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-secondary btn-block btn-sm">Registry</button>
-            <button (click)="goToConnexion()" type="button" class="btn btn-link btn-block btn-sm">Back to
-                connexion</button>
+
+<body>
+    <div>
+        <div class="formulaireInscription">
+            <form #infosUser="ngForm" (ngSubmit)="inscription(infosUser.value)">
+                <div class="card p-3">
+                    <div class="md-form">
+                        <label>Nom</label>
+                        <input name="lastNameUser" ngModel="" type="text" class="form-control">
+                    </div>
+                    <div class="md-form">
+                        <label>Prénom</label>
+                        <input name="firstNameUser" ngModel="" type="text" class="form-control">
+                    </div>
+                    <div class="md-form">
+                        <label>Date de naissance</label>
+                        <input name="birthDateUser" ngModel="" type="text" class="form-control">
+                    </div>
+                    <div class="md-form">
+                        <label>Pseudo</label>
+                        <input name="loginUser" ngModel="" type="text" class="form-control">
+                    </div>
+                    <div class="md-form">
+                        <label>Mot de passe</label>
+                        <input name="passwordUser" ngModel="" type="password" class="form-control">
+                    </div>
+                    <button type="submit" class="btnPrincipal  btn  btn-block btn-sm">Inscription</button>
+                    <button (click)="goToConnexion()" type="button" class="btn btn-link btn-block btn-sm">Retour à la
+                        connexion</button>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
+    </div>
+</body>

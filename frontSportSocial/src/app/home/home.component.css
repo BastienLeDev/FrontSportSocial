@@ -215,3 +215,12 @@ input-group-btn {
   height: auto;
   overflow-y: scroll;
 }
+
+.card-header {
+  background-color: #FCECDD;
+  color: black;
+}
+
+.btnPrincipal {
+  background-color: #FFC288 !important;
+}

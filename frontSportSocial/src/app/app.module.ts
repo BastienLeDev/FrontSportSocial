@@ -21,10 +21,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import { PopUpProfilComponent } from './pop-up-profil/pop-up-profil.component';
+
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { PopUpScheduleComponent } from './pop-up-schedule/pop-up-schedule.component';
+
 import { NewEventComponent } from './new-event/new-event.component';
 import { PopUpModifMdpComponent } from './pop-up-modif-mdp/pop-up-modif-mdp.component';
 
@@ -44,6 +49,7 @@ import { PopUpModifMdpComponent } from './pop-up-modif-mdp/pop-up-modif-mdp.comp
     ClubComponent,
     EventComponent,
     PopUpProfilComponent,
+    PopUpScheduleComponent,
     NewEventComponent,
     PopUpModifMdpComponent,
 
@@ -58,11 +64,16 @@ import { PopUpModifMdpComponent } from './pop-up-modif-mdp/pop-up-modif-mdp.comp
     MatDialogModule,
     MatButtonModule,
     MatIconModule,
+    MatFormFieldModule,
+    MatSelectModule,
+
 
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
     })
+
+
 
 
   ],

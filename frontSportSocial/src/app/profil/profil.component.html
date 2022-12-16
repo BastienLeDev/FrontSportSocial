@@ -2,15 +2,15 @@
     <div class="row">
         <div class="col-3 p-4">
             <div class="card p-3 m-3">
-                <div class="md-form">
-                    <h3>Personal data</h3>
+                <div class="cad card-header">
+                    <h3 class="text-center">Données personnelles</h3>
                 </div>
 
                 <div class="md-form">
-                    <p>Last name : {{authService.getUserConnect().firstNameUser}} </p>
-                    <p>First name : {{authService.getUserConnect().lastNameUser}}</p>
-                    <p>Birthdate : {{authService.getUserConnect().birthDateUser}}</p>
-                    <p>Login : {{authService.getUserConnect().loginUser}}</p>
+                    <p>Nom : {{authService.getUserConnect().firstNameUser}} </p>
+                    <p>Prénom : {{authService.getUserConnect().lastNameUser}}</p>
+                    <p>Date de naissance: {{authService.getUserConnect().birthDateUser}}</p>
+                    <p>Pseudo : {{authService.getUserConnect().loginUser}}</p>
                     <p>Coach : {{authService.getUserConnect().coachUser}}</p>
                     <p *ngIf="authService.getUserConnect().addressUser != null">Adresse :
                         {{authService.getUserConnect().addressUser.streetAddress}}</p>
@@ -18,20 +18,17 @@
                         {{authService.getUserConnect().addressUser.cityAddress}}</p>
                     <p *ngIf="authService.getUserConnect().addressUser == null">Adresse : Non précisée</p>
                     <button (click)="openModifDonneesPersosModal()" type="submit"
-                        class="btn btn-secondary btn-block btn-sm">Modifier les données
+                        class="btn btnPrincipal btn-block btn-sm">Modifier les données
                         personnelles</button>
-                    <button (click)="openChangerMdp()" type="button" class="btn btn-link btn-block btn-sm">Changer le
+                    <button (click)="openChangerMdp()" type="button" class="btn   btn-link btn-block btn-sm">Changer le
                         mot de passe</button>
                 </div>
             </div>
             <div class="card p-3 m-3">
+
                 <div class="md-form">
-                    <h3>Personal ranking</h3>
-                </div>
-                <div class="md-form">
-                    <p>Sport : </p>
-                    <button (click)="goToRanking()" type="submit" class="btn btn-secondary btn-block btn-sm">World
-                        ranking</button>
+                    <button (click)="goToRanking()" type="submit" class="btn btn-secondary btn-block btn-lg">Rang
+                        Personnel</button>
                 </div>
             </div>
         </div>
@@ -158,23 +155,25 @@
             </ul>
         </div>
 
-        <div class="col-3 p-4">
+        <div class="col-3 p-3">
             <div class="card p-3 m-3">
-                <div class="md-form">
-                    <h3>Statistical</h3>
+                <div class="card-header">
+                    <h3 class="text-center">Statistiques</h3>
+                </div>
+                <div>
                     <div class="md-form">
                         <div id="inside-card" class="card p-3 m-3">
                             <div class="md-form">
-                                <h4>Per month</h4>
-                                <p>Running : </p>
+                                <h4>Par mois</h4>
+                                <p>Course : </p>
                             </div>
                         </div>
                     </div>
                     <div class="md-form">
                         <div id="inside-card" class="card p-3 m-3">
                             <div class="md-form">
-                                <h4>Per sport</h4>
-                                <p>Running : </p>
+                                <h4>Par sport</h4>
+                                <p>Course : </p>
                             </div>
                         </div>
                     </div>
@@ -182,22 +181,24 @@
             </div>
 
             <div class="card p-3 m-3">
-                <div class="md-form">
-                    <h3>Training</h3>
+                <div class="card-header">
+                    <h3 class="text-center">Entrainement</h3>
+                </div>
+                <div>
                     <button type="submit" class="btn btn-secondary btn-block btn-sm">Add</button>
                     <div class="md-form">
                         <div id="inside-card" class="card p-3 m-3">
                             <div class="md-form">
-                                <h4>Per month</h4>
-                                <p>Running : </p>
+                                <h4>Par mois</h4>
+                                <p>Course : </p>
                             </div>
                         </div>
                     </div>
                     <div id="inside-card" class="md-form">
                         <div class="card p-3 m-3">
                             <div class="md-form">
-                                <h4>Per sport</h4>
-                                <p>Running : </p>
+                                <h4>Par sport</h4>
+                                <p>Course : </p>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quas labore
                                     consequuntur? Repudiandae molestias dolores labore ea sed quibusdam libero
                                     reprehenderit harum autem nam, nemo accusantium, tenetur, asperiores unde tempore.
@@ -207,6 +208,14 @@
                     </div>
                 </div>
                 <div class="md-form">
+                </div>
+            </div>
+            <div class="card p-3 m-3">
+                <div class="md-form">
+                    <h3>Token </h3>
+                    <p>{{authService.getUserConnect().token}} </p>
+                    <button (click)="goToShop()" type="submit" class="btn btn-secondary btn-block btn-sm"> Acheter des
+                        tokens</button>
                 </div>
             </div>
         </div>
