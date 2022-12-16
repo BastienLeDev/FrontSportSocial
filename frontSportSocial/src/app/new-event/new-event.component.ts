@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-new-event',
@@ -11,7 +12,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class NewEventComponent implements OnInit {
 
   constructor(private http: HttpClient, private route: Router,
-    public dialogRef: MatDialogRef<NewEventComponent>
+    public dialogRef: MatDialogRef<NewEventComponent>,
+    public authService: AuthService
   ) { }
 
   sports: any;
@@ -23,6 +25,9 @@ export class NewEventComponent implements OnInit {
   createEvent(val: any) {
     console.log(val)
     this.http.post('http://localhost:8300/event/create', val).subscribe({
+      error: (err) => { console.log(err) },
+    });
+    this.http.post('http://localhost:8300/event/ajouter/' + this.authService.getUserConnect().idUser, val).subscribe({
       error: (err) => { console.log(err) },
     });
     window.location.reload();
