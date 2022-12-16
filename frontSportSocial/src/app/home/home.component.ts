@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
 
   friends: any;
   id: any;
+  activite: any;
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router
   ) { }
@@ -22,11 +23,20 @@ export class HomeComponent implements OnInit {
     }
 
     this.listFriends();
+    this.listActivite();
 
 
   }
 
+  listActivite() {
 
+    this.http.get('http://localhost:8300/activity/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => { this.activite = data, console.log(this.activite); },
+
+      error: (err) => { console.log(err); }
+
+    });
+  }
   listFriends() {
 
 
