@@ -28,6 +28,7 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NewEventComponent } from './new-event/new-event.component';
 import { PopUpModifMdpComponent } from './pop-up-modif-mdp/pop-up-modif-mdp.component';
+import { PopUpMessageComponent } from './pop-up-message/pop-up-message.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { PopUpModifMdpComponent } from './pop-up-modif-mdp/pop-up-modif-mdp.comp
     EventComponent,
     PopUpProfilComponent,
     NewEventComponent,
-    PopUpModifMdpComponent
+    PopUpModifMdpComponent,
+    PopUpMessageComponent,
 
 
   ],

@@ -43,6 +43,10 @@
     min-height: 800px;
 }
 
+#card_empty_messages {
+    min-height: 900px;
+}
+
 /* CSS de la bare de recherche
 */
 
@@ -155,6 +159,7 @@ input-group-btn {
 #card_principal_amis {
     min-height: 865px;
 }
+
 
 
 /* CSS du scroll */
