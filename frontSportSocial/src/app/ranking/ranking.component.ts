@@ -14,6 +14,7 @@ export class RankingComponent implements OnInit {
   sports: any;
   sporta: any;
   selectedSport: any;
+  position = 1;
 
   constructor(private http: HttpClient, private route: Router) { }
 
@@ -21,7 +22,9 @@ export class RankingComponent implements OnInit {
 
     this.ListSport();
   }
-
+  goToShop() {
+    this.route.navigateByUrl('shop');
+  }
   ListSport() {
 
 

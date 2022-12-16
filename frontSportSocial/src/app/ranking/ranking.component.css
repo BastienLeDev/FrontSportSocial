@@ -37,3 +37,16 @@ input-group-btn {
   border: none;
   border-radius: 5px;
 }
+
+#images {
+  display: block;
+  background-image: url(https://www.lagazettedescommunes.com/wp-content/uploads/2020/02/coach-sportif.jpg);
+  border: 10px;
+}
+
+#fondcarte {
+  background: rgba(233, 229, 222, 0.6);
+  padding: 20px;
+  height: auto;
+  border: 10px;
+}
