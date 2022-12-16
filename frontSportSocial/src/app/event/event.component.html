@@ -1,56 +1,34 @@
 <div class="container-fluid">
     <div class="row">
-        <!--<div class="col-3 p-4">
-            <div class="card p-3 m-3">
-                <div class="md-form">
-                    <h3>Event creation form</h3>
-                </div>
-                <form #infosEvent="ngForm" (ngSubmit)="createEvent(infosEvent.value)">
-                    <div class="md-form">
-                        <input placeholder="Title" name="titleEvent" ngModel="" type="text" class="form-control">
-                    </div>
-                    <div class="md-form">
-                        <p>Sport : 
-                        <select name="sportEvent" ngModel="">
-                            <option [ngValue]="s" *ngFor="let s of sports">{{s.nameSport}}</option>
-                        </select>
-                    </p>
-                    </div>
-                    <div class="md-form">
-                        <input placeholder="Start date" name="dateStart" ngModel="" type="datetime-local"
-                            class="form-control">
-                    </div>
-                    <div class="md-form">
-                        <input placeholder="End date" name="dateEnd" ngModel="" type="datetime-local"
-                            class="form-control">
-                    </div>
-                    <div class="md-form">
-                        <input placeholder="Description" name="descriptionEvent" ngModel="" type="text"
-                            class="form-control">
-                    </div>
-                    <div class="md-form">
-                        <input placeholder="Prix" name="priceEvent" ngModel="" type="number" class="form-control">
-                    </div>
-                    
-                    <div class="md-form">
-                        <input placeholder="Image" name="imageEvent" ngModel="" type="text" class="form-control">
-                    </div>
-                    
-                    <div class="md-form">
-                        <span class="input-group-btn" style="width:39px">
-                            <button type="submit" class="btn btn-secondary btn-block btn-sm">Create Event</button>
-                        </span>
-                    </div>
-                </form>
-            </div>
-        </div>-->
-
-
-
         <div class="col-12 p-4 ">
             <div class="p-1 m-1 ">
                 <div class="container">
                     <div class="row">
+                        <div class="col-2">
+                            <div class="container">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <label for="sports">Filtrer par sport:</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="text-center">
+                                                <select name="sportEvent" ngModel="" required>
+                                                    <option [ngValue]="s" *ngFor="let s of sports">{{s.nameSport}}
+                                                    </option>
+                                                </select>
+                                                <!--<mat-select name="sports" id="sports">
+                                                    <mat-option [value]="s" *ngFor="let s of sports">{{s.nameSport}}
+                                                    </mat-option>
+                                                </mat-select>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <div class="col-6 ">
                             <div class="container">
                                 <div id="content">
@@ -66,35 +44,12 @@
                                             </span>
                                         </div>
                                     </form>
-
                                 </div>
                             </div>
                         </div>
-                        <div class="col-2">
-                            <div class="container">
-
-                                <form>
-                                    <div class="row">
-                                        <div class="col-12 text-center">
-                                            <label for="sports">Filter by sport:</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="text-center">
-                                                <select name="sports" id="sports">
-                                                    <option [ngValue]="s" *ngFor="let s of sports">{{s.nameSport}}
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <span> Create your own event!</span>
-                            <a mat-mini-fab (click)="openNewUserModal()">
+                        <div class="col-4 text-right align-self-center">
+                            <a mat-raised-button (click)="openNewEventModal()">
+                                Creer un nouvel événement!
                                 <mat-icon>add</mat-icon>
                             </a>
                         </div>
@@ -102,10 +57,8 @@
                 </div>
                 <div class="card row">
                     <div class="col-12 p-4">
-
                         <div class="card p-1 m-3" *ngFor="let e of events">
-                            <div class="container">
-
+                            <div class="container m-1 p-1">
                                 <div class="row">
                                     <div class="col-3">
                                         <h2>{{e.sportEvent.nameSport}}</h2>
@@ -127,23 +80,33 @@
 
                                         <div class="container">
                                             <div class="row">
-                                                <p>Start : {{e.dateStart | date: 'd MMM y H:mm'}}</p>
+                                                <p>Début : {{e.dateStart | date: 'd MMM y H:mm'}}</p>
                                             </div>
                                             <div class="row">
-                                                <p>End : {{e.dateEnd | date: 'd MMM y H:mm'}}</p>
+                                                <p>Fin : {{e.dateEnd | date: 'd MMM y H:mm'}}</p>
                                             </div>
                                             <div class="row">
-                                                <p>Price : {{e.priceEvent}} €</p>
+                                                <p>Prix : {{e.priceEvent}} €</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- backup button add new event
+    <div class="col-3 text-right align-self-center">
+        <span> Creer un nouvel événement!</span>
+    </div>
+    <div class="col-1 text-center align-self-center">
+         <a mat-mini-fab (click)="openNewEventModal()">
+            <mat-icon>add</mat-icon>
+         </a>
+    </div>
+-->
