@@ -42,6 +42,7 @@ export class ShopComponent implements OnInit {
     }
   }
 
+
   showHideAll() {
     if (this.visibleCoach == true) {
       this.visibleCoach = false;

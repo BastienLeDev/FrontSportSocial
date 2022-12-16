@@ -25,13 +25,10 @@
                 </div>
             </div>
             <div class="card p-3 m-3">
-                <div class="card-header">
-                    <h3 class="text-center">Rang personnel</h3>
-                </div>
+
                 <div class="md-form">
-                    <p>Sport : </p>
-                    <button (click)="goToRanking()" type="submit" class="btn btn-secondary btn-block btn-sm">Rang
-                        mondial</button>
+                    <button (click)="goToRanking()" type="submit" class="btn btn-secondary btn-block btn-lg">Rang
+                        Personnel</button>
                 </div>
             </div>
         </div>
@@ -211,6 +208,14 @@
                     </div>
                 </div>
                 <div class="md-form">
+                </div>
+            </div>
+            <div class="card p-3 m-3">
+                <div class="md-form">
+                    <h3>Token </h3>
+                    <p>{{authService.getUserConnect().token}} </p>
+                    <button (click)="goToShop()" type="submit" class="btn btn-secondary btn-block btn-sm"> Acheter des
+                        tokens</button>
                 </div>
             </div>
         </div>
