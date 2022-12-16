@@ -32,7 +32,7 @@
 
 .navbar a:hover,
 .subnav:hover .subnavbtn {
-  background-color: #FEA82F;
+  background-color: #FFC288;
   ;
 }
 
@@ -40,7 +40,7 @@
   display: none;
   position: absolute;
   left: 0;
-  background-color: #FEA82F;
+  background-color: #FFC288;
   width: 100%;
   z-index: 1;
 }
@@ -63,7 +63,7 @@
 .menu-active {
   letter-spacing: 2px;
   color: rgb(49, 49, 49) !important;
-  background-color: #FEA82F;
+  background-color: #FFC288;
   ;
 
 }

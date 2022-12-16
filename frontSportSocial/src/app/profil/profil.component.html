@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-3 p-4">
             <div class="card p-3 m-3">
-                <div class="md-form">
-                    <h3>Données personnelles</h3>
+                <div class="cad card-header">
+                    <h3 class="text-center">Données personnelles</h3>
                 </div>
 
                 <div class="md-form">
@@ -18,15 +18,15 @@
                         {{authService.getUserConnect().addressUser.cityAddress}}</p>
                     <p *ngIf="authService.getUserConnect().addressUser == null">Adresse : Non précisée</p>
                     <button (click)="openModifDonneesPersosModal()" type="submit"
-                        class="btn btn-secondary btn-block btn-sm">Modifier les données
+                        class="btn btnPrincipal btn-block btn-sm">Modifier les données
                         personnelles</button>
-                    <button (click)="openChangerMdp()" type="button" class="btn btn-link btn-block btn-sm">Changer le
+                    <button (click)="openChangerMdp()" type="button" class="btn   btn-link btn-block btn-sm">Changer le
                         mot de passe</button>
                 </div>
             </div>
             <div class="card p-3 m-3">
-                <div class="md-form">
-                    <h3>Rang personnel</h3>
+                <div class="card-header">
+                    <h3 class="text-center">Rang personnel</h3>
                 </div>
                 <div class="md-form">
                     <p>Sport : </p>
@@ -160,8 +160,10 @@
 
         <div class="col-3 p-3">
             <div class="card p-3 m-3">
-                <div class="md-form">
-                    <h3>Statistiques</h3>
+                <div class="card-header">
+                    <h3 class="text-center">Statistiques</h3>
+                </div>
+                <div>
                     <div class="md-form">
                         <div id="inside-card" class="card p-3 m-3">
                             <div class="md-form">
@@ -182,8 +184,10 @@
             </div>
 
             <div class="card p-3 m-3">
-                <div class="md-form">
-                    <h3>Entrainement</h3>
+                <div class="card-header">
+                    <h3 class="text-center">Entrainement</h3>
+                </div>
+                <div>
                     <button type="submit" class="btn btn-secondary btn-block btn-sm">Add</button>
                     <div class="md-form">
                         <div id="inside-card" class="card p-3 m-3">

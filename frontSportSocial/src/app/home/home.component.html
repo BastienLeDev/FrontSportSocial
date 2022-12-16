@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-3 p-4">
             <div class="card p-3 m-3">
-                <div class="md-form">
-                    <h3>Personal data</h3>
+                <div class="card-header">
+                    <h3 class="text-center">Données personnelles</h3>
                 </div>
                 <div class="md-form">
                     <p>Prénom : {{authService.getUserConnect().firstNameUser}} </p>
@@ -12,7 +12,7 @@
                     <p>Nom : {{authService.getUserConnect().lastNameUser}}</p>
                 </div>
                 <div class="md-form">
-                    <p>Login : {{authService.getUserConnect().loginUser}}</p>
+                    <p>Pseudo : {{authService.getUserConnect().loginUser}}</p>
                 </div>
             </div>
 
@@ -55,8 +55,8 @@
 
 
             <div class="card p-3 m-3">
-                <div class="md-form">
-                    <h3>Ranking</h3>
+                <div class="card-header">
+                    <h3 class="text-center">Rang</h3>
                 </div>
                 <div class="md-form">
                     <p>N°1 : </p>
@@ -190,8 +190,8 @@
 
         <div class="col-3 p-4">
             <div class="card p-3 m-3">
-                <div class="md-form">
-                    <h3>Schedule</h3>
+                <div class="card-header">
+                    <h3 class="text-center">Planning</h3>
                 </div>
                 <div class="md-form">
                     <div>
@@ -294,8 +294,8 @@
                 </div>
             </div>
             <div class="card p-3 m-3">
-                <div class="md-form">
-                    <h3>Message</h3>
+                <div class="card-header">
+                    <h3 class="text-center">Messages</h3>
                 </div>
                 <div class="md-form">
                     <h4>John</h4>

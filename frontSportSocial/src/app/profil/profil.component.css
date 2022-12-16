@@ -29,9 +29,7 @@
 
   }
 
-  .text-center {
-    color: #fff;
-  }
+
 
   /* CSS du scroll */
   .anyClass {
@@ -54,4 +52,13 @@
 
   #inside-card {
     width: min(95%);
+  }
+
+  .card-header {
+    background-color: #FCECDD;
+    color: black;
+  }
+
+  .btnPrincipal {
+    background-color: #FFC288 !important;
   }
