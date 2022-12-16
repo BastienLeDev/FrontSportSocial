@@ -19,6 +19,7 @@ export class FriendComponent implements OnInit {
   id : any;
   visibleMessage = false;
   friend : any;
+  notfriends : any;
   friends: any;
   selectedFriend : any;
   name: any;
@@ -31,6 +32,7 @@ export class FriendComponent implements OnInit {
   ngOnInit() : void {
     this.listSendMessages();
     this.listFriends();
+    this.listNotFriends();
     this.getLogin(this.visibleMessage = true);
 
   }
@@ -95,6 +97,16 @@ listFriends() {
   });
 }
 
+listNotFriends() {
+
+  this.http.get('http://localhost:8300/notfriend/receiver/' + this.authService.getUserConnect().idUser).subscribe({
+    next: (data) => { this.notfriends = data },
+    error: (err) => { console.log(err); }
+
+  });
+}
+
+
 sendMess(val : any) {
 
   let messag = {contentMessage: val.message};
@@ -103,7 +115,8 @@ sendMess(val : any) {
   this.http.post('http://localhost:8300/message/envoyer/' + this.login.idUser +'/' +  this.authService.getUserConnect().idUser , messagerie).subscribe({
     next: (data) => {
       this.mess = data;
-      this.visibleMessage = true;
+      this.visibleMessage = false;
+      window.location.reload();
       // this.ngOnInit();
     },
     error: (err) => { console.log(err) },
