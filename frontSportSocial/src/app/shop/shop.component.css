@@ -41,9 +41,7 @@ input-group-btn {
 
 }
 
-.text-center {
-    color: #fff;
-}
+
 
 /* Style images */
 img {
@@ -58,4 +56,13 @@ img {
 .anyClass {
     height: auto;
     overflow-y: scroll;
+}
+
+.btnPrincipal {
+    background-color: #FFC288 !important;
+}
+
+.card-header {
+    background-color: #FCECDD;
+    color: black;
 }
