@@ -16,6 +16,7 @@ import { HttpClient } from '@angular/common/http';
 export class ProfilComponent implements OnInit {
 
   activite: any;
+  userToken: any;
   constructor(public authService: AuthService, private route: Router, private dialog: MatDialog, private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -23,6 +24,7 @@ export class ProfilComponent implements OnInit {
       this.route.navigateByUrl('connexion')
     }
     this.listActivite();
+    this.getToken();
   }
 
   goToRanking() {
@@ -45,6 +47,17 @@ export class ProfilComponent implements OnInit {
 
     this.http.get('http://localhost:8300/activity/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => { this.activite = data, console.log(this.activite); },
+
+      error: (err) => { console.log(err); }
+
+    });
+  }
+
+  getToken() {
+    this.http.get('http://localhost:8300/user/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => {
+        this.userToken = data
+      },
 
       error: (err) => { console.log(err); }
 
