@@ -154,13 +154,18 @@
                         <div class="card p-3 m-3">
                             <div class="md-form">
                                 <h4>Par sport</h4>
-                                <div class="card p-3 m-2">
+                                <div class="card p-3 m-2" *ngIf="visibleMemos">
                                     <div class="md-form">
                                         <b>Course à pied : </b>
                                         <p>S'échauffer pendant 10 mins puis courrir 10km
                                         </p>
                                         <b>Objectif de temps</b>
                                         <p>55 mins</p>
+                                        <div class="col-1 m-1">
+                                            <button (click)="showHideMemos()" type="submit"
+                                                class="btn btn-danger btn-block btn-sm" style="font-size: 60%;">x
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

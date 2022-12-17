@@ -17,6 +17,7 @@ export class ProfilComponent implements OnInit {
 
   activite: any;
   userToken: any;
+  visibleMemos = true;
   constructor(public authService: AuthService, private route: Router, private dialog: MatDialog, private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -25,6 +26,16 @@ export class ProfilComponent implements OnInit {
     }
     this.listActivite();
     this.getToken();
+  }
+
+
+
+  showHideMemos() {
+    if (this.visibleMemos == false) {
+      this.visibleMemos = true;
+    } else {
+      this.visibleMemos = false;
+    }
   }
 
   goToRanking() {
