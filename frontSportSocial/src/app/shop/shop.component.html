@@ -147,6 +147,11 @@
                                 <strong>Prix :</strong>
                                 <p>{{a.prixTokenProduit}} Token</p>
                             </div>
+                            <div class="col-1">
+                                <button id="valider" type="submit" class="btn btnPrincipal btn-block btn-sm"><i
+                                        class="fas fa-check" style="color: rgb(0, 0, 0);"></i></button>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -202,8 +207,10 @@
             <div class="d-flex justify-content-center p-5" *ngIf="transaction==false">
                 <p>La transaction refusée.</p>
             </div>
-            <button (click)="achatTokenEuro(transactEuro.value)" (click)="achatToken(transact.value)" type="submit"
-                class="btn btnPrincipal btn-block btn-sm">Payer</button>
+            <div class="col-2">
+                <button (click)="achatTokenEuro(transactEuro.value)" (click)="achatToken(transact.value)" type="submit"
+                    class="btn btnPrincipal btn-block btn-sm">Acheter</button>
+            </div>
         </div>
     </div>
 </div>

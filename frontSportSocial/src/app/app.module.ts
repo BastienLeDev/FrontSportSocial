@@ -34,6 +34,7 @@ import { NewEventComponent } from './new-event/new-event.component';
 import { PopUpModifMdpComponent } from './pop-up-modif-mdp/pop-up-modif-mdp.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,6 +67,7 @@ import { PopUpModifMdpComponent } from './pop-up-modif-mdp/pop-up-modif-mdp.comp
     MatIconModule,
     MatFormFieldModule,
     MatSelectModule,
+
 
 
     CalendarModule.forRoot({
