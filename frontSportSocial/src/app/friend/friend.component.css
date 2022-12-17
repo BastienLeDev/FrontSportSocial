@@ -72,7 +72,7 @@ input-group-btn {
 /* CHAT */
 /* Chat containers */
 .lighter {
-    background-color: #e9c389;
+    background-color: #FFC288;
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0;
@@ -80,8 +80,8 @@ input-group-btn {
 
 /* Darker chat container */
 .darker {
-    border: 2px solid #dedede;
-    background-color: rgb(220, 167, 117);
+
+    background-color: #FCECDD;
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0;
