@@ -9,13 +9,9 @@
             </div>
             <div class="md-form">
                 <p>Sport :
-                    <select name="sportEvent" ngModel="" required>
+                    <select class="box" name="sportEvent" ngModel="" required>
                         <option [ngValue]="s" *ngFor="let s of sports">{{s.nameSport}}</option>
                     </select>
-                    <!--<mat-select name="sports" id="sports">
-                        <mat-option [value]="s" *ngFor="let s of sports">{{s.nameSport}}
-                        </mat-option>
-                    </mat-select>-->
                 </p>
             </div>
             <div class="md-form">

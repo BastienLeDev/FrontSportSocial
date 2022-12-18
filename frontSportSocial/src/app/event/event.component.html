@@ -18,10 +18,6 @@
                                                 <select class="box" ngModel="" required>
                                                     <option *ngFor="let s of sports">{{s.nameSport}}</option>
                                                 </select>
-                                                <!--<mat-select name="sports" id="sports">
-                                                    <mat-option [value]="s" *ngFor="let s of sports">{{s.nameSport}}
-                                                    </mat-option>
-                                                </mat-select>-->
                                             </div>
 
                                         </div>
@@ -91,7 +87,7 @@
                                         </div>
                                     </div>
                                     <div class="col-2">
-                                        <a mat-raised-button (click)="addEventToUser(e)">
+                                        <a mat-raised-button (click)="addEventToUser(e.idEvent)">
                                             S'inscrire à l'événement
                                             <mat-icon>add</mat-icon>
                                         </a>

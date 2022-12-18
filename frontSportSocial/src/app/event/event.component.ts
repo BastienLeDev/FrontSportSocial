@@ -42,12 +42,9 @@ export class EventComponent implements OnInit {
     const dialogRef = this.dialog.open(NewEventComponent);
   }
 
-  addEventToUser(val: any) {
-    this.http.post('http://localhost:8300/event/ajouter/' + this.authService.getUserConnect().idUser, val).subscribe({
+  addEventToUser(idEvent: bigint) {
+    this.http.post('http://localhost:8300/userevent/ajouter/' + this.authService.getUserConnect().idUser + '/' + idEvent, null).subscribe({
       error: (err) => { console.log(err) },
     });
-    console.log(val);
-    console.log(this.authService.getUserConnect().idUser);
   }
-
 }
