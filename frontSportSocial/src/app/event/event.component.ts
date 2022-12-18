@@ -22,6 +22,9 @@ export class EventComponent implements OnInit {
   ngOnInit(): void {
     this.listEventToCome();
     this.listSport();
+    if (!this.authService.isConnected()) {
+      this.route.navigateByUrl('connexion')
+    }
   }
 
   listEventToCome() {

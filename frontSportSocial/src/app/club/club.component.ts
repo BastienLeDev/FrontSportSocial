@@ -12,11 +12,13 @@ import { AuthService } from '../services/auth.service';
 export class ClubComponent implements OnInit {
 
   sports: any;
+  clubs: any;
 
   constructor(private http: HttpClient, private authService: AuthService, private route: Router) { }
 
   ngOnInit(): void {
     this.listSport();
+    this.listClubs();
     if (!this.authService.isConnected()) {
       this.route.navigateByUrl('connexion')
     }
@@ -29,5 +31,15 @@ export class ClubComponent implements OnInit {
       error: (err) => { console.log(err); }
     });
 
+  }
+
+  listClubs() {
+    this.http.get('http://localhost:8300/club').subscribe({
+      next: (data) => {
+        this.clubs = data;
+        console.log(this.clubs);
+      },
+      error: (err) => { console.log(err); }
+    });
   }
 }

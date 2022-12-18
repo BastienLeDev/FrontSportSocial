@@ -40,20 +40,18 @@
                 </div>
                 <div class="row">
                     <div class="col-12 p-4">
-                        <div class="card p-3 m-3">
+                        <div class="card p-3 m-3" *ngFor="let c of clubs">
                             <div class="row">
                                 <div class="col-6 p-4">
                                     <div class="card p-3 m-3">
-                                        <h4>Paris rugby</h4>
-                                        <img src="https://img.freepik.com/vecteurs-libre/ensemble-elements-sport-rugby-vintage_1284-37924.jpg?w=826&t=st=1670941713~exp=1670942313~hmac=ffce7d716ce1183f9286475a795bc2cd1e53c7f08439ca67134829b90669417d"
-                                            style="width: 30%" alt="">
+                                        <h4>{{c.titleClub}}</h4>
+                                        <img src="{{c.imageClub.nameImage}}" style="width: 30%" alt="">
                                     </div>
                                 </div>
                                 <div class="col-6 p-4">
                                     <div class="card p-3 m-3">
                                         <h4>Description</h4>
-                                        <p>Club de rugby amateur. Vous souhaitez découvrir le ballon oval ? Envoyez nous
-                                            un message et venez tenter votre chance</p>
+                                        <p>{{c.descriptionClub}}</p>
                                     </div>
                                 </div>
                             </div>
