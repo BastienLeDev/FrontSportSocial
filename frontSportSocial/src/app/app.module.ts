@@ -24,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { PopUpProfilComponent } from './pop-up-profil/pop-up-profil.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -67,6 +68,7 @@ import { PopUpModifMdpComponent } from './pop-up-modif-mdp/pop-up-modif-mdp.comp
     MatIconModule,
     MatFormFieldModule,
     MatSelectModule,
+    ScrollingModule,
 
 
 
