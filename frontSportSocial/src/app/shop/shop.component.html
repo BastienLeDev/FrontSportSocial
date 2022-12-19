@@ -146,12 +146,15 @@
                                 <strong>Prix :</strong>
                                 <p>{{a.prixTokenProduit}} Token</p>
                             </div>
+
                             <div class="col-1">
-                                <button id="valider" type="submit" class="btn btnPrincipal btn-block btn-sm"><i
-                                        class="fas fa-check" style="color: rgb(0, 0, 0);"></i></button>
+                                <button (click)="achatProduit(a.idProduit)" id="valider" type="submit"
+                                    class="btn btnPrincipal btn-block btn-sm"><i class="fas fa-check"
+                                        style="color: rgb(0, 0, 0);"></i></button>
                             </div>
 
                         </div>
+
                     </div>
                 </div>
 
