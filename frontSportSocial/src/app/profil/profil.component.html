@@ -12,7 +12,8 @@
                         <p>Prénom : {{authService.getUserConnect().lastNameUser}}</p>
                         <p>Date de naissance: {{authService.getUserConnect().birthDateUser}}</p>
                         <p>Pseudo : {{authService.getUserConnect().loginUser}}</p>
-                        <p>Coach : {{authService.getUserConnect().coachUser}}</p>
+                        <p *ngIf="authService.getUserConnect().coachUser == true">Coach : Oui</p>
+                        <p *ngIf="authService.getUserConnect().coachUser != true">Coach : Non</p>
                         <p *ngIf="authService.getUserConnect().addressUser != null">Adresse :
                             {{authService.getUserConnect().addressUser.streetAddress}}</p>
                         <p>{{authService.getUserConnect().addressUser.zipCodeAddress}}

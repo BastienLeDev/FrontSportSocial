@@ -32,6 +32,11 @@
                         <label>Mot de passe</label>
                         <input name="passwordUser" ngModel="" type="password" class="form-control">
                     </div>
+                    <div class="md-form">
+                        <label>Etes-vous coach ?</label>
+                        <br><br>
+                        <mat-slide-toggle name="coachUser" [(ngModel)]="isChecked"></mat-slide-toggle>
+                    </div>
                     <button type="submit" class="btnPrincipal  btn  btn-block btn-sm">Inscription</button>
                     <button (click)="goToConnexion()" type="button" class="btn btn-link btn-block btn-sm">Retour à la
                         connexion</button>

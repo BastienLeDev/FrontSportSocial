@@ -33,7 +33,7 @@ import { PopUpScheduleComponent } from './pop-up-schedule/pop-up-schedule.compon
 
 import { NewEventComponent } from './new-event/new-event.component';
 import { PopUpModifMdpComponent } from './pop-up-modif-mdp/pop-up-modif-mdp.component';
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -69,6 +69,7 @@ import { PopUpModifMdpComponent } from './pop-up-modif-mdp/pop-up-modif-mdp.comp
     MatFormFieldModule,
     MatSelectModule,
     ScrollingModule,
+    MatSlideToggleModule,
 
 
 
