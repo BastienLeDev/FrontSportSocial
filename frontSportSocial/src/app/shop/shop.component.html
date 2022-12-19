@@ -73,33 +73,39 @@
 
             <div class="card p-4 m-2" *ngFor="let c of coachs">
 
-                <div class="row">
-                    <div class="col-1">
-                        <img class="photo_profil image-rond image-rond-bg"
-                            src="https://img.freepik.com/vecteurs-libre/illustration-concept-entraineur-personnel_114360-1552.jpg?w=740&t=st=1671228220~exp=1671228820~hmac=45603fee5afa4107866a0646a4c0b87cf460bd86c7320fe765ca0a87c712fea3"
-                            alt="">
-                    </div>
-                    <div>
-                        <p>Prénom : {{c.firstNameUser}}</p>
-                        <p>Nom : {{c.lastNameUser}}</p>
-                        <p>Login : {{c.loginUser}}</p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-1">
+                            <img class="photo_profil image-rond image-rond-bg"
+                                src="https://img.freepik.com/vecteurs-libre/illustration-concept-entraineur-personnel_114360-1552.jpg?w=740&t=st=1671228220~exp=1671228820~hmac=45603fee5afa4107866a0646a4c0b87cf460bd86c7320fe765ca0a87c712fea3"
+                                alt="">
+                        </div>
+                        <div class="col-2">
+                            <p>Prénom : {{c.firstNameUser}}</p>
+                            <p>Nom : {{c.lastNameUser}}</p>
+                            <p>Login : {{c.loginUser}}</p>
+                        </div>
+                        <div class="col-7">
+                            <div class="row">
+                                <div class="col-5 ">
+                                    <button type="submit" class="btn btnPrincipal btn-block btn-sm">Contacter</button>
+                                </div>
+                                <div class="col-1 m">
+                                </div>
+                                <div class="col-5 ">
+                                    <button type="submit" class="btn btnPrincipal btn-block btn-sm">Payer</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+
             </div>
+
         </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-3 ">
-                    <button type="submit" class="btn btnPrincipal btn-block btn-sm">Contacter</button>
-                </div>
-                <div class="col-1 m">
-                </div>
-                <div class="col-3 ">
-                    <button type="submit" class="btn btnPrincipal btn-block btn-sm">Payer</button>
-                </div>
-            </div>
-        </div>
+
 
     </div>
 </div>
