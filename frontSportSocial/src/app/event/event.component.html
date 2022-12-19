@@ -15,9 +15,10 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="text-center">
-                                                <select class="box" ngModel="" required>
-                                                    <option *ngFor="let s of sports">{{s.nameSport}}</option>
-                                                </select>
+                                                <!--<select class="box" ngModel="" required>
+                                                    <option [ngValue]="s" *ngFor="let s of sports">{{s.nameSport}}
+                                                    </option>
+                                                </select>-->
                                             </div>
 
                                         </div>
@@ -65,7 +66,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-4">
-                                        <img class="photo_event" src="{{e.imageEvent.nameImage}}" alt="">
+                                        <img class="photo_event" src="{{e.sportEvent.imageSport.nameImage}}" alt="">
                                     </div>
                                     <div class="col-3">
                                         <p>{{e.descriptionEvent}}</p>
@@ -84,14 +85,18 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2" *ngIf="!userParticipateEvent">
                                         <a mat-raised-button (click)="addEventToUser(e.idEvent)">
                                             S'inscrire à l'événement
                                             <mat-icon>add</mat-icon>
                                         </a>
                                     </div>
+                                    <div class="col-2" *ngIf="userParticipateEvent">
+                                        <p style="color: black;">Vous êtes inscrit à l'evenement</p>
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -99,14 +104,3 @@
         </div>
     </div>
 </div>
-
-<!-- backup button add new event
-    <div class="col-3 text-right align-self-center">
-        <span> Creer un nouvel événement!</span>
-    </div>
-    <div class="col-1 text-center align-self-center">
-         <a mat-mini-fab (click)="openNewEventModal()">
-            <mat-icon>add</mat-icon>
-         </a>
-    </div>
--->

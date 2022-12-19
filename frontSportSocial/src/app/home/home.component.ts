@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
   friends: any;
   id: any;
   activite: any;
+  eventsFriends: any;
+  myEvents: any;
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router
   ) { }
@@ -27,7 +29,8 @@ export class HomeComponent implements OnInit {
     this.listActivite();
 
     this.listEventToCome();
-
+    this.listEventsFriends();
+    this.listMyEvents();
 
   }
 
@@ -58,8 +61,24 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  listEventsFriends() {
+    this.http.get('http://localhost:8300/event/friends/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => { this.eventsFriends = data },
+      error: (err) => { console.log(err); }
+    });
+  }
+
+  listMyEvents() {
+    this.http.get('http://localhost:8300/event/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => { this.myEvents = data },
+      error: (err) => { console.log(err); }
+    });
+
+  }
+
   goToRanking() {
     this.route.navigateByUrl('ranking');
   }
+
 
 }

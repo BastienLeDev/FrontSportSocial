@@ -16,6 +16,10 @@ export class EventComponent implements OnInit {
   events: any;
   event: any;
   sports: any;
+  friends: any;
+  usersParticipating: any;
+  dummy: any;
+  userParticipateEvent = false;
 
   constructor(private http: HttpClient, private route: Router, private dialog: MatDialog, public authService: AuthService) { }
 
@@ -25,6 +29,7 @@ export class EventComponent implements OnInit {
     if (!this.authService.isConnected()) {
       this.route.navigateByUrl('connexion')
     }
+    this.listFriends()
   }
 
   listEventToCome() {
@@ -49,5 +54,38 @@ export class EventComponent implements OnInit {
     this.http.post('http://localhost:8300/userevent/ajouter/' + this.authService.getUserConnect().idUser + '/' + idEvent, null).subscribe({
       error: (err) => { console.log(err) },
     });
+    window.location.reload();
+    //this.userParticipate(idEvent);
+  }
+
+  listFriends() {
+
+    this.http.get('http://localhost:8300/friend/receiver/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => { this.friends = data },
+      error: (err) => { console.log(err); }
+
+    });
+  }
+
+  getUsersOfEvent(idEvent: bigint) {
+    this.http.get('user/participateEvent/' + idEvent).subscribe({
+      next: (data) => { this.usersParticipating = data },
+      error: (err) => { console.log(err); }
+    })
+  }
+
+
+  userParticipate(idEvent: bigint) {
+    this.http.get('userevent/participate/' + this.authService.getUserConnect().idUser + '/' + idEvent).subscribe({
+      next: (data) => { this.dummy = data },
+      error: (err) => { console.log(err); }
+    })
+    if (this.dummy == true) {
+      this.userParticipateEvent = true;
+    } else {
+      this.userParticipateEvent = false;
+    }
+    console.log(this.userParticipateEvent);
+    console.log('coucou')
   }
 }
