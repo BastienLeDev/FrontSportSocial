@@ -54,10 +54,11 @@ export class EventComponent implements OnInit {
   }
 
   addEventToUser(idEvent: bigint) {
-    this.http.post('http://localhost:8300/event/participer/' + this.authService.getUserConnect().idUser + '/' + idEvent, null).subscribe({
+    this.http.patch('http://localhost:8300/event/participer/' + this.authService.getUserConnect().idUser + '/' + idEvent, null).subscribe({
       next: (data) => { this.ngOnInit },
       error: (err) => { console.log(err) },
     });
+    window.location.reload();
     //this.userParticipate(idEvent);
   }
 

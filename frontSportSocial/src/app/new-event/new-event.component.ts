@@ -17,14 +17,17 @@ export class NewEventComponent implements OnInit {
   ) { }
 
   sports: any;
+  eventCree: any;
 
   ngOnInit(): void {
     this.listSport();
   }
 
   createEvent(val: any) {
-    console.log(val)
     this.http.post('http://localhost:8300/event/create/' + this.authService.getUserConnect().idUser, val).subscribe({
+      next: (data) => {
+        this.addEventToUser(val.idEvent);
+      },
       error: (err) => { console.log(err) },
     });
     window.location.reload();
@@ -39,6 +42,14 @@ export class NewEventComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  addEventToUser(idEvent: bigint) {
+    this.http.patch('http://localhost:8300/event/participer/' + this.authService.getUserConnect().idUser + '/' + idEvent, null).subscribe({
+      next: (data) => { this.ngOnInit },
+      error: (err) => { console.log(err) },
+    });
+    window.location.reload();
   }
 
 
