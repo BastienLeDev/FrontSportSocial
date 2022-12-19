@@ -58,6 +58,8 @@ export class ShopComponent implements OnInit {
   coachs: any;
   avatars: any;
   transaction: any;
+  transactio: any;
+
 
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router) { }
@@ -65,6 +67,7 @@ export class ShopComponent implements OnInit {
   ngOnInit(): void {
     this.listCoachs()
     this.listAvatars()
+    this.achatProduit(47)
 
   }
 
@@ -116,13 +119,22 @@ export class ShopComponent implements OnInit {
   }
 
   achatToken(val: any) {
-    this.http.get('http://localhost:8300/boutique/achat/' + this.authService.getUserConnect().idUser + '/' + val).subscribe({
+    this.http.get('http://localhost:8300/boutique/achatToken/' + this.authService.getUserConnect().idUser + '/' + val).subscribe({
       next: (data) => {
         this.transaction = data
       },
       error: (err) => { console.log(err); }
     })
 
+  }
+
+  achatProduit(val: any) {
+    this.http.get(`http://localhost:8300/boutique/achat/${this.authService.getUserConnect().idUser}/${val}`).subscribe({
+      next: (data) => {
+        this.transactio = data
+      },
+      error: (err) => { console.log(err); }
+    })
   }
 
 }

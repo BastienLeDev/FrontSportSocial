@@ -27,7 +27,9 @@ export class FriendComponent implements OnInit {
   name: any;
   mess: any;
   login: any;
+  login2: any;
   jeViensDetreSelectionne: any;
+  idfriend : any;
 
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog) { }
@@ -124,6 +126,20 @@ export class FriendComponent implements OnInit {
 
   }
 
+  getLogin2(val: any) {
+    this.login2 = val;
+    this.http.post('http://localhost:8300/select/' + this.authService.getUserConnect().idUser + '/' + this.login2.idUser,  val).subscribe({
+      next : (data) => {this.idfriend = data, console.log(this.idfriend);} ,
+      
+      error: (err) => { console.log(err); },
+    })
+    this.http.post('http://localhost:8300/friend/refuse/' + this.idfriend.idfriend, val).subscribe({
+
+    })
+
+
+
+  }
 
 
 
