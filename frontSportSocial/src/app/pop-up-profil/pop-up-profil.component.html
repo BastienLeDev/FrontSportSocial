@@ -20,6 +20,11 @@
             <input name="loginUser" [(ngModel)]="authService.getUserConnect().loginUser" type="text"
                 class="form-control">
         </div>
+        <div class="md-form">
+            <label>Etes-vous coach ?</label>
+            <br><br>
+            <mat-slide-toggle name="coachUser" [(ngModel)]="isChecked"></mat-slide-toggle>
+        </div>
         <!--  
         <div class="md-form">
             <label>Rue</label>
