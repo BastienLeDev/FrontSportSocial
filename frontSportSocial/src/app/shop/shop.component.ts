@@ -67,7 +67,7 @@ export class ShopComponent implements OnInit {
   ngOnInit(): void {
     this.listCoachs()
     this.listAvatars()
-    this.achatProduit(47)
+
 
   }
 
