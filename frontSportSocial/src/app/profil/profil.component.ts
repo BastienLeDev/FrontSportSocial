@@ -43,11 +43,15 @@ export class ProfilComponent implements OnInit {
   }
 
   openModifDonneesPersosModal() {
-    const dialogRef = this.dialog.open(PopUpProfilComponent)
+    const dialogRef = this.dialog.open(PopUpProfilComponent, {
+      width: '500px'
+    })
   }
 
   openChangerMdp() {
-    const dialogRef = this.dialog.open(PopUpModifMdpComponent)
+    const dialogRef = this.dialog.open(PopUpModifMdpComponent, {
+      width: '300px'
+    })
   }
 
   goToShop() {

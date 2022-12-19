@@ -24,8 +24,10 @@ export class NewEventComponent implements OnInit {
   }
 
   createEvent(val: any) {
+    console.log('val.idEvent ', val.idEvent);
     this.http.post('http://localhost:8300/event/create/' + this.authService.getUserConnect().idUser, val).subscribe({
       next: (data) => {
+        console.log('idEvent next ', val.idEvent);
         this.addEventToUser(val.idEvent);
       },
       error: (err) => { console.log(err) },
