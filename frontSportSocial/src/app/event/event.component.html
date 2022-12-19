@@ -15,10 +15,11 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="text-center">
-                                                <!--<select class="box" ngModel="" required>
-                                                    <option [ngValue]="s" *ngFor="let s of sports">{{s.nameSport}}
+                                                <select class="box" ngModel="" name="sport" required>
+                                                    <option [value]="s.nameSport" *ngFor="let s of sports">
+                                                        {{s.nameSport}}
                                                     </option>
-                                                </select>-->
+                                                </select>
                                             </div>
 
                                         </div>
@@ -55,6 +56,7 @@
                 <div class="card row">
                     <div class="col-12 p-4">
                         <div class="card p-1 m-3" *ngFor="let e of events">
+
                             <div class="container m-1 p-1">
                                 <div class="row">
                                     <div class="col-3">
@@ -85,13 +87,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-2" *ngIf="!userParticipateEvent">
+                                    <div class="col-2" *ngIf="!verifUser(e)">
                                         <a mat-raised-button (click)="addEventToUser(e.idEvent)">
                                             S'inscrire à l'événement
                                             <mat-icon>add</mat-icon>
                                         </a>
                                     </div>
-                                    <div class="col-2" *ngIf="userParticipateEvent">
+                                    <div class="col-2" *ngIf="verifUser(e)">
                                         <p style="color: black;">Vous êtes inscrit à l'evenement</p>
                                     </div>
                                 </div>

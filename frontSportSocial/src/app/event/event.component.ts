@@ -34,7 +34,10 @@ export class EventComponent implements OnInit {
 
   listEventToCome() {
     this.http.get('http://localhost:8300/event/tocome').subscribe({
-      next: (data) => { this.events = data },
+      next: (data) => {
+        this.events = data;
+        console.log(this.events)
+      },
       error: (err) => { console.log(err); }
     });
   }
@@ -52,10 +55,18 @@ export class EventComponent implements OnInit {
 
   addEventToUser(idEvent: bigint) {
     this.http.post('http://localhost:8300/userevent/ajouter/' + this.authService.getUserConnect().idUser + '/' + idEvent, null).subscribe({
+      next: (data) => { this.ngOnInit },
+      error: (err) => { console.log(err) },
+    });
+    //this.userParticipate(idEvent);
+  }
+
+  removeEventFromUser(idEvent: bigint) {
+    this.http.delete('http://localhost:8300/userevent/delete/' + this.authService.getUserConnect().idUser + '/' + idEvent).subscribe({
       error: (err) => { console.log(err) },
     });
     window.location.reload();
-    //this.userParticipate(idEvent);
+
   }
 
   listFriends() {
@@ -74,18 +85,16 @@ export class EventComponent implements OnInit {
     })
   }
 
+  verifUser(event: any) {
+    let exist = false;
+    event.participants.forEach((p: any) => {
+      if (p.idUser == this.authService.getUserConnect().idUser) {
+        exist = true;
+      }
+    });
 
-  userParticipate(idEvent: bigint) {
-    this.http.get('userevent/participate/' + this.authService.getUserConnect().idUser + '/' + idEvent).subscribe({
-      next: (data) => { this.dummy = data },
-      error: (err) => { console.log(err); }
-    })
-    if (this.dummy == true) {
-      this.userParticipateEvent = true;
-    } else {
-      this.userParticipateEvent = false;
-    }
-    console.log(this.userParticipateEvent);
-    console.log('coucou')
+    return exist;
   }
+
+
 }
