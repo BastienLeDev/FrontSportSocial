@@ -59,7 +59,7 @@ export class ScheduleComponent {
 
 
   listSchedule() {
-    this.http.get('http://localhost:8300/schedule/' + this.authService.getUserConnect().idUser).subscribe({
+    this.http.get('http://localhost:8300/schedule/').subscribe({
       next: (data) => {
         this.schedules = data
       },

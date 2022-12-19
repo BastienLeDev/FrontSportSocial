@@ -17,7 +17,7 @@ export class PopUpScheduleComponent {
   scheduleUser: any;
 
   addSchedule(val: any) {
-    this.http.post('http://localhost:8300/schedule/' + this.authService.getUserConnect().idUser, val).subscribe({
+    this.http.post('http://localhost:8300/schedule/', val).subscribe({
       next: (data) => {
         this.scheduleUser = data;
         console.log(this.scheduleUser);

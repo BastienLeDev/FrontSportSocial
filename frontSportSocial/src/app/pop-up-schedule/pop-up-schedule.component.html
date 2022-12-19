@@ -2,8 +2,12 @@
     <form #scheduleUser="ngForm" (ngSubmit)="addSchedule(scheduleUser.value)">
         <div class="card p-3">
             <div class="md-form">
-                <label>Describe activity</label>
+                <label>Nom de l'activité</label>
                 <input name="nameActivity" ngModel="" type="text" class="form-control">
+            </div>
+            <div class="md-form">
+                <label>Description de l'activité</label>
+                <input name="descActivity" ngModel="" type="text" class="form-control">
             </div>
             <div class="md-form">
                 <label>Début de l'activité</label>
