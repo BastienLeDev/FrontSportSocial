@@ -89,12 +89,15 @@
                                     </div>
                                     <div class="col-2" *ngIf="!verifUser(e)">
                                         <a mat-raised-button (click)="addEventToUser(e.idEvent)">
-                                            S'inscrire à l'événement
+                                            Participer
                                             <mat-icon>add</mat-icon>
                                         </a>
                                     </div>
                                     <div class="col-2" *ngIf="verifUser(e)">
-                                        <p style="color: black;">Vous êtes inscrit à l'evenement</p>
+                                        <a mat-raised-button (click)="removeUserFromEvent(e.idEvent)">
+                                            Se désister
+                                            <mat-icon>remove</mat-icon>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

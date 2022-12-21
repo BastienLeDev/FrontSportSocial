@@ -62,8 +62,9 @@ export class EventComponent implements OnInit {
     //this.userParticipate(idEvent);
   }
 
-  removeEventFromUser(idEvent: bigint) {
-    this.http.delete('http://localhost:8300/userevent/delete/' + this.authService.getUserConnect().idUser + '/' + idEvent).subscribe({
+  removeUserFromEvent(idEvent: bigint) {
+    this.http.patch('http://localhost:8300/event/desister/' + this.authService.getUserConnect().idUser + '/' + idEvent, null).subscribe({
+      next: (data) => { this.ngOnInit },
       error: (err) => { console.log(err) },
     });
     window.location.reload();
