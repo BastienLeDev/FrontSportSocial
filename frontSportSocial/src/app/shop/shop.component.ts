@@ -57,6 +57,7 @@ export class ShopComponent implements OnInit {
 
   coachs: any;
   avatars: any;
+  msgErr = '';
   transaction: any;
   transactio: any;
 
@@ -132,6 +133,11 @@ export class ShopComponent implements OnInit {
     this.http.get(`http://localhost:8300/boutique/achat/${this.authService.getUserConnect().idUser}/${val}`).subscribe({
       next: (data) => {
         this.transactio = data
+        if (this.transactio.validation = true){
+        this.msgErr  = "La transaction est bien effectuée"
+      }else{
+        this.msgErr = "Transaction refusée"
+      }
       },
       error: (err) => { console.log(err); }
     })

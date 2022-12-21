@@ -29,7 +29,7 @@ export class FriendComponent implements OnInit {
   login: any;
   login2: any;
   jeViensDetreSelectionne: any;
-  idfriend : any;
+  ami : any;
 
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog) { }
@@ -128,19 +128,33 @@ export class FriendComponent implements OnInit {
 
   getLogin2(val: any) {
     this.login2 = val;
-    this.http.post('http://localhost:8300/select/' + this.authService.getUserConnect().idUser + '/' + this.login2.idUser,  val).subscribe({
-      next : (data) => {this.idfriend = data, console.log(this.idfriend);} ,
-      
+    this.http.get('http://localhost:8300/select/' + this.authService.getUserConnect().idUser + '/' + this.login2.idUser,  val).subscribe({
+      next : (data) => {
+        this.ami = data;
+        console.log(this.ami);
+        this.http.delete('http://localhost:8300/friend/refuse/' + this.ami.idFriend, val).subscribe({
+
+  })} ,
       error: (err) => { console.log(err); },
+      
     })
-    this.http.post('http://localhost:8300/friend/refuse/' + this.idfriend.idfriend, val).subscribe({
-
-    })
-
-
 
   }
+  getLogin3(val: any) {
+    this.login2 = val;
+    this.http.get('http://localhost:8300/select/' + this.authService.getUserConnect().idUser + '/' + this.login2.idUser,  val).subscribe({
+      next : (data) => {
+        this.ami = data;
+        this.ami.accept=true;
+        console.log(this.ami);
+        this.http.patch('http://localhost:8300/friend/accept/' + this.ami.idFriend, this.ami).subscribe({
 
+  })} ,
+      error: (err) => { console.log(err); },
+      
+    })
+
+  }
 
 
 }
