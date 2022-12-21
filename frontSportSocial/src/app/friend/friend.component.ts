@@ -138,12 +138,23 @@ export class FriendComponent implements OnInit {
       error: (err) => { console.log(err); },
       
     })
-    
-    
-
 
   }
+  getLogin3(val: any) {
+    this.login2 = val;
+    this.http.get('http://localhost:8300/select/' + this.authService.getUserConnect().idUser + '/' + this.login2.idUser,  val).subscribe({
+      next : (data) => {
+        this.ami = data;
+        this.ami.accept=true;
+        console.log(this.ami);
+        this.http.patch('http://localhost:8300/friend/accept/' + this.ami.idFriend, this.ami).subscribe({
 
+  })} ,
+      error: (err) => { console.log(err); },
+      
+    })
+
+  }
 
 
 }
