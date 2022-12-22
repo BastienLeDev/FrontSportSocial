@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { isThisWeek } from 'date-fns';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -18,17 +19,15 @@ export class FriendComponent implements OnInit {
   sendmessages: any;
   sendmessagesasc: any;
   receivedmessagesasc: any;
-  id: any;
   visibleMessage = false;
-  friend: any;
   notfriends: any;
   friends: any;
-  selectedFriend: any;
+  frienship : any;
   name: any;
   mess: any;
   login: any;
   login2: any;
-  jeViensDetreSelectionne: any;
+  login3: any;
   ami: any;
   user: any;
 
@@ -38,7 +37,7 @@ export class FriendComponent implements OnInit {
   ngOnInit(): void {
     this.listSendMessages();
     this.listFriends();
-    this.listUser();
+    this.listNonFriend();
     this.listNotFriends();
     if (this.login != null) {
       this.listSendAndReceivedMessagesAsc();
@@ -70,24 +69,12 @@ export class FriendComponent implements OnInit {
     }
   }
 
-  listUser() {
-    this.http.get('http://localhost:8300/user').subscribe({
+  listNonFriend() {
+    this.http.get('http://localhost:8300/nonfriend/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.user = data
-        console.log(this.user);
       },
       error: (err) => { console.log(err) }
-    })
-  }
-
-  addFriend(val: any) {
-    this.http.post('http://localhost:8300/friend', val).subscribe({
-      next: (data) => {
-        this.friend = data;
-        console.log(this.friend);
-      },
-      error: (err) => { console.log(err) },
-
     })
   }
 
@@ -136,14 +123,15 @@ export class FriendComponent implements OnInit {
 
   }
 
-  getLogin2(val: any) {
+  deleteFrienship(val: any) {
     this.login2 = val;
     this.http.get('http://localhost:8300/select/' + this.authService.getUserConnect().idUser + '/' + this.login2.idUser, val).subscribe({
       next: (data) => {
         this.ami = data;
         console.log(this.ami);
         this.http.delete('http://localhost:8300/friend/refuse/' + this.ami.idFriend, val).subscribe({
-
+          next: (data) => { this.ngOnInit();
+          },
         })
       },
       error: (err) => { console.log(err); },
@@ -151,7 +139,7 @@ export class FriendComponent implements OnInit {
     })
 
   }
-  getLogin3(val: any) {
+  acceptFrienship(val: any) {
     this.login2 = val;
     this.http.get('http://localhost:8300/select/' + this.authService.getUserConnect().idUser + '/' + this.login2.idUser, val).subscribe({
       next: (data) => {
@@ -159,7 +147,8 @@ export class FriendComponent implements OnInit {
         this.ami.accept = true;
         console.log(this.ami);
         this.http.patch('http://localhost:8300/friend/accept/' + this.ami.idFriend, this.ami).subscribe({
-
+          next: (data) => { this.ngOnInit();
+          },
         })
       },
       error: (err) => { console.log(err); },
@@ -167,6 +156,32 @@ export class FriendComponent implements OnInit {
     })
 
   }
+
+
+
+  addFriend(val : any) {
+    this.login3 = val
+    this.http.get('http://localhost:8300/nonfriend/' + this.authService.getUserConnect().idUser, val).subscribe({
+      next: (data) => {
+        /* this.frienship = data;
+        console.log(this.frienship)
+        this.frienship.idReceiver = this.login3.idUser;
+        console.log(this.frienship);
+        console.log(this.login3.idUser); */
+      this.http.post('http://localhost:8300/friend/' + this.authService.getUserConnect().idUser, val).subscribe ({
+      next : (data) => { 
+        
+        this.ngOnInit();
+      },
+      error: (err) => {console.log(err)}
+      })
+
+  }
+})
+
+}
+
+
 
 
 }

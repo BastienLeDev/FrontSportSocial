@@ -136,8 +136,8 @@
 
                                     <div class="row">
                                         <div class="col-12">
-                                            <button id="btnadd" (click)="getLogin3(nf)" type="submit"
-                                                class="btn btnPrincipal btn-block " style="font-size: 60%;"> Ajouter <i
+                                            <button id="btnadd" (click)="acceptFrienship(nf)" type="submit"
+                                                class="btn btnPrincipal btn-block " style="font-size: 60%;"> Accepter <i
                                                     class="fas fa-check" style="color: rgb(0, 0, 0);"></i>
                                             </button>
                                         </div>
@@ -146,7 +146,7 @@
                                     <div class="row">
 
                                         <div class="col-12">
-                                            <button (click)="getLogin2(nf)" id="btnsup" type="submit"
+                                            <button (click)="deleteFrienship(nf)" id="btnsup" type="submit"
                                                 class="btn btn-danger btn-block btn-sm " style="font-size: 50%;">
                                                 Supprimer <i class="fas fa-trash"
                                                     style="color: rgb(255, 255, 255);"></i>
@@ -178,7 +178,7 @@
                     <!--Search bar : centrée, avec bouton "search" à droite-->
                     <div class="container">
                         <div id="content">
-                            <form #infosFriend="ngForm" (ngSubmit)="addFriend(infosFriend.value)">
+                            <form #infosFriend="ngForm" >
                                 <div class="input-group">
                                     <input type='text' id='search' class="form-control search-form"
                                         placeholder="Rechercher...">
@@ -231,7 +231,7 @@
 
                                     <div class="row">
                                         <div class="col-12">
-                                            <button id="btnadd" type="submit" class="btn btnPrincipal btn-block "
+                                            <button id="btnadd" (click)="addFriend(u)" type="submit" class="btn btnPrincipal btn-block "
                                                 style="font-size: 60%;"> Ajouter <i class="fas fa-check"
                                                     style="color: rgb(0, 0, 0);"></i>
                                             </button>
