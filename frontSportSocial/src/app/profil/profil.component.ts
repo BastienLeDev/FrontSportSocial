@@ -16,6 +16,7 @@ import { HttpClient } from '@angular/common/http';
 export class ProfilComponent implements OnInit {
 
   activite: any;
+  userInfo: any;
   userToken: any;
   visibleMemos = true;
   constructor(public authService: AuthService, private route: Router, private dialog: MatDialog, private http: HttpClient) { }
@@ -24,6 +25,7 @@ export class ProfilComponent implements OnInit {
     if (!this.authService.isConnected()) {
       this.route.navigateByUrl('connexion')
     }
+    this.infoUser()
     this.listActivite();
     this.getToken();
   }
@@ -79,4 +81,13 @@ export class ProfilComponent implements OnInit {
     });
   }
 
+  infoUser() {
+    this.http.get('http://localhost:8300/user/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => {
+        this.userInfo = data;
+        console.log(this.userInfo)
+      },
+      error: (err) => { console.log(err); }
+    });
+  }
 }

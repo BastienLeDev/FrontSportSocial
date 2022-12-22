@@ -136,9 +136,9 @@
 
                                     <div class="row">
                                         <div class="col-12">
-                                            <button id="btnadd" (click)="getLogin3(nf)" type="submit" class="btn btnPrincipal btn-block "
-                                                style="font-size: 60%;"> Ajouter <i class="fas fa-check"
-                                                    style="color: rgb(0, 0, 0);"></i>
+                                            <button id="btnadd" (click)="getLogin3(nf)" type="submit"
+                                                class="btn btnPrincipal btn-block " style="font-size: 60%;"> Ajouter <i
+                                                    class="fas fa-check" style="color: rgb(0, 0, 0);"></i>
                                             </button>
                                         </div>
 
@@ -146,8 +146,9 @@
                                     <div class="row">
 
                                         <div class="col-12">
-                                            <button  (click)="getLogin2(nf)" id="btnsup" type="submit" class="btn btn-danger btn-block btn-sm "
-                                                style="font-size: 50%;"> Supprimer <i class="fas fa-trash"
+                                            <button (click)="getLogin2(nf)" id="btnsup" type="submit"
+                                                class="btn btn-danger btn-block btn-sm " style="font-size: 50%;">
+                                                Supprimer <i class="fas fa-trash"
                                                     style="color: rgb(255, 255, 255);"></i>
                                             </button>
                                         </div>
@@ -211,7 +212,8 @@
 
 
                     <!-- card demande d'un ami-->
-                    <div class="card p-1 m-1">
+
+                    <div *ngFor="let u of user" class="card p-1 m-1">
 
                         <div class="container">
 
@@ -225,7 +227,7 @@
                                 <!-- nom user -->
 
                                 <div class="col-6">
-                                    <b id="add_friend_username"> User name</b>
+                                    <b id="add_friend_username">{{u.loginUser}}</b>
 
                                     <div class="row">
                                         <div class="col-12">
@@ -241,8 +243,9 @@
 
                             </div>
 
-                        </div>
 
+
+                        </div>
                     </div>
                 </div>
 

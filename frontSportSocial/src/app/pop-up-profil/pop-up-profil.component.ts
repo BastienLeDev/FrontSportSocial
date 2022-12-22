@@ -49,8 +49,9 @@ export class PopUpProfilComponent {
 
 
 
-  goToProfil() {
-    this.dialog.closeAll()
+  goToProfile() {
+    this.dialog.closeAll();
+    history.go(-1);
   }
 
 

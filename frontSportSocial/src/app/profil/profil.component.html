@@ -8,12 +8,12 @@
 
                 <div class="md-form">
                     <div class="p-3">
-                        <p>Nom : {{authService.getUserConnect().firstNameUser}} </p>
-                        <p>Prénom : {{authService.getUserConnect().lastNameUser}}</p>
-                        <p>Date de naissance: {{authService.getUserConnect().birthDateUser}}</p>
-                        <p>Pseudo : {{authService.getUserConnect().loginUser}}</p>
-                        <p *ngIf="authService.getUserConnect().coachUser == true">Coach : Oui</p>
-                        <p *ngIf="authService.getUserConnect().coachUser != true">Coach : Non</p>
+                        <p>Nom : {{userInfo.firstNameUser}} </p>
+                        <p>Prénom : {{userInfo.lastNameUser}}</p>
+                        <p>Date de naissance: {{userInfo.birthDateUser}}</p>
+                        <p>Pseudo : {{userInfo.loginUser}}</p>
+                        <p *ngIf="userInfo.coachUser == true">Coach : Oui</p>
+                        <p *ngIf="userInfo.coachUser != true">Coach : Non</p>
                         <p *ngIf="authService.getUserConnect().addressUser != null">Adresse :
                             {{authService.getUserConnect().addressUser.streetAddress}}</p>
                         <p>{{authService.getUserConnect().addressUser.zipCodeAddress}}

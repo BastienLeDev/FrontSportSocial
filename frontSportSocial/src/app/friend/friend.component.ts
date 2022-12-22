@@ -29,7 +29,8 @@ export class FriendComponent implements OnInit {
   login: any;
   login2: any;
   jeViensDetreSelectionne: any;
-  ami : any;
+  ami: any;
+  user: any;
 
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog) { }
@@ -37,6 +38,7 @@ export class FriendComponent implements OnInit {
   ngOnInit(): void {
     this.listSendMessages();
     this.listFriends();
+    this.listUser();
     this.listNotFriends();
     if (this.login != null) {
       this.listSendAndReceivedMessagesAsc();
@@ -68,7 +70,15 @@ export class FriendComponent implements OnInit {
     }
   }
 
-
+  listUser() {
+    this.http.get('http://localhost:8300/user').subscribe({
+      next: (data) => {
+        this.user = data
+        console.log(this.user);
+      },
+      error: (err) => { console.log(err) }
+    })
+  }
 
   addFriend(val: any) {
     this.http.post('http://localhost:8300/friend', val).subscribe({
@@ -128,34 +138,37 @@ export class FriendComponent implements OnInit {
 
   getLogin2(val: any) {
     this.login2 = val;
-    this.http.get('http://localhost:8300/select/' + this.authService.getUserConnect().idUser + '/' + this.login2.idUser,  val).subscribe({
-      next : (data) => {
+    this.http.get('http://localhost:8300/select/' + this.authService.getUserConnect().idUser + '/' + this.login2.idUser, val).subscribe({
+      next: (data) => {
         this.ami = data;
         console.log(this.ami);
         this.http.delete('http://localhost:8300/friend/refuse/' + this.ami.idFriend, val).subscribe({
 
-  })} ,
+        })
+      },
       error: (err) => { console.log(err); },
-      
+
     })
 
   }
   getLogin3(val: any) {
     this.login2 = val;
-    this.http.get('http://localhost:8300/select/' + this.authService.getUserConnect().idUser + '/' + this.login2.idUser,  val).subscribe({
-      next : (data) => {
+    this.http.get('http://localhost:8300/select/' + this.authService.getUserConnect().idUser + '/' + this.login2.idUser, val).subscribe({
+      next: (data) => {
         this.ami = data;
-        this.ami.accept=true;
+        this.ami.accept = true;
         console.log(this.ami);
         this.http.patch('http://localhost:8300/friend/accept/' + this.ami.idFriend, this.ami).subscribe({
 
-  })} ,
+        })
+      },
       error: (err) => { console.log(err); },
-      
+
     })
 
   }
 
 
 }
+
 
