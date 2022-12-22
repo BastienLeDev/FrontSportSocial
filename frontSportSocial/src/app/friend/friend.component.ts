@@ -18,17 +18,13 @@ export class FriendComponent implements OnInit {
   sendmessages: any;
   sendmessagesasc: any;
   receivedmessagesasc: any;
-  id: any;
   visibleMessage = false;
-  friend: any;
   notfriends: any;
   friends: any;
-  selectedFriend: any;
   name: any;
   mess: any;
   login: any;
   login2: any;
-  jeViensDetreSelectionne: any;
   ami: any;
   user: any;
 
@@ -77,17 +73,6 @@ export class FriendComponent implements OnInit {
         console.log(this.user);
       },
       error: (err) => { console.log(err) }
-    })
-  }
-
-  addFriend(val: any) {
-    this.http.post('http://localhost:8300/friend', val).subscribe({
-      next: (data) => {
-        this.friend = data;
-        console.log(this.friend);
-      },
-      error: (err) => { console.log(err) },
-
     })
   }
 
