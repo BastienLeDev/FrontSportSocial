@@ -22,7 +22,7 @@ export class FriendComponent implements OnInit {
   visibleMessage = false;
   notfriends: any;
   friends: any;
-  frienship : any;
+  frienship: any;
   name: any;
   mess: any;
   login: any;
@@ -130,7 +130,8 @@ export class FriendComponent implements OnInit {
         this.ami = data;
         console.log(this.ami);
         this.http.delete('http://localhost:8300/friend/refuse/' + this.ami.idFriend, val).subscribe({
-          next: (data) => { this.ngOnInit();
+          next: (data) => {
+            this.ngOnInit();
           },
         })
       },
@@ -147,7 +148,8 @@ export class FriendComponent implements OnInit {
         this.ami.accept = true;
         console.log(this.ami);
         this.http.patch('http://localhost:8300/friend/accept/' + this.ami.idFriend, this.ami).subscribe({
-          next: (data) => { this.ngOnInit();
+          next: (data) => {
+            this.ngOnInit();
           },
         })
       },
@@ -159,27 +161,15 @@ export class FriendComponent implements OnInit {
 
 
 
-  addFriend(val : any) {
+  addFriend(val: any) {
     this.login3 = val
-    this.http.get('http://localhost:8300/nonfriend/' + this.authService.getUserConnect().idUser, val).subscribe({
+    this.http.post('http://localhost:8300/friend/' + this.authService.getUserConnect().idUser, this.login3).subscribe({
       next: (data) => {
-        /* this.frienship = data;
-        console.log(this.frienship)
-        this.frienship.idReceiver = this.login3.idUser;
-        console.log(this.frienship);
-        console.log(this.login3.idUser); */
-      this.http.post('http://localhost:8300/friend/' + this.authService.getUserConnect().idUser, val).subscribe ({
-      next : (data) => { 
-        
-        this.ngOnInit();
-      },
-      error: (err) => {console.log(err)}
-      })
+        console.log(this.login3)
+      }
+    })
 
   }
-})
-
-}
 
 
 
