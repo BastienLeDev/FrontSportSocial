@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NewEventComponent } from '../new-event/new-event.component';
@@ -21,7 +21,7 @@ export class EventComponent implements OnInit {
   dummy: any;
   userParticipateEvent = false;
 
-  constructor(private http: HttpClient, private route: Router, private dialog: MatDialog, public authService: AuthService) { }
+  constructor(private http: HttpClient, private route: Router, private dialog: MatDialog, public authService: AuthService, private cd : ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.listEventToCome();
@@ -55,18 +55,19 @@ export class EventComponent implements OnInit {
 
   addEventToUser(idEvent: bigint) {
     this.http.patch('http://localhost:8300/event/participer/' + this.authService.getUserConnect().idUser + '/' + idEvent, null).subscribe({
-      next: (data) => { this.ngOnInit },
+      next: (data) => { this.ngOnInit();
+      },
       error: (err) => { console.log(err) },
     });
-    window.location.reload();
-    //this.userParticipate(idEvent);
+
   }
 
-  removeEventFromUser(idEvent: bigint) {
-    this.http.delete('http://localhost:8300/userevent/delete/' + this.authService.getUserConnect().idUser + '/' + idEvent).subscribe({
+  removeUserFromEvent(idEvent: bigint) {
+    this.http.patch('http://localhost:8300/event/desister/' + this.authService.getUserConnect().idUser + '/' + idEvent, null).subscribe({
+      next: (data) => { this.ngOnInit();
+       },
       error: (err) => { console.log(err) },
     });
-    window.location.reload();
 
   }
 
