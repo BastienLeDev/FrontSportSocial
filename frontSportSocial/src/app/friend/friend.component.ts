@@ -27,6 +27,7 @@ export class FriendComponent implements OnInit {
   mess: any;
   login: any;
   login2: any;
+  login3: any;
   ami: any;
   user: any;
 
@@ -36,7 +37,7 @@ export class FriendComponent implements OnInit {
   ngOnInit(): void {
     this.listSendMessages();
     this.listFriends();
-    this.listUserExceptConnected();
+    this.listNonFriend();
     this.listNotFriends();
     if (this.login != null) {
       this.listSendAndReceivedMessagesAsc();
@@ -68,7 +69,7 @@ export class FriendComponent implements OnInit {
     }
   }
 
-  listUserExceptConnected() {
+  listNonFriend() {
     this.http.get('http://localhost:8300/nonfriend/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.user = data
@@ -156,22 +157,31 @@ export class FriendComponent implements OnInit {
 
   }
 
-  /*
+
 
   addFriend(val : any) {
-    this.http.post('http://localhost:8300/friend/' + this.authService.getUserConnect().idUser, val).subscribe ({
-    next : (data) => { 
-      this.frienship = data;
-      this.frienship.accept = false;
-      this.frienship.receiver = this.user.idUser;
-      console.log(this.frienship);
-      this.ngOnInit();
-    },
-    error: (err) => {console.log(err)}
-    })
+    this.login3 = val
+    this.http.get('http://localhost:8300/nonfriend/' + this.authService.getUserConnect().idUser, val).subscribe({
+      next: (data) => {
+        /* this.frienship = data;
+        console.log(this.frienship)
+        this.frienship.idReceiver = this.login3.idUser;
+        console.log(this.frienship);
+        console.log(this.login3.idUser); */
+      this.http.post('http://localhost:8300/friend/' + this.authService.getUserConnect().idUser, val).subscribe ({
+      next : (data) => { 
+        
+        this.ngOnInit();
+      },
+      error: (err) => {console.log(err)}
+      })
 
   }
-*/
+})
+
+}
+
+
 
 
 }
