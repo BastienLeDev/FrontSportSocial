@@ -128,7 +128,8 @@ export class FriendComponent implements OnInit {
         this.ami = data;
         console.log(this.ami);
         this.http.delete('http://localhost:8300/friend/refuse/' + this.ami.idFriend, val).subscribe({
-
+          next: (data) => { this.ngOnInit();
+          },
         })
       },
       error: (err) => { console.log(err); },
@@ -144,7 +145,8 @@ export class FriendComponent implements OnInit {
         this.ami.accept = true;
         console.log(this.ami);
         this.http.patch('http://localhost:8300/friend/accept/' + this.ami.idFriend, this.ami).subscribe({
-
+          next: (data) => { this.ngOnInit();
+          },
         })
       },
       error: (err) => { console.log(err); },
