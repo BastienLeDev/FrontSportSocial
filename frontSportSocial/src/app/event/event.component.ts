@@ -1,9 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NewEventComponent } from '../new-event/new-event.component';
 import { AuthService } from '../services/auth.service';
+
+
+
+
 
 @Component({
   selector: 'app-event',
@@ -51,7 +55,13 @@ export class EventComponent implements OnInit {
 
   openNewEventModal() {
     const dialogRef = this.dialog.open(NewEventComponent);
-    this.ngOnInit();
+    const sub = dialogRef.componentInstance.saved.subscribe(() => {
+
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit(); //pour reload les cards event => affiche le nouvel event sans reload page
+    });
+
   }
 
   addEventToUser(idEvent: bigint) {

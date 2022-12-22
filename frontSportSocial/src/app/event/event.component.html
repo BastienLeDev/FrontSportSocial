@@ -15,11 +15,17 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="text-center">
-                                                <select class="box" ngModel="" name="sport" required>
-                                                    <option [value]="s.nameSport" *ngFor="let s of sports">
-                                                        {{s.nameSport}}
-                                                    </option>
-                                                </select>
+                                                <mat-form-field>
+                                                    <mat-label>
+                                                        Sport :
+                                                    </mat-label>
+                                                    <mat-select class="" name="sportEvent" ngModel="">
+                                                        <mat-option>-Effacer la selection-</mat-option>
+                                                        <mat-option [value]="s" *ngFor="let s of sports">
+                                                            {{s.nameSport}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
                                             </div>
 
                                         </div>
@@ -53,7 +59,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card row">
+                <div class="card row event window">
                     <div class="col-12 p-4">
                         <div class="card p-1 m-3" *ngFor="let e of events">
 

@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../services/auth.service';
-import { EventComponent } from '../event/event.component';
 
 @Component({
   selector: 'app-new-event',
   templateUrl: './new-event.component.html',
   styleUrls: ['./new-event.component.css']
 })
+
 export class NewEventComponent implements OnInit {
 
   constructor(private http: HttpClient, private route: Router,
@@ -18,6 +18,8 @@ export class NewEventComponent implements OnInit {
   ) { }
 
   sports: any;
+  saved: EventEmitter<any> = new EventEmitter();
+
 
   ngOnInit(): void {
     this.listSport();
@@ -26,7 +28,6 @@ export class NewEventComponent implements OnInit {
   createEvent(val: any) {
     this.http.post('http://localhost:8300/event/create/' + this.authService.getUserConnect().idUser, val).subscribe({
       next: (data) => {
-        this.ngOnInit();
       },
       error: (err) => { console.log(err) },
     });
@@ -41,6 +42,7 @@ export class NewEventComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
+    this.saved.emit('To_call_parent_ngOnInit');
   }
 
   addEventToUser(idEvent: bigint) {
@@ -48,7 +50,6 @@ export class NewEventComponent implements OnInit {
       next: (data) => { this.ngOnInit },
       error: (err) => { console.log(err) },
     });
-    window.location.reload();
   }
 
 
