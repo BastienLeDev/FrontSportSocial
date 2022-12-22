@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { isThisWeek } from 'date-fns';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -21,6 +22,7 @@ export class FriendComponent implements OnInit {
   visibleMessage = false;
   notfriends: any;
   friends: any;
+  frienship : any;
   name: any;
   mess: any;
   login: any;
@@ -67,10 +69,9 @@ export class FriendComponent implements OnInit {
   }
 
   listUserExceptConnected() {
-    this.http.get('http://localhost:8300/user/exceptconnected/' + this.authService.getUserConnect().idUser).subscribe({
+    this.http.get('http://localhost:8300/nonfriend/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.user = data
-        console.log(this.user);
       },
       error: (err) => { console.log(err) }
     })
@@ -154,6 +155,23 @@ export class FriendComponent implements OnInit {
     })
 
   }
+
+  /*
+
+  addFriend(val : any) {
+    this.http.post('http://localhost:8300/friend/' + this.authService.getUserConnect().idUser, val).subscribe ({
+    next : (data) => { 
+      this.frienship = data;
+      this.frienship.accept = false;
+      this.frienship.receiver = this.user.idUser;
+      console.log(this.frienship);
+      this.ngOnInit();
+    },
+    error: (err) => {console.log(err)}
+    })
+
+  }
+*/
 
 
 }
