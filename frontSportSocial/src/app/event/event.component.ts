@@ -59,7 +59,7 @@ export class EventComponent implements OnInit {
 
   openNewEventModal() {
     const dialogRef = this.dialog.open(NewEventComponent);
-    dialogRef.afterClosed().subscribe(() => {
+    dialogRef.afterClosed().subscribe(() => { //Pour lancer des fonctions lorsqu'on ferme le popup
       this.ngOnInit(); //pour reload les cards event => affiche le nouvel event sans reload page
     });
 
