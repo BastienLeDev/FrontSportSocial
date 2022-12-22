@@ -21,7 +21,7 @@ export class EventComponent implements OnInit {
   dummy: any;
   userParticipateEvent = false;
 
-  constructor(private http: HttpClient, private route: Router, private dialog: MatDialog, public authService: AuthService, private cd : ChangeDetectorRef) { }
+  constructor(private http: HttpClient, private route: Router, private dialog: MatDialog, public authService: AuthService, private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.listEventToCome();
@@ -51,11 +51,13 @@ export class EventComponent implements OnInit {
 
   openNewEventModal() {
     const dialogRef = this.dialog.open(NewEventComponent);
+    this.ngOnInit();
   }
 
   addEventToUser(idEvent: bigint) {
     this.http.patch('http://localhost:8300/event/participer/' + this.authService.getUserConnect().idUser + '/' + idEvent, null).subscribe({
-      next: (data) => { this.ngOnInit();
+      next: (data) => {
+        this.ngOnInit();
       },
       error: (err) => { console.log(err) },
     });
@@ -64,8 +66,9 @@ export class EventComponent implements OnInit {
 
   removeUserFromEvent(idEvent: bigint) {
     this.http.patch('http://localhost:8300/event/desister/' + this.authService.getUserConnect().idUser + '/' + idEvent, null).subscribe({
-      next: (data) => { this.ngOnInit();
-       },
+      next: (data) => {
+        this.ngOnInit();
+      },
       error: (err) => { console.log(err) },
     });
 

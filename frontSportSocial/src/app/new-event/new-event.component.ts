@@ -3,6 +3,7 @@ import { Component, OnInit, } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../services/auth.service';
+import { EventComponent } from '../event/event.component';
 
 @Component({
   selector: 'app-new-event',
@@ -13,26 +14,22 @@ export class NewEventComponent implements OnInit {
 
   constructor(private http: HttpClient, private route: Router,
     public dialogRef: MatDialogRef<NewEventComponent>,
-    public authService: AuthService
+    public authService: AuthService,
   ) { }
 
   sports: any;
-  eventCree: any;
 
   ngOnInit(): void {
     this.listSport();
   }
 
   createEvent(val: any) {
-    console.log('val.idEvent ', val.idEvent);
     this.http.post('http://localhost:8300/event/create/' + this.authService.getUserConnect().idUser, val).subscribe({
       next: (data) => {
-        console.log('idEvent next ', val.idEvent);
-        this.addEventToUser(val.idEvent);
+        this.ngOnInit();
       },
       error: (err) => { console.log(err) },
     });
-    window.location.reload();
   }
 
   listSport() {
