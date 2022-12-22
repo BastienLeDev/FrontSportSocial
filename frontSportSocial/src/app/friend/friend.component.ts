@@ -136,7 +136,7 @@ export class FriendComponent implements OnInit {
 
   }
 
-  getLogin2(val: any) {
+  deleteFrienship(val: any) {
     this.login2 = val;
     this.http.get('http://localhost:8300/select/' + this.authService.getUserConnect().idUser + '/' + this.login2.idUser, val).subscribe({
       next: (data) => {
@@ -151,7 +151,7 @@ export class FriendComponent implements OnInit {
     })
 
   }
-  getLogin3(val: any) {
+  acceptFrienship(val: any) {
     this.login2 = val;
     this.http.get('http://localhost:8300/select/' + this.authService.getUserConnect().idUser + '/' + this.login2.idUser, val).subscribe({
       next: (data) => {
