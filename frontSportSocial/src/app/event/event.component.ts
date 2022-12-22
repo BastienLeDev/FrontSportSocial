@@ -25,7 +25,11 @@ export class EventComponent implements OnInit {
   dummy: any;
   userParticipateEvent = false;
 
-  constructor(private http: HttpClient, private route: Router, private dialog: MatDialog, public authService: AuthService, private cd: ChangeDetectorRef) { }
+  constructor(private http: HttpClient,
+    private route: Router,
+    private dialog: MatDialog,
+    public authService: AuthService,
+    private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.listEventToCome();
@@ -55,9 +59,6 @@ export class EventComponent implements OnInit {
 
   openNewEventModal() {
     const dialogRef = this.dialog.open(NewEventComponent);
-    const sub = dialogRef.componentInstance.saved.subscribe(() => {
-
-    });
     dialogRef.afterClosed().subscribe(() => {
       this.ngOnInit(); //pour reload les cards event => affiche le nouvel event sans reload page
     });

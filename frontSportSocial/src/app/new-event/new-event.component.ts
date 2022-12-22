@@ -18,7 +18,6 @@ export class NewEventComponent implements OnInit {
   ) { }
 
   sports: any;
-  saved: EventEmitter<any> = new EventEmitter();
 
 
   ngOnInit(): void {
@@ -42,7 +41,6 @@ export class NewEventComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
-    this.saved.emit('To_call_parent_ngOnInit');
   }
 
   addEventToUser(idEvent: bigint) {
