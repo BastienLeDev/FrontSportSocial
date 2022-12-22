@@ -34,7 +34,7 @@ export class FriendComponent implements OnInit {
   ngOnInit(): void {
     this.listSendMessages();
     this.listFriends();
-    this.listUser();
+    this.listUserExceptConnected();
     this.listNotFriends();
     if (this.login != null) {
       this.listSendAndReceivedMessagesAsc();
@@ -66,8 +66,8 @@ export class FriendComponent implements OnInit {
     }
   }
 
-  listUser() {
-    this.http.get('http://localhost:8300/user').subscribe({
+  listUserExceptConnected() {
+    this.http.get('http://localhost:8300/user/exceptconnected/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.user = data
         console.log(this.user);
