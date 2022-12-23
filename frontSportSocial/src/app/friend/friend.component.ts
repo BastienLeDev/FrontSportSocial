@@ -30,6 +30,7 @@ export class FriendComponent implements OnInit {
   login3: any;
   ami: any;
   user: any;
+  filterUser: any;
 
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog) { }
@@ -159,13 +160,20 @@ export class FriendComponent implements OnInit {
 
   }
 
-
+  FilterUser(val: any) {
+    this.http.get('http://localhost:8300/user/search/' + val).subscribe({
+      next: (data) => {
+        console.log(val);
+        this.user = data;
+      }
+    })
+  }
 
   addFriend(val: any) {
     this.login3 = val
     this.http.post('http://localhost:8300/friend/' + this.authService.getUserConnect().idUser, this.login3).subscribe({
       next: (data) => {
-        this.ngOnInit();
+        console.log(this.login3)
       }
     })
 
