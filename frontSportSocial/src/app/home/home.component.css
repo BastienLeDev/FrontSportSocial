@@ -225,6 +225,7 @@ input-group-btn {
 
 #card_principal_amis {
   min-height: 350px;
+  max-height: 520px;
 }
 
 #card_data {
