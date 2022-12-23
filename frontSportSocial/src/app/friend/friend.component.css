@@ -19,11 +19,13 @@
 
 #demande_amis {
     height: 200 px;
+    max-height: 290px;
     margin-bottom: 30px;
 }
 
 #ajout_amis {
     height: 550px;
+    max-height: 450px;
 }
 
 /* CSS de la bare de recherche

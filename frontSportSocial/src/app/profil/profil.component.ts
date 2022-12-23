@@ -5,6 +5,7 @@ import { PopUpProfilComponent } from '../pop-up-profil/pop-up-profil.component';
 import { AuthService } from '../services/auth.service';
 import { OnInit } from '@angular/core';
 import { PopUpModifMdpComponent } from '../pop-up-modif-mdp/pop-up-modif-mdp.component';
+import { PopUpInventaireComponent } from '../pop-up-inventaire/pop-up-inventaire.component';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -64,6 +65,15 @@ export class ProfilComponent implements OnInit {
 
   goToShop() {
     this.route.navigateByUrl('shop');
+  }
+
+  openInventaire() {
+    const dialogRef = this.dialog.open(PopUpInventaireComponent, {
+      width: '500px'
+    })
+    dialogRef.afterClosed().subscribe(() => { //Pour lancer des fonctions lorsqu'on ferme le popup
+      this.ngOnInit(); //pour reload les cards event => affiche le nouvel event sans reload page
+    });
   }
 
   listActivite() {
