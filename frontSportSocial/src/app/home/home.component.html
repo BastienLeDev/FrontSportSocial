@@ -40,10 +40,11 @@
                                         <p id="add_friend_username"> {{f.firstNameUser}}</p>
                                     </div>
                                     <div class="row">
-                                        <button id="btnsup" type="submit" class="btn btn-danger btn-block btn-sm "
-                                            style="font-size: 50%;">
-                                            Supprimer <i class="fas fa-trash" style="color: rgb(255, 255, 255);"></i>
-                                        </button>
+                                        <button (click)="deleteFrienship(f)" id="btnsup" type="submit"
+                                        class="btn btn-danger btn-block btn-sm " style="font-size: 50%;">
+                                        Supprimer <i class="fas fa-trash"
+                                            style="color: rgb(255, 255, 255);"></i>
+                                    </button>
 
                                     </div>
                                 </div>

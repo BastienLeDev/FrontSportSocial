@@ -2,21 +2,32 @@
 
 
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { CalendarView } from 'angular-calendar';
 import { CalendarEvent } from 'angular-calendar';
-import { startOfDay } from 'date-fns';
+import { endOfDay, startOfDay } from 'date-fns';
 
 import { PopUpScheduleComponent } from '../pop-up-schedule/pop-up-schedule.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-
 import { HttpClient } from '@angular/common/http';
-
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
-
+const colors: any = {
+  red: {
+    primary: '#ad2121',
+    secondary: '#FAE3E3'
+  },
+  blue: {
+    primary: '#1e90ff',
+    secondary: '#D1E8FF'
+  },
+  yellow: {
+    primary: '#e3bc08',
+    secondary: '#FDF1BA'
+  }
+};
 
 
 @Component({
@@ -29,11 +40,15 @@ import { AuthService } from '../services/auth.service';
 
 
 
-export class ScheduleComponent {
+
+export class ScheduleComponent implements OnInit {
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog) { }
 
   schedules: any;
+  start: any;
+  end: any;
+  title:  any;
 
   viewDate: Date = new Date();
 
@@ -42,6 +57,12 @@ export class ScheduleComponent {
 
   setView(view: CalendarView) {
     this.view = view;
+  }
+
+  ngOnInit(): void {
+    this.listSchedule()
+
+
   }
 
   events: CalendarEvent[] = [
@@ -53,6 +74,7 @@ export class ScheduleComponent {
     },
     {
       start: startOfDay(new Date()),
+      end: endOfDay(new Date()),
       title: 'Second event',
     }
   ]
@@ -62,6 +84,7 @@ export class ScheduleComponent {
     this.http.get('http://localhost:8300/schedule/').subscribe({
       next: (data) => {
         this.schedules = data
+
       },
       error: (err) => { console.log(err); }
     });
@@ -75,6 +98,24 @@ export class ScheduleComponent {
 
   openModifDonneesPersosModal() {
     const dialogRef = this.dialog.open(PopUpScheduleComponent)
+  }
+
+  addEvent(): void {
+    
+    this.events = [
+      ...this.events,
+      {
+        title: 'New event',
+        start: startOfDay(new Date()),
+        end: endOfDay(new Date()),
+        color: colors.red,
+        draggable: true,
+        resizable: {
+          beforeStart: true,
+          afterEnd: true
+        }
+      }
+    ];
   }
 
 

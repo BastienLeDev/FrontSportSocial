@@ -19,11 +19,13 @@
 
 #demande_amis {
     height: 200 px;
+    max-height: 290px;
     margin-bottom: 30px;
 }
 
 #ajout_amis {
-    height: 450px;
+    height: 550px;
+    max-height: 450px;
 }
 
 /* CSS de la bare de recherche
@@ -145,8 +147,6 @@ input-group-btn {
 .anyClass {
     height: auto;
     overflow-y: scroll;
-    scroll-behavior: revert;
-
 }
 
 table,
@@ -183,42 +183,10 @@ td {
     height: 700px;
     max-height: 700px;
 
-
 }
 
 #card_empty_messages {
     height: 770px;
 }
 
-#demande_amis {
-    height: 300px;
-}
-
-#conv{
-    scroll-behavior: auto;
-    
-}
-
-
-/* width */
-::-webkit-scrollbar {
-    width: 15px;
-    height: auto;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
-    border-radius: 10px;
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: rgb(232, 175, 95); 
-    border-radius: 10px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #ad5d0d; 
-  }
+::-webkit-scrollbar {}
