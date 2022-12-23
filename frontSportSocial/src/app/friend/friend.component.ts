@@ -13,6 +13,8 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './friend.component.html',
   styleUrls: ['./friend.component.css'],
 })
+
+
 export class FriendComponent implements OnInit {
 
 
@@ -179,7 +181,6 @@ export class FriendComponent implements OnInit {
     })
 
   }
-
 
 
 

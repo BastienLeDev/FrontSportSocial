@@ -62,7 +62,7 @@
                     </div>
                 </div>
 
-                <div class="anyClass">
+                <div id="conv" class="anyClass" #scrollMe [scrollTop]="scrollMe.scrollHeight">
                     <div *ngFor="let m of sendmessagesasc">
                         <div class="container lighter darker"
                             *ngIf="m.destinataire.idUser != authService.getUserConnect().idUser">
