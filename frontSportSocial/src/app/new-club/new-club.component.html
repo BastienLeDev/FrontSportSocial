@@ -5,14 +5,20 @@
             <input name="titleClub" ngModel="" type="text"
                 class="form-control">
         </div>
-        <div class="md-form">
-            <label>Descritpion</label>
-            <input name="descriptionClub" ngModel="" type="text"
-                class="form-control">
-        </div>
+        
+        <mat-form-field class="example-full-width">
+            <mat-label>Description du club</mat-label>
+            <textarea matInput name="descriptionClub" ngModel=""></textarea>
+            </mat-form-field>
+            
+        
+        
+
+
+
         <div class="md-form">
 
-            <mat-form-field>
+            <mat-form-field class="example-full-width">
                 <mat-label>
                     Sport :
                 </mat-label>
@@ -40,4 +46,3 @@
 
     </div>
 </form>
-

@@ -36,6 +36,7 @@ import { PopUpModifMdpComponent } from './pop-up-modif-mdp/pop-up-modif-mdp.comp
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NewClubComponent } from './new-club/new-club.component';
 
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { NewClubComponent } from './new-club/new-club.component';
     MatSelectModule,
     ScrollingModule,
     MatSlideToggleModule,
+    MatInputModule,
 
 
 
