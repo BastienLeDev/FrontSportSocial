@@ -23,7 +23,7 @@
 }
 
 #ajout_amis {
-    height: 550px;
+    height: 450px;
 }
 
 /* CSS de la bare de recherche
@@ -185,4 +185,8 @@ td {
 
 #card_empty_messages {
     height: 770px;
+}
+
+#demande_amis {
+    height: 300px;
 }
