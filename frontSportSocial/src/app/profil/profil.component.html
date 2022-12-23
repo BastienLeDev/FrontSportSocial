@@ -133,8 +133,11 @@
                 </div>
             </div>
 
-            <div class="card p-3 m-3">
+            <div id="card_training" class="card p-3 m-3">
+                <ul style="list-style: none;">
+                    <li class="anyClass">
                 <div class="card-header">
+
                     <h3 class="text-center">Entrainement</h3>
                 </div>
                 <div>
@@ -152,29 +155,35 @@
 
 
                     <div id="inside-card" class="md-form">
-                        <div class="card p-3 m-3">
-                            <div class="md-form">
-                                <h4>Par sport</h4>
-                                <div class="card p-3 m-2" *ngIf="visibleMemos">
+
+
                                     <div class="md-form">
-                                        <b>Course à pied : </b>
-                                        <p>S'échauffer pendant 10 mins puis courrir 10km
-                                        </p>
-                                        <b>Objectif de temps</b>
-                                        <p>55 mins</p>
-                                        <div class="col-1 m-1">
-                                            <button (click)="showHideMemos()" type="submit"
-                                                class="btn btn-danger btn-block btn-sm" style="font-size: 60%;">x
-                                            </button>
+                                        <h4>Par sport</h4>
+                                        <div  *ngIf="visibleMemos">
+                                            <div class="md-form">
+                                                <b>Course à pied : </b>
+                                                <p>S'échauffer pendant 10 mins puis courrir 10km
+                                                </p>
+                                                <b>Objectif de temps</b>
+                                                <p>55 mins</p>
+                                                <div class="col-1 m-1">
+                                                    <button (click)="showHideMemos()" type="submit"
+                                                        class="btn btn-danger btn-block btn-sm"
+                                                        style="font-size: 60%;">x
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
+
+
                     </div>
                 </div>
                 <div class="md-form">
                 </div>
+            </li>
+
+        </ul>
             </div>
 
         </div>
