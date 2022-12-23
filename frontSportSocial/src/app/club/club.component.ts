@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { NewClubComponent } from '../new-club/new-club.component';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -14,7 +16,7 @@ export class ClubComponent implements OnInit {
   sports: any;
   clubs: any;
 
-  constructor(private http: HttpClient, private authService: AuthService, private route: Router) { }
+  constructor(private http: HttpClient, private authService: AuthService, private route: Router, private dialog: MatDialog,) { }
 
   ngOnInit(): void {
     this.listSport();
@@ -42,4 +44,12 @@ export class ClubComponent implements OnInit {
       error: (err) => { console.log(err); }
     });
   }
+
+  openNewClubModal() {
+    const dialogRef = this.dialog.open(NewClubComponent);
+    dialogRef.afterClosed().subscribe(() => { //Pour lancer des fonctions lorsqu'on ferme le popup
+      this.ngOnInit(); //pour reload les cards event => affiche le nouvel event sans reload page
+    });
+  }
+
 }

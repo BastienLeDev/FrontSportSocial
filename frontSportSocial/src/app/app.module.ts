@@ -34,6 +34,7 @@ import { PopUpScheduleComponent } from './pop-up-schedule/pop-up-schedule.compon
 import { NewEventComponent } from './new-event/new-event.component';
 import { PopUpModifMdpComponent } from './pop-up-modif-mdp/pop-up-modif-mdp.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { NewClubComponent } from './new-club/new-club.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     PopUpScheduleComponent,
     NewEventComponent,
     PopUpModifMdpComponent,
+    NewClubComponent,
 
 
   ],
