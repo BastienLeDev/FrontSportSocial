@@ -23,15 +23,7 @@
 }
 
 #ajout_amis {
-    height: 615px;
-}
-
-#card_principal_messages {
-    min-height: 800px;
-}
-
-#card_empty_messages {
-    min-height: 900px;
+    height: 550px;
 }
 
 /* CSS de la bare de recherche
@@ -143,7 +135,8 @@ input-group-btn {
 /* CSS zone de visalisation des amis */
 
 #card_principal_amis {
-    min-height: 865px;
+    min-height: 750px;
+    max-height: 750px;
 }
 
 
@@ -182,4 +175,14 @@ td {
 
 #btnadd {
     margin: 3px;
+}
+
+#card_principal_messages {
+    height: 700px;
+    max-height: 700px;
+
+}
+
+#card_empty_messages {
+    height: 770px;
 }
