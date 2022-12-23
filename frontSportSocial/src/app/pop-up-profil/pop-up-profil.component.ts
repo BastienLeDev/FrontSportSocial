@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -15,17 +15,18 @@ export class PopUpProfilComponent {
 
   user: any;
   isChecked = true;
+  errorMsg = "";
 
   modifInfosUser(val: any) {
-    console.log(val)
+    if(val.lastNameUser != '' && val.firstNameUser != '' && val.birthDateUser != '' && val.loginUser != ''){
+      console.log(val)
     if (this.isChecked == true) {
       val.coachUser = true;
       console.log(val.coachUser)
       this.http.put('http://localhost:8300/user/' + this.authService.getUserConnect().idUser, val).subscribe({
         next: (data) => {
           this.user = data;
-          console.log(this.user);
-          this.route.navigateByUrl('profil');
+          this.goToProfile();
         },
         error: (err) => { console.log(err) },
 
@@ -36,12 +37,15 @@ export class PopUpProfilComponent {
       this.http.put('http://localhost:8300/user/' + this.authService.getUserConnect().idUser, val).subscribe({
         next: (data) => {
           this.user = data;
-          console.log(this.user);
-          this.route.navigateByUrl('profil');
+          this.goToProfile();
         },
         error: (err) => { console.log(err) },
 
       })
+    }
+    }
+    else {
+      this.errorMsg = "Vous ne pouvez pas saisir des informations vides ! ";
     }
 
   }
@@ -51,7 +55,9 @@ export class PopUpProfilComponent {
 
   goToProfile() {
     this.dialog.closeAll();
-    history.go(-1);
+    
+    
+    
   }
 
 

@@ -48,12 +48,18 @@ export class ProfilComponent implements OnInit {
     const dialogRef = this.dialog.open(PopUpProfilComponent, {
       width: '500px'
     })
+    dialogRef.afterClosed().subscribe(() => { //Pour lancer des fonctions lorsqu'on ferme le popup
+      this.ngOnInit(); //pour reload les cards event => affiche le nouvel event sans reload page
+    });
   }
 
   openChangerMdp() {
     const dialogRef = this.dialog.open(PopUpModifMdpComponent, {
       width: '300px'
     })
+    dialogRef.afterClosed().subscribe(() => { //Pour lancer des fonctions lorsqu'on ferme le popup
+      this.ngOnInit(); //pour reload les cards event => affiche le nouvel event sans reload page
+    });
   }
 
   goToShop() {

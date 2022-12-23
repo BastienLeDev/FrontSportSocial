@@ -1,22 +1,22 @@
 <form #infosUser="ngForm" (ngSubmit)="modifInfosUser(infosUser.value)">
     <div class="card p-3">
         <div class="md-form">
-            <label>Last name</label>
-            <input name="lastNameUser" [(ngModel)]="authService.getUserConnect().firstNameUser" type="text"
+            <label>Nom</label>
+            <input name="lastNameUser" [(ngModel)]="authService.getUserConnect().lastNameUser" type="text"
                 class="form-control">
         </div>
         <div class="md-form">
-            <label>First name</label>
-            <input name="firstNameUser" [(ngModel)]="authService.getUserConnect().lastNameUser" type="text"
+            <label>Prénom</label>
+            <input name="firstNameUser" [(ngModel)]="authService.getUserConnect().firstNameUser" type="text"
                 class="form-control">
         </div>
         <div class="md-form">
-            <label>Birth date</label>
+            <label>Date de naissance</label>
             <input name="birthDateUser" [(ngModel)]="authService.getUserConnect().birthDateUser" type="text"
                 class="form-control">
         </div>
         <div class="md-form">
-            <label>Login</label>
+            <label>Pseudo</label>
             <input name="loginUser" [(ngModel)]="authService.getUserConnect().loginUser" type="text"
                 class="form-control">
         </div>
@@ -24,6 +24,9 @@
             <label>Etes-vous coach ?</label>
             <br><br>
             <mat-slide-toggle name="coachUser" [(ngModel)]="isChecked"></mat-slide-toggle>
+        </div>
+        <div class="alert alert-danger text-center" *ngIf="errorMsg != ''">
+            {{errorMsg}}
         </div>
         <!--  
         <div class="md-form">
@@ -42,7 +45,7 @@
                 class="form-control">
         </div> -->
         <div mat-dialog-actions>
-            <button (click)="goToProfile()" type=" submit" class="btn btnPrincipal btn-block btn-sm">Modifier</button>
+            <button type=" submit" class="btn btnPrincipal btn-block btn-sm">Modifier</button>
         </div>
 
 
