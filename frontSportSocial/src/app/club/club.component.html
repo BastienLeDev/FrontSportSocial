@@ -33,7 +33,7 @@
                     </div>
                     <div class="col-3 p-4">
                         <span class="input-group-btn" style="width: 50%;">
-                            <button type="submit" class="btn btnPrincipal btn-block " style="font-size: 60%;">Créer un
+                            <button type="submit" (click)="openNewClubModal()" class="btn btnPrincipal btn-block " style="font-size: 60%;">Créer un
                                 club</button>
                         </span>
                     </div>
@@ -43,10 +43,10 @@
                         <div class="card p-3 m-3" *ngFor="let c of clubs">
                             <div class="row">
                                 <div class="col-6 p-4">
-                                    <div class="card p-3 m-3">
+                                    <!--<div class="card p-3 m-3">
                                         <h4>{{c.titleClub}}</h4>
                                         <img src="{{c.imageClub.nameImage}}" style="width: 30%" alt="">
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="col-6 p-4">
                                     <div class="card p-3 m-3">
@@ -84,6 +84,11 @@
 
     </div>
 </div>
+
+
+
+
+
 
 <!-- Club creation 
 
