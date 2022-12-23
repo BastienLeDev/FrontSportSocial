@@ -1,0 +1,12 @@
+<body class="anyClass">
+    <div class="card p-5 m-4" *ngFor="let i of image">
+        <div class="row justify-content-center">
+            <img class="photo_profil image-rond image-rond-bg" src="{{i}}"
+                alt="">
+        </div>
+        <br>
+        <div class="row">
+            <button (click)="changePP(i)" type="submit" class="btn btnPrincipal btn-block btn-lg">Choisir en photo de profil</button>
+        </div>
+    </div>
+</body>

@@ -127,7 +127,8 @@
                 <input ngModel="" #avatar name="avatar" type='text' id='search' class="form-control search-form"
                     placeholder="Rechercher...">
                 <span class="input-group-btn" style="width:39px">
-                    <button id="search-this" type="submit" class="pull-right btn search-btn">
+                    <button id="search-this" type="submit" class="pull-right btn search-btn">bonbon
+
                         <i class="fa fa-search"></i>
                     </button>
                 </span>
@@ -153,10 +154,13 @@
                                 <p>{{a.prixTokenProduit}} Token</p>
                             </div>
 
-                            <div class="col-1">
-                                <button (click)="achatProduit(a.idProduit)" id="valider" type="submit"
-                                    class="btn btnPrincipal btn-block btn-sm"><i class="fas fa-check"
-                                        style="color: rgb(0, 0, 0);"></i></button>
+                            <div *ngIf="!verifAvatarAchete(a)" > 
+                                <button (click)="achatProduit(a.idProduit)"  id="valider" type="submit"
+                                    class="btn btnPrincipal btn-block btn-sm">Acheter</button>
+                                    
+                            </div>
+                            <div *ngIf="verifAvatarAchete(a)">
+                                 <i class="fas fa-check"></i>
                             </div>
 
                         </div>

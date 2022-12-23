@@ -58,8 +58,10 @@ export class ShopComponent implements OnInit {
   coachs: any;
   avatars: any;
   msgErr = '';
+  achat = 'Acheter';
   transaction: any;
   transactio: any;
+  userInfo: any;
 
 
 
@@ -68,6 +70,8 @@ export class ShopComponent implements OnInit {
   ngOnInit(): void {
     this.listCoachs()
     this.listAvatars()
+    this.infoUser()
+    this.verifAvatarAchete(this.avatars)
 
 
   }
@@ -133,14 +137,37 @@ export class ShopComponent implements OnInit {
     this.http.get(`http://localhost:8300/boutique/achat/${this.authService.getUserConnect().idUser}/${val}`).subscribe({
       next: (data) => {
         this.transactio = data
-        if (this.transactio.validation = true){
+        if (this.transactio.validation == true){
         this.msgErr  = "La transaction est bien effectuée"
+        this.achat = "fas fa-check"
+        this.ngOnInit();
       }else{
         this.msgErr = "Transaction refusée"
       }
       },
       error: (err) => { console.log(err); }
     })
+  }
+
+  infoUser() {
+    this.http.get('http://localhost:8300/user/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => {
+        this.userInfo = data;
+        console.log(this.userInfo)
+      },
+      error: (err) => { console.log(err); }
+    });
+  }
+
+  verifAvatarAchete(avatar: any) {
+    let exist = false;
+    this.userInfo.inventaire.forEach((a: any) => {
+      if (avatar.imageProduit.idImage==a) {
+        exist = true;
+      }
+    });
+
+    return exist;
   }
 
 }
