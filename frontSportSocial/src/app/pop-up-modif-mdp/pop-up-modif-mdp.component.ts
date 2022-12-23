@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { NewEventComponent } from '../new-event/new-event.component';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class PopUpModifMdpComponent {
   u: any;
   ok = false;
 
-  constructor(private http: HttpClient, private route: Router, private dialog: MatDialog, public authService: AuthService) { }
+  constructor(private http: HttpClient, private route: Router, private dialog: MatDialog, public authService: AuthService,  public dialogRef: MatDialogRef<NewEventComponent>) { }
 
   modifMdp(val: any) {
     console.log(val)
@@ -50,6 +51,9 @@ export class PopUpModifMdpComponent {
 
   }
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
 
 }
