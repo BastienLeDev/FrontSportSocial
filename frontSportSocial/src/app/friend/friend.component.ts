@@ -45,7 +45,6 @@ export class FriendComponent implements OnInit {
     if (this.login != null) {
       this.listSendAndReceivedMessagesAsc();
     }
-    this.filterUser(this.filterUser);
 
   }
 
