@@ -174,6 +174,7 @@ export class FriendComponent implements OnInit {
     this.http.post('http://localhost:8300/friend/' + this.authService.getUserConnect().idUser, this.login3).subscribe({
       next: (data) => {
         console.log(this.login3)
+        this.ngOnInit();
       }
     })
 
