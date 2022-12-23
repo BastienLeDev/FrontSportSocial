@@ -33,7 +33,7 @@ export class FriendComponent implements OnInit {
   ami: any;
   user: any;
   filterUser: any;
-
+ 
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog) { }
 
