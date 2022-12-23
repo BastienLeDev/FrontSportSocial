@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit {
   activite: any;
   eventsFriends: any;
   myEvents: any;
+  login : any;
+  ami : any;
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router
   ) { }
@@ -80,5 +82,22 @@ export class HomeComponent implements OnInit {
     this.route.navigateByUrl('ranking');
   }
 
+  deleteFrienship(val: any) {
+    this.login = val;
+    this.http.get('http://localhost:8300/selectaccepted/' + this.authService.getUserConnect().idUser + '/' + this.login.idUser, val).subscribe({
+      next: (data) => {
+        this.ami = data;
+        console.log(this.ami);
+         this.http.delete('http://localhost:8300/friend/refuse/' + this.ami.idFriend, val).subscribe({
+          next: (data) => {
+           this.ngOnInit();
+          },
+        })
+      },
+      error: (err) => { console.log(err); },
 
+    })
+
+
+}
 }
