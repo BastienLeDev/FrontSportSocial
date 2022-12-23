@@ -1,0 +1,43 @@
+<form #infosClub="ngForm" (ngSubmit)="createClub(infosClub.value)">
+    <div class="card p-3">
+        <div class="md-form">
+            <label>Nom du club</label>
+            <input name="titleClub" ngModel="" type="text"
+                class="form-control">
+        </div>
+        <div class="md-form">
+            <label>Descritpion</label>
+            <input name="descriptionClub" ngModel="" type="text"
+                class="form-control">
+        </div>
+        <div class="md-form">
+
+            <mat-form-field>
+                <mat-label>
+                    Sport :
+                </mat-label>
+                <mat-select class="" name="sportClub" ngModel="" required>
+                    <mat-option [value]="s" *ngFor="let s of sports">
+                        {{s.nameSport}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="md-form">
+            <div class="row">
+                <div class="col-6">
+                    <span class="input-group-btn" style="width:39px">
+                        <button [disabled]="!infosClub.form.valid" type="submit"
+                            class="btn btn-secondary btn-block btn-sm" (click)=" onNoClick()">Créer un club</button>
+                    </span>
+                </div>
+                <div class="col-6 text-center">
+                    <button mat-button (click)="onNoClick()">Annuler</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</form>
+

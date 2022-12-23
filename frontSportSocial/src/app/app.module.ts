@@ -34,7 +34,11 @@ import { PopUpScheduleComponent } from './pop-up-schedule/pop-up-schedule.compon
 import { NewEventComponent } from './new-event/new-event.component';
 import { PopUpModifMdpComponent } from './pop-up-modif-mdp/pop-up-modif-mdp.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+<<<<<<< HEAD
 import { PopUpInventaireComponent } from './pop-up-inventaire/pop-up-inventaire.component';
+=======
+import { NewClubComponent } from './new-club/new-club.component';
+>>>>>>> 703d7f40d5f96c8d4f77907f27f2238d32a0371c
 
 
 @NgModule({
@@ -55,7 +59,11 @@ import { PopUpInventaireComponent } from './pop-up-inventaire/pop-up-inventaire.
     PopUpScheduleComponent,
     NewEventComponent,
     PopUpModifMdpComponent,
+<<<<<<< HEAD
     PopUpInventaireComponent,
+=======
+    NewClubComponent,
+>>>>>>> 703d7f40d5f96c8d4f77907f27f2238d32a0371c
 
 
   ],

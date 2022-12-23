@@ -13,6 +13,8 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './friend.component.html',
   styleUrls: ['./friend.component.css'],
 })
+
+
 export class FriendComponent implements OnInit {
 
 
@@ -31,7 +33,7 @@ export class FriendComponent implements OnInit {
   ami: any;
   user: any;
   filterUser: any;
-
+ 
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog) { }
 
@@ -179,7 +181,6 @@ export class FriendComponent implements OnInit {
     })
 
   }
-
 
 
 
