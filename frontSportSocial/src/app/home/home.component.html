@@ -79,90 +79,91 @@
                         </div>
                     </div>
                 </li>
-                <li class="anyClass">
-                    <h3>Mes activités</h3>
+                <div >
+                    <li id="feed" class="anyClass">
+                        <h3>Mes activités</h3>
 
-                    <div class="card p-3 m-3 col-11" *ngFor="let a of activite;  ">
+                        <div class="card p-3 m-3 col-11" *ngFor="let a of activite;  ">
 
-                        <div class="row">
-                            <div class="col-12 justify-content-center">
-                                <h2 class=""> {{a.user.loginUser}}</h2>
-
-                            </div>
-                        </div>
-                        <div class="row">
-
-                            <div class="col-12">
-                                <p>Nom de l'activité {{a.activity.nameActivity}}</p>
-                                <p>Date de début : {{a.activity.dateStart | date: 'd MMM y H:mm'}}</p>
-                                <p>Date de fin : {{a.activity.dateEnd | date: 'd MMM y H:mm'}}</p>
-                                <p>Description : {{a.activity.descActivity}}</p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <h3>Les activités de mes amis </h3>
-                    <div class="card p-3 m-3 col-11">
-                        <div class="row">
-                            <div class="col-12 justify-content-center">
-                                <p>Aucune activité enregistrée</p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="anyClass">
-                    <h3>Mes événements</h3>
-
-                    <div class="card p-3 m-3 col-11" *ngFor="let me of myEvents;  ">
-
-                        <div class="container m-1 p-1">
                             <div class="row">
-                                <div class="col-3">
-                                    <h2>{{me.sportEvent.nameSport}}</h2>
-                                </div>
-                                <div class="col-9">
-                                    <h1 class="title-event">{{me.titleEvent}}</h1>
+                                <div class="col-12 justify-content-center">
+                                    <h2 class=""> {{a.user.loginUser}}</h2>
+
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-4">
-                                    <img class="photo_event" src="{{me.sportEvent.imageSport.nameImage}}" alt="">
-                                </div>
-                                <div class="col-3">
-                                    <p>{{me.descriptionEvent}}</p>
-                                </div>
-                                <div class="col-3">
 
-                                    <div class="container">
-                                        <div class="row">
-                                            <p>Début : {{me.dateStart | date: 'd MMM y H:mm'}}</p>
-                                        </div>
-                                        <div class="row">
-                                            <p>Fin : {{me.dateEnd | date: 'd MMM y H:mm'}}</p>
-                                        </div>
-                                        <div class="row">
-                                            <p>Prix : {{me.priceEvent}} €</p>
+                                <div class="col-12">
+                                    <p>Nom de l'activité {{a.activity.nameActivity}}</p>
+                                    <p>Date de début : {{a.activity.dateStart | date: 'd MMM y H:mm'}}</p>
+                                    <p>Date de fin : {{a.activity.dateEnd | date: 'd MMM y H:mm'}}</p>
+                                    <p>Description : {{a.activity.descActivity}}</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <h3>Les activités de mes amis </h3>
+                        <div class="card p-3 m-3 col-11">
+                            <div class="row">
+                                <div class="col-12 justify-content-center">
+                                    <p>Aucune activité enregistrée</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>Mes événements</h3>
+
+                        <div class="card p-3 m-3 col-11" *ngFor="let me of myEvents;  ">
+
+                            <div class="container m-1 p-1">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <h2>{{me.sportEvent.nameSport}}</h2>
+                                    </div>
+                                    <div class="col-9">
+                                        <h1 class="title-event">{{me.titleEvent}}</h1>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <img class="photo_event" src="{{me.sportEvent.imageSport.nameImage}}" alt="">
+                                    </div>
+                                    <div class="col-3">
+                                        <p>{{me.descriptionEvent}}</p>
+                                    </div>
+                                    <div class="col-3">
+
+                                        <div class="container">
+                                            <div class="row">
+                                                <p>Début : {{me.dateStart | date: 'd MMM y H:mm'}}</p>
+                                            </div>
+                                            <div class="row">
+                                                <p>Fin : {{me.dateEnd | date: 'd MMM y H:mm'}}</p>
+                                            </div>
+                                            <div class="row">
+                                                <p>Prix : {{me.priceEvent}} €</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
 
-                    </div>
+                        <h3>Les événements de mes amis </h3>
+                        <div class="card p-3 m-3 col-11" *ngFor="let ef of eventsFriends">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <h1 class="title-event">{{ef.titleEvent}}</h1>
+                                </div>
+                            </div>
+                            <div class="row">
 
-                    <h3>Les événements de mes amis </h3>
-                    <div class="card p-3 m-3 col-11" *ngFor="let ef of eventsFriends">
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <h1 class="title-event">{{ef.titleEvent}}</h1>
                             </div>
                         </div>
-                        <div class="row">
-
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                </div>
             </ul>
         </div>
 

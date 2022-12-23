@@ -230,3 +230,7 @@ input-group-btn {
 #card_data {
   min-height: 200px;
 }
+
+#feed {
+  max-height: 720px;
+}
