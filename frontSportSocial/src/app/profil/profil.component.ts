@@ -18,7 +18,6 @@ export class ProfilComponent implements OnInit {
 
   activite: any;
   userInfo: any;
-  userToken: any;
   visibleMemos = true;
   constructor(public authService: AuthService, private route: Router, private dialog: MatDialog, private http: HttpClient) { }
 
@@ -28,7 +27,6 @@ export class ProfilComponent implements OnInit {
     }
     this.infoUser()
     this.listActivite();
-    this.getToken();
   }
 
 
@@ -86,16 +84,6 @@ export class ProfilComponent implements OnInit {
     });
   }
 
-  getToken() {
-    this.http.get('http://localhost:8300/user/' + this.authService.getUserConnect().idUser).subscribe({
-      next: (data) => {
-        this.userToken = data
-      },
-
-      error: (err) => { console.log(err); }
-
-    });
-  }
 
   infoUser() {
     this.http.get('http://localhost:8300/user/' + this.authService.getUserConnect().idUser).subscribe({

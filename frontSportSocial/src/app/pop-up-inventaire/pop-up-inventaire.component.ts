@@ -15,26 +15,27 @@ import { HttpClient } from '@angular/common/http';
 export class PopUpInventaireComponent implements OnInit {
   constructor(private http: HttpClient, private route: Router, public authService: AuthService, private dialog: MatDialog) { }
 
-  image: any;
+  images: any;
   changement: any;
 
-  ngOnInit(){
+  ngOnInit() {
     this.getInventaire()
   }
 
-  getInventaire(){
-    this.http.get("http://localhost:8300/user/inventaire/"+ this.authService.getUserConnect().idUser).subscribe({
+  getInventaire() {
+    this.http.get("http://localhost:8300/user/inventaire/" + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
-        this.image = data
+        this.images = data
       },
       error: (err) => { console.log(err); }
     })
   }
 
-  changePP(val: any){
-    this.http.get("http://localhost:8300/user/changement/"+this.authService.getUserConnect().idUser+"/"+ val ).subscribe({
+  changePP(val: any) {
+    this.http.get("http://localhost:8300/user/changement/" + this.authService.getUserConnect().idUser + "/" + val).subscribe({
       next: (data) => {
         this.changement = data
+        console.log(this.changement)
       },
       error: (err) => { console.log(err); }
     })
@@ -42,7 +43,7 @@ export class PopUpInventaireComponent implements OnInit {
 
   goToProfile() {
     this.dialog.closeAll();
-    
+
   }
 
 }
