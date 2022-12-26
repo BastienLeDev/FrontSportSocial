@@ -42,3 +42,21 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+input[type=checkbox] {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+}
+
+label {
+	display: block;
+	padding: 5px;
+	border-radius: 2px;
+	color: white;
+	font-weight: bold;
+}
+
+input[type=checkbox]:checked ~ .dark_theme {
+	color: rgb(0, 0, 0);
+}

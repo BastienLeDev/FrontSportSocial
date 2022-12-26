@@ -24,7 +24,16 @@
         <a routerLink="shop" routerLinkActive="menu-active" class="nav-link white-text">Boutique</a>
       </li>
       <li class="nav-item">
-        <a routerLink="profil" routerLinkActive="menu-active" class="nav-link white-text">Profil</a>
+        <a routerLink="profil" routerLinkActive="menu-active" class="nav-link white-text ">Profil</a>
+      </li>
+      <li class="nav-item">
+        <div >
+          <input type="checkbox" id="toggle" (click)="darkMode()">
+          <label *ngIf="dark" for="toggle"><i for="toggle" class="fas fa-lightbulb black-text"></i></label>
+          <p *ngIf="dark" class="dark_theme" >Dark theme</p>
+          <label *ngIf="!dark" for="toggle"><i for="toggle" class="fas fa-lightbulb white-text"></i></label>
+          <p *ngIf="!dark" class="dark_theme" style="color: white;">Light theme</p>
+        </div>
       </li>
       <li class="nav-item">
         <a routerLink="" (click)="authService.logout()" class="nav-link">
