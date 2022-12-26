@@ -11,8 +11,13 @@ export class InscriptionComponent {
 
   user: any;
   isChecked = true;
+  show: boolean = false;
 
   constructor(private http: HttpClient, private route: Router) { }
+
+  password() {
+    this.show = !this.show;
+}
 
   goToConnexion() {
     this.route.navigateByUrl('connexion');
