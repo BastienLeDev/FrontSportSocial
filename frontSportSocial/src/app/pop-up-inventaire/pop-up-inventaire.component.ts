@@ -26,6 +26,7 @@ export class PopUpInventaireComponent implements OnInit {
     this.http.get("http://localhost:8300/user/inventaire/" + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.images = data
+        console.log(data)
       },
       error: (err) => { console.log(err); }
     })
@@ -44,6 +45,11 @@ export class PopUpInventaireComponent implements OnInit {
   goToProfile() {
     this.dialog.closeAll();
 
+  }
+
+  goToShop() {
+    this.route.navigateByUrl('shop');
+    this.dialog.closeAll();
   }
 
 }

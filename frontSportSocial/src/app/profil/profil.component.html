@@ -54,6 +54,11 @@
                 <div class="card-header">
                     <h3 class="text-center">Photo de profil </h3>
                 </div>
+                <div class="mx-auto text-center p-2">
+                    <img *ngIf="userInfo.imageUser.nameImage== 'lien image'"
+                        src="https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg">
+                    <img *ngIf="userInfo.imageUser.nameImage!= 'lien image'" src="{{userInfo.imageUser.nameImage}}">
+                </div>
                 <div>
                     <button (click)="openInventaire()" type="submit" class="btn btnPrincipal btn-block btn-sm"> Changer
                         de photo de profil</button>

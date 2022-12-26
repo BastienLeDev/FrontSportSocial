@@ -1,13 +1,25 @@
 <body class="anyClass">
-    <div class="card p-5 m-4" *ngFor="let i of images">
-        <div class="row justify-content-center">
-            <img class="photo_profil image-rond image-rond-bg" src="{{i.nameImage}}" alt="">
+    <div *ngIf="images.length!=0">
+        <div class="card p-5 m-4" *ngFor="let i of images">
+            <div class="row justify-content-center">
+                <img class="photo_profil image-rond image-rond-bg" src="{{i.nameImage}}" alt="">
+            </div>
+            <br>
+            <div class="row">
+                <button (click)="changePP(i.idImage)" type="submit"
+                    class="btn btnPrincipal btn-block btn-lg notNull">Choisir en
+                    photo de
+                    profil</button>
+            </div>
         </div>
-        <br>
+    </div>
+    <div class="null" *ngIf="images.length==0">
         <div class="row">
-            <button (click)="changePP(i.idImage)" type="submit" class="btn btnPrincipal btn-block btn-lg">Choisir en
-                photo de
-                profil</button>
+            <p>Vous ne possédez pas d'avatar !</p>
+        </div>
+        <div class="row">
+            <button class="btn btnPrincipal btn-sm" (click)="goToShop()">Aller dans à la boutique<i
+                    class="fas fa-shopping-cart"></i></button>
         </div>
     </div>
 </body>
