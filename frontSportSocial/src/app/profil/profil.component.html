@@ -1,6 +1,22 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-3 p-3">
+
+            <div class="card p-3 m-3">
+                <div class="card-header">
+                    <h3 class="text-center">Photo de profil </h3>
+                </div>
+                <div class="mx-auto text-center p-2">
+                    <img *ngIf="userInfo.imageUser.nameImage== 'lien image'"
+                        src="https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg">
+                    <img *ngIf="userInfo.imageUser.nameImage!= 'lien image'" src="{{userInfo.imageUser.nameImage}}">
+                </div>
+                <div>
+                    <button (click)="openInventaire()" type="submit" class="btn btnPrincipal btn-block btn-sm"> Changer
+                        de photo de profil</button>
+                </div>
+            </div>
+
             <div class="card p-3 m-3">
                 <div class="card-header">
                     <h3 class="text-center">Données personnelles</h3>
@@ -50,20 +66,7 @@
                         tokens</button>
                 </div>
             </div>
-            <div class="card p-3 m-3">
-                <div class="card-header">
-                    <h3 class="text-center">Photo de profil </h3>
-                </div>
-                <div class="mx-auto text-center p-2">
-                    <img *ngIf="userInfo.imageUser.nameImage== 'lien image'"
-                        src="https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg">
-                    <img *ngIf="userInfo.imageUser.nameImage!= 'lien image'" src="{{userInfo.imageUser.nameImage}}">
-                </div>
-                <div>
-                    <button (click)="openInventaire()" type="submit" class="btn btnPrincipal btn-block btn-sm"> Changer
-                        de photo de profil</button>
-                </div>
-            </div>
+
         </div>
 
         <div class="col-6 p-4 ">
@@ -102,7 +105,7 @@
                             <div class="row">
 
                                 <div class="col-12">
-                                    <p>Nom de l'activité {{a.activity.nameActivity}}</p>
+                                    <p>Sport : {{a.activity.nameActivity}}</p>
                                     <p>Date de début : {{a.activity.dateStart | date: 'd MMM y H:mm'}}</p>
                                     <p>Date de fin : {{a.activity.dateEnd | date: 'd MMM y H:mm'}}</p>
                                     <p>Description : {{a.activity.descActivity}}</p>
