@@ -13,16 +13,23 @@ export class InscriptionComponent {
   user: any;
   isChecked = true;
   show: boolean = false;
+  visiblePassword = false;  
 
   constructor(private http: HttpClient, private route: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.authService.logout();
+    this.route.navigateByUrl('inscription');
 
   }
 
   password() {
     this.show = !this.show;
+    if (this.visiblePassword == false) {
+      this.visiblePassword = true;
+    } else {
+      this.visiblePassword = false;
+    }
 }
 
   goToConnexion() {
