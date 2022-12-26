@@ -15,7 +15,7 @@ export class ConnexionComponent {
   user: any;
   msgErr = '';
   show: boolean = false;
-  
+  visiblePassword = false;  
 
 
   constructor(private http: HttpClient, private route: Router, private authService: AuthService) { }
@@ -23,17 +23,6 @@ export class ConnexionComponent {
   ngOnInit(): void {
     this.authService.logout();
 
-  }
-
-  visiblePassword = false;
-
-
-  showHidePassword() {
-    if (this.visiblePassword == false) {
-      this.visiblePassword = true;
-    } else {
-      this.visiblePassword = false;
-    }
   }
 
   password() {
