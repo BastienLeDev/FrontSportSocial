@@ -30,7 +30,8 @@
                     </div>
                     <div class="md-form">
                         <label>Mot de passe</label>
-                        <input name="passwordUser" ngModel="" type="password" class="form-control">
+                        <input [type]="show ? 'text' : 'password'" name="passwordUser" ngModel="" type="password" class="form-control " >
+                        <span id="eye" class="fa fa-fw fa-eye field-icon toggle-password" (click)="password()">{{show ? '' : ''}}</span>
                     </div>
                     <div class="md-form">
                         <label>Etes-vous coach ?</label>
