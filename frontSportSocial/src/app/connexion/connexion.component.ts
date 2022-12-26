@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
+
+
 @Component({
   selector: 'app-connexion',
   templateUrl: './connexion.component.html',
@@ -12,11 +14,15 @@ export class ConnexionComponent {
 
   user: any;
   msgErr = '';
+  show: boolean = false;
+  
 
 
   constructor(private http: HttpClient, private route: Router, private authService: AuthService) { }
 
-
+  password() {
+    this.show = !this.show;
+}
 
   connexion(val: any) {
     this.http.post('http://localhost:8300/user', val).subscribe({
