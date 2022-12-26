@@ -25,8 +25,24 @@ export class ConnexionComponent {
 
   }
 
+  visiblePassword = false;
+
+
+  showHidePassword() {
+    if (this.visiblePassword == false) {
+      this.visiblePassword = true;
+    } else {
+      this.visiblePassword = false;
+    }
+  }
+
   password() {
     this.show = !this.show;
+    if (this.visiblePassword == false) {
+      this.visiblePassword = true;
+    } else {
+      this.visiblePassword = false;
+    }
 }
 
   connexion(val: any) {
