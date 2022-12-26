@@ -20,6 +20,11 @@ export class ConnexionComponent {
 
   constructor(private http: HttpClient, private route: Router, private authService: AuthService) { }
 
+  ngOnInit(): void {
+    this.authService.logout();
+
+  }
+
   password() {
     this.show = !this.show;
 }

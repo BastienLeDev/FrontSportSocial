@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-inscription',
@@ -13,7 +14,12 @@ export class InscriptionComponent {
   isChecked = true;
   show: boolean = false;
 
-  constructor(private http: HttpClient, private route: Router) { }
+  constructor(private http: HttpClient, private route: Router, private authService: AuthService) { }
+
+  ngOnInit(): void {
+    this.authService.logout();
+
+  }
 
   password() {
     this.show = !this.show;
