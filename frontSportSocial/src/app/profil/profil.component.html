@@ -8,17 +8,17 @@
 
                 <div class="md-form">
                     <div class="p-3">
-                        <p>Nom : {{userInfo.lastNameUser}} </p>
-                        <p>Prénom : {{userInfo.firstNameUser}}</p>
-                        <p>Date de naissance: {{userInfo.birthDateUser}}</p>
-                        <p>Pseudo : {{userInfo.loginUser}}</p>
-                        <p *ngIf="userInfo.coachUser == true">Coach : Oui</p>
-                        <p *ngIf="userInfo.coachUser != true">Coach : Non</p>
+                        <p>Nom : <b>{{userInfo.lastNameUser}} </b></p>
+                        <p>Prénom : <b>{{userInfo.firstNameUser}}</b></p>
+                        <p>Date de naissance: <b>{{userInfo.birthDateUser}}</b></p>
+                        <p>Pseudo : <b>{{userInfo.loginUser}}</b></p>
+                        <p *ngIf="userInfo.coachUser == true">Coach : <b>Oui</b></p>
+                        <p *ngIf="userInfo.coachUser != true">Coach : <b>Non</b></p>
                         <p *ngIf="authService.getUserConnect().addressUser != null">Adresse :
-                            {{authService.getUserConnect().addressUser.streetAddress}}</p>
-                        <p>{{authService.getUserConnect().addressUser.zipCodeAddress}}
-                            {{authService.getUserConnect().addressUser.cityAddress}}</p>
-                        <p *ngIf="authService.getUserConnect().addressUser == null">Adresse : Non précisée</p>
+                        <b>{{authService.getUserConnect().addressUser.streetAddress}}</b></p>
+                        <p><b>{{authService.getUserConnect().addressUser.zipCodeAddress}}
+                            {{authService.getUserConnect().addressUser.cityAddress}}</b></p>
+                        <p *ngIf="authService.getUserConnect().addressUser == null">Adresse : <b>Non précisée</b></p>
                     </div>
 
 
