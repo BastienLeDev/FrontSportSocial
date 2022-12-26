@@ -43,3 +43,7 @@ input-group-btn {
   background-color: #FFC288;
   border-radius: 5px;
 }
+
+#card_map {
+  height: 570px;
+}
