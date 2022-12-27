@@ -26,6 +26,10 @@ body {
 html,
 body {
     height: 100%;
+    background-image: linear-gradient(to top left, #e7684c86, #ffc47175, #ffc40065);
+    size: auto;
+
+
 }
 
 body {
@@ -44,19 +48,19 @@ body {
 }
 
 input[type=checkbox] {
-	position: absolute;
-	top: -9999px;
-	left: -9999px;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
 }
 
 label {
-	display: block;
-	padding: 5px;
-	border-radius: 2px;
-	color: white;
-	font-weight: bold;
+    display: block;
+    padding: 5px;
+    border-radius: 2px;
+    color: white;
+    font-weight: bold;
 }
 
-input[type=checkbox]:checked ~ .dark_theme {
-	color: rgb(0, 0, 0);
+input[type=checkbox]:checked~.dark_theme {
+    color: rgb(0, 0, 0);
 }
