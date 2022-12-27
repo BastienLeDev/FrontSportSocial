@@ -7,9 +7,7 @@
                     <h3 class="text-center">Photo de profil </h3>
                 </div>
                 <div class="mx-auto text-center p-2">
-                    <img *ngIf="userInfo.imageUser.nameImage== 'lien image'"
-                        src="https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg">
-                    <img *ngIf="userInfo.imageUser.nameImage!= 'lien image'" src="{{userInfo.imageUser.nameImage}}">
+                    <img src="{{userInfo.imageUser.nameImage}}">
                 </div>
                 <div>
                     <button (click)="openInventaire()" type="submit" class="btn btnPrincipal btn-block btn-sm"> Changer
@@ -31,9 +29,10 @@
                         <p *ngIf="userInfo.coachUser == true">Coach : <b>Oui</b></p>
                         <p *ngIf="userInfo.coachUser != true">Coach : <b>Non</b></p>
                         <p *ngIf="authService.getUserConnect().addressUser != null">Adresse :
-                        <b>{{authService.getUserConnect().addressUser.streetAddress}}</b></p>
+                            <b>{{authService.getUserConnect().addressUser.streetAddress}}</b>
+                        </p>
                         <p><b>{{authService.getUserConnect().addressUser.zipCodeAddress}}
-                            {{authService.getUserConnect().addressUser.cityAddress}}</b></p>
+                                {{authService.getUserConnect().addressUser.cityAddress}}</b></p>
                         <p *ngIf="authService.getUserConnect().addressUser == null">Adresse : <b>Non précisée</b></p>
                     </div>
 

@@ -29,9 +29,7 @@
                             <div class="row">
                                 <!-- photo de profil -->
                                 <div class="col-6">
-                                    <img class="photo_profil image-rond image-rond-bg"
-                                        src="https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg"
-                                        alt="">
+                                    <img src="{{f.imageUser.nameImage}}">
                                 </div>
                                 <!-- nom user -->
                                 <div class="col-6">
@@ -40,10 +38,9 @@
                                     </div>
                                     <div class="row">
                                         <button (click)="deleteFrienship(f)" id="btnsup" type="submit"
-                                        class="btn btn-danger btn-block btn-sm " style="font-size: 50%;">
-                                        Supprimer <i class="fas fa-trash"
-                                            style="color: rgb(255, 255, 255);"></i>
-                                    </button>
+                                            class="btn btn-danger btn-block btn-sm " style="font-size: 50%;">
+                                            Supprimer <i class="fas fa-trash" style="color: rgb(255, 255, 255);"></i>
+                                        </button>
 
                                     </div>
                                 </div>
@@ -185,8 +182,8 @@
                 <div class="card p-3 m-3" *ngFor="let e of events" [class.toggled]="classToggled">
 
                     <h3 class="text-center">{{e.titleEvent}}</h3>
-                    <p>Start : {{e.dateStart | date: 'd MMM y H:mm'}} </p>
-                    <p>End : {{e.dateEnd | date: 'd MMM y H:mm'}}</p>
+                    <p>Début : {{e.dateStart | date: 'd MMM y H:mm'}} </p>
+                    <p>Fin : {{e.dateEnd | date: 'd MMM y H:mm'}}</p>
 
                 </div>
             </div>

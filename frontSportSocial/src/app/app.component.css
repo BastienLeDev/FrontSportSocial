@@ -1,9 +1,7 @@
 .navbar {
   overflow: hidden;
 
-  background-color: #f07422;
-
-  background-color: #ff7b23;
+  background-image: linear-gradient(to bottom right, #e7684c, #FFC371);
 
 }
 

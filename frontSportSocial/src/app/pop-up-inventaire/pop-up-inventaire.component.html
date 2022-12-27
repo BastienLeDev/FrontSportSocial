@@ -11,11 +11,12 @@
                     photo de
                     profil</button>
             </div>
+            
         </div>
     </div>
-    <div class="null" *ngIf="images.length==0">
+    <div class="null m-2" *ngIf="images.length==1">
         <div class="row">
-            <p>Vous ne possédez pas d'avatar !</p>
+            <p>Vous possédez aucun avatar !</p>
         </div>
         <div class="row">
             <button class="btn btnPrincipal btn-sm" (click)="goToShop()">Aller dans à la boutique<i
