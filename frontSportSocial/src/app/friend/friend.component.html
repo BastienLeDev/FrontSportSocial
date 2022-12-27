@@ -16,9 +16,10 @@
                             <div class="row">
                                 <!-- photo de profil -->
                                 <div class="col-5">
-                                    <img class="photo_profil image-rond image-rond-bg"
-                                        src="https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg"
-                                        alt="">
+                                    <img *ngIf="userInfo.imageUser.nameImage== 'lien image'"
+                                        src="https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg">
+                                    <img *ngIf="userInfo.imageUser.nameImage!= 'lien image'"
+                                        src="{{f.imageUser.nameImage}}">
                                 </div>
                                 <!-- nom user -->
                                 <div class="col-7">
@@ -66,8 +67,7 @@
                     <div *ngFor="let m of sendmessagesasc">
                         <div class="container lighter darker"
                             *ngIf="m.destinataire.idUser != authService.getUserConnect().idUser">
-                            <img src="https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg"
-                                class="right photo_conversation">
+                            <img class="right photo_conversation" src="{{userInfo.imageUser.nameImage}}">
                             <b>{{m.message.expediteurMessage.loginUser}} : </b>
                             <p>{{m.message.contentMessage}}</p>
                             <span class="time-right">{{m.message.dateSendMessage |date}}</span>
@@ -75,8 +75,7 @@
 
                         <div class="container lighter "
                             *ngIf="(!(m.destinataire.idUser != authService.getUserConnect().idUser))">
-                            <img src="https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg"
-                                class="photo_conversation">
+                            <img src="{{login?.imageUser.nameImage}}">
                             <b>{{m.message.expediteurMessage.loginUser}} : </b>
                             <p>{{m.message.contentMessage}}</p>
                             <span class="time-left">{{m.message.dateSendMessage |date}}</span>
@@ -126,9 +125,8 @@
                             <div class="row">
                                 <!-- photo de profil -->
                                 <div class="col-6">
-                                    <img class="photo_profil image-rond image-rond-bg"
-                                        src="https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg"
-                                        alt="">
+
+                                    <img src="{{nf.imageUser.nameImage}}">
                                 </div>
                                 <!-- nom user -->
                                 <div class="col-6">
@@ -220,11 +218,10 @@
                             <div class="row">
                                 <!-- photo de profil -->
                                 <div class="col-6">
-                                    <img class="photo_profil image-rond image-rond-bg"
-                                        src="https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg"
-                                        alt="">
+
+                                    <img src="{{u.imageUser.nameImage}}">
                                 </div>
-                                <!-- nom user -->
+                                <!-- nom user photo_profil image-rond image-rond-bg-->
 
                                 <div class="col-6">
                                     <b id="add_friend_username">{{u.loginUser}}</b>

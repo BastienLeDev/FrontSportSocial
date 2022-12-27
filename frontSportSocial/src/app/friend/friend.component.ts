@@ -33,7 +33,8 @@ export class FriendComponent implements OnInit {
   ami: any;
   user: any;
   filterUser: any;
- 
+  userInfo: any;
+
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog) { }
 
@@ -42,6 +43,7 @@ export class FriendComponent implements OnInit {
     this.listFriends();
     this.listNonFriend();
     this.listNotFriends();
+    this.infoUser();
     if (this.login != null) {
       this.listSendAndReceivedMessagesAsc();
     }
@@ -185,7 +187,15 @@ export class FriendComponent implements OnInit {
 
   }
 
-
+  infoUser() {
+    this.http.get('http://localhost:8300/user/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => {
+        this.userInfo = data;
+        console.log(this.userInfo)
+      },
+      error: (err) => { console.log(err); }
+    });
+  }
 
 }
 
