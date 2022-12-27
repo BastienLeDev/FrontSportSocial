@@ -34,22 +34,16 @@ export class HomeComponent implements OnInit {
     this.listEventToCome();
     this.listEventsFriends();
     this.listMyEvents();
-    this.darkTheme();
+    if (this.appComponent.classToggled) {
+      this.darkTheme();
+    }
+  }
 
+    darkTheme() {
+      this.classToggled = true; 
+
+  }
  
-
-  }
-
-  
-  darkTheme() {
-    if (!this.appComponent.classToggled) {
-      this.classToggled = this.classToggled; 
-    }
-    else 
-    {
-      this.classToggled = !this.classToggled; 
-    }
-  }
 
   
   

@@ -35,18 +35,16 @@ export class EventComponent implements OnInit {
       this.route.navigateByUrl('connexion')
     }
     this.listFriends()
-    this.darkTheme();
+    if (this.appComponent.classToggled) {
+      this.darkTheme();
+    }
   }
 
-  darkTheme() {
-    if (!this.appComponent.classToggled) {
-      this.classToggled = this.classToggled; 
-    }
-    else 
-    {
-      this.classToggled = !this.classToggled; 
-    }
+    darkTheme() {
+      this.classToggled = true; 
+
   }
+ 
 
   listEventToCome() {
     this.http.get('http://localhost:8300/event/tocome').subscribe({
