@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NewClubComponent } from '../new-club/new-club.component';
 import { AuthService } from '../services/auth.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-club',
@@ -15,14 +16,26 @@ export class ClubComponent implements OnInit {
 
   sports: any;
   clubs: any;
+  classToggled : boolean = false;
 
-  constructor(private http: HttpClient, private authService: AuthService, private route: Router, private dialog: MatDialog,) { }
+  constructor(private http: HttpClient, private authService: AuthService, private route: Router, private dialog: MatDialog,private appComponent : AppComponent) { }
 
   ngOnInit(): void {
     this.listSport();
     this.listClubs();
     if (!this.authService.isConnected()) {
       this.route.navigateByUrl('connexion')
+    }
+    this.darkTheme();
+  }
+
+  darkTheme() {
+    if (!this.appComponent.classToggled) {
+      this.classToggled = this.classToggled; 
+    }
+    else 
+    {
+      this.classToggled = !this.classToggled; 
     }
   }
 

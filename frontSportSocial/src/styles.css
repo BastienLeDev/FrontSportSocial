@@ -32,3 +32,8 @@ label {
 input[type=checkbox]:checked ~ .dark_theme {
 	color: rgb(0, 0, 0);
 }
+
+.toggled  {
+    background:  rgb(42, 42, 42)!important;
+}
+

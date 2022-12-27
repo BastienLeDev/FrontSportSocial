@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { isThisWeek } from 'date-fns';
 import { AuthService } from '../services/auth.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-friend',
@@ -34,9 +35,10 @@ export class FriendComponent implements OnInit {
   user: any;
   filterUser: any;
   userInfo: any;
+  classToggled : boolean = false;
 
 
-  constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog) { }
+  constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog , private appComponent : AppComponent) { }
 
   ngOnInit(): void {
     this.listSendMessages();
@@ -47,8 +49,20 @@ export class FriendComponent implements OnInit {
     if (this.login != null) {
       this.listSendAndReceivedMessagesAsc();
     }
+    this.darkTheme();
 
   }
+
+  darkTheme() {
+    if (!this.appComponent.classToggled) {
+      this.classToggled = this.classToggled; 
+    }
+    else 
+    {
+      this.classToggled = !this.classToggled; 
+    }
+  }
+
 
   listSendMessages() {
 
