@@ -221,6 +221,7 @@ input-group-btn {
 }
 
 
+
 /* CSS zone de visalisation des amis */
 
 #card_principal_amis {
@@ -234,4 +235,9 @@ input-group-btn {
 
 #feed {
   max-height: 720px;
+}
+
+.toggled{
+  color: rgb(255, 255, 255);
+  background:  rgb(42, 42, 42)!important;
 }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
 
   events: any;
@@ -18,9 +20,9 @@ export class HomeComponent implements OnInit {
   myEvents: any;
   login : any;
   ami : any;
+  classToggled : boolean = false;
 
-  constructor(private http: HttpClient, public authService: AuthService, private route: Router
-  ) { }
+  constructor(private http: HttpClient, public authService: AuthService, private route: Router, private appComponent : AppComponent) { }
 
   ngOnInit(): void {
     if (!this.authService.isConnected()) {
@@ -29,12 +31,28 @@ export class HomeComponent implements OnInit {
 
     this.listFriends();
     this.listActivite();
-
     this.listEventToCome();
     this.listEventsFriends();
     this.listMyEvents();
+    this.darkTheme();
+
+ 
 
   }
+
+  
+  darkTheme() {
+    if (!this.appComponent.classToggled) {
+      this.classToggled = this.classToggled; 
+    }
+    else 
+    {
+      this.classToggled = !this.classToggled; 
+    }
+  }
+
+  
+  
 
   listActivite() {
 
