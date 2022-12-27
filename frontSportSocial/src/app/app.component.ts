@@ -11,25 +11,25 @@ import { AuthService } from './services/auth.service';
 
 export class AppComponent {
   title = 'frontSportSocial';
-  dark : boolean = false;  
+  dark: boolean = false;
 
   constructor(public authService: AuthService) { };
 
-  classToggled  : boolean = false;
-  status = 'Enable'; 
+  classToggled: boolean = false;
+  status = 'Enable';
 
-  
-darkTheme() {
-  this.classToggled = !this.classToggled;  
 
-}
+  darkTheme() {
+    this.classToggled = !this.classToggled;
 
-darkMode() {
-  if (this.dark == false) {
-    this.dark = true;
-  } else {
-    this.dark = false;
   }
-}
+
+  darkMode() {
+    if (this.dark == false) {
+      this.dark = true;
+    } else {
+      this.dark = false;
+    }
+  }
 
 }

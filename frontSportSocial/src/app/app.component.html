@@ -1,55 +1,55 @@
 <body [class.toggled]="classToggled">
-  
 
-<div class="back" >
 
-  <div class="text-center" *ngIf="authService.isConnected()" >
-    <ul class="nav navbar nav-fill w-100 z-depth-2" >
-      <li class="nav-item">
-        <a routerLink="home" routerLinkActive="menu-active" class="nav-link white-text">Accueil</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="schedule" routerLinkActive="menu-active" class="nav-link white-text">Planning</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="friend" routerLinkActive="menu-active" class="nav-link white-text">Amis</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="club" routerLinkActive="menu-active" class="nav-link white-text">Club</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="event" routerLinkActive="menu-active" class="nav-link white-text">Evenements</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="map" routerLinkActive="menu-active" class="nav-link white-text">Carte</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="shop" routerLinkActive="menu-active" class="nav-link white-text">Boutique</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="profil" routerLinkActive="menu-active" class="nav-link white-text ">Profil</a>
-      </li>
-      <li class="nav-item">
-        <div >
-          <input type="checkbox" id="toggle" (click)="darkMode()" (click)="darkTheme()">
-          <label *ngIf="dark" for="toggle"><i for="toggle" class="fas fa-lightbulb black-text" ></i></label>
-          <p *ngIf="dark" class="dark_theme" >Dark theme</p>
-          <label *ngIf="!dark" for="toggle"><i for="toggle" class="fas fa-lightbulb white-text"  ></i></label>
-          <p *ngIf="!dark" class="dark_theme" style="color: white;">Light theme</p>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a routerLink="" (click)="authService.logout()" class="nav-link">
-          <i class="fas fa-power-off white-text"></i>
-        </a>
-      </li>
-    </ul>
+  <div class="back">
+
+    <div class="text-center" *ngIf="authService.isConnected()">
+      <ul [class.toggled]="classToggled" class="nav navbar nav-fill w-100 z-depth-2">
+        <li class="nav-item">
+          <a routerLink="home" routerLinkActive="menu-active" class="nav-link white-text">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="schedule" routerLinkActive="menu-active" class="nav-link white-text">Planning</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="friend" routerLinkActive="menu-active" class="nav-link white-text">Amis</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="club" routerLinkActive="menu-active" class="nav-link white-text">Club</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="event" routerLinkActive="menu-active" class="nav-link white-text">Evenements</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="map" routerLinkActive="menu-active" class="nav-link white-text">Carte</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="shop" routerLinkActive="menu-active" class="nav-link white-text">Boutique</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="profil" routerLinkActive="menu-active" class="nav-link white-text ">Profil</a>
+        </li>
+        <li class="nav-item">
+          <div>
+            <input type="checkbox" id="toggle" (click)="darkMode()" (click)="darkTheme()">
+            <label *ngIf="dark" for="toggle"><i for="toggle" class="fas fa-lightbulb black-text"></i></label>
+            <p *ngIf="dark" class="dark_theme">Dark theme</p>
+            <label *ngIf="!dark" for="toggle"><i for="toggle" class="fas fa-lightbulb white-text"></i></label>
+            <p *ngIf="!dark" class="dark_theme" style="color: white;">Light theme</p>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a routerLink="" (click)="authService.logout()" class="nav-link">
+            <i class="fas fa-power-off white-text"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
 
 
 
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 
 </body>
