@@ -1,6 +1,5 @@
 .navbar {
   overflow: hidden;
-
   background-image: linear-gradient(to bottom right, #e7684c, #FFC371);
 
 }
@@ -66,5 +65,33 @@
   letter-spacing: 2px;
   color: rgb(49, 49, 49) !important;
   background-color: #FFC288;
+
+}
+
+.toggled .navbar {
+
+  overflow: hidden;
+  background: linear-gradient(to bottom right, rgb(27, 51, 97), #7d8cac);
+}
+
+.toggled .navbar a:hover,
+.subnav:hover .subnavbtn {
+  background-color: #5a57a5;
+  ;
+}
+
+.toggled .subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: #424877;
+  width: 100%;
+  z-index: 1;
+}
+
+.toggled .menu-active {
+  letter-spacing: 2px;
+  color: rgb(49, 49, 49) !important;
+  background-color: #6a6ca1;
 
 }
