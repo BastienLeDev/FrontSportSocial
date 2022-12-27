@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -9,13 +10,45 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.css']
 })
+
+
 export class ShopComponent implements OnInit {
-
-
 
   visibleCoach = false;
   visibleAvatar = false;
   visibleTokens = false;
+  coachs: any;
+  avatars: any;
+  msgErr = '';
+  achat = 'Acheter';
+  transaction: any;
+  transactio: any;
+  userInfo: any;
+  classToggled : boolean = false;
+
+
+  constructor(private http: HttpClient, public authService: AuthService, private route: Router, private appComponent : AppComponent) { }
+
+  ngOnInit(): void {
+    this.darkTheme();
+    this.listCoachs();
+    this.listAvatars();
+    this.infoUser();
+    this.verifAvatarAchete(this.avatars);
+    
+  }
+
+
+  darkTheme() {
+    if (!this.appComponent.classToggled) {
+      this.classToggled = this.classToggled; 
+    }
+    else 
+    {
+      this.classToggled = !this.classToggled; 
+    }
+  }
+
 
   showHideCoach() {
     if (this.visibleCoach == false) {
@@ -55,26 +88,6 @@ export class ShopComponent implements OnInit {
     }
   }
 
-  coachs: any;
-  avatars: any;
-  msgErr = '';
-  achat = 'Acheter';
-  transaction: any;
-  transactio: any;
-  userInfo: any;
-
-
-
-  constructor(private http: HttpClient, public authService: AuthService, private route: Router) { }
-
-  ngOnInit(): void {
-    this.listCoachs()
-    this.listAvatars()
-    this.infoUser()
-    this.verifAvatarAchete(this.avatars)
-
-
-  }
 
   listCoachs() {
     this.http.get('http://localhost:8300/coach').subscribe({
@@ -137,13 +150,13 @@ export class ShopComponent implements OnInit {
     this.http.get(`http://localhost:8300/boutique/achat/${this.authService.getUserConnect().idUser}/${val}`).subscribe({
       next: (data) => {
         this.transactio = data
-        if (this.transactio.validation == true){
-        this.msgErr  = "La transaction est bien effectuée"
-        this.achat = "fas fa-check"
-        this.ngOnInit();
-      }else{
-        this.msgErr = "Transaction refusée"
-      }
+        if (this.transactio.validation == true) {
+          this.msgErr = "La transaction est bien effectuée"
+          this.achat = "fas fa-check"
+          this.ngOnInit();
+        } else {
+          this.msgErr = "Transaction refusée"
+        }
       },
       error: (err) => { console.log(err); }
     })
@@ -162,12 +175,13 @@ export class ShopComponent implements OnInit {
   verifAvatarAchete(avatar: any) {
     let exist = false;
     this.userInfo.inventaire.forEach((a: any) => {
-      if (avatar.imageProduit.idImage==a) {
+      if (avatar.imageProduit.idImage == a) {
         exist = true;
       }
     });
 
     return exist;
   }
+
 
 }

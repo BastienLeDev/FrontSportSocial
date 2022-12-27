@@ -7,6 +7,7 @@ import { OnInit } from '@angular/core';
 import { PopUpModifMdpComponent } from '../pop-up-modif-mdp/pop-up-modif-mdp.component';
 import { PopUpInventaireComponent } from '../pop-up-inventaire/pop-up-inventaire.component';
 import { HttpClient } from '@angular/common/http';
+import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -19,14 +20,27 @@ export class ProfilComponent implements OnInit {
   activite: any;
   userInfo: any;
   visibleMemos = true;
-  constructor(public authService: AuthService, private route: Router, private dialog: MatDialog, private http: HttpClient) { }
+  classToggled : boolean = false;
+
+  constructor(public authService: AuthService, private route: Router, private dialog: MatDialog, private http: HttpClient, private appComponent : AppComponent) { }
 
   ngOnInit(): void {
     if (!this.authService.isConnected()) {
       this.route.navigateByUrl('connexion')
     }
-    this.infoUser()
+    this.infoUser();
     this.listActivite();
+    this.darkTheme();
+  }
+
+  darkTheme() {
+    if (!this.appComponent.classToggled) {
+      this.classToggled = this.classToggled; 
+    }
+    else 
+    {
+      this.classToggled = !this.classToggled; 
+    }
   }
 
 

@@ -80,3 +80,9 @@ img {
 #valider {
     background-color: #a8ff88 !important;
 }
+
+.toggled{
+    color: rgb(255, 255, 255);
+    background:  rgb(42, 42, 42)!important;
+  }
+  
