@@ -11,17 +11,17 @@ import { AuthService } from './services/auth.service';
 
 export class AppComponent {
   title = 'frontSportSocial';
-  dark = false;  
+  dark : boolean = false;  
 
   constructor(public authService: AuthService) { };
 
-  toggle = true;
+  classToggled  : boolean = false;
   status = 'Enable'; 
 
+  
+darkTheme() {
+  this.classToggled = !this.classToggled;  
 
-enableDisableRule() {
-    this.toggle = !this.toggle;
-    this.status = this.toggle ? '' : '';
 }
 
 darkMode() {

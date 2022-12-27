@@ -1,7 +1,10 @@
-<div class="back">
+<body [class.toggled]="classToggled">
+  
 
-  <div class="text-center" *ngIf="authService.isConnected()">
-    <ul class="nav navbar nav-fill w-100 z-depth-2">
+<div class="back" >
+
+  <div class="text-center" *ngIf="authService.isConnected()" >
+    <ul class="nav navbar nav-fill w-100 z-depth-2" >
       <li class="nav-item">
         <a routerLink="home" routerLinkActive="menu-active" class="nav-link white-text">Accueil</a>
       </li>
@@ -28,10 +31,10 @@
       </li>
       <li class="nav-item">
         <div >
-          <input type="checkbox" id="toggle" (click)="darkMode()">
-          <label *ngIf="dark" for="toggle"><i for="toggle" class="fas fa-lightbulb black-text"></i></label>
+          <input type="checkbox" id="toggle" (click)="darkMode()" (click)="darkTheme()">
+          <label *ngIf="dark" for="toggle"><i for="toggle" class="fas fa-lightbulb black-text" ></i></label>
           <p *ngIf="dark" class="dark_theme" >Dark theme</p>
-          <label *ngIf="!dark" for="toggle"><i for="toggle" class="fas fa-lightbulb white-text"></i></label>
+          <label *ngIf="!dark" for="toggle"><i for="toggle" class="fas fa-lightbulb white-text"  ></i></label>
           <p *ngIf="!dark" class="dark_theme" style="color: white;">Light theme</p>
         </div>
       </li>
@@ -45,4 +48,8 @@
 </div>
 
 
+
+
 <router-outlet></router-outlet>
+
+</body>

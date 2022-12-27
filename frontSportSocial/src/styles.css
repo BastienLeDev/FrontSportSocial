@@ -26,10 +26,6 @@ body {
 html,
 body {
     height: 100%;
-    background-image: linear-gradient(to top left, #e7684c86, #ffc47175, #ffc40065);
-    size: auto;
-
-
 }
 
 body {
@@ -37,15 +33,8 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-html,
-body {
-    height: 100%;
-}
 
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-}
+
 
 input[type=checkbox] {
     position: absolute;
