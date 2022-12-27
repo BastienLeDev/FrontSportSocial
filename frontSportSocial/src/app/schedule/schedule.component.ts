@@ -53,20 +53,16 @@ export class ScheduleComponent implements OnInit {
 
   ngOnInit(): void {
     this.listSchedule()
-    this.darkTheme();
-
-  }
-
-
-  darkTheme() {
-    if (!this.appComponent.classToggled) {
-      this.classToggled = this.classToggled; 
-    }
-    else 
-    {
-      this.classToggled = !this.classToggled; 
+    if (this.appComponent.classToggled) {
+      this.darkTheme();
     }
   }
+
+    darkTheme() {
+      this.classToggled = true; 
+
+  }
+ 
 
   setView(view: CalendarView) {
     this.view = view;

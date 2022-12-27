@@ -26,19 +26,16 @@ export class ClubComponent implements OnInit {
     if (!this.authService.isConnected()) {
       this.route.navigateByUrl('connexion')
     }
-    this.darkTheme();
-  }
-
-  darkTheme() {
-    if (!this.appComponent.classToggled) {
-      this.classToggled = this.classToggled; 
-    }
-    else 
-    {
-      this.classToggled = !this.classToggled; 
+    if (this.appComponent.classToggled) {
+      this.darkTheme();
     }
   }
 
+    darkTheme() {
+      this.classToggled = true; 
+
+  }
+ 
 
   listSport() {
     this.http.get('http://localhost:8300/sport').subscribe({

@@ -22,17 +22,14 @@ export class MapComponent implements OnInit {
     if (!this.authService.isConnected()) {
       this.route.navigateByUrl('connexion')
     }
-    this.darkTheme();
+    if (this.appComponent.classToggled) {
+      this.darkTheme();
+    }
   }
 
     darkTheme() {
-    if (!this.appComponent.classToggled) {
-      this.classToggled = this.classToggled; 
-    }
-    else 
-    {
-      this.classToggled = !this.classToggled; 
-    }
+      this.classToggled = true; 
+
   }
  
 

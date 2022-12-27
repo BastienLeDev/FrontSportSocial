@@ -30,24 +30,21 @@ export class ShopComponent implements OnInit {
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private appComponent : AppComponent) { }
 
   ngOnInit(): void {
-    this.darkTheme();
+    if (this.appComponent.classToggled) {
+      this.darkTheme();
+    }
     this.listCoachs();
     this.listAvatars();
     this.infoUser();
     this.verifAvatarAchete(this.avatars);
-    
-  }
 
+  }
+    
 
   darkTheme() {
-    if (!this.appComponent.classToggled) {
-      this.classToggled = this.classToggled; 
-    }
-    else 
-    {
-      this.classToggled = !this.classToggled; 
-    }
-  }
+    this.classToggled = true; 
+
+}
 
 
   showHideCoach() {

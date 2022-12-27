@@ -30,19 +30,16 @@ export class ProfilComponent implements OnInit {
     }
     this.infoUser();
     this.listActivite();
-    this.darkTheme();
-  }
-
-  darkTheme() {
-    if (!this.appComponent.classToggled) {
-      this.classToggled = this.classToggled; 
-    }
-    else 
-    {
-      this.classToggled = !this.classToggled; 
+    if (this.appComponent.classToggled) {
+      this.darkTheme();
     }
   }
 
+    darkTheme() {
+      this.classToggled = true; 
+
+  }
+ 
 
 
   showHideMemos() {
