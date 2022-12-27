@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NewEventComponent } from '../new-event/new-event.component';
 import { AuthService } from '../services/auth.service';
-
+import { AppComponent } from '../app.component';
 
 
 
@@ -24,12 +24,9 @@ export class EventComponent implements OnInit {
   usersParticipating: any;
   dummy: any;
   userParticipateEvent = false;
+  classToggled : boolean = false;
 
-  constructor(private http: HttpClient,
-    private route: Router,
-    private dialog: MatDialog,
-    public authService: AuthService,
-    private cd: ChangeDetectorRef) { }
+  constructor(private http: HttpClient, private route: Router, private dialog: MatDialog, public authService: AuthService, private cd: ChangeDetectorRef, private appComponent : AppComponent) { }
 
   ngOnInit(): void {
     this.listEventToCome();
@@ -38,6 +35,17 @@ export class EventComponent implements OnInit {
       this.route.navigateByUrl('connexion')
     }
     this.listFriends()
+    this.darkTheme();
+  }
+
+  darkTheme() {
+    if (!this.appComponent.classToggled) {
+      this.classToggled = this.classToggled; 
+    }
+    else 
+    {
+      this.classToggled = !this.classToggled; 
+    }
   }
 
   listEventToCome() {

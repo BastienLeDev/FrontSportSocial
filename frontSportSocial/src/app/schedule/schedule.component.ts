@@ -1,7 +1,4 @@
-
-
-
-
+import { AppComponent } from '../app.component';
 import { Component, OnInit } from '@angular/core';
 
 import { CalendarView } from 'angular-calendar';
@@ -43,26 +40,36 @@ const colors: any = {
 
 export class ScheduleComponent implements OnInit {
 
-  constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog) { }
+  constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog, private appComponent : AppComponent) { }
 
   schedules: any;
   start: any;
   end: any;
   title:  any;
-
   viewDate: Date = new Date();
-
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
-
-  setView(view: CalendarView) {
-    this.view = view;
-  }
+  classToggled : boolean = false;
 
   ngOnInit(): void {
     this.listSchedule()
+    this.darkTheme();
+
+  }
 
 
+  darkTheme() {
+    if (!this.appComponent.classToggled) {
+      this.classToggled = this.classToggled; 
+    }
+    else 
+    {
+      this.classToggled = !this.classToggled; 
+    }
+  }
+
+  setView(view: CalendarView) {
+    this.view = view;
   }
 
   events: CalendarEvent[] = [

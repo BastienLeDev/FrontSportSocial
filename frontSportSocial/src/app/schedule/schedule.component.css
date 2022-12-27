@@ -48,3 +48,12 @@ input-group-btn {
 .btnRang {
     padding-left: 30px;
 }
+
+.toggled{
+    color: rgb(255, 255, 255);
+    background:  rgb(42, 42, 42)!important;
+  }
+
+#schedule {
+    height: 780px;
+}
