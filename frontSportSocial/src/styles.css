@@ -16,7 +16,9 @@ body {
 html,
 body {
     height: 100%;
-    background-image: linear-gradient(to top left, #e7684c86, #ffc47175, #ffc40065);
+    background-image: linear-gradient(to bottom, #ff950065, #ffbf7183, #e7684c86, #ec523086, #ffbf7183, #ff950065);
+    min-height: 100%;
+    bottom: 0px;
 }
 
 body {
