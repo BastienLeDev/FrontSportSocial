@@ -16,10 +16,7 @@
                             <div class="row">
                                 <!-- photo de profil -->
                                 <div class="col-5">
-                                    <img *ngIf="userInfo.imageUser.nameImage== 'lien image'"
-                                        src="https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg">
-                                    <img *ngIf="userInfo.imageUser.nameImage!= 'lien image'"
-                                        src="{{f.imageUser.nameImage}}">
+                                    <img src="{{f.imageUser.nameImage}}">
                                 </div>
                                 <!-- nom user -->
                                 <div class="col-7">
