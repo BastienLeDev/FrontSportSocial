@@ -13,12 +13,10 @@ export class DarkThemeService {
 
   public darkTheme() {
     this.classToggled = true; 
+  }
 
-}
-
-public darkThemeOff() {
+  public darkThemeOff() {
   this.classToggled = false; 
-
-}
+  }
 
 }

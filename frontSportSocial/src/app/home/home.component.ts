@@ -30,18 +30,12 @@ export class HomeComponent implements OnInit {
     if (!this.authService.isConnected()) {
       this.route.navigateByUrl('connexion')
     }
-
     this.listFriends();
     this.listActivite();
     this.listEventToCome();
     this.listEventsFriends();
     this.listMyEvents();
-    if (this.appComponent.classToggled == true) {
-      this.dark.darkTheme();
-    } 
-    if (this.appComponent.classToggled == false) {
-      this.dark.darkThemeOff();
-    }
+
   } 
 
   listActivite() {
