@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-    darkTheme() {
+    public darkTheme() {
       this.classToggled = true; 
 
   }

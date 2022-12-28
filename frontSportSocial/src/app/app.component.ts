@@ -1,11 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AuthService } from './services/auth.service';
+import { DarkThemeService } from './services/dark-theme.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  providers :[HomeComponent],
 
 })
 
@@ -13,15 +17,17 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   title = 'frontSportSocial';
   dark: boolean = false;
-
-  constructor(public authService: AuthService ) { };
-
   classToggled: boolean = false;
   status = 'Enable';
 
 
+  constructor(public authService: AuthService, public darkThem : DarkThemeService) { };
+
+
   darkTheme() {
     this.classToggled = !this.classToggled;
+    this.darkThem.darkTheme();
+
 
   }
 
