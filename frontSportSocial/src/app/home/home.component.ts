@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { AuthService } from '../services/auth.service';
+import { DarkThemeService } from '../services/dark-theme.service';
 
 @Component({
   selector: 'app-home',
@@ -20,9 +21,10 @@ export class HomeComponent implements OnInit {
   myEvents: any;
   login : any;
   ami : any;
-  classToggled : boolean = false;
+ // classToggled : boolean = false;
+  classToggled = this.dark.classToggled;
 
-  constructor(private http: HttpClient, public authService: AuthService, private route: Router, private appComponent : AppComponent) { }
+  constructor(private http: HttpClient, public authService: AuthService, private route: Router, private appComponent : AppComponent, public dark : DarkThemeService) { }
 
   ngOnInit(): void {
     if (!this.authService.isConnected()) {
@@ -34,19 +36,13 @@ export class HomeComponent implements OnInit {
     this.listEventToCome();
     this.listEventsFriends();
     this.listMyEvents();
-    if (this.appComponent.classToggled) {
-      this.darkTheme();
+    if (this.appComponent.classToggled == true) {
+      this.dark.darkTheme();
+    } 
+    if (this.appComponent.classToggled == false) {
+      this.dark.darkThemeOff();
     }
-  }
-
-    public darkTheme() {
-      this.classToggled = true; 
-
-  }
- 
-
-  
-  
+  } 
 
   listActivite() {
 

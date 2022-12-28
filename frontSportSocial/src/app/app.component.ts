@@ -26,7 +26,13 @@ export class AppComponent {
 
   darkTheme() {
     this.classToggled = !this.classToggled;
+    if (this.classToggled == true) {
     this.darkThem.darkTheme();
+  }
+  if (this.classToggled == false) {
+    this.darkThem.darkThemeOff();
+  }
+
 
 
   }

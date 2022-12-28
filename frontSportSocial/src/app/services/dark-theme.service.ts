@@ -14,6 +14,10 @@ export class DarkThemeService {
   public darkTheme() {
     this.classToggled = true; 
 
+}
+
+public darkThemeOff() {
+  this.classToggled = false; 
 
 }
 
