@@ -18,19 +18,33 @@ export class AppComponent {
   title = 'frontSportSocial';
   dark: boolean = false;
   classToggled: boolean = false;
+  vrai = 1;
   status = 'Enable';
 
 
-  constructor(public authService: AuthService, public darkThem : DarkThemeService) { };
+  constructor(public authService: AuthService, public darkThem : DarkThemeService,) { };
 
-
-  darkTheme() {
+  ngOnInit () {
+    if (localStorage.getItem('active') !== null)
     this.classToggled = !this.classToggled;
     if (this.classToggled == true) {
     this.darkThem.darkTheme();
   }
   if (this.classToggled == false) {
     this.darkThem.darkThemeOff();
+  }
+  }
+
+  darkTheme() {
+    localStorage.setItem('active', '1');
+    if (localStorage.getItem('active') !== null)
+    this.classToggled = !this.classToggled;
+    if (this.classToggled == true) {
+    this.darkThem.darkTheme();
+  }
+  if (this.classToggled == false) {
+    this.darkThem.darkThemeOff();
+    localStorage.removeItem('active');
   }
 
 
