@@ -90,6 +90,9 @@
     overflow-y: scroll;
   }
 
+  h4 {
+    color : white;
+  }
   
 /* Dark Mode CSS */
 

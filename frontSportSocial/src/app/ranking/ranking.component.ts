@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-ranking',
@@ -17,14 +18,27 @@ export class RankingComponent implements OnInit {
   selectedSport: any;
   position = 0;
   individu: any;
+  classToggled : boolean = false;
 
-  constructor(private http: HttpClient, private route: Router, private authService: AuthService) { }
+  constructor(private http: HttpClient, private route: Router, private authService: AuthService, private appComponent : AppComponent) { }
 
   ngOnInit(): void {
 
     this.ListSport();
     this.ListSportIndividu();
+    if (this.appComponent.classToggled) {
+      this.darkTheme();
+    }
   }
+
+    darkTheme() {
+      this.classToggled = true; 
+
+  }
+ 
+
+
+
   goToShop() {
     this.route.navigateByUrl('shop');
   }
