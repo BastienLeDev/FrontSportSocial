@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
   myEvents: any;
   login : any;
   ami : any;
- // classToggled : boolean = false;
   classToggled = this.dark.classToggled;
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private appComponent : AppComponent, public dark : DarkThemeService) { }
