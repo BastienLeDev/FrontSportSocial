@@ -32,10 +32,8 @@
         <li class="nav-item">
           <div>
             <input type="checkbox" id="toggle" (click)="darkMode()" (click)="darkTheme()">
-            <label *ngIf="dark" for="toggle"><i for="toggle" class="fas fa-lightbulb black-text"></i></label>
-            <p *ngIf="dark" class="dark_theme">Dark theme</p>
-            <label *ngIf="!dark" for="toggle"><i for="toggle" class="fas fa-lightbulb white-text"></i></label>
-            <p *ngIf="!dark" class="dark_theme" style="color: white;">Light theme</p>
+            <label *ngIf="dark" for="toggle"><i for="toggle" class="fas fa-moon black-text"></i></label>
+            <label *ngIf="!dark" for="toggle"><i for="toggle" class="fas fa-sun white-text"></i></label>
           </div>
         </li>
         <li class="nav-item">
