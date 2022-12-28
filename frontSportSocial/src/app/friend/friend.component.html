@@ -90,7 +90,7 @@
                     <div class="row">
                         <form #mess="ngForm" (ngSubmit)="sendMess(mess)">
                             <div class="col-10" [class.toggled]="classToggled">
-                                <input [class.toggled]="classToggled" name="message" ngModel="" type="text" class="form-control" placeholder="..."
+                                <input id="message" [class.toggled]="classToggled" name="message" ngModel="" type="text" class="form-control" placeholder="..."
                                     style="width: 600px; margin: 5px;">
                             </div>
                             <div class="col-2">
@@ -178,7 +178,7 @@
                                     <input ngModel="" #UserS name="UserS" type='text' id='search'
                                         class="form-control search-form" placeholder="Rechercher...">
                                     <span class="input-group-btn" style="width:30px">
-                                        <button id="search-this " type="button" class="pull-right btn search-btn"
+                                        <button [class.toggled]="classToggled" id="search-this " type="button" class="pull-right btn search-btn"
                                             type="submit">
                                             <i class="fa fa-search"></i>
                                         </button>

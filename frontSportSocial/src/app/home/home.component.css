@@ -204,6 +204,7 @@ h4 {
 .toggled #search {
   border: 1px;
   background-color: rgb(136, 142, 183);
+  color: white;
 }
 
 .toggled #search-this {

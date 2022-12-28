@@ -48,7 +48,7 @@
             </div>
 
 
-            <div class="btnRang">
+            <div class="btnRang" [class.toggled]="classToggled">
                 <button (click)="goToRanking()" type="submit" class="btn btnPrincipal btn-block btn-lg">Classement
                     Personnel <i class="fas fa-crown" style="color: yellow;"></i></button>
             </div>
@@ -73,19 +73,21 @@
                 <li>
                     <!--Search bar : centrée, avec bouton "search" à droite-->
                     <div class="container">
-                        <div id="content">
-                            <form class='form-inline'>
-                                <div class="input-group">
-                                    <input type='text' id='search' class="form-control search-form well"
-                                        placeholder="Rechercher...">
-                                    <span class="input-group-btn" style="width:39px">
-                                        <button id="search-this" type="button" class="pull-right btn search-btn">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </span>
-                                </div>
-                            </form>
+                        <div id="search-card" class="card p-3 m-3 col-11" [class.toggled]="classToggled">
+                            <div id="content">
+                                <form class='form-inline'>
+                                    <div class="input-group">
+                                        <input type='text' id='search' class="form-control search-form"
+                                            placeholder="Rechercher...">
+                                        <span class="input-group-btn" style="width:39px">
+                                            <button id="search-this" type="button" class="pull-right btn search-btn">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </form>
 
+                            </div>
                         </div>
                     </div>
                 </li>
