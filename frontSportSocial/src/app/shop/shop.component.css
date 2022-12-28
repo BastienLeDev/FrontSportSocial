@@ -1,7 +1,5 @@
 .alignement {
-
     text-align: center;
-
 }
 
 
@@ -9,6 +7,9 @@
     background-color: rgb(226, 224, 224);
 }
 
+#page {
+    min-height: 630px;
+}
 
 /* CSS de la bare de recherche
 */

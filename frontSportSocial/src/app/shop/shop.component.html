@@ -1,5 +1,5 @@
-<div class="container-fluid" >
-    <div class="card p-3 m-3" [class.toggled]="classToggled">
+<div class="container-fluid">
+    <div id="page" class="card p-3 m-3" [class.toggled]="classToggled">
         <div class="md-form" [class.toggled]="classToggled">
             <div id="header" class="card-header m-6">
                 <h3 class="alignement text-center" style=" font-weight: bold;">Que souhaitez vous acheter ?</h3>
@@ -41,199 +41,200 @@
 
 
         </div>
-    </div>
-
-    <!--Page coach-->
-    <div class="card p-3 m-3" *ngIf="visibleCoach" [class.toggled]="classToggled">
-        <div class="col-1">
-            <button (click)="showHideCoach()" type="submit" class="btn btn-danger btn-block btn-sm">x
-                :</button>
-        </div>
-        <div class="md-form" [class.toggled]="classToggled">
-            <div class="card p-9" [class.toggled]="classToggled">
-                <div class="card-header">
-                    <h3 class="alignement text-center" style=" font-weight: bold;">Coachs :</h3>
-                </div>
-
+        <!--Page coach-->
+        <div class="card p-3 m-3" *ngIf="visibleCoach" [class.toggled]="classToggled">
+            <div class="col-1">
+                <button (click)="showHideCoach()" type="submit" class="btn btn-danger btn-block btn-sm">x
+                    :</button>
             </div>
-
-
-
-
-            <form class='form-inline, alignement' #namesport="ngForm" (ngSubmit)="listCoachsBySport(nameSportIn.value)"
-                [class.toggled]="classToggled">
-                <div class="input-group">
-                    <input ngModel="" #nameSportIn name="nameSport" type='text' id='search'
-                        class="form-control search-form" placeholder="Rechercher...">
-                    <span class="input-group-btn" style="width:39px">
-                        <button id="search-this" type="submit" class="pull-right btn search-btn">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </span>
-                </div>
-            </form>
-
-
-            <div class="md-form anyClass" [class.toggled]="classToggled">
-
-                <div class="card p-4 m-2" *ngFor="let c of coachs" [class.toggled]="classToggled">
-
-                    <div class="container" [class.toggled]="classToggled">
-                        <div class="row">
-                            <div class="col-1">
-                                <img class="photo_profil image-rond image-rond-bg"
-                                    src="https://img.freepik.com/vecteurs-libre/illustration-concept-entraineur-personnel_114360-1552.jpg?w=740&t=st=1671228220~exp=1671228820~hmac=45603fee5afa4107866a0646a4c0b87cf460bd86c7320fe765ca0a87c712fea3"
-                                    alt="">
-                            </div>
-                            <div class="col-2" [class.toggled]="classToggled">
-                                <p>Prénom : {{c.firstNameUser}}</p>
-                                <p>Nom : {{c.lastNameUser}}</p>
-                                <p>Login : {{c.loginUser}}</p>
-                            </div>
-                            <div class="col-7" [class.toggled]="classToggled">
-                                <div class="row">
-                                    <div class="col-5 " [class.toggled]="classToggled">
-                                        <button type="submit"
-                                            class="btn btnPrincipal btn-block btn-sm">Contacter</button>
-                                    </div>
-                                    <div class="col-1 m" [class.toggled]="classToggled">
-                                    </div>
-                                    <div class="col-5 " [class.toggled]="classToggled">
-                                        <button type="submit" class="btn btnPrincipal btn-block btn-sm">Payer</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="md-form" [class.toggled]="classToggled">
+                <div class="card p-9" [class.toggled]="classToggled">
+                    <div class="card-header">
+                        <h3 class="alignement text-center" style=" font-weight: bold;">Coachs :</h3>
                     </div>
 
-
                 </div>
 
-            </div>
 
 
 
-        </div>
-    </div>
+                <form class='form-inline, alignement' #namesport="ngForm"
+                    (ngSubmit)="listCoachsBySport(nameSportIn.value)" [class.toggled]="classToggled">
+                    <div class="input-group">
+                        <input ngModel="" #nameSportIn name="nameSport" type='text' id='search'
+                            class="form-control search-form" placeholder="Rechercher...">
+                        <span class="input-group-btn" style="width:39px">
+                            <button id="search-this" type="submit" class="pull-right btn search-btn">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
 
 
+                <div class="md-form anyClass" [class.toggled]="classToggled">
 
+                    <div class="card p-4 m-2" *ngFor="let c of coachs" [class.toggled]="classToggled">
 
-    <!--Page Avatar-->
-    <div class="card p-3 m-3" *ngIf="visibleAvatar" [class.toggled]="classToggled">
-        <div class="col-1">
-            <button (click)="showHideAvatar()" type="submit" class="btn btn-danger btn-block btn-sm">x
-                :</button>
-        </div>
-        <div class="md-form" [class.toggled]="classToggled">
-            <h3 class="alignement" style="font-weight: bold;">Avatar :</h3>
-
-            <form class='form-inline, alignement' (ngSubmit)="listAvatarDescription(avatar.value)">
-                <div class="input-group" [class.toggled]="classToggled">
-                    <input ngModel="" #avatar name="avatar" type='text' id='search' class="form-control search-form"
-                        placeholder="Rechercher...">
-                    <span class="input-group-btn" style="width:39px">
-                        <button id="search-this" type="submit" class="pull-right btn search-btn">
-
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </span>
-                </div>
-            </form>
-
-            <div class="card p-3 m-3 anyClass" [class.toggled]="classToggled">
-                <div class="md-form">
-                    <div class="row">
-                        <div class="col-2" *ngFor="let a of avatars" [class.toggled]="classToggled">
-                            <div class="card p-5 m-1" [class.toggled]="classToggled">
-                                <div class="row justify-content-center">
+                        <div class="container" [class.toggled]="classToggled">
+                            <div class="row">
+                                <div class="col-1">
                                     <img class="photo_profil image-rond image-rond-bg"
-                                        src="{{a.imageProduit.nameImage}}" alt="">
+                                        src="https://img.freepik.com/vecteurs-libre/illustration-concept-entraineur-personnel_114360-1552.jpg?w=740&t=st=1671228220~exp=1671228820~hmac=45603fee5afa4107866a0646a4c0b87cf460bd86c7320fe765ca0a87c712fea3"
+                                        alt="">
                                 </div>
-                                <br>
-                                <div class="row" [class.toggled]="classToggled">
-                                    <strong>Description :</strong>
-                                    <p>{{a.descriptionProduit}}</p>
+                                <div class="col-2" [class.toggled]="classToggled">
+                                    <p>Prénom : {{c.firstNameUser}}</p>
+                                    <p>Nom : {{c.lastNameUser}}</p>
+                                    <p>Login : {{c.loginUser}}</p>
                                 </div>
-                                <div class="row" [class.toggled]="classToggled">
-                                    <strong>Prix :</strong>
-                                    <p>{{a.prixTokenProduit}} Token</p>
+                                <div class="col-7" [class.toggled]="classToggled">
+                                    <div class="row">
+                                        <div class="col-5 " [class.toggled]="classToggled">
+                                            <button type="submit"
+                                                class="btn btnPrincipal btn-block btn-sm">Contacter</button>
+                                        </div>
+                                        <div class="col-1 m" [class.toggled]="classToggled">
+                                        </div>
+                                        <div class="col-5 " [class.toggled]="classToggled">
+                                            <button type="submit"
+                                                class="btn btnPrincipal btn-block btn-sm">Payer</button>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
 
-                                <div *ngIf="!verifAvatarAchete(a)" [class.toggled]="classToggled">
-                                    <button (click)="achatProduit(a.idProduit)" id="valider" type="submit"
-                                        class="btn btnPrincipal btn-block btn-sm">Acheter</button>
 
-                                </div>
-                                <div *ngIf="verifAvatarAchete(a)" [class.toggled]="classToggled">
-                                    <i class="fas fa-check"></i>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+
+
+        <!--Page Avatar-->
+        <div class="card p-3 m-3" *ngIf="visibleAvatar" [class.toggled]="classToggled">
+            <div class="col-1">
+                <button (click)="showHideAvatar()" type="submit" class="btn btn-danger btn-block btn-sm">x
+                    :</button>
+            </div>
+            <div class="md-form" [class.toggled]="classToggled">
+                <h3 class="alignement" style="font-weight: bold;">Avatar :</h3>
+
+                <form class='form-inline, alignement' (ngSubmit)="listAvatarDescription(avatar.value)">
+                    <div class="input-group" [class.toggled]="classToggled">
+                        <input ngModel="" #avatar name="avatar" type='text' id='search' class="form-control search-form"
+                            placeholder="Rechercher...">
+                        <span class="input-group-btn" style="width:39px">
+                            <button id="search-this" type="submit" class="pull-right btn search-btn">
+
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+
+                <div class="card p-3 m-3 anyClass" [class.toggled]="classToggled">
+                    <div class="md-form">
+                        <div class="row">
+                            <div class="col-2" *ngFor="let a of avatars" [class.toggled]="classToggled">
+                                <div class="card p-5 m-1" [class.toggled]="classToggled">
+                                    <div class="row justify-content-center">
+                                        <img class="photo_profil image-rond image-rond-bg"
+                                            src="{{a.imageProduit.nameImage}}" alt="">
+                                    </div>
+                                    <br>
+                                    <div class="row" [class.toggled]="classToggled">
+                                        <strong>Description :</strong>
+                                        <p>{{a.descriptionProduit}}</p>
+                                    </div>
+                                    <div class="row" [class.toggled]="classToggled">
+                                        <strong>Prix :</strong>
+                                        <p>{{a.prixTokenProduit}} Token</p>
+                                    </div>
+
+                                    <div *ngIf="!verifAvatarAchete(a)" [class.toggled]="classToggled">
+                                        <button (click)="achatProduit(a.idProduit)" id="valider" type="submit"
+                                            class="btn btnPrincipal btn-block btn-sm">Acheter</button>
+
+                                    </div>
+                                    <div *ngIf="verifAvatarAchete(a)" [class.toggled]="classToggled">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+
                                 </div>
 
                             </div>
-
                         </div>
-                    </div>
 
+                    </div>
+                    <p [class.toggled]="classToggled" class="d-flex justify-content-center p-5" *ngIf="msgErr !='' ">
+                        {{msgErr}}</p>
                 </div>
-                <p [class.toggled]="classToggled" class="d-flex justify-content-center p-5" *ngIf="msgErr !='' ">
-                    {{msgErr}}</p>
-            </div>
-
-            <div class="container" [class.toggled]="classToggled">
-                <div class="row">
-                    <div class="col-5">
-
-                    </div>
-                    <div class="col-2" [class.toggled]="classToggled">
-                        <button type="submit" class="btn btnPrincipal btn-block btn-sm">Acheter</button>
-                    </div>
-
-                    <div class="col-5">
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
-
-
-    <!--Page Token-->
-    <div class="card p-3 m-3" *ngIf="visibleTokens" [class.toggled]="classToggled">
-        <div class="col-1">
-            <button (click)="showHideTokens()" type="submit" class="btn btn-danger btn-block btn-sm">x
-                :</button>
-        </div>
-        <div class="md-form" [class.toggled]="classToggled">
-            <h3 class="alignement" style="font-weight: bold;">Tokens (1€ = 3 Tokens) :</h3>
-            <div class="card p-3 m-3" [class.toggled]="classToggled">
 
                 <div class="container" [class.toggled]="classToggled">
-                    <div class="row" [class.toggled]="classToggled">
-                        <p class="col-2 p-2">Montant en tokens :</p>
-                        <input ngModel="" #transact type='number' id='transaction'
-                            class="form-control search-form col-3 p-2" placeholder="Token">
-                        <p class="col-1"></p>
-                        <p class="'col-2 p-2">Montant en euros (€) :</p>
-                        <input ngModel="" #transactEuro type='number' id='transaction'
-                            class="form-control search-form col-3 p-2" placeholder="€">
+                    <div class="row">
+                        <div class="col-5">
+
+                        </div>
+                        <div class="col-2" [class.toggled]="classToggled">
+                            <button type="submit" class="btn btnPrincipal btn-block btn-sm">Acheter</button>
+                        </div>
+
+                        <div class="col-5">
+
+                        </div>
                     </div>
                 </div>
-                <div [class.toggled]="classToggled" class="d-flex justify-content-center p-5" *ngIf="transaction==true">
-                    <p>La transaction a bien été effectuée.</p>
-                </div>
-                <div [class.toggled]="classToggled" class="d-flex justify-content-center p-5"
-                    *ngIf="transaction==false">
-                    <p>La transaction refusée.</p>
-                </div>
-                <div [class.toggled]="classToggled" class="col-2">
-                    <button (click)="achatTokenEuro(transactEuro.value)" (click)="achatToken(transact.value)"
-                        type="submit" class="btn btnPrincipal btn-block btn-sm">Acheter</button>
+
+            </div>
+        </div>
+
+
+
+
+        <!--Page Token-->
+        <div class="card p-3 m-3" *ngIf="visibleTokens" [class.toggled]="classToggled">
+            <div class="col-1">
+                <button (click)="showHideTokens()" type="submit" class="btn btn-danger btn-block btn-sm">x
+                    :</button>
+            </div>
+            <div class="md-form" [class.toggled]="classToggled">
+                <h3 class="alignement" style="font-weight: bold;">Tokens (1€ = 3 Tokens) :</h3>
+                <div class="card p-3 m-3" [class.toggled]="classToggled">
+
+                    <div class="container" [class.toggled]="classToggled">
+                        <div class="row" [class.toggled]="classToggled">
+                            <p class="col-2 p-2">Montant en tokens :</p>
+                            <input ngModel="" #transact type='number' id='transaction'
+                                class="form-control search-form col-3 p-2" placeholder="Token">
+                            <p class="col-1"></p>
+                            <p class="'col-2 p-2">Montant en euros (€) :</p>
+                            <input ngModel="" #transactEuro type='number' id='transaction'
+                                class="form-control search-form col-3 p-2" placeholder="€">
+                        </div>
+                    </div>
+                    <div [class.toggled]="classToggled" class="d-flex justify-content-center p-5"
+                        *ngIf="transaction==true">
+                        <p>La transaction a bien été effectuée.</p>
+                    </div>
+                    <div [class.toggled]="classToggled" class="d-flex justify-content-center p-5"
+                        *ngIf="transaction==false">
+                        <p>La transaction refusée.</p>
+                    </div>
+                    <div [class.toggled]="classToggled" class="col-2">
+                        <button (click)="achatTokenEuro(transactEuro.value)" (click)="achatToken(transact.value)"
+                            type="submit" class="btn btnPrincipal btn-block btn-sm">Acheter</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
+    </div>
 </div>
