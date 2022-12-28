@@ -38,17 +38,18 @@ export class AppComponent {
 
   darkTheme() {
     localStorage.setItem('active', '1');
-    if (localStorage.getItem('active') !== null)
+    if (localStorage.getItem('active') !== null) {
     this.classToggled = !this.classToggled;
     if (this.classToggled == true) {
-    this.darkThem.darkTheme();
-  }
-  if (this.classToggled == false) {
-    this.darkThem.darkThemeOff();
-    localStorage.removeItem('active');
-  }
-
-
+      this.darkThem.darkTheme();
+      window.location.reload()
+      }
+    if (this.classToggled == false) {
+      this.darkThem.darkThemeOff();
+      localStorage.removeItem('active');
+      window.location.reload()
+     }
+    }
   }
 
   darkMode() {
@@ -58,5 +59,6 @@ export class AppComponent {
       this.dark = false;
     }
   }
+  
 
 }
