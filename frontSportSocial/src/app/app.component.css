@@ -71,12 +71,12 @@
 .toggled .navbar {
 
   overflow: hidden;
-  background: linear-gradient(to bottom right, rgb(27, 51, 97), #7d8cac);
+  background: linear-gradient(to bottom right, rgb(15, 30, 57), #1c2535);
 }
 
 .toggled .navbar a:hover,
 .subnav:hover .subnavbtn {
-  background-color: #5a57a5;
+  background-color: #343568;
   ;
 }
 
@@ -91,7 +91,7 @@
 
 .toggled .menu-active {
   letter-spacing: 2px;
-  color: rgb(49, 49, 49) !important;
-  background-color: #6a6ca1;
+  color: rgb(38, 38, 38) !important;
+  background-color: #343568;
 
 }
