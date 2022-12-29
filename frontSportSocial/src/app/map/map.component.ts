@@ -4,6 +4,7 @@ import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { AppComponent } from '../app.component';
+import { DarkThemeService } from '../services/dark-theme.service';
 
 @Component({
   selector: 'app-map',
@@ -13,25 +14,17 @@ import { AppComponent } from '../app.component';
 export class MapComponent implements OnInit {
 
   sports: any;
-  classToggled : boolean = false;
+  classToggled = this.dark.classToggled;
 
-  constructor(private http: HttpClient, private authService: AuthService, private route: Router, private appComponent : AppComponent) { }
+  constructor(private http: HttpClient, private authService: AuthService, private route: Router, private appComponent : AppComponent, public dark : DarkThemeService) { }
 
   ngOnInit(): void {
     this.listSport();
     if (!this.authService.isConnected()) {
       this.route.navigateByUrl('connexion')
     }
-    if (this.appComponent.classToggled) {
-      this.darkTheme();
-    }
   }
 
-    darkTheme() {
-      this.classToggled = true; 
-
-  }
- 
 
 
   listSport() {

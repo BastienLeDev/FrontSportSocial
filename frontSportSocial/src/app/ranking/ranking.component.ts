@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { AppComponent } from '../app.component';
+import { DarkThemeService } from '../services/dark-theme.service';
 
 @Component({
   selector: 'app-ranking',
@@ -18,24 +19,16 @@ export class RankingComponent implements OnInit {
   selectedSport: any;
   position = 0;
   individu: any;
-  classToggled : boolean = false;
+  classToggled = this.dark.classToggled;
 
-  constructor(private http: HttpClient, private route: Router, private authService: AuthService, private appComponent : AppComponent) { }
+  constructor(private http: HttpClient, private route: Router, private authService: AuthService, private appComponent : AppComponent, public dark : DarkThemeService) { }
 
   ngOnInit(): void {
 
     this.ListSport();
     this.ListSportIndividu();
-    if (this.appComponent.classToggled) {
-      this.darkTheme();
-    }
   }
 
-    darkTheme() {
-      this.classToggled = true; 
-
-  }
- 
 
 
 

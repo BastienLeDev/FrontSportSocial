@@ -10,6 +10,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { DarkThemeService } from '../services/dark-theme.service';
 
 const colors: any = {
   red: {
@@ -40,8 +41,6 @@ const colors: any = {
 
 export class ScheduleComponent implements OnInit {
 
-  constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog, private appComponent : AppComponent) { }
-
   schedules: any;
   start: any;
   end: any;
@@ -49,19 +48,16 @@ export class ScheduleComponent implements OnInit {
   viewDate: Date = new Date();
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
-  classToggled : boolean = false;
+  classToggled = this.dark.classToggled;
+
+  constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog, private appComponent : AppComponent, public dark : DarkThemeService) { }
+
+
 
   ngOnInit(): void {
     this.listSchedule()
-    if (this.appComponent.classToggled) {
-      this.darkTheme();
-    }
   }
 
-    darkTheme() {
-      this.classToggled = true; 
-
-  }
  
 
   setView(view: CalendarView) {

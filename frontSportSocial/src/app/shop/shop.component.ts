@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { AppComponent } from '../app.component';
+import { DarkThemeService } from '../services/dark-theme.service';
 
 
 @Component({
@@ -24,27 +25,16 @@ export class ShopComponent implements OnInit {
   transaction: any;
   transactio: any;
   userInfo: any;
-  classToggled : boolean = false;
+  classToggled = this.dark.classToggled;
 
-
-  constructor(private http: HttpClient, public authService: AuthService, private route: Router, private appComponent : AppComponent) { }
+  constructor(private http: HttpClient, public authService: AuthService, private route: Router, private appComponent : AppComponent, public dark : DarkThemeService) { }
 
   ngOnInit(): void {
-    if (this.appComponent.classToggled) {
-      this.darkTheme();
-    }
     this.listCoachs();
     this.listAvatars();
     this.infoUser();
     this.verifAvatarAchete(this.avatars);
-
   }
-    
-
-  darkTheme() {
-    this.classToggled = true; 
-
-}
 
 
   showHideCoach() {

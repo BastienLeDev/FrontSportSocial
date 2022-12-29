@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { NewClubComponent } from '../new-club/new-club.component';
 import { AuthService } from '../services/auth.service';
 import { AppComponent } from '../app.component';
+import { DarkThemeService } from '../services/dark-theme.service';
 
 @Component({
   selector: 'app-club',
@@ -16,9 +17,9 @@ export class ClubComponent implements OnInit {
 
   sports: any;
   clubs: any;
-  classToggled : boolean = false;
+  classToggled = this.dark.classToggled;
 
-  constructor(private http: HttpClient, private authService: AuthService, private route: Router, private dialog: MatDialog,private appComponent : AppComponent) { }
+  constructor(private http: HttpClient, private authService: AuthService, private route: Router, private dialog: MatDialog,private appComponent : AppComponent, public dark : DarkThemeService) { }
 
   ngOnInit(): void {
     this.listSport();
@@ -26,14 +27,6 @@ export class ClubComponent implements OnInit {
     if (!this.authService.isConnected()) {
       this.route.navigateByUrl('connexion')
     }
-    if (this.appComponent.classToggled) {
-      this.darkTheme();
-    }
-  }
-
-    darkTheme() {
-      this.classToggled = true; 
-
   }
  
 

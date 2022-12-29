@@ -21,7 +21,6 @@ export class ProfilComponent implements OnInit {
   activite: any;
   userInfo: any;
   visibleMemos = true;
-  //classToggled : boolean = false;
   classToggled = this.dark.classToggled;
 
   constructor(public authService: AuthService, private route: Router, private dialog: MatDialog, private http: HttpClient, private appComponent : AppComponent, public dark : DarkThemeService) { }
@@ -33,9 +32,6 @@ export class ProfilComponent implements OnInit {
     this.infoUser();
     this.listActivite();
   }
-
- 
-
 
   showHideMemos() {
     if (this.visibleMemos == false) {

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { NewEventComponent } from '../new-event/new-event.component';
 import { AuthService } from '../services/auth.service';
 import { AppComponent } from '../app.component';
+import { DarkThemeService } from '../services/dark-theme.service';
 
 
 
@@ -24,9 +25,9 @@ export class EventComponent implements OnInit {
   usersParticipating: any;
   dummy: any;
   userParticipateEvent = false;
-  classToggled : boolean = false;
+  classToggled = this.dark.classToggled;
 
-  constructor(private http: HttpClient, private route: Router, private dialog: MatDialog, public authService: AuthService, private cd: ChangeDetectorRef, private appComponent : AppComponent) { }
+  constructor(private http: HttpClient, private route: Router, private dialog: MatDialog, public authService: AuthService, private cd: ChangeDetectorRef, private appComponent : AppComponent, public dark : DarkThemeService) { }
 
   ngOnInit(): void {
     this.listEventToCome();
@@ -35,15 +36,9 @@ export class EventComponent implements OnInit {
       this.route.navigateByUrl('connexion')
     }
     this.listFriends()
-    if (this.appComponent.classToggled) {
-      this.darkTheme();
-    }
   }
 
-    darkTheme() {
-      this.classToggled = true; 
 
-  }
  
 
   listEventToCome() {
