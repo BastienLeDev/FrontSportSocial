@@ -3,43 +3,20 @@
         <div class="col-12 p-4">
             <div id="schedule" class="card p-3 m-3" [class.toggled]="classToggled">
                 <div class="md-form">
-                    <table id="title-table" style="width:100%">
-                        <tr id="title-table">
-                            <th id="title-table">
-                                <h3>Calendrier</h3>
-                            </th>
-                            <th id="title-table">
-                                <div class="container">
-                                    <div id="content">
-                                        <form class='form-inline'>
-                                            <div class="input-group">
-                                                <input type='text' id='search' class="form-control search-form"
-                                                    placeholder="Rechercher...">
-                                                <span class="input-group-btn" style="width:39px">
-                                                    <button id="search-this" type="button"
-                                                        class="pull-right btn search-btn">
-                                                        <i class="fa fa-search"></i>
-                                                    </button>
-                                                </span>
-                                            </div>
-                                        </form>
-
-                                    </div>
-                                </div>
-                            </th>
-                            <th id="title-table">
-                                <button (click)="openModifDonneesPersosModal()" type="submit"
-                                    class="btn btnPrincipal btn-block " style="font-size: 60%;">Ajouter une
-                                    activité</button>
-                            </th>
-                        </tr>
-                    </table>
+                    <div>
+                        <h3>Calendrier</h3>
+                    </div>
+                    <div>
+                        <button (click)="openModifDonneesPersosModal()" type="submit"
+                            class="btn btnPrincipal btn-block " style="font-size: 60%; width: 150px;">Ajouter une
+                            activité</button>
+                    </div>
                 </div>
 
 
 
 
-                <div class="row text-center">
+                <div class="row text-center" style="margin: 3px;">
 
                     <div class="col-md-6">
                         <div class="btn-group">
@@ -99,4 +76,3 @@
             </div>
         </div>
     </div>
-</div>

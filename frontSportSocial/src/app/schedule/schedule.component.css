@@ -50,7 +50,7 @@ input-group-btn {
 }
 
 #schedule {
-    height: 780px;
+    height: auto;
 }
 
 /* Dark Mode CSS */
@@ -83,4 +83,3 @@ input-group-btn {
   .toggled .btnPrincipal {
     background-color: #3f4a6e !important;
   }
-  
