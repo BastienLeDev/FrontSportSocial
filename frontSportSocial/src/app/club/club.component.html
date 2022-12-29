@@ -43,10 +43,10 @@
                         <div class="card p-3 m-3" *ngFor="let c of clubs" [class.toggled]="classToggled">
                             <div class="row">
                                 <div class="col-6 p-4">
-                                    <!--<div class="card p-3 m-3">
+                                    <div class="card p-3 m-3" [class.toggled]="classToggled">
                                         <h4>{{c.titleClub}}</h4>
                                         <img src="{{c.imageClub.nameImage}}" style="width: 30%" alt="">
-                                    </div> -->
+                                    </div> 
                                 </div>
                                 <div class="col-6 p-4">
                                     <div class="card p-3 m-3"[class.toggled]="classToggled">
