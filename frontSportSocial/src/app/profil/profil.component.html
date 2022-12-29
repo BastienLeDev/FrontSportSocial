@@ -48,9 +48,11 @@
             </div>
 
 
-            <div class="btnRang" [class.toggled]="classToggled">
+            <div class="btnRang" >
+                <div [class.toggled]="classToggled">
                 <button (click)="goToRanking()" type="submit" class="btn btnPrincipal btn-block btn-lg">Classement
                     Personnel <i class="fas fa-crown" style="color: yellow;"></i></button>
+                </div>
             </div>
 
             <div class="card p-3 m-3" [class.toggled]="classToggled">
