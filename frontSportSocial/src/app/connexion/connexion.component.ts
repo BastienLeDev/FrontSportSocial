@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 import { AuthService } from '../services/auth.service';
+import { DarkThemeService } from '../services/dark-theme.service';
 
 
 
@@ -16,9 +18,10 @@ export class ConnexionComponent {
   msgErr = '';
   show: boolean = false;
   visiblePassword = false;  
+  classToggled = this.dark.classToggled;
 
 
-  constructor(private http: HttpClient, private route: Router, private authService: AuthService) { }
+  constructor(private http: HttpClient, private route: Router, private authService: AuthService, private appComponent : AppComponent, public dark : DarkThemeService) { }
 
   ngOnInit(): void {
     this.authService.logout();

@@ -8,6 +8,7 @@ import { PopUpModifMdpComponent } from '../pop-up-modif-mdp/pop-up-modif-mdp.com
 import { PopUpInventaireComponent } from '../pop-up-inventaire/pop-up-inventaire.component';
 import { HttpClient } from '@angular/common/http';
 import { AppComponent } from '../app.component';
+import { DarkThemeService } from '../services/dark-theme.service';
 
 
 @Component({
@@ -20,9 +21,10 @@ export class ProfilComponent implements OnInit {
   activite: any;
   userInfo: any;
   visibleMemos = true;
-  classToggled : boolean = false;
+  //classToggled : boolean = false;
+  classToggled = this.dark.classToggled;
 
-  constructor(public authService: AuthService, private route: Router, private dialog: MatDialog, private http: HttpClient, private appComponent : AppComponent) { }
+  constructor(public authService: AuthService, private route: Router, private dialog: MatDialog, private http: HttpClient, private appComponent : AppComponent, public dark : DarkThemeService) { }
 
   ngOnInit(): void {
     if (!this.authService.isConnected()) {
@@ -30,15 +32,8 @@ export class ProfilComponent implements OnInit {
     }
     this.infoUser();
     this.listActivite();
-    if (this.appComponent.classToggled) {
-      this.darkTheme();
-    }
   }
 
-    darkTheme() {
-      this.classToggled = true; 
-
-  }
  
 
 
