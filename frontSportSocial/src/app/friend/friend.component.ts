@@ -35,6 +35,7 @@ export class FriendComponent implements OnInit {
   ami: any;
   user: any;
   filterUser: any;
+  filterFriend: any;
   userInfo: any;
   deletefriend : any;
   classToggled = this.dark.classToggled;
@@ -183,6 +184,17 @@ export class FriendComponent implements OnInit {
       next: (data) => {
         console.log(val);
         this.user = data;
+      }
+    })
+  }
+
+  FilterFriend(val: any) {
+    this.filterFriend = val;
+    this.http.get('http://localhost:8300/friend/search/' + val + '/' + this.authService.getUserConnect().idUser ).subscribe({
+      next: (data) => {
+        console.log(val);
+        this.friends = data;
+        console.log(this.friends);
       }
     })
   }
