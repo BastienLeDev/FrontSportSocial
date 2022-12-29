@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { isThisWeek } from 'date-fns';
 import { AuthService } from '../services/auth.service';
 import { AppComponent } from '../app.component';
+import { DarkThemeService } from '../services/dark-theme.service';
 
 @Component({
   selector: 'app-friend',
@@ -35,10 +36,10 @@ export class FriendComponent implements OnInit {
   user: any;
   filterUser: any;
   userInfo: any;
-  classToggled : boolean = false;
+  classToggled = this.dark.classToggled;
 
 
-  constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog , private appComponent : AppComponent) { }
+  constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog , private appComponent : AppComponent, public dark : DarkThemeService) { }
 
   ngOnInit(): void {
     this.listSendMessages();
@@ -49,16 +50,7 @@ export class FriendComponent implements OnInit {
     if (this.login != null) {
       this.listSendAndReceivedMessagesAsc();
     }
-    if (this.appComponent.classToggled) {
-      this.darkTheme();
-    }
   }
-
-    darkTheme() {
-      this.classToggled = true; 
-
-  }
- 
 
   listSendMessages() {
 
