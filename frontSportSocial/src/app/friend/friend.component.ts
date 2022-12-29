@@ -36,6 +36,7 @@ export class FriendComponent implements OnInit {
   user: any;
   filterUser: any;
   userInfo: any;
+  deletefriend : any;
   classToggled = this.dark.classToggled;
 
 
@@ -44,6 +45,7 @@ export class FriendComponent implements OnInit {
   ngOnInit(): void {
     this.listSendMessages();
     this.listFriends();
+    this.listNotFriendsDelete();
     this.listNonFriend();
     this.listNotFriends();
     this.infoUser();
@@ -106,6 +108,15 @@ export class FriendComponent implements OnInit {
 
     this.http.get('http://localhost:8300/notfriend/receiver/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => { this.notfriends = data },
+      error: (err) => { console.log(err); }
+
+    });
+  }
+
+  listNotFriendsDelete() {
+
+    this.http.get('http://localhost:8300/notfriend/receiverdelete/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => { this.deletefriend = data },
       error: (err) => { console.log(err); }
 
     });
