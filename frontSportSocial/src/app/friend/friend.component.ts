@@ -24,6 +24,7 @@ export class FriendComponent implements OnInit {
   sendmessagesasc: any;
   receivedmessagesasc: any;
   visibleMessage = false;
+  visibleTeam = false ;
   notfriends: any;
   friends: any;
   frienship: any;
@@ -78,6 +79,23 @@ export class FriendComponent implements OnInit {
       this.listSendAndReceivedMessagesAsc();
     } else {
       this.visibleMessage = true;
+    }
+  }
+
+  getLogin2(val: any) {
+    this.login2 = val;
+    this.visibleMessage = false;
+    this.sendmessagesasc = null;
+    if (this.visibleTeam == false) {
+      this.visibleTeam = true;
+    } else {
+      //this.visibleMessage = false;
+    }
+
+    if (val != null) {
+      this.listSendAndReceivedMessagesAsc();
+    } else {
+      this.visibleTeam = true;
     }
   }
 
