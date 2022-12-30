@@ -302,3 +302,15 @@ td {
     background-color: #6d6e82;
 
 }
+
+.teamImage {
+    height: 60px;
+    width: 60px;
+    background-size: contain;
+    background-position: 50% 50%;
+    display: inline-block;
+    border: none;
+    -moz-border-radius: 75px;
+    -webkit-border-radius: 75px;
+    border-radius: 75px;
+}

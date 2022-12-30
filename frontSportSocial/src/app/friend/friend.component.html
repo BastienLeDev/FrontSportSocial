@@ -82,13 +82,13 @@
 
                 <!-- card demande d'un ami-->
                 <div class="anyClass">
-                    <div class="card p-1 m-1" *ngFor="let t of team" [class.toggled]="classToggled">
+                    <div class="card p-2 m-2" *ngFor="let t of team" [class.toggled]="classToggled">
                         <div class="container">
 
                             <div class="row">
                                 <!-- photo de profil -->
                                 <div class="col-5">
-                                    <img src="{{t.imageTeam.nameImage}}">
+                                    <img class="teamImage" src="{{t.imageTeam.nameImage}}">
 
                                 </div>
                                 <!-- nom user -->
