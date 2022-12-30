@@ -39,6 +39,7 @@ export class FriendComponent implements OnInit {
   userInfo: any;
   deletefriend : any;
   classToggled = this.dark.classToggled;
+  team : any;
 
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog , private appComponent : AppComponent, public dark : DarkThemeService) { }
@@ -49,6 +50,7 @@ export class FriendComponent implements OnInit {
     this.listNotFriendsDelete();
     this.listNonFriend();
     this.listNotFriends();
+    this.listTeam();
     this.infoUser();
     if (this.login != null) {
       this.listSendAndReceivedMessagesAsc();
@@ -121,6 +123,15 @@ export class FriendComponent implements OnInit {
       error: (err) => { console.log(err); }
 
     });
+  }
+
+  listTeam() {
+    this.http.get('http://localhost:8300/team/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => {
+        this.team = data
+      },
+      error: (err) => { console.log(err) }
+    })
   }
 
 

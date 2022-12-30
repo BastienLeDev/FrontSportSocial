@@ -82,24 +82,20 @@
 
                 <!-- card demande d'un ami-->
                 <div class="anyClass">
-                    <div class="card p-1 m-1" [class.toggled]="classToggled">
+                    <div class="card p-1 m-1" *ngFor="let t of team" [class.toggled]="classToggled">
                         <div class="container">
 
                             <div class="row">
                                 <!-- photo de profil -->
                                 <div class="col-5">
-                                    <!--
-                                    <img src="{{f.imageUser.nameImage}}">
-                                    -->
+                                    <img src="{{t.imageTeam.nameImage}}">
+                                    
                                 </div>
                                 <!-- nom user -->
                                 <div class="col-7">
-                                    <!--
-                                    <b id="add_friend_username"> {{f.loginUser}}</b>
-                                    -->
-
+                                    <b id="add_friend_username"> {{t.title}}</b>
+                                    
                                     <div class="row">
-
 
                                     </div>
                                     <button type="submit" class="button-30"
