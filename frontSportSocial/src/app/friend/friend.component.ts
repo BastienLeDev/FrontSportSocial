@@ -25,6 +25,8 @@ export class FriendComponent implements OnInit {
   receivedmessagesasc: any;
   visibleMessage = false;
   visibleTeam = false;
+  visibleOption = false;
+  visibleTeamTitle = false;
   notfriends: any;
   friends: any;
   frienship: any;
@@ -105,6 +107,22 @@ export class FriendComponent implements OnInit {
       this.visibleTeam = true;
     }
 
+  }
+
+  messageOption() {
+    if (this.visibleOption == false) {
+      this.visibleOption = true;
+    } else {
+      this.visibleOption = false;
+    }
+  }
+
+  newTeamTitle() {
+    if (this.visibleTeamTitle == false) {
+      this.visibleTeamTitle = true;
+    } else {
+      this.visibleTeamTitle = false;
+    }
   }
 
   listNonFriend() {
@@ -204,6 +222,21 @@ export class FriendComponent implements OnInit {
       error: (err) => { console.log(err) },
 
 
+
+    })
+
+  }
+
+  renameTeam(val: NgForm) {
+
+    let title = { title: val.value.message };
+    this.http.post('http://localhost:8300/team/rename/' + this.login4.idTeam, title).subscribe({
+      next: (data) => {
+        this.mess = data;
+        val.reset();
+        this.ngOnInit()
+      },
+      error: (err) => { console.log(err) },
 
     })
 

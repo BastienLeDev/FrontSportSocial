@@ -161,6 +161,11 @@ td {
     color: black;
 }
 
+.card-option {
+    background-color: #deb996;
+    color: black;
+}
+
 .btnPrincipal {
     background-color: #FFC288 !important;
 }
@@ -240,7 +245,6 @@ td {
 #quitter {
     margin: 3px;
     width: auto;
-    left: 200px;
 
 }
 
@@ -253,6 +257,11 @@ td {
 
 .toggled .card-header {
     background-color: rgb(136, 142, 183);
+    color: black;
+}
+
+.toggled .card-option {
+    background-color: rgb(98, 106, 156);
     color: black;
 }
 
