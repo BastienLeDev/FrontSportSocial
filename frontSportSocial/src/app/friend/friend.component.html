@@ -200,7 +200,7 @@
                                     </button>
                                 </th>
                                 <th class="col-2">
-                                    <button type="submit" class="button-30 " style="font-size: 60%;"> Voir les membres
+                                    <button (click)="seeTeamMember()" type="submit" class="button-30 " style="font-size: 60%;"> Voir les membres
                                     </button>
                                 </th>
                                 <th class="col-2">
@@ -216,21 +216,47 @@
                         </div>
                         <div *ngIf="visibleTeamTitle">
                             <form #mess="ngForm" (ngSubmit)="renameTeam(mess)">
-                            <table class="tab">
-                                
-                                <th class="col-8">
-                                    <input id="message" [class.toggled]="classToggled" name="message" ngModel=""
-                                        type="text" class="form-control" placeholder="..."
-                                        style="width: auto; margin: 5px;">
-                                </th>
-                                <th class="col-2">
-                                    <button type="submit" class="button-30 " style="font-size: 60%;"><i
-                                            class="fas fa-check" style="color: rgb(255, 255, 255);"></i></button>
-                                </th>
-                           
-                            </table>
-                        </form>
+                                <table class="tab">
+
+                                    <th class="col-8">
+                                        <input id="message" [class.toggled]="classToggled" name="message" ngModel=""
+                                            type="text" class="form-control" placeholder="..."
+                                            style="width: auto; margin: 5px;">
+                                    </th>
+                                    <th class="col-2">
+                                        <button type="submit" class="button-30 " style="font-size: 60%;"><i
+                                                class="fas fa-check" style="color: rgb(255, 255, 255);"></i></button>
+                                    </th>
+
+                                </table>
+                            </form>
                         </div>
+                        <div *ngIf="visibleTeamMember">
+                            <div class="card p-1 m-1" *ngFor="let t of teammember" [class.toggled]="classToggled">
+                                <div class="container">
+
+                                    <div class="row">
+                                        <!-- photo de profil -->
+                                        <div class="col-5">
+                                            <img src="{{t.imageUser.nameImage}}">
+                                        </div>
+                                        <!-- nom user -->
+                                        <div class="col-7">
+                                            <b id="add_friend_username"> {{t.loginUser}}</b>
+
+                                            <div class="row">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
 
 

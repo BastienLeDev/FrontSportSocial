@@ -27,6 +27,7 @@ export class FriendComponent implements OnInit {
   visibleTeam = false;
   visibleOption = false;
   visibleTeamTitle = false;
+  visibleTeamMember = false;
   notfriends: any;
   friends: any;
   frienship: any;
@@ -45,6 +46,8 @@ export class FriendComponent implements OnInit {
   classToggled = this.dark.classToggled;
   team: any;
   teammessages: any;
+  teammember : any;
+  member : any;
 
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog, private appComponent: AppComponent, public dark: DarkThemeService) { }
@@ -57,6 +60,7 @@ export class FriendComponent implements OnInit {
     this.listNotFriends();
     this.listTeam();
     this.infoUser();
+    this.listTeamMember();
     if (this.login != null) {
       this.listSendAndReceivedMessagesAsc();
     }
@@ -125,6 +129,16 @@ export class FriendComponent implements OnInit {
     }
   }
 
+  seeTeamMember() {
+    this.member = this.login4;
+    this.listTeamMember();
+    if (this.visibleTeamMember == false) {
+      this.visibleTeamMember = true;
+    } else {
+      this.visibleTeamMember = false;
+    }
+  }
+
   listNonFriend() {
     this.http.get('http://localhost:8300/nonfriend/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
@@ -185,6 +199,17 @@ export class FriendComponent implements OnInit {
       next: (data) => {
         this.teammessages = data
         console.log(this.teammessages)
+      },
+      error: (err) => { console.log(err) }
+    });
+
+  }
+
+  listTeamMember() {
+    this.http.get('http://localhost:8300/team/member/' + this.login4.idTeam).subscribe({
+      next: (data) => {
+        this.teammember = data
+        console.log(this.teammember)
       },
       error: (err) => { console.log(err) }
     });
