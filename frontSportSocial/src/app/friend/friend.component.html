@@ -184,13 +184,28 @@
                 <div id="card_principal_messages" class="card p-3" [class.toggled]="classToggled">
                     <div class="card-header">
                         <div>
-                            <p class="text-center ">Discussion avec : <b>{{login2?.title}}</b>
+                            <p class="text-center ">Discussion avec : <b>{{login4?.title}}</b>
                             </p>
                         </div>
                     </div>
 
                     <div id="conv" class="anyClass" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+                            <div *ngFor="let m of teammessages" [class.toggled]="classToggled">
+                                <div class="container lighter darker" *ngIf="(!(m.expediteurMessage.idUser != authService.getUserConnect().idUser))">
+                                    <img class="right photo_conversation" src="{{userInfo.imageUser.nameImage}}">
+                                    <b>{{m.expediteurMessage.loginUser}} : </b>
+                                    <p>{{m.contentMessage}}</p>
+                                    <span class="time-left">{{m.dateSendMessage |date}}</span>
+                                </div>
 
+                                <div class="container lighter " *ngIf="m.expediteurMessage.idUser != authService.getUserConnect().idUser">
+                                <img src="{{m.expediteurMessage.imageUser.nameImage}}">
+                                <b>{{m.expediteurMessage.loginUser}} : </b>
+                                <p>{{m.contentMessage}}</p>
+                                <span class="time-left">{{m.dateSendMessage |date}}</span>
+                            </div>
+
+                            </div>
 
                     </div>
 

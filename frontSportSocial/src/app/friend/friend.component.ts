@@ -33,6 +33,7 @@ export class FriendComponent implements OnInit {
   login: any;
   login2: any;
   login3: any;
+  login4: any;
   ami: any;
   user: any;
   filterUser: any;
@@ -41,6 +42,7 @@ export class FriendComponent implements OnInit {
   deletefriend : any;
   classToggled = this.dark.classToggled;
   team : any;
+  teammessages : any;
 
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog , private appComponent : AppComponent, public dark : DarkThemeService) { }
@@ -55,6 +57,9 @@ export class FriendComponent implements OnInit {
     this.infoUser();
     if (this.login != null) {
       this.listSendAndReceivedMessagesAsc();
+    }
+    if (this.login4 != null) {
+      this.listTeamMessages();
     }
   }
 
@@ -84,7 +89,8 @@ export class FriendComponent implements OnInit {
   }
 
   getLogin2(val: any) {
-    this.login2 = val;
+    this.login4 = val;
+    console.log(this.login4);
     this.visibleMessage = false;
     this.sendmessagesasc = null;
     if (this.visibleTeam == false) {
@@ -94,10 +100,11 @@ export class FriendComponent implements OnInit {
     }
 
     if (val != null) {
-      this.listSendAndReceivedMessagesAsc();
+      this.listTeamMessages();
     } else {
       this.visibleTeam = true;
     }
+    
   }
 
   listNonFriend() {
@@ -111,7 +118,8 @@ export class FriendComponent implements OnInit {
 
   listSendAndReceivedMessagesAsc() {
     this.http.get('http://localhost:8300/message/me/' + this.authService.getUserConnect().idUser + '/' + this.login.idUser + '/combine').subscribe({
-      next: (data) => { this.sendmessagesasc = data },
+      next: (data) => { this.sendmessagesasc = data 
+      },
       error: (err) => { console.log(err) }
     });
 
@@ -151,6 +159,16 @@ export class FriendComponent implements OnInit {
       },
       error: (err) => { console.log(err) }
     })
+  }
+
+  listTeamMessages() {
+    this.http.get('http://localhost:8300/team/message/' + this.login4.idTeam).subscribe({
+      next: (data) => { this.teammessages = data 
+        console.log(this.teammessages)
+      },
+      error: (err) => { console.log(err) }
+    });
+
   }
 
 
