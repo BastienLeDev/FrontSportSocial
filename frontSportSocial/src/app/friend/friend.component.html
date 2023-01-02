@@ -190,22 +190,24 @@
                     </div>
 
                     <div id="conv" class="anyClass" #scrollMe [scrollTop]="scrollMe.scrollHeight">
-                            <div *ngFor="let m of teammessages" [class.toggled]="classToggled">
-                                <div class="container lighter darker" *ngIf="(!(m.expediteurMessage.idUser != authService.getUserConnect().idUser))">
-                                    <img class="right photo_conversation" src="{{userInfo.imageUser.nameImage}}">
-                                    <b>{{m.expediteurMessage.loginUser}} : </b>
-                                    <p>{{m.contentMessage}}</p>
-                                    <span class="time-left">{{m.dateSendMessage |date}}</span>
-                                </div>
+                        <div *ngFor="let m of teammessages" [class.toggled]="classToggled">
+                            <div class="container lighter darker"
+                                *ngIf="(!(m.expediteurMessage.idUser != authService.getUserConnect().idUser))">
+                                <img class="right photo_conversation" src="{{userInfo.imageUser.nameImage}}">
+                                <b>{{m.expediteurMessage.loginUser}} : </b>
+                                <p>{{m.contentMessage}}</p>
+                                <span class="time-left">{{m.dateSendMessage |date}}</span>
+                            </div>
 
-                                <div class="container lighter " *ngIf="m.expediteurMessage.idUser != authService.getUserConnect().idUser">
+                            <div class="container lighter "
+                                *ngIf="m.expediteurMessage.idUser != authService.getUserConnect().idUser">
                                 <img src="{{m.expediteurMessage.imageUser.nameImage}}">
                                 <b>{{m.expediteurMessage.loginUser}} : </b>
                                 <p>{{m.contentMessage}}</p>
                                 <span class="time-left">{{m.dateSendMessage |date}}</span>
                             </div>
 
-                            </div>
+                        </div>
 
                     </div>
 
@@ -222,10 +224,19 @@
                                         type="text" class="form-control" placeholder="..."
                                         style="width: 600px; margin: 5px;">
                                 </div>
-                                <div class="col-2">
-                                    <button type="submit" class="button-30 " style="font-size: 60%;">Envoyer <i
-                                            class="fas fa-envelope" style="color: rgb(0, 0, 0);"></i></button>
-                                </div>
+                                <table class="tab">
+                                    <th class="col-2" >
+                                        <button type="submit" class="button-30 " style="font-size: 60%;">Envoyer <i
+                                                class="fas fa-envelope" style="color: rgb(0, 0, 0);"></i>
+                                        </button>
+                                    </th>
+                                    <th class="col-2" >
+                                        <button id="quitter" (click)="quitTeam()"  type="submit"
+                                            class="btn btn-danger btn-block btn-sm button-30" style="font-size: 50%;">
+                                            Quitter <i class="fas fa-trash" style="color: rgb(255, 255, 255);"></i>
+                                        </button>
+                                    </th>
+                                </table>
                             </form>
                         </div>
                     </div>

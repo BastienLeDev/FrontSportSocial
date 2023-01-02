@@ -24,7 +24,7 @@ export class FriendComponent implements OnInit {
   sendmessagesasc: any;
   receivedmessagesasc: any;
   visibleMessage = false;
-  visibleTeam = false ;
+  visibleTeam = false;
   notfriends: any;
   friends: any;
   frienship: any;
@@ -39,13 +39,13 @@ export class FriendComponent implements OnInit {
   filterUser: any;
   filterFriend: any;
   userInfo: any;
-  deletefriend : any;
+  deletefriend: any;
   classToggled = this.dark.classToggled;
-  team : any;
-  teammessages : any;
+  team: any;
+  teammessages: any;
 
 
-  constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog , private appComponent : AppComponent, public dark : DarkThemeService) { }
+  constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog, private appComponent: AppComponent, public dark: DarkThemeService) { }
 
   ngOnInit(): void {
     this.listSendMessages();
@@ -104,7 +104,7 @@ export class FriendComponent implements OnInit {
     } else {
       this.visibleTeam = true;
     }
-    
+
   }
 
   listNonFriend() {
@@ -118,7 +118,8 @@ export class FriendComponent implements OnInit {
 
   listSendAndReceivedMessagesAsc() {
     this.http.get('http://localhost:8300/message/me/' + this.authService.getUserConnect().idUser + '/' + this.login.idUser + '/combine').subscribe({
-      next: (data) => { this.sendmessagesasc = data 
+      next: (data) => {
+        this.sendmessagesasc = data
       },
       error: (err) => { console.log(err) }
     });
@@ -163,7 +164,8 @@ export class FriendComponent implements OnInit {
 
   listTeamMessages() {
     this.http.get('http://localhost:8300/team/message/' + this.login4.idTeam).subscribe({
-      next: (data) => { this.teammessages = data 
+      next: (data) => {
+        this.teammessages = data
         console.log(this.teammessages)
       },
       error: (err) => { console.log(err) }
@@ -255,7 +257,7 @@ export class FriendComponent implements OnInit {
 
   FilterFriend(val: any) {
     this.filterFriend = val;
-    this.http.get('http://localhost:8300/friend/search/' + val + '/' + this.authService.getUserConnect().idUser ).subscribe({
+    this.http.get('http://localhost:8300/friend/search/' + val + '/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         console.log(val);
         this.friends = data;
@@ -285,6 +287,19 @@ export class FriendComponent implements OnInit {
       },
       error: (err) => { console.log(err); }
     });
+  }
+
+  quitTeam() {
+    this.http.delete('http://localhost:8300/team/quit/' + this.login4.idTeam + '/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => {
+        this.ngOnInit();
+      },
+      error: (err) => { console.log(err); },
+    })
+    this.ngOnInit();
+    this.visibleMessage = false;
+    this.visibleTeam = false;
+
   }
 
 }

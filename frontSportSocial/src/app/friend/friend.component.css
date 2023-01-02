@@ -66,7 +66,7 @@ input-group-btn {
 /* CHAT */
 /* Chat containers */
 .lighter {
-    background-color: #FFC288;
+    background-color: #FCECDD;
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0;
@@ -74,8 +74,7 @@ input-group-btn {
 
 /* Darker chat container */
 .darker {
-
-    background-color: #FCECDD;
+    background-color: #FFC288;
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0;
@@ -171,10 +170,6 @@ td {
     font-size: 10%;
 }
 
-#btnsup {
-    margin: 3px;
-}
-
 #btnadd {
     margin: 3px;
 }
@@ -238,6 +233,17 @@ td {
     transform: translateY(2px);
 }
 
+.tab, th {
+    border: none;
+}
+
+#quitter {
+    margin: 3px;
+    width: auto;
+    left: 200px;
+
+}
+
 /* Dark Mode CSS */
 
 .toggled {
@@ -295,11 +301,11 @@ td {
 }
 
 .toggled .lighter {
-    background-color: #5e5fae;
+    background-color: #6d6e82;
 }
 
 .toggled .darker {
-    background-color: #6d6e82;
+    background-color: #5e5fae;
 
 }
 
