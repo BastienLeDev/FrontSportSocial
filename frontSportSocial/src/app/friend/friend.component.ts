@@ -69,6 +69,7 @@ export class FriendComponent implements OnInit {
 
   getLogin(val: any) {
     this.login = val;
+    this.visibleTeam = false;
     if (this.visibleMessage == false) {
       this.visibleMessage = true;
     } else {
