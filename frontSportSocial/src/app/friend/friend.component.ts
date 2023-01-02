@@ -190,6 +190,23 @@ export class FriendComponent implements OnInit {
 
   }
 
+  sendTeamMess(val: NgForm) {
+
+    let messag = { contentMessage: val.value.message };
+    this.http.post('http://localhost:8300/team/envoyer/' + this.login4.idTeam + '/' + this.authService.getUserConnect().idUser, messag).subscribe({
+      next: (data) => {
+        this.mess = data;
+        val.reset();
+        this.ngOnInit()
+      },
+      error: (err) => { console.log(err) },
+
+
+
+    })
+
+  }
+
   deleteFrienship(val: any) {
     this.login2 = val;
     this.http.get('http://localhost:8300/select/' + this.authService.getUserConnect().idUser + '/' + this.login2.idUser, val).subscribe({

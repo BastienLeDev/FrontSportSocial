@@ -216,7 +216,7 @@
                 <div id="zone_saisie_message" class="card p-1" [class.toggled]="classToggled">
                     <div class="container">
                         <div class="row">
-                            <form #mess="ngForm" (ngSubmit)="sendMess(mess)">
+                            <form #mess="ngForm" (ngSubmit)="sendTeamMess(mess)">
                                 <div class="col-10" [class.toggled]="classToggled">
                                     <input id="message" [class.toggled]="classToggled" name="message" ngModel=""
                                         type="text" class="form-control" placeholder="..."
