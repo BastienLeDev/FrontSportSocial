@@ -16,19 +16,21 @@ import { DarkThemeService } from '../services/dark-theme.service';
 export class ClubComponent implements OnInit {
 
   sports: any;
-  clubs: any;
+  myClubs: any;
+  otherClubs: any;
   classToggled = this.dark.classToggled;
 
-  constructor(private http: HttpClient, private authService: AuthService, private route: Router, private dialog: MatDialog,private appComponent : AppComponent, public dark : DarkThemeService) { }
+  constructor(private http: HttpClient, private authService: AuthService, private route: Router, private dialog: MatDialog, private appComponent: AppComponent, public dark: DarkThemeService) { }
 
   ngOnInit(): void {
     this.listSport();
-    this.listClubs();
+    this.listMyClubs();
+    this.listOtherClubs()
     if (!this.authService.isConnected()) {
       this.route.navigateByUrl('connexion')
     }
   }
- 
+
 
   listSport() {
     this.http.get('http://localhost:8300/sport').subscribe({
@@ -38,11 +40,21 @@ export class ClubComponent implements OnInit {
 
   }
 
-  listClubs() {
-    this.http.get('http://localhost:8300/club').subscribe({
+  listMyClubs() {
+    this.http.get('http://localhost:8300/mesClubs/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
-        this.clubs = data;
-        console.log(this.clubs);
+        this.myClubs = data;
+        console.log(this.myClubs);
+      },
+      error: (err) => { console.log(err); }
+    });
+  }
+
+  listOtherClubs() {
+    this.http.get('http://localhost:8300/autresClubs/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => {
+        this.otherClubs = data;
+        console.log(this.otherClubs);
       },
       error: (err) => { console.log(err); }
     });
