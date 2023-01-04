@@ -166,6 +166,10 @@ td {
     color: black;
 }
 
+#teammember {
+    background-color: #d0c4b8;
+}
+
 .btnPrincipal {
     background-color: #FFC288 !important;
 }
@@ -316,6 +320,10 @@ td {
 .toggled .darker {
     background-color: #5e5fae;
 
+}
+
+.toggled #teammember {
+    background-color: rgb(126, 132, 179);
 }
 
 .teamImage {

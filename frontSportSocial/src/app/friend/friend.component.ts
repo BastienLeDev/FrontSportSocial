@@ -119,12 +119,15 @@ export class FriendComponent implements OnInit {
       this.visibleOption = true;
     } else {
       this.visibleOption = false;
+      this.visibleTeamTitle = false;
+      this.visibleTeamMember = false;
     }
   }
 
   newTeamTitle() {
     if (this.visibleTeamTitle == false) {
       this.visibleTeamTitle = true;
+      this.visibleTeamMember = false;
     } else {
       this.visibleTeamTitle = false;
     }
@@ -135,6 +138,7 @@ export class FriendComponent implements OnInit {
     this.listTeamMember();
     if (this.visibleTeamMember == false) {
       this.visibleTeamMember = true;
+      this.visibleTeamTitle = false;
     } else {
       this.visibleTeamMember = false;
     }
