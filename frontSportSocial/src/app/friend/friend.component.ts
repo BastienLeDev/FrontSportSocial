@@ -37,6 +37,7 @@ export class FriendComponent implements OnInit {
   login2: any;
   login3: any;
   login4: any;
+  login5: any;
   ami: any;
   user: any;
   filterUser: any;
@@ -46,8 +47,8 @@ export class FriendComponent implements OnInit {
   classToggled = this.dark.classToggled;
   team: any;
   teammessages: any;
-  teammember : any;
-  member : any;
+  teammember: any;
+  member: any;
 
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog, private appComponent: AppComponent, public dark: DarkThemeService) { }
@@ -349,6 +350,20 @@ export class FriendComponent implements OnInit {
 
   quitTeam() {
     this.http.delete('http://localhost:8300/team/quit/' + this.login4.idTeam + '/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => {
+        this.ngOnInit();
+      },
+      error: (err) => { console.log(err); },
+    })
+    this.ngOnInit();
+    this.visibleMessage = false;
+    this.visibleTeam = false;
+
+  }
+
+  deleteTeamMember(val: any) {
+    this.login5 = val;
+    this.http.delete('http://localhost:8300/team/quit/' + this.login4.idTeam + '/' + this.login5.idUser).subscribe({
       next: (data) => {
         this.ngOnInit();
       },

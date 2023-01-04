@@ -244,8 +244,11 @@
                                         <div class="col-7">
                                             <b id="add_friend_username"> {{t.loginUser}}</b>
 
-                                            <div class="row">
-
+                                            <div class="row" *ngIf="t.idUser != authService.getUserConnect().idUser">
+                                                <button id="quitter" (click)="deleteTeamMember(t)" type="submit"
+                                                class="btn btn-danger btn-block btn-sm button-30" style="font-size: 50%;">
+                                                Supprimer<i class="fas fa-trash" style="color: rgb(255, 255, 255);"></i>
+                                            </button>
                                             </div>
 
                                         </div>
