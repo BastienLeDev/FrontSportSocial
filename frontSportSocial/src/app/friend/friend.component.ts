@@ -370,8 +370,6 @@ export class FriendComponent implements OnInit {
       error: (err) => { console.log(err); },
     })
     this.ngOnInit();
-    this.visibleMessage = false;
-    this.visibleTeam = false;
 
   }
 
