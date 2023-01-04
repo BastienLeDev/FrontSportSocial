@@ -28,6 +28,7 @@ export class FriendComponent implements OnInit {
   visibleOption = false;
   visibleTeamTitle = false;
   visibleTeamMember = false;
+  visibleAddTeamMember = false;
   notfriends: any;
   friends: any;
   frienship: any;
@@ -38,6 +39,7 @@ export class FriendComponent implements OnInit {
   login3: any;
   login4: any;
   login5: any;
+  login6: any;
   ami: any;
   user: any;
   filterUser: any;
@@ -48,6 +50,7 @@ export class FriendComponent implements OnInit {
   team: any;
   teammessages: any;
   teammember: any;
+  nonteammember: any;
   member: any;
 
 
@@ -61,7 +64,8 @@ export class FriendComponent implements OnInit {
     this.listNotFriends();
     this.listTeam();
     this.infoUser();
-    this.listTeamMember();
+    if (this.login4 != null) {this.listTeamMember();}
+    if (this.login4 != null) {this.listNonTeamMember();}
     if (this.login != null) {
       this.listSendAndReceivedMessagesAsc();
     }
@@ -97,7 +101,6 @@ export class FriendComponent implements OnInit {
 
   getLogin2(val: any) {
     this.login4 = val;
-    console.log(this.login4);
     this.visibleMessage = false;
     this.sendmessagesasc = null;
     if (this.visibleTeam == false) {
@@ -121,6 +124,7 @@ export class FriendComponent implements OnInit {
       this.visibleOption = false;
       this.visibleTeamTitle = false;
       this.visibleTeamMember = false;
+      this.visibleAddTeamMember = false;
     }
   }
 
@@ -128,6 +132,7 @@ export class FriendComponent implements OnInit {
     if (this.visibleTeamTitle == false) {
       this.visibleTeamTitle = true;
       this.visibleTeamMember = false;
+      this.visibleAddTeamMember = false;
     } else {
       this.visibleTeamTitle = false;
     }
@@ -139,8 +144,20 @@ export class FriendComponent implements OnInit {
     if (this.visibleTeamMember == false) {
       this.visibleTeamMember = true;
       this.visibleTeamTitle = false;
+      this.visibleAddTeamMember = false;
     } else {
       this.visibleTeamMember = false;
+    }
+  }
+
+  addTeamMember() {
+    this.listNonTeamMember();
+    if (this.visibleAddTeamMember == false) {
+      this.visibleAddTeamMember = true;
+      this.visibleTeamTitle = false;
+      this.visibleTeamMember = false;
+    } else {
+      this.visibleAddTeamMember = false;
     }
   }
 
@@ -203,7 +220,6 @@ export class FriendComponent implements OnInit {
     this.http.get('http://localhost:8300/team/message/' + this.login4.idTeam).subscribe({
       next: (data) => {
         this.teammessages = data
-        console.log(this.teammessages)
       },
       error: (err) => { console.log(err) }
     });
@@ -214,7 +230,16 @@ export class FriendComponent implements OnInit {
     this.http.get('http://localhost:8300/team/member/' + this.login4.idTeam).subscribe({
       next: (data) => {
         this.teammember = data
-        console.log(this.teammember)
+      },
+      error: (err) => { console.log(err) }
+    });
+
+  }
+
+  listNonTeamMember() {
+    this.http.get('http://localhost:8300/team/nonmember/' + this.login4.idTeam).subscribe({
+      next: (data) => {
+        this.nonteammember = data
       },
       error: (err) => { console.log(err) }
     });
@@ -277,7 +302,6 @@ export class FriendComponent implements OnInit {
     this.http.get('http://localhost:8300/select/' + this.authService.getUserConnect().idUser + '/' + this.login2.idUser, val).subscribe({
       next: (data) => {
         this.ami = data;
-        console.log(this.ami);
         this.http.delete('http://localhost:8300/friend/refuse/' + this.ami.idFriend, val).subscribe({
           next: (data) => {
             this.ngOnInit();
@@ -295,7 +319,6 @@ export class FriendComponent implements OnInit {
       next: (data) => {
         this.ami = data;
         this.ami.accept = true;
-        console.log(this.ami);
         this.http.patch('http://localhost:8300/friend/accept/' + this.ami.idFriend, this.ami).subscribe({
           next: (data) => {
             this.ngOnInit();
@@ -312,7 +335,6 @@ export class FriendComponent implements OnInit {
     this.filterUser = val;
     this.http.get('http://localhost:8300/user/search/' + val).subscribe({
       next: (data) => {
-        console.log(val);
         this.user = data;
       }
     })
@@ -322,9 +344,7 @@ export class FriendComponent implements OnInit {
     this.filterFriend = val;
     this.http.get('http://localhost:8300/friend/search/' + val + '/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
-        console.log(val);
         this.friends = data;
-        console.log(this.friends);
       }
     })
   }
@@ -333,10 +353,7 @@ export class FriendComponent implements OnInit {
     this.login3 = val
     this.http.post('http://localhost:8300/friend/' + this.authService.getUserConnect().idUser, this.login3).subscribe({
       next: (data) => {
-        console.log(this.login3)
-        console.log(this.filterUser)
         this.ngOnInit();
-        console.log(this.filterUser)
       }
     })
 
@@ -346,7 +363,6 @@ export class FriendComponent implements OnInit {
     this.http.get('http://localhost:8300/user/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.userInfo = data;
-        console.log(this.userInfo)
       },
       error: (err) => { console.log(err); }
     });
@@ -368,6 +384,18 @@ export class FriendComponent implements OnInit {
   deleteTeamMember(val: any) {
     this.login5 = val;
     this.http.delete('http://localhost:8300/team/quit/' + this.login4.idTeam + '/' + this.login5.idUser).subscribe({
+      next: (data) => {
+        this.ngOnInit();
+      },
+      error: (err) => { console.log(err); },
+    })
+    this.ngOnInit();
+
+  }
+
+  addTeamMembers(val: any) {
+    this.login6 = val;
+    this.http.post('http://localhost:8300/team/addmember/' + this.login4.idTeam + '/' + this.login6.idUser, val).subscribe({
       next: (data) => {
         this.ngOnInit();
       },

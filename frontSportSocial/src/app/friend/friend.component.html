@@ -204,7 +204,7 @@
                                     </button>
                                 </th>
                                 <th class="col-2">
-                                    <button type="submit" class="button-30 " style="font-size: 60%;">Ajouter
+                                    <button (click)="addTeamMember()" type="submit" class="button-30 " style="font-size: 60%;">Ajouter
                                         membre</button>
                                 </th>
                                 <th class="col-2">
@@ -231,7 +231,7 @@
                                 </table>
                             </form>
                         </div>
-                        <div *ngIf="visibleTeamMember">
+                        <div *ngIf="visibleTeamMember" id="option" class="anyClass">
                             <div id="teammember" class="card p-1 m-1" *ngFor="let t of teammember" [class.toggled]="classToggled">
                                 <div class="container">
 
@@ -244,11 +244,14 @@
                                         <div class="col-7">
                                             <b id="add_friend_username"> {{t.loginUser}}</b>
 
-                                            <div class="row" *ngIf="t.idUser != authService.getUserConnect().idUser">
+                                            <div class="row" *ngIf="t.idUser != authService.getUserConnect().idUser && login4.admin.idUser == authService.getUserConnect().idUser">
                                                 <button id="quitter" (click)="deleteTeamMember(t)" type="submit"
                                                 class="btn btn-danger btn-block btn-sm button-30" style="font-size: 50%;">
                                                 Supprimer<i class="fas fa-trash" style="color: rgb(255, 255, 255);"></i>
                                             </button>
+                                            </div>
+                                            <div class="row" *ngIf="t.idUser == login4.admin.idUser ">
+                                                <p>Admin</p>
                                             </div>
 
                                         </div>
@@ -258,6 +261,33 @@
                                 </div>
                             </div>
 
+                        </div>
+                        <div *ngIf="visibleAddTeamMember" id="option" class="anyClass">
+                           <div id="teammember" class="card p-1 m-1" *ngFor="let nm of nonteammember" [class.toggled]="classToggled">
+                            <div class="container">
+
+                                <div class="row">
+                                    <!-- photo de profil -->
+                                    <div class="col-5">
+                                        <img src="{{nm.imageUser.nameImage}}">
+                                    </div>
+                                    <!-- nom user -->
+                                    <div class="col-7">
+                                        <b id="add_friend_username"> {{nm.loginUser}}</b>
+
+                                        <div class="row">
+                                            <button id="quitter"  type="submit" (click)="addTeamMembers(nm)"
+                                            class="btn btn-block btn-sm button-30" style="font-size: 50%;">
+                                            Ajouter </button>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                           </div> 
                         </div>
 
                     </div>
