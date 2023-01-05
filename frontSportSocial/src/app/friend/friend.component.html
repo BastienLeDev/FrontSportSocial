@@ -195,10 +195,18 @@
                         <div>
                             <table class="tab">
                                 <th class="col-2">
+                                    <div *ngIf="authService.getUserConnect().idUser != login4.admin.idUser ">
                                     <button id="quitter" (click)="quitTeam()" type="submit"
                                         class="btn btn-danger btn-block btn-sm button-30" style="font-size: 50%;">
                                         Quitter <i class="fas fa-trash" style="color: rgb(255, 255, 255);"></i>
                                     </button>
+                                </div>
+                                    <div *ngIf="authService.getUserConnect().idUser == login4.admin.idUser ">
+                                    <button id="quitter" (click)="deleteTeam()" type="submit"
+                                    class="btn btn-danger btn-block btn-sm button-30" style="font-size: 50%;">
+                                    Supprimer le groupe <i class="fas fa-trash" style="color: rgb(255, 255, 255);"></i>
+                                </button>
+                            </div>
                                 </th>
                                 <th class="col-2">
                                     <button (click)="seeTeamMember()" type="submit" class="button-30 " style="font-size: 60%;"> Voir les membres

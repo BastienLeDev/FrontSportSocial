@@ -413,6 +413,18 @@ export class FriendComponent implements OnInit {
 
   }
 
+  deleteTeam() {
+    this.http.delete('http://localhost:8300/team/delete/' + this.login4.idTeam ).subscribe({
+      next: (data) => {
+        this.ngOnInit();
+      },
+      error: (err) => { console.log(err); },
+    })
+    this.ngOnInit();
+    this.visibleMessage = false;
+    this.visibleTeam = false;
+  }
+
 }
 
 
