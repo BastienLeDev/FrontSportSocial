@@ -45,6 +45,7 @@ export class FriendComponent implements OnInit {
   user: any;
   filterUser: any;
   filterFriend: any;
+  filterTeam : any;
   userInfo: any;
   deletefriend: any;
   classToggled = this.dark.classToggled;
@@ -103,9 +104,14 @@ export class FriendComponent implements OnInit {
   getLogin2(val: any) {
     this.login4 = val;
     this.visibleMessage = false;
+    this.visibleOption = false;
+    this.visibleTeamTitle = false;
+    this.visibleTeamMember = false;
+    this.visibleAddTeamMember = false;
     this.sendmessagesasc = null;
     if (this.visibleTeam == false) {
       this.visibleTeam = true;
+
     } else {
       //this.visibleMessage = false;
     }
@@ -333,7 +339,7 @@ export class FriendComponent implements OnInit {
 
   FilterUser(val: any) {
     this.filterUser = val;
-    this.http.get('http://localhost:8300/user/search/' + val).subscribe({
+    this.http.get('http://localhost:8300/nonfriend/search/' + val + '/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.user = data;
       }
@@ -345,6 +351,15 @@ export class FriendComponent implements OnInit {
     this.http.get('http://localhost:8300/friend/search/' + val + '/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.friends = data;
+      }
+    })
+  }
+
+  FilterTeam(val: any) {
+    this.filterTeam = val;
+    this.http.get('http://localhost:8300/team/search/' + val + '/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => {
+        this.team = data;
       }
     })
   }
@@ -411,6 +426,18 @@ export class FriendComponent implements OnInit {
       this.ngOnInit(); //pour reload les cards event => affiche le nouvel event sans reload page
     });
 
+  }
+
+  deleteTeam() {
+    this.http.delete('http://localhost:8300/team/delete/' + this.login4.idTeam ).subscribe({
+      next: (data) => {
+        this.ngOnInit();
+      },
+      error: (err) => { console.log(err); },
+    })
+    this.ngOnInit();
+    this.visibleMessage = false;
+    this.visibleTeam = false;
   }
 
 }

@@ -22,6 +22,8 @@
 
                 <div class="md-form" [class.toggled]="classToggled">
                     <div class="p-3" [class.toggled]="classToggled">
+                        <p *ngIf="authService.getUserConnect().idUser" style="font-style: italic;"> <i class="fas fa-circle" style="color: rgb(150, 211, 137); size: 50%;"></i> En ligne</p>
+                        <p *ngIf="!authService.getUserConnect().idUser" style="font-style: italic;"> <i class="fas fa-circle" style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne</p>
                         <p>Nom : <b>{{userInfo.lastNameUser}} </b></p>
                         <p>Prénom : <b>{{userInfo.firstNameUser}}</b></p>
                         <p>Date de naissance: <b>{{userInfo.birthDateUser}}</b></p>
