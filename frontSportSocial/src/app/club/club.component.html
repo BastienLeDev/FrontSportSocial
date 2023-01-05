@@ -5,12 +5,22 @@
                 <div class="card-header">
                     <p class="text-center">Mes clubs</p>
                 </div>
-                <div class="card p-3 m-3" *ngFor="let c of myClubs" [class.toggled]="classToggled">
+                <div class="card p-3 m-2" *ngFor="let c of myClubs" [class.toggled]="classToggled">
                     <div class="row">
-                        <img src="{{c.imageClub.nameImage}}" style="width: 30%" alt="">
-                        <h4>{{c.titleClub}}</h4>
-
-
+                        <div class="col-3">
+                            <img src="{{c.imageClub.nameImage}}" style="width: 100%" alt="">
+                        </div>
+                        <div class="col-7">
+                            <h4>{{c.titleClub}}</h4>
+                        </div>
+                        <div class="col-2">
+                            <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu" xPosition="before">
+                                <button mat-menu-item (click)="openDialog(c)">Quitter le club</button>
+                            </mat-menu>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -58,41 +68,45 @@
                         </span>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12 p-4">
-                        <div class="card p-3 m-3" *ngFor="let c of otherClubs" [class.toggled]="classToggled">
-                            <div class="row">
-                                <div class="col-6 p-4">
-                                    <div class="card p-3 m-3" [class.toggled]="classToggled">
-                                        <h4>{{c.titleClub}}</h4>
-                                        <img src="{{c.imageClub.nameImage}}" style="width: 30%" alt="">
-                                    </div>
+
+                <div class="md-form">
+                    <div class="row">
+                        <div class="col-4 p-4" *ngFor="let c of otherClubs" [class.toggled]="classToggled">
+
+
+                            <div class="card p-3 m-3" [class.toggled]="classToggled">
+                                <div class="row">
+                                    <h4 class=" nomClub">{{c.titleClub}}</h4>
                                 </div>
-                                <div class="col-6 p-4">
-                                    <div class="card p-3 m-3" [class.toggled]="classToggled">
-                                        <h4>Description</h4>
-                                        <p>{{c.descriptionClub}}</p>
+
+                                <div class="row justify-content-center" [class.toggled]="classToggled">
+                                    <img src="{{c.imageClub.nameImage}}" style="width: 30%" alt="">
+                                </div>
+                                <h4>Description</h4>
+                                <p>{{c.descriptionClub}}</p>
+                                <h4>Amis membres du club</h4>
+                                <div class="row">
+
+                                    <div class="row">
+
+                                        <div class="col-6 p-4">
+                                            <span class="input-group-btn" style="width: 50%;">
+                                                <button (click)="joinClub(c)" type="submit"
+                                                    class="btn btnPrincipal btn-block "
+                                                    style="font-size: 60%;">Rejoindre</button>
+                                            </span>
+                                        </div>
+                                        <div class="col-6 p-4">
+                                            <span class="input-group-btn" style="width: 50%;">
+                                                <button type="submit" class="btn btnPrincipal btn-block "
+                                                    style="font-size: 60%;">Contacter <i class="fas fa-envelope"
+                                                        style="color: rgb(0, 0, 0);"></i></button>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-6 p-4">
-                                    <h4>Amis membres du club</h4>
-                                </div>
-                                <div class="col-3 p-4">
-                                    <span class="input-group-btn" style="width: 50%;">
-                                        <button type="submit" class="btn btnPrincipal btn-block "
-                                            style="font-size: 60%;">Rejoindre</button>
-                                    </span>
-                                </div>
-                                <div class="col-3 p-4">
-                                    <span class="input-group-btn" style="width: 50%;">
-                                        <button type="submit" class="btn btnPrincipal btn-block "
-                                            style="font-size: 60%;">Contacter <i class="fas fa-envelope"
-                                                style="color: rgb(0, 0, 0);"></i></button>
-                                    </span>
-                                </div>
-                            </div>
+
 
 
                         </div>

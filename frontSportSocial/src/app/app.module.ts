@@ -35,8 +35,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { PopUpInventaireComponent } from './pop-up-inventaire/pop-up-inventaire.component';
 import { NewClubComponent } from './new-club/new-club.component';
 
-import {MatInputModule} from '@angular/material/input';
 import { PopUpCreateTeamComponent } from './pop-up-create-team/pop-up-create-team.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { PopUpQuitClubComponent } from './pop-up-quit-club/pop-up-quit-club.component';
+
 
 @NgModule({
   declarations: [
@@ -59,6 +62,7 @@ import { PopUpCreateTeamComponent } from './pop-up-create-team/pop-up-create-tea
     PopUpInventaireComponent,
     NewClubComponent,
     PopUpCreateTeamComponent,
+    PopUpQuitClubComponent,
   ],
 
   imports: [
@@ -75,6 +79,7 @@ import { PopUpCreateTeamComponent } from './pop-up-create-team/pop-up-create-tea
     ScrollingModule,
     MatSlideToggleModule,
     MatInputModule,
+    MatMenuModule,
 
     CalendarModule.forRoot({
       provide: DateAdapter,
