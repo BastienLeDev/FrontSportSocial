@@ -35,6 +35,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { PopUpInventaireComponent } from './pop-up-inventaire/pop-up-inventaire.component';
 import { NewClubComponent } from './new-club/new-club.component';
 
+import { PopUpCreateTeamComponent } from './pop-up-create-team/pop-up-create-team.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { PopUpQuitClubComponent } from './pop-up-quit-club/pop-up-quit-club.component';
@@ -61,6 +62,7 @@ import { ClubPageComponent } from './club-page/club-page.component';
     PopUpModifMdpComponent,
     PopUpInventaireComponent,
     NewClubComponent,
+    PopUpCreateTeamComponent,
     PopUpQuitClubComponent,
     ClubPageComponent,
   ],

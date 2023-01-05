@@ -12,10 +12,7 @@ import { AuthService } from '../services/auth.service';
 
 export class NewEventComponent implements OnInit {
 
-  constructor(private http: HttpClient, private route: Router,
-    public dialogRef: MatDialogRef<NewEventComponent>,
-    public authService: AuthService,
-  ) { }
+  constructor(private http: HttpClient, private route: Router, public dialogRef: MatDialogRef<NewEventComponent>, public authService: AuthService ) { }
 
   sports: any;
 
