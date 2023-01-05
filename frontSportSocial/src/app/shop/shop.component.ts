@@ -40,6 +40,8 @@ export class ShopComponent implements OnInit {
   showHideCoach() {
     if (this.visibleCoach == false) {
       this.visibleCoach = true;
+      this.visibleTokens = false;
+      this.visibleAvatar = false;
     } else {
       this.visibleCoach = false;
     }
@@ -48,6 +50,8 @@ export class ShopComponent implements OnInit {
   showHideAvatar() {
     if (this.visibleAvatar == false) {
       this.visibleAvatar = true;
+      this.visibleTokens = false;
+      this.visibleCoach = false;
     } else {
       this.visibleAvatar = false;
     }
@@ -57,6 +61,8 @@ export class ShopComponent implements OnInit {
   showHideTokens() {
     if (this.visibleTokens == false) {
       this.visibleTokens = true;
+      this.visibleCoach = false;
+      this.visibleAvatar = false;
     } else {
       this.visibleTokens = false;
     }
