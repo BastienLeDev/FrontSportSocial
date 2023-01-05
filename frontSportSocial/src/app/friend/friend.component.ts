@@ -333,7 +333,7 @@ export class FriendComponent implements OnInit {
 
   FilterUser(val: any) {
     this.filterUser = val;
-    this.http.get('http://localhost:8300/user/search/' + val).subscribe({
+    this.http.get('http://localhost:8300/nonfriend/search/' + val + '/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.user = data;
       }
