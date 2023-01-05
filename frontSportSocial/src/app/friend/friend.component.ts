@@ -45,6 +45,7 @@ export class FriendComponent implements OnInit {
   user: any;
   filterUser: any;
   filterFriend: any;
+  filterTeam : any;
   userInfo: any;
   deletefriend: any;
   classToggled = this.dark.classToggled;
@@ -350,6 +351,15 @@ export class FriendComponent implements OnInit {
     this.http.get('http://localhost:8300/friend/search/' + val + '/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.friends = data;
+      }
+    })
+  }
+
+  FilterTeam(val: any) {
+    this.filterTeam = val;
+    this.http.get('http://localhost:8300/team/search/' + val + '/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => {
+        this.team = data;
       }
     })
   }

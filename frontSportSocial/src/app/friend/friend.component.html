@@ -63,10 +63,10 @@
                 </div>
                 <div class="container" [class.toggled]="classToggled">
                     <div id="content">
-                        <form class='form-inline'>
+                        <form #infosTeam="ngForm" (ngSubmit)="FilterTeam(TeamS.value)">
                             <div class="input-group">
-                                <input type='text' id='search' class="form-control search-form"
-                                    placeholder="Rechercher...">
+                                <input ngModel="" #TeamS name="TeamS" type='text' id='search'
+                                    class="form-control search-form" placeholder="Rechercher...">
                                 <span class="input-group-btn" style="width:39px">
                                     <button id="search-this" type="button" class="pull-right btn search-btn">
                                         <i class="fa fa-search"></i>
