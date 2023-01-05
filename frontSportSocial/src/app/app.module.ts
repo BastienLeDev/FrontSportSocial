@@ -36,6 +36,7 @@ import { PopUpInventaireComponent } from './pop-up-inventaire/pop-up-inventaire.
 import { NewClubComponent } from './new-club/new-club.component';
 
 import {MatInputModule} from '@angular/material/input';
+import { PopUpCreateTeamComponent } from './pop-up-create-team/pop-up-create-team.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import {MatInputModule} from '@angular/material/input';
     PopUpModifMdpComponent,
     PopUpInventaireComponent,
     NewClubComponent,
+    PopUpCreateTeamComponent,
   ],
 
   imports: [

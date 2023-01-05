@@ -9,6 +9,7 @@ import { isThisWeek } from 'date-fns';
 import { AuthService } from '../services/auth.service';
 import { AppComponent } from '../app.component';
 import { DarkThemeService } from '../services/dark-theme.service';
+import { PopUpCreateTeamComponent } from '../pop-up-create-team/pop-up-create-team.component';
 
 @Component({
   selector: 'app-friend',
@@ -283,7 +284,6 @@ export class FriendComponent implements OnInit {
   }
 
   renameTeam(val: NgForm) {
-
     let title = { title: val.value.message };
     this.http.post('http://localhost:8300/team/rename/' + this.login4.idTeam, title).subscribe({
       next: (data) => {
@@ -402,6 +402,14 @@ export class FriendComponent implements OnInit {
       error: (err) => { console.log(err); },
     })
     this.ngOnInit();
+
+  }
+
+  openNewTeamModal() {
+    const dialogRef = this.dialog.open(PopUpCreateTeamComponent);
+    dialogRef.afterClosed().subscribe(() => { //Pour lancer des fonctions lorsqu'on ferme le popup
+      this.ngOnInit(); //pour reload les cards event => affiche le nouvel event sans reload page
+    });
 
   }
 
