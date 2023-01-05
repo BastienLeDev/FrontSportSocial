@@ -26,7 +26,7 @@
                 </div>
 
 
-                <!-- card demande d'un ami-->
+                <!-- card ami-->
                 <div class="anyClass">
                     <div class="card p-1 m-1" *ngFor="let f of friends" [class.toggled]="classToggled">
                         <div class="container">
@@ -45,7 +45,8 @@
 
                                     </div>
                                     <button (click)="getLogin(f)" type="submit" class="button-30"
-                                        style="font-size: 60%;">Afficher <i class="fas fa-eye" style="color: rgb(0, 0, 0);"></i>
+                                        style="font-size: 60%;">Afficher <i class="fas fa-eye"
+                                            style="color: rgb(0, 0, 0);"></i>
                                     </button>
 
                                 </div>
@@ -79,7 +80,7 @@
                 </div>
 
 
-                <!-- card demande d'un ami-->
+                <!-- card team-->
                 <div class="anyClass">
                     <div class="card p-2 m-2" *ngFor="let t of team" [class.toggled]="classToggled">
                         <div class="container">
@@ -98,7 +99,8 @@
 
                                     </div>
                                     <button (click)="getLogin2(t)" type="submit" class="button-30"
-                                        style="font-size: 60%;">Afficher  <i class="fas fa-eye" style="color: rgb(0, 0, 0);"></i>
+                                        style="font-size: 60%;">Afficher <i class="fas fa-eye"
+                                            style="color: rgb(0, 0, 0);"></i>
                                     </button>
 
 
@@ -112,7 +114,8 @@
 
                 </div>
                 <div>
-                    <button (click)="openNewTeamModal()" type="submit" class="button-30"  style="font-size: 60%;">Créer une team</button>
+                    <button (click)="openNewTeamModal()" type="submit" class="button-30" style="font-size: 60%;">Créer
+                        une team</button>
                 </div>
             </div>
         </div>
@@ -196,24 +199,27 @@
                             <table class="tab">
                                 <th class="col-2">
                                     <div *ngIf="authService.getUserConnect().idUser != login4.admin.idUser ">
-                                    <button id="quitter" (click)="quitTeam()" type="submit"
-                                        class="btn btn-danger btn-block btn-sm button-30" style="font-size: 50%;">
-                                        Quitter <i class="fas fa-trash" style="color: rgb(255, 255, 255);"></i>
-                                    </button>
-                                </div>
+                                        <button id="quitter" (click)="quitTeam()" type="submit"
+                                            class="btn btn-danger btn-block btn-sm button-30" style="font-size: 50%;">
+                                            Quitter <i class="fas fa-trash" style="color: rgb(255, 255, 255);"></i>
+                                        </button>
+                                    </div>
                                     <div *ngIf="authService.getUserConnect().idUser == login4.admin.idUser ">
-                                    <button id="quitter" (click)="deleteTeam()" type="submit"
-                                    class="btn btn-danger btn-block btn-sm button-30" style="font-size: 50%;">
-                                    Supprimer le groupe <i class="fas fa-trash" style="color: rgb(255, 255, 255);"></i>
-                                </button>
-                            </div>
+                                        <button id="quitter" (click)="deleteTeam()" type="submit"
+                                            class="btn btn-danger btn-block btn-sm button-30" style="font-size: 50%;">
+                                            Supprimer le groupe <i class="fas fa-trash"
+                                                style="color: rgb(255, 255, 255);"></i>
+                                        </button>
+                                    </div>
                                 </th>
                                 <th class="col-2">
-                                    <button (click)="seeTeamMember()" type="submit" class="button-30 " style="font-size: 60%;"> Voir les membres
+                                    <button (click)="seeTeamMember()" type="submit" class="button-30 "
+                                        style="font-size: 60%;"> Voir les membres
                                     </button>
                                 </th>
                                 <th class="col-2">
-                                    <button (click)="addTeamMember()" type="submit" class="button-30 " style="font-size: 60%;">Ajouter
+                                    <button (click)="addTeamMember()" type="submit" class="button-30 "
+                                        style="font-size: 60%;">Ajouter
                                         membre</button>
                                 </th>
                                 <th class="col-2">
@@ -241,7 +247,8 @@
                             </form>
                         </div>
                         <div *ngIf="visibleTeamMember" id="option" class="anyClass">
-                            <div id="teammember" class="card p-1 m-1" *ngFor="let t of teammember" [class.toggled]="classToggled">
+                            <div id="teammember" class="card p-1 m-1" *ngFor="let t of teammember"
+                                [class.toggled]="classToggled">
                                 <div class="container">
 
                                     <div class="row">
@@ -253,11 +260,14 @@
                                         <div class="col-7">
                                             <b id="add_friend_username"> {{t.loginUser}}</b>
 
-                                            <div class="row" *ngIf="t.idUser != authService.getUserConnect().idUser && login4.admin.idUser == authService.getUserConnect().idUser">
+                                            <div class="row"
+                                                *ngIf="t.idUser != authService.getUserConnect().idUser && login4.admin.idUser == authService.getUserConnect().idUser">
                                                 <button id="quitter" (click)="deleteTeamMember(t)" type="submit"
-                                                class="btn btn-danger btn-block btn-sm button-30" style="font-size: 50%;">
-                                                Supprimer<i class="fas fa-trash" style="color: rgb(255, 255, 255);"></i>
-                                            </button>
+                                                    class="btn btn-danger btn-block btn-sm button-30"
+                                                    style="font-size: 50%;">
+                                                    Supprimer<i class="fas fa-trash"
+                                                        style="color: rgb(255, 255, 255);"></i>
+                                                </button>
                                             </div>
                                             <div class="row" *ngIf="t.idUser == login4.admin.idUser ">
                                                 <p>Admin</p>
@@ -272,22 +282,25 @@
 
                         </div>
                         <div *ngIf="visibleAddTeamMember" id="option" class="anyClass">
-                           <div id="teammember" class="card p-1 m-1" *ngFor="let nm of nonteammember" [class.toggled]="classToggled">
-                            <div class="container">
+                            <div id="teammember" class="card p-1 m-1" *ngFor="let nm of nonteammember"
+                                [class.toggled]="classToggled">
+                                <div class="container">
 
-                                <div class="row">
-                                    <!-- photo de profil -->
-                                    <div class="col-5">
-                                        <img src="{{nm.imageUser.nameImage}}">
-                                    </div>
-                                    <!-- nom user -->
-                                    <div class="col-7">
-                                        <b id="add_friend_username"> {{nm.loginUser}}</b>
+                                    <div class="row">
+                                        <!-- photo de profil -->
+                                        <div class="col-5">
+                                            <img src="{{nm.imageUser.nameImage}}">
+                                        </div>
+                                        <!-- nom user -->
+                                        <div class="col-7">
+                                            <b id="add_friend_username"> {{nm.loginUser}}</b>
 
-                                        <div class="row">
-                                            <button id="quitter"  type="submit" (click)="addTeamMembers(nm)"
-                                            class="btn btn-block btn-sm button-30" style="font-size: 50%;">
-                                            Ajouter </button>
+                                            <div class="row">
+                                                <button id="quitter" type="submit" (click)="addTeamMembers(nm)"
+                                                    class="btn btn-block btn-sm button-30" style="font-size: 50%;">
+                                                    Ajouter </button>
+                                            </div>
+
                                         </div>
 
                                     </div>
@@ -295,8 +308,6 @@
                                 </div>
 
                             </div>
-
-                           </div> 
                         </div>
 
                     </div>
