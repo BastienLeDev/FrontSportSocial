@@ -111,3 +111,9 @@ input-group-btn {
 .nomClub {
   text-align: center;
 }
+
+.butInvisible {
+  background: transparent;
+  border: none !important;
+  font-size: 0;
+}

@@ -17,7 +17,7 @@ export class PopUpQuitClubComponent {
 
   quitClub() {
     this.clubToQuit = this.clubService.getClubToQuit();
-    this.http.patch('http://localhost:8300/club/desister/' + this.authService.getUserConnect().idUser + '/' + this.clubToQuit, null).subscribe({
+    this.http.patch('http://localhost:8300/club/desister/' + this.authService.getUserConnect().idUser + '/' + this.clubToQuit.idClub, null).subscribe({
       next: (data) => {
         localStorage.removeItem('clubToQuit');
         this.dialog.closeAll();

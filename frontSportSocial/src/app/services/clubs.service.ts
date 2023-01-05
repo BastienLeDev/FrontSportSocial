@@ -16,5 +16,13 @@ export class ClubsService {
     return JSON.parse(club);
   }
 
+  setClubToSee(val: any) {
+    localStorage.setItem('clubToSee', JSON.stringify(val));
+  }
+
+  getClubToSee() {
+    let club: any = localStorage.getItem('clubToSee');
+    return JSON.parse(club);
+  }
 
 }

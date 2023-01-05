@@ -8,7 +8,7 @@
                 <div class="card p-3 m-2" *ngFor="let c of myClubs" [class.toggled]="classToggled">
                     <div class="row">
                         <div class="col-10">
-                            <button type="submit" (click)="openNewClubModal()">
+                            <button class="butInvisible" type="submit" (click)="openClubPage(c)">
                                 <div class="row">
                                     <div class="col-4">
                                         <img src="{{c.imageClub.nameImage}}" style="width: 100%" alt="">
@@ -61,7 +61,7 @@
                     </div>
                     <div class="col-3 p-4" [class.toggled]="classToggled">
                         <form>
-                            <label for="sports">Sélectionner un sport: </label>
+
                             <select class="box" ngModel="" required>
                                 <option *ngFor="let s of sports">{{s.nameSport}}</option>
                             </select>

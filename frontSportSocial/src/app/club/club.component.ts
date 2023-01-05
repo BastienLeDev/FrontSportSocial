@@ -31,16 +31,6 @@ export class ClubComponent implements OnInit {
   constructor(private http: HttpClient, private clubService: ClubsService, private authService: AuthService, private route: Router, public dialog: MatDialog, private appComponent: AppComponent, public dark: DarkThemeService) { }
 
 
-  openDialog(val: any) {
-    this.clubService.setClubToQuit(val.idClub);
-    const dialogRef = this.dialog.open(PopUpQuitClubComponent, { restoreFocus: false });
-    // Manually restore focus to the menu trigger since the element that
-    // opens the dialog won't be in the DOM any more when the dialog closes.
-    dialogRef.afterClosed().subscribe(() => this.menuTrigger.focus());
-    dialogRef.afterClosed().subscribe(() => { //Pour lancer des fonctions lorsqu'on ferme le popup
-      this.ngOnInit(); //pour reload les cards event => affiche le nouvel event sans reload page
-    });
-  }
 
 
   ngOnInit(): void {
@@ -103,5 +93,20 @@ export class ClubComponent implements OnInit {
     })
   }
 
+  openDialog(val: any) {
+    this.clubService.setClubToQuit(val);
+    const dialogRef = this.dialog.open(PopUpQuitClubComponent, { restoreFocus: false });
+    dialogRef.afterClosed().subscribe(() => this.menuTrigger.focus());
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
+  }
+
+
+  openClubPage(val: any) {
+    this.clubService.setClubToSee(val);
+    this.route.navigateByUrl('clubPage');
+
+  }
 
 }
