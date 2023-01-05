@@ -7,13 +7,20 @@
                 </div>
                 <div class="card p-3 m-2" *ngFor="let c of myClubs" [class.toggled]="classToggled">
                     <div class="row">
-                        <div class="col-3">
-                            <img src="{{c.imageClub.nameImage}}" style="width: 100%" alt="">
+                        <div class="col-10">
+                            <button type="submit" (click)="openNewClubModal()">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <img src="{{c.imageClub.nameImage}}" style="width: 100%" alt="">
+                                    </div>
+                                    <div class="col-7">
+                                        <h4>{{c.titleClub}}</h4>
+                                    </div>
+                                </div>
+
+                            </button>
                         </div>
-                        <div class="col-7">
-                            <h4>{{c.titleClub}}</h4>
-                        </div>
-                        <div class="col-2">
+                        <div class="col-1">
                             <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
                                 <mat-icon>more_vert</mat-icon>
                             </button>

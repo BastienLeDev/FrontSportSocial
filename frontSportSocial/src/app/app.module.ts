@@ -39,6 +39,7 @@ import { PopUpCreateTeamComponent } from './pop-up-create-team/pop-up-create-tea
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { PopUpQuitClubComponent } from './pop-up-quit-club/pop-up-quit-club.component';
+import { ClubPageComponent } from './club-page/club-page.component';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import { PopUpQuitClubComponent } from './pop-up-quit-club/pop-up-quit-club.comp
     NewClubComponent,
     PopUpCreateTeamComponent,
     PopUpQuitClubComponent,
+    ClubPageComponent,
   ],
 
   imports: [
