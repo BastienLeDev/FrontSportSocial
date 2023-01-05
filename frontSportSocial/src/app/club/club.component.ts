@@ -9,6 +9,7 @@ import { AppComponent } from '../app.component';
 import { DarkThemeService } from '../services/dark-theme.service';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { PopUpQuitClubComponent } from '../pop-up-quit-club/pop-up-quit-club.component';
+import { ClubsService } from '../services/clubs.service';
 
 @Component({
   selector: 'app-club',
@@ -27,11 +28,11 @@ export class ClubComponent implements OnInit {
 
 
 
-  constructor(private http: HttpClient, private authService: AuthService, private route: Router, public dialog: MatDialog, private appComponent: AppComponent, public dark: DarkThemeService) { }
+  constructor(private http: HttpClient, private clubService: ClubsService, private authService: AuthService, private route: Router, public dialog: MatDialog, private appComponent: AppComponent, public dark: DarkThemeService) { }
 
 
   openDialog(val: any) {
-    this.authService.setClubToQuit(val.idClub);
+    this.clubService.setClubToQuit(val.idClub);
     const dialogRef = this.dialog.open(PopUpQuitClubComponent, { restoreFocus: false });
     // Manually restore focus to the menu trigger since the element that
     // opens the dialog won't be in the DOM any more when the dialog closes.

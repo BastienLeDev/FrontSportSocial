@@ -11,6 +11,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { ShopComponent } from './shop/shop.component';
+import { ClubPageComponent } from './club-page/club-page.component';
 
 const routes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'ranking', component: RankingComponent },
   { path: 'club', component: ClubComponent },
   { path: 'event', component: EventComponent },
-  { path: '', redirectTo: 'connexion', pathMatch: 'full' }
+  { path: '', redirectTo: 'connexion', pathMatch: 'full' },
+  { path: 'clubPage', component: ClubPageComponent }
 ];
 
 @NgModule({
