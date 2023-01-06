@@ -257,6 +257,12 @@ td {
 
 }
 
+#last_message {
+    text-overflow: ellipsis; /* will make [...] at the end */
+    white-space: nowrap; /* paragraph to one line */
+    overflow: hidden; /* older browsers */
+}
+
 /* Dark Mode CSS */
 
 .toggled {
