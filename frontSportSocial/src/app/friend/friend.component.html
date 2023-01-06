@@ -45,6 +45,9 @@
                                                     class="fas fa-circle"
                                                     style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne</p>
                                         </b>
+                                        <div *ngFor="let lm of lastmsg">
+                                            <p>{{lm.message.contentMessage}}</p>
+                                        </div>
 
                                         <div class="row">
 
