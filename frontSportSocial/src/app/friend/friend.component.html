@@ -28,7 +28,7 @@
 
                 <!-- card ami-->
                 <div class="anyClass">
-                    <div class="card p-1 m-1" *ngFor="let f of friends" [class.toggled]="classToggled">
+                    <div class="card p-1 m-1" *ngFor="let f of friends" [class.toggled]="classToggled"> 
                         <button (click)="getLogin(f)" style="border-radius: 10px; border: none;"
                             [class.toggled]="classToggled">
                             <div class="container">
@@ -43,10 +43,12 @@
                                         <b id="add_friend_username"> {{f.loginUser}} <p
                                                 style="font-style: italic; font-weight: lighter !important;"> <i
                                                     class="fas fa-circle"
-                                                    style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne</p>
+                                                    style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne </p>
                                         </b>
                                         <div *ngFor="let lm of lastmsg">
-                                            <p id="last_message">{{lm.message.contentMessage}}</p>
+                                            
+                                            <p id="last_message" >{{lm.message.contentMessage}}</p>
+
                                         </div>
 
                                         <div class="row">
