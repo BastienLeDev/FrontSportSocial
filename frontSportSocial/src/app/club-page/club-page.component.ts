@@ -22,6 +22,7 @@ export class ClubPageComponent implements OnInit {
   club = this.clubService.getClubToSee();
   myFriends: any;
   nonFriends: any;
+  amiDemand: any;
 
   ngOnInit(): void {
     this.listFriendsInClub();
@@ -50,5 +51,14 @@ export class ClubPageComponent implements OnInit {
     });
   }
 
+  addFriend(val: any) {
+    this.amiDemand = val
+    this.http.post('http://localhost:8300/friend/' + this.authService.getUserConnect().idUser, this.amiDemand).subscribe({
+      next: (data) => {
+        this.ngOnInit();
+      }
+    })
+
+  }
 
 }
