@@ -10,6 +10,7 @@ import { CoachService } from '../services/coach.service';
 
 
 
+
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
@@ -138,6 +139,7 @@ export class ShopComponent implements OnInit {
     });
   }
   
+
 
   listAvatarDescription(val: any) {
     this.http.get('http://localhost:8300/avatar/' + val).subscribe({
