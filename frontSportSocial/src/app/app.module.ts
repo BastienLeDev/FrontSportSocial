@@ -42,6 +42,7 @@ import { PopUpQuitClubComponent } from './pop-up-quit-club/pop-up-quit-club.comp
 import { ClubPageComponent } from './club-page/club-page.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
