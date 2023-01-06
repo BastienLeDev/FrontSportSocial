@@ -54,6 +54,7 @@ export class FriendComponent implements OnInit {
   teammember: any;
   nonteammember: any;
   member: any;
+  lastmsg : any;
 
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog, private appComponent: AppComponent, public dark: DarkThemeService) { }
@@ -74,6 +75,7 @@ export class FriendComponent implements OnInit {
     if (this.login4 != null) {
       this.listTeamMessages();
     }
+    this.listLastMessage();
   }
 
   listSendMessages() {
@@ -88,8 +90,14 @@ export class FriendComponent implements OnInit {
   getLogin(val: any) {
     this.login = val;
     this.visibleTeam = false;
+    this.http.get('http://localhost:8300/messagetrue/me/' + this.authService.getUserConnect().idUser + '/' + this.login.idUser + '/combine').subscribe({
+      next: (data) => {
+      },
+      error: (err) => { console.log(err) }
+    });
     if (this.visibleMessage == false) {
       this.visibleMessage = true;
+
     } else {
       //this.visibleMessage = false;
     }
@@ -181,6 +189,17 @@ export class FriendComponent implements OnInit {
     this.http.get('http://localhost:8300/message/me/' + this.authService.getUserConnect().idUser + '/' + this.login.idUser + '/combine').subscribe({
       next: (data) => {
         this.sendmessagesasc = data
+      },
+      error: (err) => { console.log(err) }
+    });
+
+  }
+
+  listLastMessage() {
+    this.http.get('http://localhost:8300/messagelast/me/' + this.authService.getUserConnect().idUser + '/' + this.login.idUser + '/combine').subscribe({
+      next: (data) => {
+        this.lastmsg = data
+        console.log(this.lastmsg);
       },
       error: (err) => { console.log(err) }
     });

@@ -29,31 +29,36 @@
                 <!-- card ami-->
                 <div class="anyClass">
                     <div class="card p-1 m-1" *ngFor="let f of friends" [class.toggled]="classToggled">
-                        <div class="container">
+                        <button (click)="getLogin(f)" style="border-radius: 10px; border: none;"
+                            [class.toggled]="classToggled">
+                            <div class="container">
 
-                            <div class="row">
-                                <!-- photo de profil -->
-                                <div class="col-5">
-                                    <img src="{{f.imageUser.nameImage}}">
-                                </div>
-                                <!-- nom user -->
-                                <div class="col-7">
-                                    <b id="add_friend_username"> {{f.loginUser}} <p style="font-style: italic; font-weight: lighter !important;"> <i class="fas fa-circle" style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne</p></b>
+                                <div class="row">
+                                    <!-- photo de profil -->
+                                    <div class="col-5">
+                                        <img src="{{f.imageUser.nameImage}}">
+                                    </div>
+                                    <!-- nom user -->
+                                    <div class="col-7">
+                                        <b id="add_friend_username"> {{f.loginUser}} <p
+                                                style="font-style: italic; font-weight: lighter !important;"> <i
+                                                    class="fas fa-circle"
+                                                    style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne</p>
+                                        </b>
+                                        <div *ngFor="let lm of lastmsg">
+                                            <p id="last_message">{{lm.message.contentMessage}}</p>
+                                        </div>
 
-                                    <div class="row">
+                                        <div class="row">
 
+                                        </div>
 
                                     </div>
-                                    <button (click)="getLogin(f)" type="submit" class="button-30"
-                                        style="font-size: 60%;">Afficher <i class="fas fa-eye"
-                                            style="color: rgb(0, 0, 0);"></i>
-                                    </button>
 
                                 </div>
 
                             </div>
-
-                        </div>
+                        </button>
                     </div>
 
 
@@ -83,32 +88,30 @@
                 <!-- card team-->
                 <div class="anyClass">
                     <div class="card p-2 m-2" *ngFor="let t of team" [class.toggled]="classToggled">
-                        <div class="container">
+                        <button (click)="getLogin2(t)" style="border-radius: 10px; border: none;"
+                            [class.toggled]="classToggled">
+                            <div class="container">
 
-                            <div class="row">
-                                <!-- photo de profil -->
-                                <div class="col-5">
-                                    <img class="teamImage" src="{{t.imageTeam.nameImage}}">
-
-                                </div>
-                                <!-- nom user -->
-                                <div class="col-7">
-                                    <b id="add_friend_username"> {{t.title}}</b>
-
-                                    <div class="row">
+                                <div class="row">
+                                    <!-- photo de profil -->
+                                    <div class="col-5">
+                                        <img class="teamImage" src="{{t.imageTeam.nameImage}}">
 
                                     </div>
-                                    <button (click)="getLogin2(t)" type="submit" class="button-30"
-                                        style="font-size: 60%;">Afficher <i class="fas fa-eye"
-                                            style="color: rgb(0, 0, 0);"></i>
-                                    </button>
+                                    <!-- nom user -->
+                                    <div class="col-7">
+                                        <b id="add_friend_username"> {{t.title}}</b>
 
+                                        <div class="row">
+
+                                        </div>
+
+                                    </div>
 
                                 </div>
 
                             </div>
-
-                        </div>
+                        </button>
                     </div>
 
 

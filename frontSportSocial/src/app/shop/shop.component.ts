@@ -1,9 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { AppComponent } from '../app.component';
 import { DarkThemeService } from '../services/dark-theme.service';
+import { PopUpCoachComponent } from'../pop-up-coach/pop-up-coach.component';
+import { CoachService } from '../services/coach.service';
+
+
 
 
 @Component({
@@ -19,6 +24,7 @@ export class ShopComponent implements OnInit {
   visibleAvatar = false;
   visibleTokens = false;
   coachs: any;
+  sports : any;
   avatars: any;
   msgErr = '';
   achat = 'Acheter';
@@ -27,13 +33,14 @@ export class ShopComponent implements OnInit {
   userInfo: any;
   classToggled = this.dark.classToggled;
 
-  constructor(private http: HttpClient, public authService: AuthService, private route: Router, private appComponent : AppComponent, public dark : DarkThemeService) { }
+  constructor(private http: HttpClient, public authService: AuthService,private dialog: MatDialog, private route: Router, private coachService: CoachService, private appComponent : AppComponent, public dark : DarkThemeService) { }
 
   ngOnInit(): void {
     this.listCoachs();
     this.listAvatars();
     this.infoUser();
     this.verifAvatarAchete(this.avatars);
+    
   }
 
 
@@ -101,6 +108,17 @@ export class ShopComponent implements OnInit {
     })
   }
 
+  listSportOfCoach(val : any){
+    this.http.get('http://localhost:8300/coach/sports/' + val).subscribe({
+      next: (data) => {
+        this.sports = data,
+        val.stopPropagation()
+      },
+      error : (err) => {console.log(err);}
+      
+    })
+  }
+
   listAvatars() {
     this.http.get('http://localhost:8300/avatar').subscribe({
       next: (data) => {
@@ -109,6 +127,19 @@ export class ShopComponent implements OnInit {
       error: (err) => { console.log(err); }
     });
   }
+
+  
+  openProfilCoach(val: any) {
+    this.coachService.setCoachToSee(val);
+    const dialogRef = this.dialog.open(PopUpCoachComponent, {
+      width: '1000px'
+    })
+    dialogRef.afterClosed().subscribe(() => { //Pour lancer des fonctions lorsqu'on ferme le popup
+      this.ngOnInit(); //pour reload les cards event => affiche le nouvel event sans reload page
+    });
+  }
+  
+
 
   listAvatarDescription(val: any) {
     this.http.get('http://localhost:8300/avatar/' + val).subscribe({
@@ -175,6 +206,7 @@ export class ShopComponent implements OnInit {
 
     return exist;
   }
+  
 
 
 }
