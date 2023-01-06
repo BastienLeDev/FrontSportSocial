@@ -44,10 +44,7 @@
 
                 <!--Page coach-->
                 <div class="card p-3 m-3" *ngIf="visibleCoach" [class.toggled]="classToggled">
-                    <div class="col-1">
-                        <button (click)="showHideCoach()" type="submit" class="btn btn-danger btn-block btn-sm"
-                            style="width:8px;">x</button>
-                    </div>
+
                     <div [class.toggled]="classToggled">
                         <div class="card p-9" [class.toggled]="classToggled">
                             <div class="card-header">
@@ -129,10 +126,7 @@
 
                 <!--Page Avatar-->
                 <div class="card p-3 m-3" *ngIf="visibleAvatar" [class.toggled]="classToggled">
-                    <div class="col-1">
-                        <button (click)="showHideAvatar()" type="submit" class="btn btn-danger btn-block btn-sm"
-                            style="width:8px;">x</button>
-                    </div>
+
                     <div  [class.toggled]="classToggled">
                         <h3 class="alignement" style="font-weight: bold;">Avatar :</h3>
 
@@ -208,10 +202,7 @@
 
                 <!--Page Token-->
                 <div class="card p-3 m-3" *ngIf="visibleTokens" [class.toggled]="classToggled">
-                    <div class="col-1">
-                        <button (click)="showHideTokens()" type="submit" class="btn btn-danger btn-block btn-sm"
-                            style="width:8px;">x</button>
-                    </div>
+
                     <div class="md-form" [class.toggled]="classToggled">
                         <h3 class="alignement" style="font-weight: bold;">Tokens (1€ = 3 Tokens) :</h3>
                         <div class="card p-3 m-3" [class.toggled]="classToggled">

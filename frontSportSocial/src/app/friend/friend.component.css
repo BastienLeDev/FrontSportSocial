@@ -166,6 +166,15 @@ td {
     color: black;
 }
 
+#teammember {
+    background-color: #d0c4b8;
+    width: auto;
+}
+
+#option{
+    max-height: 225px;
+}
+
 .btnPrincipal {
     background-color: #FFC288 !important;
 }
@@ -318,14 +327,6 @@ td {
 
 }
 
-.teamImage {
-    height: 60px;
-    width: 60px;
-    background-size: contain;
-    background-position: 50% 50%;
-    display: inline-block;
-    border: none;
-    -moz-border-radius: 75px;
-    -webkit-border-radius: 75px;
-    border-radius: 75px;
+.toggled #teammember {
+    background-color: rgb(126, 132, 179);
 }
