@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { AppComponent } from '../app.component';
 import { DarkThemeService } from '../services/dark-theme.service';
+import { PopUpCoachComponent } from'../pop-up-coach/pop-up-coach.component';
+import { CoachService } from '../services/coach.service';
 
 
 
@@ -30,7 +32,7 @@ export class ShopComponent implements OnInit {
   userInfo: any;
   classToggled = this.dark.classToggled;
 
-  constructor(private http: HttpClient, public authService: AuthService,private dialog: MatDialog, private route: Router, private appComponent : AppComponent, public dark : DarkThemeService) { }
+  constructor(private http: HttpClient, public authService: AuthService,private dialog: MatDialog, private route: Router, private coachService: CoachService, private appComponent : AppComponent, public dark : DarkThemeService) { }
 
   ngOnInit(): void {
     this.listCoachs();
@@ -125,16 +127,17 @@ export class ShopComponent implements OnInit {
     });
   }
 
-  /*
-  openProfilCoach() {
+  
+  openProfilCoach(val: any) {
+    this.coachService.setCoachToSee(val);
     const dialogRef = this.dialog.open(PopUpCoachComponent, {
-      width: '500px'
+      width: '1000px'
     })
     dialogRef.afterClosed().subscribe(() => { //Pour lancer des fonctions lorsqu'on ferme le popup
       this.ngOnInit(); //pour reload les cards event => affiche le nouvel event sans reload page
     });
   }
-  */
+  
 
   listAvatarDescription(val: any) {
     this.http.get('http://localhost:8300/avatar/' + val).subscribe({
