@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { DarkThemeService } from '../services/dark-theme.service';
 
 @Component({
   selector: 'app-inscription',
@@ -14,8 +15,9 @@ export class InscriptionComponent {
   isChecked = true;
   show: boolean = false;
   visiblePassword = false;  
+  classToggled = this.dark.classToggled;
 
-  constructor(private http: HttpClient, private route: Router, private authService: AuthService) { }
+  constructor(private http: HttpClient, private route: Router, private authService: AuthService, public dark : DarkThemeService) { }
 
   ngOnInit(): void {
     this.authService.logout();

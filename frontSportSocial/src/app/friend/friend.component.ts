@@ -88,8 +88,14 @@ export class FriendComponent implements OnInit {
   getLogin(val: any) {
     this.login = val;
     this.visibleTeam = false;
+    this.http.get('http://localhost:8300/messagetrue/me/' + this.authService.getUserConnect().idUser + '/' + this.login.idUser + '/combine').subscribe({
+      next: (data) => {
+      },
+      error: (err) => { console.log(err) }
+    });
     if (this.visibleMessage == false) {
       this.visibleMessage = true;
+
     } else {
       //this.visibleMessage = false;
     }
@@ -186,6 +192,18 @@ export class FriendComponent implements OnInit {
     });
 
   }
+
+  /*
+  setMessageTrue() {
+    this.http.get('http://localhost:8300/messagetrue/me/' + this.authService.getUserConnect().idUser + '/' + this.login.idUser + '/combine').subscribe({
+      next: (data) => {
+        this.sendmessagesasc = data
+      },
+      error: (err) => { console.log(err) }
+    });
+
+  }
+  */
 
   listFriends() {
 
