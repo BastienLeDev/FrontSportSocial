@@ -2,3 +2,28 @@
     height: auto;
     overflow-y: scroll;
 }
+
+img {
+    float: left;
+    max-width: 100px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+
+  .card {
+    width: min(100%, 600px);
+  }
+
+  #inside-card {
+    height: 100px;
+  }
+
+  .card-header {
+    background-color: #FCECDD;
+    color: black;
+  }
+
+  h4 {
+    color : white;
+  }

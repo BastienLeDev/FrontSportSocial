@@ -48,6 +48,57 @@
                             </form>
                         </div>
                     </div>
+                    <!-- card ami-->
+                <div class="anyClass">
+                    <div class="card p-1 m-1" *ngFor="let f of myFriends">
+                        <div class="container">
+
+                            <div class="row">
+                                <!-- photo de profil -->
+                                <div class="col-5">
+                                    <img src="{{f.imageUser.nameImage}}" style="width: 100%">
+                                </div>
+                                <!-- nom user -->
+                                <div class="col-7">
+                                    <b id="add_friend_username"> {{f.loginUser}} <p style="font-style: italic; font-weight: lighter !important;"> <i class="fas fa-circle" style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne</p></b>
+
+                                    
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- card non ami-->
+                <div class="anyClass">
+                    <div class="card p-1 m-1" *ngFor="let f of nonFriends">
+                        <div class="container">
+
+                            <div class="row">
+                                <!-- photo de profil -->
+                                <div class="col-4">
+                                    <img src="{{f.imageUser.nameImage}}" style="width: 100%">
+                                </div>
+                                <!-- nom user -->
+                                <div class="col-6">
+                                    <b id="add_friend_username"> {{f.loginUser}} <p style="font-style: italic; font-weight: lighter !important;"> <i class="fas fa-circle" style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne</p></b>
+                                </div>
+                                <div class="col-2">
+                                    <button type="submit" ><mat-icon svgIcon="add-friend" aria-hidden="false"></mat-icon>
+                                    </button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
                 </div>
 
             </div>
