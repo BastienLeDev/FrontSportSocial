@@ -14,6 +14,7 @@ export class PopUpCoachComponent implements OnInit {
   coach = this.CoachService.getCoachToSee();
   coachSport: any;
   allCoach: any;
+  imageSport: any = [];
   sports: any = [];
 
   ngOnInit(): void {
@@ -25,6 +26,7 @@ export class PopUpCoachComponent implements OnInit {
       next: (data) => {
         this.allCoach = data;
         this.allCoach.forEach((s: any) => {this.sports.push(s.sport.nameSport)});
+        this.allCoach.forEach((i: any) => {this.imageSport.push(i.sport)})
         console.log(this.sports)
       },
       error: (err) => { console.log(err); }

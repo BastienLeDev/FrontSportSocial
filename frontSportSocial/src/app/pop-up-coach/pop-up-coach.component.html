@@ -29,12 +29,12 @@
 
         </div>
     </div>
-    <div class="card col-9 p-1">
+    <div class="card col-9 p-1 m-4">
         <div class="card-header p-3">
             <h1 class="text-center">Profil de {{coach.loginUser}}</h1>
         </div>
         <div class="p-3">
-            <p>Coach en :</p>
+            <strong>Coach en :</strong>
             <div class="row" *ngFor="let s of sports">
                 <div class="col-7">
                 <p> - {{s}}</p>
@@ -42,7 +42,33 @@
             </div>
 
         </div>
+        <div class="row p-3">
+            <strong>Disciplines :</strong>
+            <div class="col-3" *ngFor="let i of imageSport">      
+                <img src="{{i.imageSport.nameImage}}" alt="">
+                <p>{{i.nameSport}}</p>
+            </div>
+
+        </div>
     </div>
+</div>
+<div class="row">
+    <div class="card m-3" style="width: 950px;">
+        <div class="card-header m-1">
+        <p class="text-center"> Score <i class="fas fa-crown" style="color: yellow;"></i></p>      
+    </div>
+    
+    <div class="row">
+        <div class="col-3 m-1" *ngFor="let sc of allCoach">
+        <div class="card p-1">
+            <div class="card-header m-1">
+                <p class="text-center">{{sc.sport.nameSport}}</p>
+            </div>
+            <p>Score : {{sc.score}}</p>
+        </div>
+    </div>
+</div>
+</div>
 </div>
 
 </body>
