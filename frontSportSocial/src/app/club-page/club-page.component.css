@@ -72,3 +72,10 @@ input-group-btn {
     color: rgb(255, 255, 255);
 
 }
+
+/* Rendre les contours des boutons invisibles    */
+.butInvisible {
+    background: transparent;
+    border: none !important;
+    font-size: 0;
+  }
