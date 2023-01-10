@@ -38,7 +38,7 @@
                                     <!-- photo de profil -->
                                     <div class="col-5">
                                         <img src="{{f.imageUser.nameImage}}">
-                                        <div class="row" *ngFor="let lm of listLastMsg">
+                                        <div  *ngFor="let lm of listLastMsg">
                                             <div *ngIf="lm !== undefined ">
                                                 <p
                                                     *ngIf="lm.message.lu != true && (lm.destinataire.idUser ==  authService.getUserConnect().idUser && lm.message.expediteurMessage.idUser == f.idUser)">
@@ -49,15 +49,12 @@
                                     </div>
                                     <!-- nom user -->
                                     <div class="col-7">
-                                        <b id="add_friend_username"> {{f.loginUser}} <p
-                                                style="font-style: italic; font-weight: lighter !important;"> <i
-                                                    class="fas fa-circle"
-                                                    style="color: rgb(171, 174, 171); size: 50%;"></i><i
-                                                    class="fas fa-xclamation"></i> Hors ligne </p>
+                                        <b id="add_friend_username"> {{f.loginUser}} <p style="font-style: italic; font-weight: lighter !important; font-size: 50%;"> <i class="fas fa-circle"
+                                                    style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne </p>
                                         </b>
                                         <div *ngFor="let lm of listLastMsg">
                                             <div *ngIf="lm !== undefined ">
-                                                <p id="last_message"
+                                                <p id="last_message" style="font-size: 70%; text-align:left;"
                                                     *ngIf="(lm.destinataire.idUser ==  authService.getUserConnect().idUser && lm.message.expediteurMessage.idUser == f.idUser)|| lm.destinataire.idUser ==  f.idUser">
                                                     {{lm.message.contentMessage}}</p>
                                             </div>
