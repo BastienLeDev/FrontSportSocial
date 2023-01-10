@@ -308,6 +308,7 @@ export class FriendComponent implements OnInit {
 
     let messag = { contentMessage: val.value.message };
     let messagerie = { message: messag };
+    if ( val.value.message.trim()) {
     this.http.post('http://localhost:8300/message/envoyer/' + this.login.idUser + '/' + this.authService.getUserConnect().idUser, messagerie).subscribe({
       next: (data) => {
         this.mess = data;
@@ -319,6 +320,7 @@ export class FriendComponent implements OnInit {
 
 
     })
+  }
 
   }
 

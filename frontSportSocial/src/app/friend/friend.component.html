@@ -174,17 +174,18 @@
                 </div>
 
                 <!-- Zone de saisie de messages -->
+
                 <div id="zone_saisie_message" class="card p-1" [class.toggled]="classToggled">
                     <div class="container">
                         <div class="row">
                             <form #mess="ngForm" (ngSubmit)="sendMess(mess)">
                                 <div class="col-10" [class.toggled]="classToggled">
-                                    <input id="message" [class.toggled]="classToggled" name="message" ngModel=""
+                                    <input id="message" class="form-control"  [class.toggled]="classToggled" name="message" ngModel=""
                                         type="text" class="form-control" placeholder="..."
-                                        style="width: 600px; margin: 5px;">
+                                        style="width: 600px; margin: 5px;" required class="form-control">
                                 </div>
                                 <div class="col-2">
-                                    <button type="submit" class="button-30 " style="font-size: 60%;">Envoyer <i
+                                    <button [disabled]="!mess.form.valid" type="submit" class="button-30 " style="font-size: 60%;">Envoyer <i
                                             class="fas fa-envelope" style="color: rgb(0, 0, 0);"></i></button>
                                 </div>
                             </form>
@@ -356,9 +357,9 @@
                                 <div class="col-10" [class.toggled]="classToggled">
                                     <input id="message" [class.toggled]="classToggled" name="message" ngModel=""
                                         type="text" class="form-control" placeholder="..."
-                                        style="width: 600px; margin: 5px;">
+                                        style="width: 600px; margin: 5px;" required class="form-control">
                                 </div>
-                                <button type="submit" class="button-30 " style="font-size: 60%;">Envoyer <i
+                                <button [disabled]="!mess.form.valid" type="submit" class="button-30 " style="font-size: 60%;">Envoyer <i
                                         class="fas fa-envelope" style="color: rgb(0, 0, 0);"></i>
                                 </button>
                             </form>
