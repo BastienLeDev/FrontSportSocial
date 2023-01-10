@@ -41,7 +41,7 @@
                                         <div class="row" *ngFor="let lm of listLastMsg">
                                             <div *ngIf="lm !== undefined ">
                                                 <p
-                                                    *ngIf="lm.message.lu != true && lm.destinataire.idUser ==  authService.getUserConnect().idUser">
+                                                    *ngIf="lm.message.lu != true && (lm.destinataire.idUser ==  authService.getUserConnect().idUser && lm.message.expediteurMessage.idUser == f.idUser)">
                                                     <i class="fas fa-envelope" style="color: rgb(184, 40, 40);"></i>
                                                 </p>
                                             </div>
