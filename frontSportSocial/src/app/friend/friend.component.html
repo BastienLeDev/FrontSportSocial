@@ -28,19 +28,23 @@
 
                 <!-- card ami-->
                 <div class="anyClass">
-                    <div  class="card p-1 m-1" *ngFor="let f of friends, ; let i = index; " [class.toggled]="classToggled">
+                    <div class="card p-1 m-1" *ngFor="let f of friends, ; let i = index; "
+                        [class.toggled]="classToggled">
                         <button (click)="getLogin(f)" style="border-radius: 10px; border: none;"
                             [class.toggled]="classToggled">
-                            <div class="container" >
+                            <div class="container">
 
                                 <div class="row">
                                     <!-- photo de profil -->
                                     <div class="col-5">
                                         <img src="{{f.imageUser.nameImage}}">
-                                        <div class="row" *ngFor="let lm of listLastMsg"> 
+                                        <div class="row" *ngFor="let lm of listLastMsg">
                                             <div *ngIf="lm !== undefined ">
-                                                <p *ngIf="lm.message.lu != true && lm.destinataire.idUser ==  authService.getUserConnect().idUser"><i class="fas fa-envelope" style="color: rgb(184, 40, 40);"></i></p>
-                                             </div> 
+                                                <p
+                                                    *ngIf="lm.message.lu != true && lm.destinataire.idUser ==  authService.getUserConnect().idUser">
+                                                    <i class="fas fa-envelope" style="color: rgb(184, 40, 40);"></i>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- nom user -->
@@ -48,12 +52,15 @@
                                         <b id="add_friend_username"> {{f.loginUser}} <p
                                                 style="font-style: italic; font-weight: lighter !important;"> <i
                                                     class="fas fa-circle"
-                                                    style="color: rgb(171, 174, 171); size: 50%;"></i><i class="fas fa-xclamation"></i> Hors ligne </p>
+                                                    style="color: rgb(171, 174, 171); size: 50%;"></i><i
+                                                    class="fas fa-xclamation"></i> Hors ligne </p>
                                         </b>
-                                        <div *ngFor="let lm of listLastMsg"> 
+                                        <div *ngFor="let lm of listLastMsg">
                                             <div *ngIf="lm !== undefined ">
-                                                <p id="last_message" *ngIf="lm.destinataire.idUser ==  authService.getUserConnect().idUser || lm.destinataire.idUser ==  f.idUser">{{lm.message.contentMessage}}</p>
-                                             </div> 
+                                                <p id="last_message"
+                                                    *ngIf="(lm.destinataire.idUser ==  authService.getUserConnect().idUser && lm.message.expediteurMessage.idUser == f.idUser)|| lm.destinataire.idUser ==  f.idUser">
+                                                    {{lm.message.contentMessage}}</p>
+                                            </div>
                                         </div>
 
                                     </div>

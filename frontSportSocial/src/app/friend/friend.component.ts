@@ -32,7 +32,7 @@ export class FriendComponent implements OnInit {
   visibleTeamMember = false;
   visibleAddTeamMember = false;
   notfriends: any;
-  friends : any;
+  friends: any;
   frienship: any;
   name: any;
   mess: any;
@@ -46,7 +46,7 @@ export class FriendComponent implements OnInit {
   user: any;
   filterUser: any;
   filterFriend: any;
-  filterTeam : any;
+  filterTeam: any;
   userInfo: any;
   deletefriend: any;
   classToggled = this.dark.classToggled;
@@ -55,12 +55,12 @@ export class FriendComponent implements OnInit {
   teammember: any;
   nonteammember: any;
   member: any;
-  lastmsg : any;
-  x : any;
+  lastmsg: any;
+  x: any;
   listLastMsg: Array<any> = [];
 
 
-  
+
 
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog, private appComponent: AppComponent, public dark: DarkThemeService) { }
@@ -73,8 +73,8 @@ export class FriendComponent implements OnInit {
     this.listNotFriends();
     this.listTeam();
     this.infoUser();
-    if (this.login4 != null) {this.listTeamMember();}
-    if (this.login4 != null) {this.listNonTeamMember();}
+    if (this.login4 != null) { this.listTeamMember(); }
+    if (this.login4 != null) { this.listNonTeamMember(); }
     if (this.login != null) {
       this.listSendAndReceivedMessagesAsc();
     }
@@ -202,28 +202,31 @@ export class FriendComponent implements OnInit {
 
   listFriends() {
     this.listLastMsg = [];
-    this.http.get('http://localhost:8300/friend/receiver/' + this.authService.getUserConnect().idUser).subscribe({
-      next: (data) => { this.friends = data 
-      console.log(this.friends)
-      if (this.listLastMsg != null) {
-        this.listLastMsg = [];
-      }
-      for (let index in this.friends) {
-        console.log(index)
-        this.http.get('http://localhost:8300/messagelast/me/' + this.authService.getUserConnect().idUser + '/' + this.friends[index].idUser + '/combine').subscribe({
-          next: (data) => {
-            this.lastmsg = data,
-            console.log(this.lastmsg)
-            this.listLastMsg.push(this.lastmsg[0])
-            console.log(this.listLastMsg)
+    this.http.get('http://localhost:8300/friend/receiver/' + this.authService.getUserConnect().idUser).subscribe({ // Affiche la liste de Friend
+      next: (data) => {
+
+        this.friends = data
+
+
+        for (let index in this.friends) {
+          console.log(index)
+          if (this.listLastMsg != null) {
+            this.listLastMsg = [];
           }
-      })
-      }
-    },
-      error: (err) => { console.log(err); } 
+          this.http.get('http://localhost:8300/messagelast/me/' + this.authService.getUserConnect().idUser + '/' + this.friends[index].idUser + '/combine').subscribe({
+            next: (data) => {
+              this.lastmsg = "";
+              this.lastmsg = data,
+                this.listLastMsg.push(this.lastmsg[0])
+              console.log(this.listLastMsg)
+            }
+          })
+        }
+      },
+      error: (err) => { console.log(err); }
     });
 
-    }
+  }
 
 
 
@@ -242,7 +245,7 @@ export class FriendComponent implements OnInit {
 
 
 
-  
+
   listNotFriends() {
 
     this.http.get('http://localhost:8300/notfriend/receiver/' + this.authService.getUserConnect().idUser).subscribe({
@@ -476,7 +479,7 @@ export class FriendComponent implements OnInit {
   }
 
   deleteTeam() {
-    this.http.delete('http://localhost:8300/team/delete/' + this.login4.idTeam ).subscribe({
+    this.http.delete('http://localhost:8300/team/delete/' + this.login4.idTeam).subscribe({
       next: (data) => {
         this.ngOnInit();
       },
