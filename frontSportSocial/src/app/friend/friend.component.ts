@@ -56,12 +56,9 @@ export class FriendComponent implements OnInit {
   nonteammember: any;
   member: any;
   lastmsg : any;
-  x : any = 0;
-  y : any = 0;
-  empList: Array<FriendComponent> = [];
-  newList: Array<FriendComponent> = [];
-  ultime : Array<FriendComponent> = [];
-  check : any;
+  x : any;
+  listLastMsg: Array<any> = [];
+
 
   
 
@@ -204,48 +201,29 @@ export class FriendComponent implements OnInit {
   }
 
   listFriends() {
-
+    this.listLastMsg = [];
     this.http.get('http://localhost:8300/friend/receiver/' + this.authService.getUserConnect().idUser).subscribe({
-      next: (data) => { this.friends = data ;
-        /*
-        for (let index in this.friends) {
-                
-          console.log(index);
-          this.x = index ;
-          console.log(this.friends.length )
-          this.http.get('http://localhost:8300/messagelast/me/' + this.authService.getUserConnect().idUser + '/' + this.friends[this.x].idUser + '/combine').subscribe({
-            next: (data) => {
-              this.lastmsg = data
-              this.lastmsg = this.lastmsg[0];
-              console.log(this.lastmsg)
-              this.empList.push(this.lastmsg)
-              if (this.friends.length  != this.empList.length ) {
-                this.y = index
-                console.log(this.y)}
-                this.lastmsg = this.lastmsg
-                let fruits: Array<FriendComponent> = [ {id : index}, this.lastmsg];
-                console.log(fruits)
-                this.ultime.push(fruits[0], fruits[1])
-                console.log(this.ultime)
-              if (this.friends.length  == this.empList.length && this.newList != null ) {
-              this.newList = this.empList
-              console.log(this.newList)}
-              console.log(this.empList)
-
-            },
-            error: (err) => { console.log(err) }
-          });
-        }
-        
-      }      */
-
-      },
-
-      error: (err) => { console.log(err); }
-      
-
+      next: (data) => { this.friends = data 
+      console.log(this.friends)
+      if (this.listLastMsg != null) {
+        this.listLastMsg = [];
+      }
+      for (let index in this.friends) {
+        console.log(index)
+        this.http.get('http://localhost:8300/messagelast/me/' + this.authService.getUserConnect().idUser + '/' + this.friends[index].idUser + '/combine').subscribe({
+          next: (data) => {
+            this.lastmsg = data,
+            console.log(this.lastmsg)
+            this.listLastMsg.push(this.lastmsg[0])
+            console.log(this.listLastMsg)
+          }
+      })
+      }
+    },
+      error: (err) => { console.log(err); } 
     });
-  }
+
+    }
 
 
 

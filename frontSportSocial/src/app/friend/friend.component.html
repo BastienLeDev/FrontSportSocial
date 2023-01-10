@@ -37,6 +37,11 @@
                                     <!-- photo de profil -->
                                     <div class="col-5">
                                         <img src="{{f.imageUser.nameImage}}">
+                                        <div class="row" *ngFor="let lm of listLastMsg"> 
+                                            <div *ngIf="lm !== undefined ">
+                                                <p *ngIf="lm.message.lu != true && lm.destinataire.idUser ==  authService.getUserConnect().idUser"><i class="fas fa-envelope" style="color: rgb(184, 40, 40);"></i></p>
+                                             </div> 
+                                        </div>
                                     </div>
                                     <!-- nom user -->
                                     <div class="col-7">
@@ -45,12 +50,10 @@
                                                     class="fas fa-circle"
                                                     style="color: rgb(171, 174, 171); size: 50%;"></i><i class="fas fa-xclamation"></i> Hors ligne </p>
                                         </b>
-                                        <div *ngFor="let lm of ultime">  
-                                            <p>{{ultime[4]}}</p>
-                                            <!--
-                                            <p id="last_message" *ngIf=" lm.destinataire.idUser ==  f.idUser">{{lm.message.contentMessage}}</p>
-                                            <p *ngIf="lm.message.lu != true && lm.destinataire.idUser ==  authService.getUserConnect().idUser">new</p>
-                                            -->
+                                        <div *ngFor="let lm of listLastMsg"> 
+                                            <div *ngIf="lm !== undefined ">
+                                                <p id="last_message" *ngIf="lm.destinataire.idUser ==  authService.getUserConnect().idUser || lm.destinataire.idUser ==  f.idUser">{{lm.message.contentMessage}}</p>
+                                             </div> 
                                         </div>
 
                                     </div>
