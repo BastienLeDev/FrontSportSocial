@@ -12,7 +12,7 @@
                     <div class="row">
 
                         <div class="col-2">
-                            <button (click)="showHideCoach()"  type="submit"
+                            <button (click)="showHideCoach()" type="submit"
                                 class="btn btnPrincipal btn-block btn-sm">Coachs
                                 :
                                 <i class="fas fa-user" style="color: rgb(0, 0, 0);"></i></button>
@@ -81,7 +81,7 @@
                                                 src="https://img.freepik.com/vecteurs-libre/illustration-concept-entraineur-personnel_114360-1552.jpg?w=740&t=st=1671228220~exp=1671228820~hmac=45603fee5afa4107866a0646a4c0b87cf460bd86c7320fe765ca0a87c712fea3"
                                                 alt="">
                                         </div>
-                                    
+
                                         <div class="col-2" [class.toggled]="classToggled">
                                             <p>Prénom : {{c.firstNameUser}}</p>
                                             <p>Nom : {{c.lastNameUser}}</p>
@@ -90,19 +90,26 @@
                                         <div class="col-7" [class.toggled]="classToggled">
                                             <div class="row">
                                                 <div class="col-3">
-                                                    <button (click)="openProfilCoach(c)" class="btn btnPrincipal btn-block btn-sm" type="submit" >Voir profil</button>
+                                                    <button (click)="openProfilCoach(c)"
+                                                        class="btn btnPrincipal btn-block btn-sm" type="submit">Voir
+                                                        profil <i class="fas fa-user"
+                                                            style="color: rgb(0, 0, 0);"></i></button>
                                                 </div>
                                                 <div class="col-1 m" [class.toggled]="classToggled">
                                                 </div>
                                                 <div class="col-3 " [class.toggled]="classToggled">
-                                                    <button type="submit"
-                                                        class="btn btnPrincipal btn-block btn-sm">Contacter</button>
+                                                    <button (click)="goToFriends()" type="submit"
+                                                        class="btn btnPrincipal btn-block btn-sm">Contacter <i
+                                                            class="fas fa-envelope"
+                                                            style="color: rgb(0, 0, 0);"></i></button>
                                                 </div>
                                                 <div class="col-1 m" [class.toggled]="classToggled">
                                                 </div>
                                                 <div class="col-3 " [class.toggled]="classToggled">
-                                                    <button type="submit"
-                                                        class="btn btnPrincipal btn-block btn-sm">Payer</button>
+                                                    <button (click)="openEchange(c)" type="submit"
+                                                        class="btn btnPrincipal btn-block btn-sm">Payer <i
+                                                            class="fas fa-exchange-alt"
+                                                            style="color: rgb(0, 0, 0);"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -127,7 +134,7 @@
                 <!--Page Avatar-->
                 <div class="card p-3 m-3" *ngIf="visibleAvatar" [class.toggled]="classToggled">
 
-                    <div  [class.toggled]="classToggled">
+                    <div [class.toggled]="classToggled">
                         <h3 class="alignement" style="font-weight: bold;">Avatar :</h3>
 
                         <form class='form-inline, alignement' (ngSubmit)="listAvatarDescription(avatar.value)">

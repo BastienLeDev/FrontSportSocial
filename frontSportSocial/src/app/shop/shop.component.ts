@@ -7,6 +7,7 @@ import { AppComponent } from '../app.component';
 import { DarkThemeService } from '../services/dark-theme.service';
 import { PopUpCoachComponent } from'../pop-up-coach/pop-up-coach.component';
 import { CoachService } from '../services/coach.service';
+import { PopUpEchangeComponent } from '../pop-up-echange/pop-up-echange.component';
 
 
 
@@ -205,6 +206,21 @@ export class ShopComponent implements OnInit {
     });
 
     return exist;
+  }
+
+  goToFriends() {
+    this.route.navigateByUrl('friend');
+  }
+
+  openEchange(val: any) {
+    this.coachService.setCoachToSee(val);
+    const dialogRef = this.dialog.open(PopUpEchangeComponent, {
+      width: '800px',
+      height: '400px'
+    })
+    dialogRef.afterClosed().subscribe(() => { //Pour lancer des fonctions lorsqu'on ferme le popup
+      this.ngOnInit(); 
+    });
   }
   
 

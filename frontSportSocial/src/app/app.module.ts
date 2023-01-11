@@ -41,6 +41,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { PopUpQuitClubComponent } from './pop-up-quit-club/pop-up-quit-club.component';
 import { ClubPageComponent } from './club-page/club-page.component';
 import { PopUpCoachComponent } from './pop-up-coach/pop-up-coach.component';
+import { PopUpEchangeComponent } from './pop-up-echange/pop-up-echange.component';
 
 
 
@@ -67,7 +68,8 @@ import { PopUpCoachComponent } from './pop-up-coach/pop-up-coach.component';
     PopUpCreateTeamComponent,
     PopUpQuitClubComponent,
     ClubPageComponent,
-    PopUpCoachComponent
+    PopUpCoachComponent,
+    PopUpEchangeComponent
   ],
 
   imports: [
