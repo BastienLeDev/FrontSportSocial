@@ -60,9 +60,6 @@ export class FriendComponent implements OnInit {
   listLastMsg: Array<any> = [];
 
 
-
-
-
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog, private appComponent: AppComponent, public dark: DarkThemeService) { }
 
   ngOnInit(): void {
@@ -92,7 +89,7 @@ export class FriendComponent implements OnInit {
 
   }
 
-  getLogin(val: any) {
+  displayFriendConversation(val: any) {
     this.login = val;
     this.visibleTeam = false;
     this.http.get('http://localhost:8300/messagetrue/me/' + this.authService.getUserConnect().idUser + '/' + this.login.idUser + '/combine').subscribe({
@@ -104,7 +101,6 @@ export class FriendComponent implements OnInit {
       this.visibleMessage = true;
 
     } else {
-      //this.visibleMessage = false;
     }
 
     if (val != null) {
@@ -114,7 +110,7 @@ export class FriendComponent implements OnInit {
     }
   }
 
-  getLogin2(val: any) {
+  displayTeamConversation(val: any) {
     this.login4 = val;
     this.visibleMessage = false;
     this.visibleOption = false;
@@ -126,7 +122,6 @@ export class FriendComponent implements OnInit {
       this.visibleTeam = true;
 
     } else {
-      //this.visibleMessage = false;
     }
 
     if (val != null) {
@@ -204,10 +199,7 @@ export class FriendComponent implements OnInit {
     this.listLastMsg = [];
     this.http.get('http://localhost:8300/friend/receiver/' + this.authService.getUserConnect().idUser).subscribe({ // Affiche la liste de Friend
       next: (data) => {
-
         this.friends = data
-
-
         for (let index in this.friends) {
           console.log(index)
           if (this.listLastMsg != null) {
@@ -227,24 +219,6 @@ export class FriendComponent implements OnInit {
     });
 
   }
-
-
-
-  /*
-  lastMessage() {
-    this.http.get('http://localhost:8300/messagelast/me/' + this.authService.getUserConnect().idUser + '/' + this.friends[1 +1].idUser + '/combine').subscribe({
-      next: (data) => {
-        this.lastmsg = data
-        console.log(this.lastmsg);
-      },
-      error: (err) => { console.log(err) }
-    });
-
-  }
-  */
-
-
-
 
   listNotFriends() {
 

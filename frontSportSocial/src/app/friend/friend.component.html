@@ -30,7 +30,7 @@
                 <div class="anyClass">
                     <div class="card p-1 m-1" *ngFor="let f of friends, ; let i = index; "
                         [class.toggled]="classToggled">
-                        <button (click)="getLogin(f)" style="border-radius: 10px; border: none;"
+                        <button (click)="displayFriendConversation(f)" style="border-radius: 10px; border: none;"
                             [class.toggled]="classToggled">
                             <div class="container">
 
@@ -95,7 +95,7 @@
                 <!-- card team-->
                 <div class="anyClass">
                     <div class="card p-2 m-2" *ngFor="let t of team" [class.toggled]="classToggled">
-                        <button (click)="getLogin2(t)" style="border-radius: 10px; border: none;"
+                        <button (click)="displayTeamConversation(t)" style="border-radius: 10px; border: none;"
                             [class.toggled]="classToggled">
                             <div class="container">
 
@@ -151,7 +151,7 @@
 
                     <div id="conv" class="anyClass" #scrollMe [scrollTop]="scrollMe.scrollHeight">
                         <div *ngFor="let m of sendmessagesasc" [class.toggled]="classToggled">
-                            <div class="container lighter darker"
+                            <div class="container darker"
                                 *ngIf="m.destinataire.idUser != authService.getUserConnect().idUser">
                                 <img class="right photo_conversation" src="{{userInfo.imageUser.nameImage}}">
                                 <b>{{m.message.expediteurMessage.loginUser}} : </b>
@@ -326,7 +326,7 @@
 
                     <div id="conv" class="anyClass" #scrollMe [scrollTop]="scrollMe.scrollHeight">
                         <div *ngFor="let m of teammessages" [class.toggled]="classToggled">
-                            <div class="container lighter darker"
+                            <div class="container darker" 
                                 *ngIf="(!(m.expediteurMessage.idUser != authService.getUserConnect().idUser))">
                                 <img class="right photo_conversation" src="{{userInfo.imageUser.nameImage}}">
                                 <b>{{m.expediteurMessage.loginUser}} : </b>

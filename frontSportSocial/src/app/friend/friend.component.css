@@ -70,6 +70,8 @@ input-group-btn {
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0;
+    margin-right: 50px !important;
+    width: 94%;
 }
 
 /* Darker chat container */
@@ -78,6 +80,9 @@ input-group-btn {
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0;
+    margin-left: 50px !important;
+    width: 94%;
+
 }
 
 /* Clear floats */
