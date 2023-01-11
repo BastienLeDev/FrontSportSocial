@@ -9,7 +9,7 @@
                 <!--Search bar : centrée, avec bouton "search" à droite-->
 
                 <div class="container" [class.toggled]="classToggled">
-                    <div id="content">
+                    <div id="content" >
                         <form #infosFriend="ngForm" (ngSubmit)="FilterFriend(FriendS.value)">
                             <div class="input-group">
                                 <input ngModel="" #FriendS name="FriendS" type='text' id='search'
@@ -30,7 +30,7 @@
                 <div class="anyClass">
                     <div class="card p-1 m-1" *ngFor="let f of friends, ; let i = index; "
                         [class.toggled]="classToggled">
-                        <button (click)="getLogin(f)" style="border-radius: 10px; border: none;"
+                        <button (click)="displayFriendConversation(f)" style="border-radius: 10px; border: none;"
                             [class.toggled]="classToggled">
                             <div class="container">
 
@@ -95,7 +95,7 @@
                 <!-- card team-->
                 <div class="anyClass">
                     <div class="card p-2 m-2" *ngFor="let t of team" [class.toggled]="classToggled">
-                        <button (click)="getLogin2(t)" style="border-radius: 10px; border: none;"
+                        <button (click)="displayTeamConversation(t)" style="border-radius: 10px; border: none;"
                             [class.toggled]="classToggled">
                             <div class="container">
 
@@ -151,7 +151,7 @@
 
                     <div id="conv" class="anyClass" #scrollMe [scrollTop]="scrollMe.scrollHeight">
                         <div *ngFor="let m of sendmessagesasc" [class.toggled]="classToggled">
-                            <div class="container lighter darker"
+                            <div class="container darker"
                                 *ngIf="m.destinataire.idUser != authService.getUserConnect().idUser">
                                 <img class="right photo_conversation" src="{{userInfo.imageUser.nameImage}}">
                                 <b>{{m.message.expediteurMessage.loginUser}} : </b>
@@ -174,17 +174,18 @@
                 </div>
 
                 <!-- Zone de saisie de messages -->
+
                 <div id="zone_saisie_message" class="card p-1" [class.toggled]="classToggled">
                     <div class="container">
                         <div class="row">
                             <form #mess="ngForm" (ngSubmit)="sendMess(mess)">
                                 <div class="col-10" [class.toggled]="classToggled">
-                                    <input id="message" [class.toggled]="classToggled" name="message" ngModel=""
+                                    <input id="message" class="form-control"  [class.toggled]="classToggled" name="message" ngModel=""
                                         type="text" class="form-control" placeholder="..."
-                                        style="width: 600px; margin: 5px;">
+                                        style="width: 600px; margin: 5px;" required class="form-control">
                                 </div>
                                 <div class="col-2">
-                                    <button type="submit" class="button-30 " style="font-size: 60%;">Envoyer <i
+                                    <button [disabled]="!mess.form.valid" type="submit" class="button-30 " style="font-size: 60%;">Envoyer <i
                                             class="fas fa-envelope" style="color: rgb(0, 0, 0);"></i></button>
                                 </div>
                             </form>
@@ -246,10 +247,10 @@
                                     <th class="col-8">
                                         <input id="message" [class.toggled]="classToggled" name="message" ngModel=""
                                             type="text" class="form-control" placeholder="..."
-                                            style="width: auto; margin: 5px;">
+                                            style="width: auto; margin: 5px;"  required class="form-control">
                                     </th>
                                     <th class="col-2">
-                                        <button type="submit" class="button-30 " style="font-size: 60%;"><i
+                                        <button [disabled]="!mess.form.valid" type="submit" class="button-30 " style="font-size: 60%;"><i
                                                 class="fas fa-check" style="color: rgb(255, 255, 255);"></i></button>
                                     </th>
 
@@ -325,7 +326,7 @@
 
                     <div id="conv" class="anyClass" #scrollMe [scrollTop]="scrollMe.scrollHeight">
                         <div *ngFor="let m of teammessages" [class.toggled]="classToggled">
-                            <div class="container lighter darker"
+                            <div class="container darker" 
                                 *ngIf="(!(m.expediteurMessage.idUser != authService.getUserConnect().idUser))">
                                 <img class="right photo_conversation" src="{{userInfo.imageUser.nameImage}}">
                                 <b>{{m.expediteurMessage.loginUser}} : </b>
@@ -356,9 +357,9 @@
                                 <div class="col-10" [class.toggled]="classToggled">
                                     <input id="message" [class.toggled]="classToggled" name="message" ngModel=""
                                         type="text" class="form-control" placeholder="..."
-                                        style="width: 600px; margin: 5px;">
+                                        style="width: 600px; margin: 5px;" required class="form-control">
                                 </div>
-                                <button type="submit" class="button-30 " style="font-size: 60%;">Envoyer <i
+                                <button [disabled]="!mess.form.valid" type="submit" class="button-30 " style="font-size: 60%;">Envoyer <i
                                         class="fas fa-envelope" style="color: rgb(0, 0, 0);"></i>
                                 </button>
                             </form>

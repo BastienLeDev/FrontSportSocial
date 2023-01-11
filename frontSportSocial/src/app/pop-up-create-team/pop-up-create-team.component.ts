@@ -24,6 +24,7 @@ export class PopUpCreateTeamComponent {
 
   createTeam(val: NgForm) {
     let title = { title: val.value.title };
+    if (val.value.title .trim()){
     this.http.post('http://localhost:8300/team/create/' + this.authService.getUserConnect().idUser, title).subscribe({
       next: (data) => { 
         this.infosTeam = data;
@@ -31,6 +32,7 @@ export class PopUpCreateTeamComponent {
       },
       error: (err) => { console.log(err) },
     });
+  }
   }
 
 }

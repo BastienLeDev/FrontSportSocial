@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
-        <div id="gauche" class="col-3 p-4">
-            <div class="card p-3 m-3">
+        <div id="gauche" class="col-3 p-4" >
+            <div class="card p-3 m-3" [class.toggled]="classToggled">
                 <div class="card-header">
                     <p class="text-center">{{club.titleClub}}</p>
                 </div>
@@ -11,7 +11,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card p-3 m-3">
+            <div class="card p-3 m-3" [class.toggled]="classToggled">
                 <div class="card-header">
                     <p class="text-center">A propos du club</p>
                 </div>
@@ -21,37 +21,37 @@
             </div>
         </div>
 
-        <div id="milieu" class="col-6 p-4">
-            <div class="card p-3 m-3 vh-100">
+        <div id="milieu" class="col-6 p-4" >
+            <div class="card p-3 m-3 vh-100" [class.toggled]="classToggled">
 
             </div>
         </div>
-        <div id="droite" class="col-3 p-4">
-            <div class="card p-3 m-3 vh-100">
+        <div id="droite" class="col-3 p-4" >
+            <div class="card p-3 m-3 vh-100" [class.toggled]="classToggled">
                 <div class=card-header>
                     <p class="text-center">Membres du groupe</p>
                 </div>
                 <div>
-                    <div class="container">
+                    <div class="container" [class.toggled]="classToggled">
                         <div id="content">
-                            <form #infosFriend="ngForm">
+                            <form #infosTeam="ngForm" >
                                 <div class="input-group">
-                                    <input ngModel="" #FriendS name="FriendS" type='text' id='search'
+                                    <input ngModel="" #TeamS name="TeamS" type='text' id='search'
                                         class="form-control search-form" placeholder="Rechercher...">
-                                    <span class="input-group-btn" style="width:30px">
-                                        <button id="search-this " type="button" class="pull-right btn search-btn"
-                                            type="submit">
+                                    <span class="input-group-btn" style="width:39px">
+                                        <button id="search-this" type="button" class="pull-right btn search-btn">
                                             <i class="fa fa-search"></i>
                                         </button>
                                     </span>
                                 </div>
                             </form>
+    
                         </div>
                     </div>
 
                     <!-- card ami-->
-                    <div class="anyClass">
-                        <div class="card p-1 m-1" *ngFor="let f of myFriends">
+                    <div class="anyClass" [class.toggled]="classToggled">
+                        <div class="card p-1 m-1" *ngFor="let f of myFriends" [class.toggled]="classToggled">
                             <div class="container">
 
                                 <div class="row">
@@ -69,8 +69,8 @@
                     </div>
 
                     <!-- card ami en attente d'ajout-->
-                    <div class="anyClass">
-                        <div class="card p-1 m-1" *ngFor="let f of askedFriends">
+                    <div class="anyClass" [class.toggled]="classToggled">
+                        <div class="card p-1 m-1" *ngFor="let f of askedFriends" [class.toggled]="classToggled">
                             <div class="container">
 
                                 <div class="row">
@@ -96,8 +96,8 @@
                     </div>
 
                     <!-- card non ami-->
-                    <div class="anyClass">
-                        <div class="card p-1 m-1" *ngFor="let f of nonFriends">
+                    <div class="anyClass" [class.toggled]="classToggled">
+                        <div class="card p-1 m-1" *ngFor="let f of nonFriends"- [class.toggled]="classToggled">
                             <div class="container">
 
                                 <div class="row">
