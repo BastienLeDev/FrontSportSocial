@@ -9,7 +9,7 @@
                 <!--Search bar : centrée, avec bouton "search" à droite-->
 
                 <div class="container" [class.toggled]="classToggled">
-                    <div id="content">
+                    <div id="content" >
                         <form #infosFriend="ngForm" (ngSubmit)="FilterFriend(FriendS.value)">
                             <div class="input-group">
                                 <input ngModel="" #FriendS name="FriendS" type='text' id='search'
