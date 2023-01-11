@@ -343,6 +343,7 @@ export class FriendComponent implements OnInit {
 
   renameTeam(val: NgForm) {
     let title = { title: val.value.message };
+    if (val.value.message.trim()){
     this.http.post('http://localhost:8300/team/rename/' + this.login4.idTeam, title).subscribe({
       next: (data) => {
         this.mess = data;
@@ -352,6 +353,7 @@ export class FriendComponent implements OnInit {
       error: (err) => { console.log(err) },
 
     })
+  }
 
   }
 

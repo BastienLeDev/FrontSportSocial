@@ -247,10 +247,10 @@
                                     <th class="col-8">
                                         <input id="message" [class.toggled]="classToggled" name="message" ngModel=""
                                             type="text" class="form-control" placeholder="..."
-                                            style="width: auto; margin: 5px;">
+                                            style="width: auto; margin: 5px;"  required class="form-control">
                                     </th>
                                     <th class="col-2">
-                                        <button type="submit" class="button-30 " style="font-size: 60%;"><i
+                                        <button [disabled]="!mess.form.valid" type="submit" class="button-30 " style="font-size: 60%;"><i
                                                 class="fas fa-check" style="color: rgb(255, 255, 255);"></i></button>
                                     </th>
 
