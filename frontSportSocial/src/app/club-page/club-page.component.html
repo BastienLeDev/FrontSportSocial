@@ -21,11 +21,24 @@
             </div>
         </div>
 
+
         <div id="milieu" class="col-6 p-4" >
             <div class="card p-3 m-3 vh-100" [class.toggled]="classToggled">
+                
+                <div *ngIf="feed == null">
 
+                </div>
+
+                <div *ngIf="feed != null">
+                    <div class="card p-3 m-3" *ngFor="let f of feed">
+                        <p>{{f.contentPost}}</p>
+                    </div>
+                                   
+                </div>
             </div>
         </div>
+
+
         <div id="droite" class="col-3 p-4" >
             <div class="card p-3 m-3 vh-100" [class.toggled]="classToggled">
                 <div class=card-header>
@@ -63,7 +76,7 @@
                                     <div class="col-6">
                                         <b> {{f.loginUser}} <p style="font-style: italic; font-weight: lighter !important;"> <i class="fas fa-circle" style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne</p></b>
                                     </div>
-                                </div>
+                                </div> 
                             </div>
                         </div>
                     </div>
@@ -97,7 +110,7 @@
 
                     <!-- card non ami-->
                     <div class="anyClass" [class.toggled]="classToggled">
-                        <div class="card p-1 m-1" *ngFor="let f of nonFriends"- [class.toggled]="classToggled">
+                        <div class="card p-1 m-1" *ngFor="let f of nonFriends" [class.toggled]="classToggled">
                             <div class="container">
 
                                 <div class="row">
