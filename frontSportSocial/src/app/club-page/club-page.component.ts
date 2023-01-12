@@ -29,11 +29,13 @@ export class ClubPageComponent implements OnInit {
   amiDemand: any;
   askedFriends: any;
   classToggled = this.dark.classToggled;
+  feed: any;
 
   ngOnInit(): void {
     this.listFriendsInClub();
     this.listNonFriendsInClub();
     this.listAskedFriends();
+    this.listPost();
   }
 
   listFriendsInClub(){
@@ -83,6 +85,16 @@ export class ClubPageComponent implements OnInit {
   
   goToFriends() {
     this.route.navigateByUrl('friend');
+  }
+
+  listPost() {
+    this.http.get('http://localhost:8300/club/posts/' + this.idClub).subscribe({
+      next: (data) => {
+        this.feed = data;
+        console.log(this.feed);
+      },
+      error: (err) => { console.log(err); }
+    });
   }
 
 }
