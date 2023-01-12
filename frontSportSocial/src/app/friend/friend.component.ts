@@ -62,6 +62,7 @@ export class FriendComponent implements OnInit {
   y: any;
   listLastTeamMsg: Array<any> = [];
   listTest: Array<any> = [];
+  listTestB: Array<any> = [];
   i : any;
   lastIdMessage : any ;
   listLastIdMessage : Array<any> = [];
@@ -115,6 +116,7 @@ export class FriendComponent implements OnInit {
     } else {
       this.visibleMessage = true;
     }
+    this.ngOnInit();
   }
 
   displayTeamConversation(val: any) {
@@ -257,15 +259,15 @@ export class FriendComponent implements OnInit {
     this.http.get('http://localhost:8300/team/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.team = data
-        console.log(this.listTest)
         console.log(this.team)
         for (let index in this.team) {
-          this.listTest.push(this.team[index].conversation)
-          this.listTest = this.listTest[this.listTest.length-1]
-          this.lastIdMessage  = this.listTest[this.listTest.length-1].idMessage 
-          this.listLastIdMessage.push(this.listTest[this.listTest.length-1].idMessage)
+          console.log(index);
+          console.log(this.team[index].conversation);
+          this.listTest = this.team[index].idTeam
+          let commentData = {} as any;
+          commentData.idTeam = this.listTest;
+          this.listLastIdMessage.push(commentData);
           console.log(this.listLastIdMessage)
-          console.log(this.lastIdMessage)
           if (this.listLastTeamMsg != null) {
             this.listLastTeamMsg = [];
           }
@@ -273,7 +275,8 @@ export class FriendComponent implements OnInit {
             next: (data) => {
               this.lastteammsg = "";
               this.lastteammsg = data,
-                this.listLastTeamMsg.push(this.lastteammsg[0])
+              commentData.lastMsg = this.lastteammsg[0];
+                this.listLastTeamMsg.push(commentData)
               console.log(this.listLastTeamMsg)
             }
           })
