@@ -263,9 +263,17 @@ td {
 }
 
 #last_message {
-    text-overflow: ellipsis; /* will make [...] at the end */
-    white-space: nowrap; /* paragraph to one line */
-    overflow: hidden; /* older browsers */
+    text-overflow: ellipsis !important; /* will make [...] at the end */
+    white-space: nowrap !important; /* paragraph to one line */
+    overflow: hidden !important; /* older browsers */
+}
+
+.conv_title {
+    text-overflow: ellipsis !important; /* will make [...] at the end */
+    white-space: nowrap !important; /* paragraph to one line */
+    overflow: hidden !important;   /* older browsers */
+    font-weight: bold;
+
 }
 
 /* Dark Mode CSS */
