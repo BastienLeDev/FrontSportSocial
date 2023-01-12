@@ -62,9 +62,19 @@
                     <div class="col-3 p-4" [class.toggled]="classToggled">
                         <form>
 
-                            <select class="box" ngModel="" required>
-                                <option *ngFor="let s of sports">{{s.nameSport}}</option>
-                            </select>
+                            <div class="text-center">
+                                <mat-form-field>
+                                    <mat-label>
+                                        Sport :
+                                    </mat-label>
+                                    <mat-select class="" name="sportEvent" ngModel="">
+                                        <mat-option>-Effacer la selection-</mat-option>
+                                        <mat-option [value]="s" *ngFor="let s of sports">
+                                            {{s.nameSport}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
                         </form>
                     </div>
                     <div class="col-3 p-4">
