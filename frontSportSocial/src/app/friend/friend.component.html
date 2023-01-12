@@ -156,7 +156,7 @@
                 <div id="card_principal_messages" class="card p-3" [class.toggled]="classToggled">
                     <div class="card-header">
                         <div>
-                            <p class="text-center ">Discussion avec : <b>{{login?.loginUser}}</b>
+                            <p class="text-center "><img style=" max-width: 60px; width: 100%; margin-right: 20px; border-radius: 50%;" src="{{login?.imageUser.nameImage}}"> <b>{{login?.loginUser}}</b>
                             </p>
                         </div>
                     </div>
@@ -212,7 +212,7 @@
                 <div id="card_principal_messages" class="card p-3" [class.toggled]="classToggled">
                     <div class="card-header">
                         <div>
-                            <p class="text-center ">Discussion avec : <b>{{login4?.title}}</b>
+                            <p class="text-center "><img style=" max-width: 60px; width: 100%; margin-right: 20px; border-radius: 50%;" class="teamImage" src="{{login4?.imageTeam.nameImage}}"> <b>{{login4?.title}}</b>
                             </p>
                             <i (click)="messageOption()" class="fas fa-address-book"
                                 style="color: rgb(0, 0, 0); width: 150%;"></i>
