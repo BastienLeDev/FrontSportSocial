@@ -116,7 +116,6 @@ export class FriendComponent implements OnInit {
     } else {
       this.visibleMessage = true;
     }
-    this.ngOnInit();
   }
 
   displayTeamConversation(val: any) {

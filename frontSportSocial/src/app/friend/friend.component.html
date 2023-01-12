@@ -9,7 +9,7 @@
                 <!--Search bar : centrée, avec bouton "search" à droite-->
 
                 <div class="container" [class.toggled]="classToggled">
-                    <div id="content" >
+                    <div id="content">
                         <form #infosFriend="ngForm" (ngSubmit)="FilterFriend(FriendS.value)">
                             <div class="input-group">
                                 <input ngModel="" #FriendS name="FriendS" type='text' id='search'
@@ -38,25 +38,26 @@
                                     <!-- photo de profil -->
                                     <div class="col-5">
                                         <img src="{{f.imageUser.nameImage}}">
-                                        <div  *ngFor="let lm of listLastMsg">
-                                            <div *ngIf="lm !== undefined ">
-                                                <p
-                                                    *ngIf="lm.message.lu != true && (lm.destinataire.idUser ==  authService.getUserConnect().idUser && lm.message.expediteurMessage.idUser == f.idUser)">
-                                                    <i class="fas fa-envelope" style="color: rgb(184, 40, 40);"></i>
-                                                </p>
-                                            </div>
-                                        </div>
                                     </div>
                                     <!-- nom user -->
                                     <div class="col-7">
-                                        <b id="add_friend_username"> {{f.loginUser}} <p style="font-style: italic; font-weight: lighter !important; font-size: 50%;"> <i class="fas fa-circle"
-                                                    style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne </p>
-                                        </b>
-                                        <div *ngFor="let lm of listLastMsg">
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <p class="conv_title"> {{f.loginUser}}
+                                            <p
+                                                style="font-style: italic; font-weight: lighter !important; font-size: 50%;">
+                                                <i class="fas fa-circle"
+                                                    style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne
+                                            </p>
+                                        </div>
+                                        <div *ngFor="let lm of listLastMsg" >
                                             <div *ngIf="lm !== undefined ">
-                                                <p id="last_message" style="font-size: 70%; text-align:left;"
+                                                <p id="last_message">
+                                                    <span *ngIf="lm.message.lu != true && (lm.destinataire.idUser ==  authService.getUserConnect().idUser && lm.message.expediteurMessage.idUser == f.idUser)">
+                                                        <i class="fas fa-envelope" style="color: rgb(184, 40, 40); margin-right: 3px;"></i></span>
+                                                    <span id="last_message" style="font-size: 70%; text-align:left "
                                                     *ngIf="(lm.destinataire.idUser ==  authService.getUserConnect().idUser && lm.message.expediteurMessage.idUser == f.idUser)|| lm.destinataire.idUser ==  f.idUser">
-                                                    {{lm.message.contentMessage}}</p>
+                                                    {{lm.message.contentMessage}}</span>
+                                             </p>
                                             </div>
                                         </div>
 
@@ -103,14 +104,24 @@
                                     <!-- photo de profil -->
                                     <div class="col-5">
                                         <img class="teamImage" src="{{t.imageTeam.nameImage}}">
+                                        <div *ngFor="let ltm of listLastTeamMsg">
+                                            <div *ngIf="ltm.lastMsg !== undefined  ">
+                                                <p
+                                                    *ngIf="ltm.lastMsg.lu != true && t.idTeam == ltm.idTeam && ltm.lastMsg.expediteurMessage.idUser != authService.getUserConnect().idUser ">
+                                                    <i class="fas fa-envelope" style="color: rgb(184, 40, 40);"></i>
+                                                </p>
+                                            </div>
+                                        </div>
 
                                     </div>
                                     <!-- nom user -->
                                     <div class="col-7">
-                                        <b id="add_friend_username"> {{t.title}}</b>
+                                        <p class="conv_title"> {{t.title}}
+                                        <p>
                                         <div *ngFor="let ltm of listLastTeamMsg">
                                             <div *ngIf="ltm.lastMsg !== undefined ">
-                                                <p id="last_message" style="font-size: 70%; text-align:left;" *ngIf="t.idTeam == ltm.idTeam ">
+                                                <p id="last_message" style="font-size: 70%; text-align:left;"
+                                                    *ngIf="t.idTeam == ltm.idTeam ">
                                                     {{ltm.lastMsg.contentMessage}}</p>
                                             </div>
                                         </div>
@@ -125,7 +136,7 @@
 
                 </div>
                 <div>
-                    <button (click)="openNewTeamModal()" type="submit" class="button-30" style="font-size: 60%;">Créer
+                    <button (click)="openNewTeamModal()" type="submit" class="button-30" style="font-size: 60%; left: 35%;">Créer
                         une team</button>
                 </div>
             </div>
@@ -145,7 +156,7 @@
                 <div id="card_principal_messages" class="card p-3" [class.toggled]="classToggled">
                     <div class="card-header">
                         <div>
-                            <p class="text-center ">Discussion avec : <b>{{login?.loginUser}}</b>
+                            <p class="text-center "><img style=" max-width: 60px; width: 100%; margin-right: 20px; border-radius: 50%;" src="{{login?.imageUser.nameImage}}"> <b>{{login?.loginUser}}</b>
                             </p>
                         </div>
                     </div>
@@ -181,13 +192,14 @@
                         <div class="row">
                             <form #mess="ngForm" (ngSubmit)="sendMess(mess)">
                                 <div class="col-10" [class.toggled]="classToggled">
-                                    <input id="message" class="form-control"  [class.toggled]="classToggled" name="message" ngModel=""
-                                        type="text" class="form-control" placeholder="..."
+                                    <input id="message" class="form-control" [class.toggled]="classToggled"
+                                        name="message" ngModel="" type="text" class="form-control" placeholder="..."
                                         style="width: 600px; margin: 5px;" required class="form-control">
                                 </div>
                                 <div class="col-2">
-                                    <button [disabled]="!mess.form.valid" type="submit" class="button-30 " style="font-size: 60%;">Envoyer <i
-                                            class="fas fa-envelope" style="color: rgb(0, 0, 0);"></i></button>
+                                    <button [disabled]="!mess.form.valid" type="submit" class="button-30 "
+                                        style="font-size: 60%;">Envoyer <i class="fas fa-envelope"
+                                            style="color: rgb(0, 0, 0);"></i></button>
                                 </div>
                             </form>
                         </div>
@@ -200,7 +212,7 @@
                 <div id="card_principal_messages" class="card p-3" [class.toggled]="classToggled">
                     <div class="card-header">
                         <div>
-                            <p class="text-center ">Discussion avec : <b>{{login4?.title}}</b>
+                            <p class="text-center "><img style=" max-width: 60px; width: 100%; margin-right: 20px; border-radius: 50%;" class="teamImage" src="{{login4?.imageTeam.nameImage}}"> <b>{{login4?.title}}</b>
                             </p>
                             <i (click)="messageOption()" class="fas fa-address-book"
                                 style="color: rgb(0, 0, 0); width: 150%;"></i>
@@ -248,11 +260,12 @@
                                     <th class="col-8">
                                         <input id="message" [class.toggled]="classToggled" name="message" ngModel=""
                                             type="text" class="form-control" placeholder="..."
-                                            style="width: auto; margin: 5px;"  required class="form-control">
+                                            style="width: auto; margin: 5px;" required class="form-control">
                                     </th>
                                     <th class="col-2">
-                                        <button [disabled]="!mess.form.valid" type="submit" class="button-30 " style="font-size: 60%;"><i
-                                                class="fas fa-check" style="color: rgb(255, 255, 255);"></i></button>
+                                        <button [disabled]="!mess.form.valid" type="submit" class="button-30 "
+                                            style="font-size: 60%;"><i class="fas fa-check"
+                                                style="color: rgb(255, 255, 255);"></i></button>
                                     </th>
 
                                 </table>
@@ -327,7 +340,7 @@
 
                     <div id="conv" class="anyClass" #scrollMe [scrollTop]="scrollMe.scrollHeight">
                         <div *ngFor="let m of teammessages" [class.toggled]="classToggled">
-                            <div class="container darker" 
+                            <div class="container darker"
                                 *ngIf="(!(m.expediteurMessage.idUser != authService.getUserConnect().idUser))">
                                 <img class="right photo_conversation" src="{{userInfo.imageUser.nameImage}}">
                                 <b>{{m.expediteurMessage.loginUser}} : </b>
@@ -360,8 +373,9 @@
                                         type="text" class="form-control" placeholder="..."
                                         style="width: 600px; margin: 5px;" required class="form-control">
                                 </div>
-                                <button [disabled]="!mess.form.valid" type="submit" class="button-30 " style="font-size: 60%;">Envoyer <i
-                                        class="fas fa-envelope" style="color: rgb(0, 0, 0);"></i>
+                                <button [disabled]="!mess.form.valid" type="submit" class="button-30 "
+                                    style="font-size: 60%;">Envoyer <i class="fas fa-envelope"
+                                        style="color: rgb(0, 0, 0);"></i>
                                 </button>
                             </form>
                         </div>

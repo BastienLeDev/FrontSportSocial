@@ -36,13 +36,15 @@
                                     <div class="row">
                                         <p id="add_friend_username"> {{f.firstNameUser}}</p>
                                     </div>
-                                    <div class="row">
-                                        <button (click)="deleteFrienship(f)" id="btnsup" type="submit"
-                                            class="btn btn-danger btn-block btn-sm " style="font-size: 50%;">
-                                            Supprimer <i class="fas fa-trash" style="color: rgb(255, 255, 255);"></i>
+                                    <div class="col-6" style="left: 50px;">
+                                        <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                            <mat-icon>more_vert</mat-icon>
                                         </button>
-
+                                        <mat-menu #menu="matMenu" xPosition="before">
+                                            <button mat-menu-item (click)="deleteFrienship(f)">Supprimer</button>
+                                        </mat-menu>
                                     </div>
+
                                 </div>
 
 
@@ -69,7 +71,7 @@
                 <li>
                     <!--Search bar : centrée, avec bouton "search" à droite-->
                     <div class="container">
-                        <div id="search-card" class="card p-3 m-3 col-11" [class.toggled]="classToggled">
+                        <div id="search-card" [class.toggled]="classToggled" style="background-color: transparent;">
                             <div id="content">
                                 <form class='form-inline'>
                                     <div class="input-group">
