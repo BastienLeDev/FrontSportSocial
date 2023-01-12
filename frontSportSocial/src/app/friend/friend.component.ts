@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service';
 import { AppComponent } from '../app.component';
 import { DarkThemeService } from '../services/dark-theme.service';
 import { PopUpCreateTeamComponent } from '../pop-up-create-team/pop-up-create-team.component';
-import { findIndex } from 'rxjs';
+import { findIndex, last } from 'rxjs';
 
 @Component({
   selector: 'app-friend',
@@ -58,6 +58,13 @@ export class FriendComponent implements OnInit {
   lastmsg: any;
   x: any;
   listLastMsg: Array<any> = [];
+  lastteammsg: any;
+  y: any;
+  listLastTeamMsg: Array<any> = [];
+  listTest: Array<any> = [];
+  i : any;
+  lastIdMessage : any ;
+  listLastIdMessage : Array<any> = [];
 
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog, private appComponent: AppComponent, public dark: DarkThemeService) { }
@@ -118,6 +125,11 @@ export class FriendComponent implements OnInit {
     this.visibleTeamMember = false;
     this.visibleAddTeamMember = false;
     this.sendmessagesasc = null;
+    this.http.get('http://localhost:8300/team/truemessage/' + this.login4.idTeam ).subscribe({
+      next: (data) => {
+      },
+      error: (err) => { console.log(err) }
+    });
     if (this.visibleTeam == false) {
       this.visibleTeam = true;
 
@@ -239,9 +251,33 @@ export class FriendComponent implements OnInit {
   }
 
   listTeam() {
+    if (this.listLastIdMessage != null) {
+      this.listLastIdMessage = [];
+    }
     this.http.get('http://localhost:8300/team/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.team = data
+        console.log(this.listTest)
+        console.log(this.team)
+        for (let index in this.team) {
+          this.listTest.push(this.team[index].conversation)
+          this.listTest = this.listTest[this.listTest.length-1]
+          this.lastIdMessage  = this.listTest[this.listTest.length-1].idMessage 
+          this.listLastIdMessage.push(this.listTest[this.listTest.length-1].idMessage)
+          console.log(this.listLastIdMessage)
+          console.log(this.lastIdMessage)
+          if (this.listLastTeamMsg != null) {
+            this.listLastTeamMsg = [];
+          }
+          this.http.get('http://localhost:8300/team/lastmessage/'  + this.team[index].idTeam ).subscribe({
+            next: (data) => {
+              this.lastteammsg = "";
+              this.lastteammsg = data,
+                this.listLastTeamMsg.push(this.lastteammsg[0])
+              console.log(this.listLastTeamMsg)
+            }
+          })
+        }
       },
       error: (err) => { console.log(err) }
     })

@@ -108,11 +108,12 @@
                                     <!-- nom user -->
                                     <div class="col-7">
                                         <b id="add_friend_username"> {{t.title}}</b>
-
-                                        <div class="row">
-
+                                        <div *ngFor="let ltm of listLastTeamMsg">
+                                            <div *ngIf="ltm !== undefined ">
+                                                <p id="last_message" style="font-size: 70%; text-align:left;" *ngIf="ltm.idMessage == lastIdMessage">
+                                                    {{ltm.contentMessage}}{{ltm.idMessage}}{{lastIdMessage}}</p>
+                                            </div>
                                         </div>
-
                                     </div>
 
                                 </div>
