@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <div id="gauche" class="col-3 p-4" >
+        <div id="gauche" class="col-3 p-4">
             <div class="card p-3 m-3" [class.toggled]="classToggled">
                 <div class="card-header">
                     <p class="text-center">{{club.titleClub}}</p>
@@ -22,9 +22,9 @@
         </div>
 
 
-        <div id="milieu" class="col-6 p-4" >
+        <div id="milieu" class="col-6 p-4">
             <div class="card p-3 m-3 vh-100" [class.toggled]="classToggled">
-                
+
                 <div *ngIf="feed == null">
 
                 </div>
@@ -34,7 +34,7 @@
                         <div class="card p-3">
                             <div class="row">
                                 <div class="col-2">
-                                    <img src="{{f.createurPost.imageUser.nameImage}}"  style="width: 100%">
+                                    <img src="{{f.createurPost.imageUser.nameImage}}" style="width: 100%">
                                 </div>
                                 <div class="col-10">
                                     <div class="container">
@@ -45,7 +45,7 @@
                                             <p>{{f.dateCreationPost}}</p>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                             <div class="row">
@@ -53,144 +53,188 @@
                                     <p id="just-line-break">{{f.contentPost}}</p>
                                 </div>
                             </div>
-                            <div class="row" >
-                                <div class="col-12" >
-                                    <img *ngIf="f.imagePost != null" src="{{f.imagePost.nameImage}}" style="width: 100%">
+                            <div class="row">
+                                <div class="col-12">
+                                    <img *ngIf="f.imagePost != null" src="{{f.imagePost.nameImage}}"
+                                        style="width: 100%">
                                 </div>
-                                
+
                             </div>
                             <div class="row">
                                 <div class="col-4">
                                     <div class="text-center">
-                                        <button >J'aime</button>
+                                        <button>J'aime</button>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="col-4">
                                     <div class="text-center">
-                                        <button>Commenter</button>
+                                        <button (click)="listComments(f.idPost)">Commenter</button>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="col-4">
                                     <div class="text-center">
                                         <button>Partager</button>
                                     </div>
-                                    
+
                                 </div>
 
                             </div>
+                            <div class=row>
+                                <div class="container" *ngFor="let c of comments">
+                                    <div class="card p-3">
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <img src="{{c.createurComment.imageUser.nameImage}}"
+                                                    style="width: 100%">
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <p>{{c.createurComment.loginUser}}</p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>{{c.dateCreationComment}}</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div>
+                                                <p id="just-line-break">{{c.contentComment}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+
+
+
+
                         </div>
-                        
-                        
-                        
-                        
-                        
-                              
+
                     </div>
-                             
+                </div>
+            </div>
+
+
+            <div id="droite" class="col-3 p-4">
+                <div class="card p-3 m-3 vh-100" [class.toggled]="classToggled">
+                    <div class=card-header>
+                        <p class="text-center">Membres du groupe</p>
+                    </div>
+                    <div>
+                        <div class="container" [class.toggled]="classToggled">
+                            <div id="content">
+                                <form #infosTeam="ngForm">
+                                    <div class="input-group">
+                                        <input ngModel="" #TeamS name="TeamS" type='text' id='search'
+                                            class="form-control search-form" placeholder="Rechercher...">
+                                        <span class="input-group-btn" style="width:39px">
+                                            <button id="search-this" type="button" class="pull-right btn search-btn">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <!-- card ami-->
+                        <div class="anyClass" [class.toggled]="classToggled">
+                            <div class="card p-1 m-1" *ngFor="let f of myFriends" [class.toggled]="classToggled">
+                                <div class="container">
+
+                                    <div class="row">
+                                        <!-- photo de profil -->
+                                        <div class="col-4">
+                                            <img src="{{f.imageUser.nameImage}}" style="width: 100%">
+                                        </div>
+                                        <!-- nom user -->
+                                        <div class="col-6">
+                                            <b> {{f.loginUser}} <p
+                                                    style="font-style: italic; font-weight: lighter !important;"> <i
+                                                        class="fas fa-circle"
+                                                        style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne
+                                                </p></b>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- card ami en attente d'ajout-->
+                        <div class="anyClass" [class.toggled]="classToggled">
+                            <div class="card p-1 m-1" *ngFor="let f of askedFriends" [class.toggled]="classToggled">
+                                <div class="container">
+
+                                    <div class="row">
+                                        <!-- photo de profil -->
+                                        <div class="col-4">
+                                            <img src="{{f.imageUser.nameImage}}" style="width: 100%">
+                                        </div>
+                                        <!-- nom user -->
+                                        <div class="col-6">
+                                            <b> {{f.loginUser}} <p
+                                                    style="font-style: italic; font-weight: lighter !important;"> <i
+                                                        class="fas fa-circle"
+                                                        style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne
+                                                </p></b>
+                                        </div>
+                                        <div class="col-2">
+                                            <button (click)="goToFriends()" type="submit" class="butInvisible"><mat-icon
+                                                    svgIcon="wait-friend" aria-hidden="false"></mat-icon>
+                                            </button>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <!-- card non ami-->
+                        <div class="anyClass" [class.toggled]="classToggled">
+                            <div class="card p-1 m-1" *ngFor="let f of nonFriends" [class.toggled]="classToggled">
+                                <div class="container">
+
+                                    <div class="row">
+                                        <!-- photo de profil -->
+                                        <div class="col-4">
+                                            <img src="{{f.imageUser.nameImage}}" style="width: 100%">
+                                        </div>
+                                        <!-- nom user -->
+                                        <div class="col-6">
+                                            <b> {{f.loginUser}} <p
+                                                    style="font-style: italic; font-weight: lighter !important;"> <i
+                                                        class="fas fa-circle"
+                                                        style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne
+                                                </p></b>
+                                        </div>
+                                        <div class="col-2">
+                                            <button (click)="addFriend(f)" type="submit" class="butInvisible"><mat-icon
+                                                    svgIcon="add-friend" aria-hidden="false"></mat-icon>
+                                            </button>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
-
-
-        <div id="droite" class="col-3 p-4" >
-            <div class="card p-3 m-3 vh-100" [class.toggled]="classToggled">
-                <div class=card-header>
-                    <p class="text-center">Membres du groupe</p>
-                </div>
-                <div>
-                    <div class="container" [class.toggled]="classToggled">
-                        <div id="content">
-                            <form #infosTeam="ngForm" >
-                                <div class="input-group">
-                                    <input ngModel="" #TeamS name="TeamS" type='text' id='search'
-                                        class="form-control search-form" placeholder="Rechercher...">
-                                    <span class="input-group-btn" style="width:39px">
-                                        <button id="search-this" type="button" class="pull-right btn search-btn">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </span>
-                                </div>
-                            </form>
-    
-                        </div>
-                    </div>
-
-                    <!-- card ami-->
-                    <div class="anyClass" [class.toggled]="classToggled">
-                        <div class="card p-1 m-1" *ngFor="let f of myFriends" [class.toggled]="classToggled">
-                            <div class="container">
-
-                                <div class="row">
-                                    <!-- photo de profil -->
-                                    <div class="col-4">
-                                        <img src="{{f.imageUser.nameImage}}" style="width: 100%">
-                                    </div>
-                                    <!-- nom user -->
-                                    <div class="col-6">
-                                        <b> {{f.loginUser}} <p style="font-style: italic; font-weight: lighter !important;"> <i class="fas fa-circle" style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne</p></b>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- card ami en attente d'ajout-->
-                    <div class="anyClass" [class.toggled]="classToggled">
-                        <div class="card p-1 m-1" *ngFor="let f of askedFriends" [class.toggled]="classToggled">
-                            <div class="container">
-
-                                <div class="row">
-                                    <!-- photo de profil -->
-                                    <div class="col-4">
-                                        <img src="{{f.imageUser.nameImage}}" style="width: 100%">
-                                    </div>
-                                    <!-- nom user -->
-                                    <div class="col-6">
-                                        <b> {{f.loginUser}} <p style="font-style: italic; font-weight: lighter !important;"> <i class="fas fa-circle" style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne</p></b>
-                                    </div>
-                                    <div class="col-2">
-                                        <button (click)="goToFriends()" type="submit" class="butInvisible" ><mat-icon svgIcon="wait-friend" aria-hidden="false"></mat-icon>
-                                        </button>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    <!-- card non ami-->
-                    <div class="anyClass" [class.toggled]="classToggled">
-                        <div class="card p-1 m-1" *ngFor="let f of nonFriends" [class.toggled]="classToggled">
-                            <div class="container">
-
-                                <div class="row">
-                                    <!-- photo de profil -->
-                                    <div class="col-4">
-                                        <img src="{{f.imageUser.nameImage}}" style="width: 100%">
-                                    </div>
-                                    <!-- nom user -->
-                                    <div class="col-6">
-                                        <b> {{f.loginUser}} <p style="font-style: italic; font-weight: lighter !important;"> <i class="fas fa-circle" style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne</p></b>
-                                    </div>
-                                    <div class="col-2">
-                                        <button (click)="addFriend(f)" type="submit" class="butInvisible"><mat-icon svgIcon="add-friend" aria-hidden="false"></mat-icon>
-                                        </button>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
