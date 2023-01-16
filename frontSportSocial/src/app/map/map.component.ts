@@ -10,6 +10,7 @@ import { DarkThemeService } from '../services/dark-theme.service';
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
+  
 })
 export class MapComponent implements OnInit {
 
@@ -33,4 +34,15 @@ export class MapComponent implements OnInit {
       error: (err) => { console.log(err); }
     });
   }
+
+  formatLabel(value: number): string {
+    if (value >= 1000) {
+      return Math.round(value / 1000) + 'km';
+    }
+
+    return `${value}`;
+  }
 }
+  
+
+  

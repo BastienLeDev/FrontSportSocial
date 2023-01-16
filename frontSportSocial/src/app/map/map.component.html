@@ -1,38 +1,45 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-3 p-4">
-            <div class="card p-3 m-3" [class.toggled]="classToggled">
-                <div class="container">
-                    <div id="content">
-                        <form class='form-inline'>
-                            <div class="input-group">
-                                <input type='text' id='search' class="form-control search-form"
-                                    placeholder="Rechercher...">
-                                <span class="input-group-btn" style="width:39px">
-                                    <button id="search-this" type="button" class="pull-right btn search-btn">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </form>
+            <div class="container" [class.toggled]="classToggled" style="background-color: transparent;">
+                <div id="content">
+                    <form class='form-inline'>
+                        <div class="input-group">
+                            <input type='text' id='search' class="form-control search-form"
+                                placeholder="Rechercher...">
+                            <span class="input-group-btn" style="width:39px">
+                                <button id="search-this" type="button" class="pull-right btn search-btn">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
 
-                    </div>
                 </div>
-                <form>
-                    <label for="sports">Choisissez un sport: </label>
-                    <select class="box" ngModel="" required>
-                        <option *ngFor="let s of sports">{{s.nameSport}}</option>
-                    </select>
+            </div>
+            <div class="card p-3 m-3" [class.toggled]="classToggled">
+
+                <h3>Distance depuis chez soi </h3>
+                <mat-slider min="0" max="100000" step="1000" showTickMarks discrete [displayWith]="formatLabel">
+                    <input matSliderThumb>
+                  </mat-slider>
+
+                  <form>
+                    <div class="text-center">
+                        <mat-form-field>
+                            <mat-label>
+                                Filtrer par sport :
+                            </mat-label>
+                            <mat-select class="" name="sportEvent" ngModel="">
+                                <mat-option>-Effacer la selection-</mat-option>
+                                <mat-option [value]="s" *ngFor="let s of sports">
+                                    {{s.nameSport}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
                 </form>
-                <form>
-                    <label class="distance" for="distance">Distance maximale : </label>
-                    <select class="box">
-                        <option value="1km">1km</option>
-                        <option value="1km">2km</option>
-                        <option value="1km">5km</option>
-                        <option value="1km">10km</option>
-                    </select>
-                </form>
+
             </div>
 
         </div>

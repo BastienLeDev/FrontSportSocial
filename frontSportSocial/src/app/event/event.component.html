@@ -5,37 +5,8 @@
                 <div class="container">
                     <div class="card p-3 m-3" [class.toggled]="classToggled">
                         <div class="row">
-                            <div class="col-2">
-                                <div class="container">
-                                    <form>
-                                        <div class="row">
-                                            <div class="col-12 text-center" [class.toggled]="classToggled">
-                                                <label  for="sports">Filtrer par sport:</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="text-center">
-                                                    <mat-form-field>
-                                                        <mat-label>
-                                                            Sport :
-                                                        </mat-label>
-                                                        <mat-select class="" name="sportEvent" ngModel="">
-                                                            <mat-option>-Effacer la selection-</mat-option>
-                                                            <mat-option [value]="s" *ngFor="let s of sports">
-                                                                {{s.nameSport}}
-                                                            </mat-option>
-                                                        </mat-select>
-                                                    </mat-form-field>
-                                                </div>
 
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-
-                            <div class="col-6 ">
+                            <div class="col-4 ">
                                 <div class="container">
                                     <div id="content">
                                         <form class='form-inline'>
@@ -56,9 +27,33 @@
                             <div class="col-4 text-right align-self-center">
                                 <a [class.toggled]="classToggled" id="btn_dropdown" mat-raised-button
                                     (click)="openNewEventModal()">
-                                    Creer un nouvel événement!
+                                    Créer un nouvel événement 
                                     <mat-icon>add</mat-icon>
                                 </a>
+                            </div>
+                            <div class="col-4">
+                                <div class="container">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="text-center">
+                                                    <mat-form-field>
+                                                        <mat-label>
+                                                            Filtrer par sport :
+                                                        </mat-label>
+                                                        <mat-select class="" name="sportEvent" ngModel="">
+                                                            <mat-option>-Effacer la selection-</mat-option>
+                                                            <mat-option [value]="s" *ngFor="let s of sports">
+                                                                {{s.nameSport}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
