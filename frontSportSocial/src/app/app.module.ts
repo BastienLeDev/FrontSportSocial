@@ -25,7 +25,6 @@ import { MatSliderModule } from '@angular/material/slider';
 import { PopUpProfilComponent } from './pop-up-profil/pop-up-profil.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
-
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { PopUpScheduleComponent } from './pop-up-schedule/pop-up-schedule.component';
@@ -43,6 +42,7 @@ import { PopUpQuitClubComponent } from './pop-up-quit-club/pop-up-quit-club.comp
 import { ClubPageComponent } from './club-page/club-page.component';
 import { PopUpCoachComponent } from './pop-up-coach/pop-up-coach.component';
 import { PopUpEchangeComponent } from './pop-up-echange/pop-up-echange.component';
+import { from } from 'rxjs';
 
 
 
