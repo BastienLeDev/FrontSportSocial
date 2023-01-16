@@ -65,7 +65,7 @@
                             <div class="text-center">
                                 <mat-form-field>
                                     <mat-label>
-                                        Sport :
+                                        Filtrer par sport :
                                     </mat-label>
                                     <mat-select class="" name="sportEvent" ngModel="">
                                         <mat-option>-Effacer la selection-</mat-option>
@@ -77,12 +77,12 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-3 p-4">
-                        <span class="input-group-btn" style="width: 50%;">
-                            <button type="submit" (click)="openNewClubModal()" class="btn btnPrincipal btn-block "
-                                style="font-size: 60%;">Créer un
-                                club</button>
-                        </span>
+                    <div class="col-3 p-4" [class.toggled]="classToggled">
+                            <a [class.toggled]="classToggled" id="btn_dropdown" mat-raised-button
+                            (click)="openNewClubModal()">
+                            Créer un club
+                            <mat-icon>add</mat-icon>
+                        </a>
                     </div>
                 </div>
 

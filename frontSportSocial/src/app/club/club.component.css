@@ -67,6 +67,21 @@ input-group-btn {
   border-radius: 5px;
 }
 
+.card-header {
+  background-color: #FCECDD;
+  color: black;
+}
+
+.nomClub {
+  text-align: center;
+}
+
+.butInvisible {
+  background: transparent;
+  border: none !important;
+  font-size: 0;
+}
+
 /* Dark Mode CSS */
 
 .toggled {
@@ -103,17 +118,7 @@ input-group-btn {
   background-color: #373457;
 }
 
-.card-header {
-  background-color: #FCECDD;
-  color: black;
+.toggled #btn_dropdown {
+  background-color: #3f4a6e !important;
 }
 
-.nomClub {
-  text-align: center;
-}
-
-.butInvisible {
-  background: transparent;
-  border: none !important;
-  font-size: 0;
-}

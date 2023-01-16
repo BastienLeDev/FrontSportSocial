@@ -87,6 +87,10 @@
     height: 400px;
   }
 
+  #training {
+    height: auto;
+  }
+
   /* CSS du scroll */
   .anyClass {
     height: auto;

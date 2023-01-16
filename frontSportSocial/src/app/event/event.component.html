@@ -3,22 +3,42 @@
         <div class="col-12 p-4 ">
             <div class="p-1 m-1 ">
                 <div class="container">
-                    <div class="card p-3 m-3" [class.toggled]="classToggled">
+                    <div [class.toggled]="classToggled" style="background-color: transparent;">
                         <div class="row">
-                            <div class="col-2">
+
+                            <div class="col-4 ">
+                                <div class="container">
+                                    <div id="content">
+                                        <form #infosEvent="ngForm" (ngSubmit)="FilterEvent(Events.value)">
+                                            <div class="input-group">
+                                                <input ngModel="" #Events name="Events" type='text' id='search'
+                                                    class="form-control search-form" placeholder="Rechercher...">
+                                                <span class="input-group-btn" style="width:39px">
+                                                    <button id="search-this" type="button" class="pull-right btn search-btn">
+                                                        <i class="fa fa-search"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 text-right align-self-center">
+                                <a [class.toggled]="classToggled" id="btn_dropdown" mat-raised-button
+                                    (click)="openNewEventModal()">
+                                    Créer un nouvel événement 
+                                    <mat-icon>add</mat-icon>
+                                </a>
+                            </div>
+                            <div class="col-4">
                                 <div class="container">
                                     <form>
-                                        <div class="row">
-                                            <div class="col-12 text-center" [class.toggled]="classToggled">
-                                                <label  for="sports">Filtrer par sport:</label>
-                                            </div>
-                                        </div>
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="text-center">
                                                     <mat-form-field>
                                                         <mat-label>
-                                                            Sport :
+                                                            Filtrer par sport :
                                                         </mat-label>
                                                         <mat-select class="" name="sportEvent" ngModel="">
                                                             <mat-option>-Effacer la selection-</mat-option>
@@ -33,32 +53,6 @@
                                         </div>
                                     </form>
                                 </div>
-                            </div>
-
-                            <div class="col-6 ">
-                                <div class="container">
-                                    <div id="content">
-                                        <form class='form-inline'>
-                                            <div class="input-group">
-                                                <input type='text' id='search' class="form-control search-form"
-                                                    placeholder="Rechercher...">
-                                                <span class="input-group-btn" style="width:39px">
-                                                    <button id="search-this" type="button"
-                                                        class="pull-right btn search-btn">
-                                                        <i class="fa fa-search"></i>
-                                                    </button>
-                                                </span>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4 text-right align-self-center">
-                                <a [class.toggled]="classToggled" id="btn_dropdown" mat-raised-button
-                                    (click)="openNewEventModal()">
-                                    Creer un nouvel événement!
-                                    <mat-icon>add</mat-icon>
-                                </a>
                             </div>
                         </div>
                     </div>
