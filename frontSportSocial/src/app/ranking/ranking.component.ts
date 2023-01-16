@@ -29,12 +29,10 @@ export class RankingComponent implements OnInit {
     this.ListSportIndividu();
   }
 
-
-
-
   goToShop() {
     this.route.navigateByUrl('shop');
   }
+
   ListSport() {
 
 
@@ -64,7 +62,6 @@ export class RankingComponent implements OnInit {
     console.log(val);
     console.log(this.sporta);
     console.log(val);
-    //this.http.get('http://localhost:8300/classement/Swimming/desc').subscribe({
 
     this.http.get('http://localhost:8300/classement/' + this.sporta.sports.nameSport + '/desc').subscribe({
 

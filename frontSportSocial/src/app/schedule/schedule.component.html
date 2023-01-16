@@ -59,16 +59,16 @@
 
                 </div>
 
-                <div [ngSwitch]="view">
+                <div [ngSwitch]="view" [class.toggled]="classToggled">
 
                     <mwl-calendar-month-view (dayClicked)="dayClicked($event.day)" *ngSwitchCase="CalendarView.Month"
-                        [viewDate]="viewDate" [events]="events">
+                        [viewDate]="viewDate" [events]="events" [class.toggled]="classToggled">
                     </mwl-calendar-month-view>
 
-                    <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events">
+                    <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events" [class.toggled]="classToggled">
                     </mwl-calendar-week-view>
 
-                    <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events">
+                    <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events" [class.toggled]="classToggled">
                     </mwl-calendar-day-view>
 
                 </div>

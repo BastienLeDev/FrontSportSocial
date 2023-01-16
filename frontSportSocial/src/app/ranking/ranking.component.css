@@ -81,16 +81,6 @@ input-group-btn {
   border-radius: 75px;
 }
 
-
-.box {
-  width: 180px;
-  height: 30px;
-  font-size: 15px;
-  color: #ffffff;
-  background-color: #FFC288;
-  border-radius: 5px;
-}
-
   
 /* Dark Mode CSS */
 
@@ -121,9 +111,4 @@ input-group-btn {
 
 .toggled .btnPrincipal {
   background-color: #3f4a6e !important;
-}
-
-.toggled .box {
-  color: #ffffff;
-  background-color: #373457;
 }

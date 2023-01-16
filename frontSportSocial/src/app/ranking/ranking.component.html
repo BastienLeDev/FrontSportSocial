@@ -7,14 +7,23 @@
                 <div class="row">
                     <div class="col-12 p-4">
                         <div class="card p-3 m-3" [class.toggled]="classToggled">
-                            <h4>Classement</h4>
+                            <h1>Classement</h1>
 
                             <p>Vous souhaitez connaître le classement des meilleurs utilisateurs par sport ? </p>
                             <form #choixSport="ngForm" (ngSubmit)="ListRankingdesc(choixSport.value)">
-                                <label for=" sports">Choix du Sport: </label>
-                                <select class="box" ngModel="" name="sports" id="sports">
-                                    <option [ngValue]="sp" *ngFor="let sp of sports" value="">{{sp.nameSport}}</option>
-                                </select>
+                                <div >
+                                    <mat-form-field>
+                                        <mat-label>
+                                            Filtrer par sport :
+                                        </mat-label>
+                                        <mat-select class="box" ngModel="" name="sports" id="sports">
+                                            <mat-option>-Effacer la selection-</mat-option>
+                                            <mat-option [value]="s" *ngFor="let s of sports" value="">
+                                                {{s.nameSport}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
                                 <div class="col-2">
                                     <button type="submit" class="btn btnPrincipal btn-block btn-sm"
                                         style="margin :3px; font-size: 60%; ">Valider</button>
@@ -27,7 +36,7 @@
                 <div class="row">
                     <div class="col-6 p-4">
                         <div class="card p-3 m-3" [class.toggled]="classToggled">
-                            <h4>Classement par activité :</h4>
+                            <h4>Classement par activité : </h4>
 
                             <div class="container">
 
@@ -97,6 +106,11 @@
 
                 <div class="row" [class.toggled]="classToggled">
                     <h2>Vos Scores</h2>
+                    <div>
+                        <button type="submit" class="btn btnPrincipal btn-block btn-sm"
+                            style="margin : 3px; width :40%">Ajouter <i class="fas fa-plus"></i></button>
+
+                    </div>
 
                     <div class="col-12 p-4" *ngFor="let i of individu;" [class.toggled]="classToggled">
                         <div class=" card p-2 " [class.toggled]="classToggled">
