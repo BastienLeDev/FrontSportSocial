@@ -79,3 +79,7 @@ input-group-btn {
     border: none !important;
     font-size: 0;
   }
+
+  #just-line-break {
+    white-space: pre-line;
+  }

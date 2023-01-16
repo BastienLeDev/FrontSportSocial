@@ -17,7 +17,7 @@ const waitingFriendIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 
 })
 export class ClubPageComponent implements OnInit {
 
-  constructor(private clubService: ClubsService, private http: HttpClient, private authService: AuthService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private route: Router, public dark: DarkThemeService) { 
+  constructor(private clubService: ClubsService, private http: HttpClient, private authService: AuthService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private route: Router, public dark: DarkThemeService) {
     iconRegistry.addSvgIconLiteral('add-friend', sanitizer.bypassSecurityTrustHtml(addFriendIcon));
     iconRegistry.addSvgIconLiteral('wait-friend', sanitizer.bypassSecurityTrustHtml(waitingFriendIcon));
   };
@@ -30,6 +30,8 @@ export class ClubPageComponent implements OnInit {
   askedFriends: any;
   classToggled = this.dark.classToggled;
   feed: any;
+  comments: any;
+  commentsOn = false;
 
   ngOnInit(): void {
     this.listFriendsInClub();
@@ -38,8 +40,8 @@ export class ClubPageComponent implements OnInit {
     this.listPost();
   }
 
-  listFriendsInClub(){
-    this.http.get('http://localhost:8300/club/amis/' + this.authService.getUserConnect().idUser + '/' + this.idClub) .subscribe({
+  listFriendsInClub() {
+    this.http.get('http://localhost:8300/club/amis/' + this.authService.getUserConnect().idUser + '/' + this.idClub).subscribe({
       next: (data) => {
         this.myFriends = data;
         console.log(this.myFriends);
@@ -49,8 +51,8 @@ export class ClubPageComponent implements OnInit {
     });
   }
 
-  listNonFriendsInClub(){
-    this.http.get('http://localhost:8300/club/nonamis/' + this.authService.getUserConnect().idUser + '/' + this.idClub) .subscribe({
+  listNonFriendsInClub() {
+    this.http.get('http://localhost:8300/club/nonamis/' + this.authService.getUserConnect().idUser + '/' + this.idClub).subscribe({
       next: (data) => {
         this.nonFriends = data;
         console.log(this.nonFriends);
@@ -73,16 +75,16 @@ export class ClubPageComponent implements OnInit {
 
   listAskedFriends() {
     this.http.get('http://localhost:8300/club/amisdemandes/'
-    + this.authService.getUserConnect().idUser + '/' + this.idClub) .subscribe({
-      next: (data) => {
-        this.askedFriends = data;
-        console.log(this.askedFriends);
+      + this.authService.getUserConnect().idUser + '/' + this.idClub).subscribe({
+        next: (data) => {
+          this.askedFriends = data;
+          console.log(this.askedFriends);
 
-      },
-      error: (err) => { console.log(err); }
-    });
+        },
+        error: (err) => { console.log(err); }
+      });
   }
-  
+
   goToFriends() {
     this.route.navigateByUrl('friend');
   }
@@ -92,6 +94,18 @@ export class ClubPageComponent implements OnInit {
       next: (data) => {
         this.feed = data;
         console.log(this.feed);
+      },
+      error: (err) => { console.log(err); }
+    });
+  }
+
+  listComments(idPost: any) {
+    console.log(idPost);
+    this.http.get('http://localhost:8300/club/posts/comments/' + idPost).subscribe({
+      next: (data) => {
+        this.comments = true;
+        this.comments = data;
+        console.log(this.comments);
       },
       error: (err) => { console.log(err); }
     });
