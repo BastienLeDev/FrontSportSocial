@@ -22,8 +22,10 @@
 
                 <div class="md-form" [class.toggled]="classToggled">
                     <div class="p-3" [class.toggled]="classToggled">
-                        <p *ngIf="authService.getUserConnect().idUser" style="font-style: italic;"> <i class="fas fa-circle" style="color: rgb(150, 211, 137); size: 50%;"></i> En ligne</p>
-                        <p *ngIf="!authService.getUserConnect().idUser" style="font-style: italic;"> <i class="fas fa-circle" style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne</p>
+                        <p *ngIf="authService.getUserConnect().idUser" style="font-style: italic;"> <i
+                                class="fas fa-circle" style="color: rgb(150, 211, 137); size: 50%;"></i> En ligne</p>
+                        <p *ngIf="!authService.getUserConnect().idUser" style="font-style: italic;"> <i
+                                class="fas fa-circle" style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne</p>
                         <p>Nom : <b>{{userInfo.lastNameUser}} </b></p>
                         <p>Prénom : <b>{{userInfo.firstNameUser}}</b></p>
                         <p>Date de naissance: <b>{{userInfo.birthDateUser}}</b></p>
@@ -57,20 +59,20 @@
                     <!--Search bar : centrée, avec bouton "search" à droite-->
                     <div class="container" [class.toggled]="classToggled" style="background-color: transparent;">
 
-                            <div id="content" id="search-card">
-                                <form class='form-inline'>
-                                    <div class="input-group">
-                                        <input type='text' id='search' class="form-control search-form"
-                                            placeholder="Rechercher...">
-                                        <span class="input-group-btn" style="width:39px">
-                                            <button id="search-this" type="button" class="pull-right btn search-btn">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </form>
+                        <div id="content" id="search-card">
+                            <form class='form-inline'>
+                                <div class="input-group">
+                                    <input type='text' id='search' class="form-control search-form"
+                                        placeholder="Rechercher...">
+                                    <span class="input-group-btn" style="width:39px">
+                                        <button id="search-this" type="button" class="pull-right btn search-btn">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
 
-                            </div>
+                        </div>
 
                     </div>
                 </li>
@@ -117,65 +119,64 @@
                 </div>
             </div>
 
-            <div class="btnRang" >
+            <div class="btnRang">
+                <div [class.toggled]="classToggled" style="background-color: transparent">
+                    <button (click)="goToRanking()" type="submit" class="btn btnPrincipal btn-block btn-lg">Classement
+                        Personnel <i class="fas fa-crown" style="color: yellow;"></i></button>
+                </div>
+            </div>
+
+            <div class="card p-3 m-3" [class.toggled]="classToggled">
+                <div class="card-header">
+                    <h3 class="text-center">Token </h3>
+                </div>
                 <div [class.toggled]="classToggled">
-                <button (click)="goToRanking()" type="submit" class="btn btnPrincipal btn-block btn-lg">Classement
-                    Personnel <i class="fas fa-crown" style="color: yellow;"></i></button>
+                    <p>Vous possédez actuellement : {{userInfo.token}} tokens</p>
+                </div>
+                <div>
+                    <button (click)="goToShop()" type="submit" class="btn btnPrincipal btn-block btn-sm"> Acheter des
+                        tokens</button>
                 </div>
             </div>
 
             <div id="card_training" class="card p-3 m-3" [class.toggled]="classToggled">
-                <ul style="list-style: none;" [class.toggled]="classToggled">
-                    <li class="anyClass" [class.toggled]="classToggled">
-                        <div class="card-header">
+                <div class="card-header">
+                    <h3 class="text-center">Entrainement</h3>
+                </div>
 
-                            <h3 class="text-center">Entrainement</h3>
+
+                <div id="training" [class.toggled]="classToggled">
+
+                    <div>
+                        <button type="submit" class="btn btnPrincipal btn-block btn-sm"
+                            style="margin : 3px; width :40%">Ajouter <i class="fas fa-plus"></i></button>
+
+                    </div>
+
+
+
+                    <div id="inside-card" class="md-form">
+
+
+                        <div [class.toggled]="classToggled">
+                            <h4>Par sport</h4>
                         </div>
-                        <div>
-                            <div class="p-3" [class.toggled]="classToggled">
-                                <button type="submit" class="btn btnPrincipal btn-block btn-sm">Ajouter</button>
+                        <div *ngIf="visibleMemos" [class.toggled]="classToggled">
+                            <div>
+                                <button (click)="showHideMemos()" type="submit" class="btn btn-danger btn-block btn-sm"
+                                    style="font-size: 60%; width: 10%; margin : 3px;">x </button>
                             </div>
-                            <div class="row p-3" [class.toggled]="classToggled">
-                                <div class="col-6" [class.toggled]="classToggled">
-                                    <button type="submit" class="btn btnPrincipal btn-block btn-sm">Par mois</button>
-                                </div>
-                                <div class="col-6" [class.toggled]="classToggled">
-                                    <button type="submit" class="btn btnPrincipal btn-block btn-sm">Par sport</button>
-                                </div>
-                            </div>
+                            <b>Course à pied : </b>
+                            <p>S'échauffer pendant 10 mins puis courrir 10km </p>
 
-
-                            <div id="inside-card" class="md-form">
-
-
-                                <div class="md-form" [class.toggled]="classToggled">
-                                    <h4>Par sport</h4>
-                                    <div *ngIf="visibleMemos" [class.toggled]="classToggled">
-                                        <div class="md-form" [class.toggled]="classToggled">
-                                            <b>Course à pied : </b>
-                                            <p>S'échauffer pendant 10 mins puis courrir 10km
-                                            </p>
-                                            <b>Objectif de temps</b>
-                                            <p>55 mins</p>
-                                            <div class="col-1 m-1">
-                                                <button (click)="showHideMemos()" type="submit"
-                                                    class="btn btn-danger btn-block btn-sm" style="font-size: 60%;">x
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
                         </div>
-                        <div class="md-form">
-                        </div>
-                    </li>
 
-                </ul>
+
+                    </div>
+                </div>
+
             </div>
-
         </div>
+
     </div>
 </div>
