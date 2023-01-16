@@ -9,13 +9,12 @@
                             <div class="col-4 ">
                                 <div class="container">
                                     <div id="content">
-                                        <form class='form-inline'>
+                                        <form #infosEvent="ngForm" (ngSubmit)="FilterEvent(Events.value)">
                                             <div class="input-group">
-                                                <input type='text' id='search' class="form-control search-form"
-                                                    placeholder="Rechercher...">
+                                                <input ngModel="" #Events name="Events" type='text' id='search'
+                                                    class="form-control search-form" placeholder="Rechercher...">
                                                 <span class="input-group-btn" style="width:39px">
-                                                    <button id="search-this" type="button"
-                                                        class="pull-right btn search-btn">
+                                                    <button id="search-this" type="button" class="pull-right btn search-btn">
                                                         <i class="fa fa-search"></i>
                                                     </button>
                                                 </span>
