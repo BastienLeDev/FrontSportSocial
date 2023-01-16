@@ -71,6 +71,7 @@ export class FriendComponent implements OnInit {
   i : any;
   lastIdMessage : any ;
   listLastIdMessage : Array<any> = [];
+  infoMessage : any;
 
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog, private appComponent: AppComponent, public dark: DarkThemeService,  iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,) { 
@@ -511,6 +512,28 @@ export class FriendComponent implements OnInit {
     this.ngOnInit();
     this.visibleMessage = false;
     this.visibleTeam = false;
+  }
+
+  deleteMessage(val : any) {
+    this.infoMessage = val;
+    console.log(this.infoMessage)
+    this.http.delete('http://localhost:8300/message/delete/' + this.authService.getUserConnect().idUser + '/' + this.infoMessage.message.idMessage).subscribe({
+      next: (data) => {
+        this.ngOnInit();
+      },
+      error: (err) => { console.log(err); },
+    })
+  }
+
+  deleteTeamMessage(val : any) {
+    this.infoMessage = val;
+    console.log(this.infoMessage)
+    this.http.delete('http://localhost:8300/team/message/delete/' + this.authService.getUserConnect().idUser + '/' + this.infoMessage.idMessage  + '/' + this.login4.idTeam).subscribe({
+      next: (data) => {
+        this.ngOnInit();
+      },
+      error: (err) => { console.log(err); },
+    })
   }
 
 }

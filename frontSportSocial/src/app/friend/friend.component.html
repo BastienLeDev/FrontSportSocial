@@ -168,6 +168,7 @@
                                 <b>{{m.message.expediteurMessage.loginUser}} : </b>
                                 <p>{{m.message.contentMessage}}</p>
                                 <span class="time-right">{{m.message.dateSendMessage |date}}</span>
+                                <i (click)="deleteMessage(m)" class="fas fa-trash" style="color: rgb(255, 255, 255);"></i>
                             </div>
 
                             <div class="container lighter "
@@ -343,7 +344,8 @@
                                 <img class="right photo_conversation" src="{{userInfo.imageUser.nameImage}}">
                                 <b>{{m.expediteurMessage.loginUser}} : </b>
                                 <p>{{m.contentMessage}}</p>
-                                <span class="time-left">{{m.dateSendMessage |date}}</span>
+                                <span class="time-right">{{m.dateSendMessage |date}}</span>
+                                <i (click)="deleteTeamMessage(m)" class="fas fa-trash" style="color: rgb(255, 255, 255);"></i>
                             </div>
 
                             <div class="container lighter "
