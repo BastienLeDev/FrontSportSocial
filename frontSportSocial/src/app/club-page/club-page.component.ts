@@ -32,6 +32,7 @@ export class ClubPageComponent implements OnInit {
   feed: any;
   comments: any;
   commentsOn = false;
+  idPostCom: any;
 
   ngOnInit(): void {
     this.listFriendsInClub();
@@ -101,6 +102,7 @@ export class ClubPageComponent implements OnInit {
 
   listComments(idPost: any) {
     console.log(idPost);
+    this.idPostCom = idPost;
     this.http.get('http://localhost:8300/club/posts/comments/' + idPost).subscribe({
       next: (data) => {
         this.comments = true;
