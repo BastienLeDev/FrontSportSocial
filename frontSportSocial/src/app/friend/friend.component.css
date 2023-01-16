@@ -163,11 +163,13 @@ td {
 
 .card-header {
     background-color: #FCECDD;
+    border: none;
     color: black;
 }
 
 .card-option {
-    background-color: #deb996;
+    background-color: #FCECDD;
+    border: none;
     color: black;
 }
 
@@ -285,11 +287,13 @@ td {
 
 .toggled .card-header {
     background-color: rgb(136, 142, 183);
+    border: none;
     color: black;
 }
 
 .toggled .card-option {
-    background-color: rgb(98, 106, 156);
+    background-color: rgb(136, 142, 183);
+    border: none;
     color: black;
 }
 
