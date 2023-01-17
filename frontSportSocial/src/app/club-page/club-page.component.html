@@ -63,13 +63,13 @@
                             <div class="row">
                                 <div class="col-4">
                                     <div class="text-center">
-                                        <button>J'aime</button>
+                                        <button>{{f.numberLikes}} J'aime</button>
                                     </div>
 
                                 </div>
                                 <div class="col-4">
                                     <div class="text-center">
-                                        <button (click)="listComments(f.idPost)">Commenter</button>
+                                        <button (click)="listComments(f.idPost)"> {{f.numberComments}}  Commenter</button>
                                     </div>
 
                                 </div>
@@ -106,8 +106,22 @@
                                                 <p id="just-line-break">{{c.contentComment}}</p>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <div class="text-center">
+                                                    <button> J'aime</button>
+                                                </div>
+            
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="text-center">
+                                                    <button (click)="listComments(f.idPost)"> Réponses</button>
+                                                </div>
+            
+                                            </div>
+                                        </div>
                                     </div>
-
+                                    
 
                                 </div>
                             </div>
