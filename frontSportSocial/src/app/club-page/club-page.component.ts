@@ -35,6 +35,8 @@ export class ClubPageComponent implements OnInit {
   commentsNumber: any;
   idComCom: any;
   commmentsComment: any;
+  varCheckLike: any;
+  
 
   ngOnInit(): void {
     this.listFriendsInClub();
@@ -135,5 +137,20 @@ export class ClubPageComponent implements OnInit {
       error: (err) => { console.log(err); }
     });
   }
+
+  unlikePost(idPost: any) {
+    this.http.patch('http://localhost:8300/club/posts/unlike/' + idPost + '/' + this.authService.getUserConnect().idUser, null).subscribe({
+      next: (data) => {
+        
+        this.ngOnInit();
+      },
+      error: (err) => { console.log(err); }
+    });
+  }
   
+  
+
+
 }
+
+
