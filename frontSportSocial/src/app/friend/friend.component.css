@@ -338,7 +338,8 @@ td {
 }
 
 .toggled #message {
-    background-color: rgb(136, 142, 183);
+    background-color: rgb(255, 255, 255);
+    color: black;
 }
 
 .toggled .lighter {
