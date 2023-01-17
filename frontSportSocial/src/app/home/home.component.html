@@ -76,138 +76,150 @@
                         </div>
                     </div>
                 </li>
+                <li style="margin : 5px; background-color: transparent;" [class.toggled]="classToggled">
+                    <button id="feedbtn"  mat-button (click)="seeActivity()">Activités</button>
+                    <button id="feedbtn"  mat-button (click)="seeEvent()"style="float: right ; margin-right: 20px;">Evènements</button>
+                </li>
                 <div>
                     <li id="feed" class="anyClass">
-                        <h4>Mes activités</h4>
+                        <div *ngIf="visibleActivity">
+                            <h4>Mes activités</h4>
 
-                        <div class="card p-3 m-3 col-11" *ngFor="let a of activite;  " [class.toggled]="classToggled">
-
-                            <div class="row">
-                                <div class="col-12 justify-content-center">
-                                    <h2 class=""> {{a.activity.nameActivity}}</h2>
-
-                                </div>
-                            </div>
-                            <div class="row">
-
-                                <div class="col-12">
-                                    <p>Date de début : {{a.activity.dateStart | date: 'd MMM y H:mm'}}</p>
-                                    <p>Date de fin : {{a.activity.dateEnd | date: 'd MMM y H:mm'}}</p>
-                                    <p>Description : {{a.activity.descActivity}}</p>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <h4>Les activités de mes amis </h4>
-                        <div *ngFor="let a of listFriendActivity ">
-                            <div *ngIf="a.activity !== undefined" class="card p-3 m-3 col-11"
+                            <div class="card p-3 m-3 col-11" *ngFor="let a of activite;  "
                                 [class.toggled]="classToggled">
 
                                 <div class="row">
                                     <div class="col-12 justify-content-center">
-                                        <img class="photo_profil" src="{{a.user.imageUser.nameImage}}">
-                                        <h2 class=""> {{a.user.loginUser}}</h2>
+                                        <h2 class=""> {{a.activity.nameActivity}}</h2>
+
                                     </div>
                                 </div>
                                 <div class="row">
 
                                     <div class="col-12">
-                                        <p>Nom de l'activité {{a.activity.nameActivity}}</p>
                                         <p>Date de début : {{a.activity.dateStart | date: 'd MMM y H:mm'}}</p>
                                         <p>Date de fin : {{a.activity.dateEnd | date: 'd MMM y H:mm'}}</p>
                                         <p>Description : {{a.activity.descActivity}}</p>
                                     </div>
                                 </div>
+
+                            </div>
+
+                            <h4>Les activités de mes amis </h4>
+                            <div *ngFor="let a of listFriendActivity ">
+                                <div *ngIf="a.activity !== undefined" class="card p-3 m-3 col-11"
+                                    [class.toggled]="classToggled">
+
+                                    <div class="row">
+                                        <div class="col-12 justify-content-center">
+                                            <img class="photo_profil" src="{{a.user.imageUser.nameImage}}">
+                                            <h2 class=""> {{a.user.loginUser}}</h2>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-12">
+                                            <p>Nom de l'activité {{a.activity.nameActivity}}</p>
+                                            <p>Date de début : {{a.activity.dateStart | date: 'd MMM y H:mm'}}</p>
+                                            <p>Date de fin : {{a.activity.dateEnd | date: 'd MMM y H:mm'}}</p>
+                                            <p>Description : {{a.activity.descActivity}}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <h4>Mes événements</h4>
+                        <div *ngIf="visibleEvent">
+                            <h4>Mes événements</h4>
 
-                        <div class="card p-3 m-3 col-11" *ngFor="let me of myEvents;  " [class.toggled]="classToggled">
+                            <div class="card p-3 m-3 col-11" *ngFor="let me of myEvents;  "
+                                [class.toggled]="classToggled">
 
-                            <div class="container m-1 p-1">
-                                <div class="row">
-                                    <div class="col-9">
-                                        <h1 class="title-event">{{me.titleEvent}}</h1>
+                                <div class="container m-1 p-1">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <h1 class="title-event">{{me.titleEvent}}</h1>
+                                        </div>
+                                        <div class="col-3">
+                                            <button mat-icon-button mat-icon-button>
+                                                <mat-icon svgIcon="information" aria-hidden="false"></mat-icon>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div class="col-3" >
-                                        <button mat-icon-button mat-icon-button >
-                                            <mat-icon svgIcon="information" aria-hidden="false"></mat-icon>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-2">
-                                        <img class="photo_event" src="{{me.sportEvent.imageSport.nameImage}}" alt="">
-                                    </div>
-                                    <div class="col-5">
-                                        <b>Description : </b>
-                                        <p>{{me.descriptionEvent}}</p>
-                                    </div>
-                                    <div class="col-5">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <img class="photo_event" src="{{me.sportEvent.imageSport.nameImage}}"
+                                                alt="">
+                                        </div>
+                                        <div class="col-5">
+                                            <b>Description : </b>
+                                            <p>{{me.descriptionEvent}}</p>
+                                        </div>
+                                        <div class="col-5">
 
-                                        <div class="container">
-                                            <div class="row">
-                                                <p>Début : {{me.dateStart | date: 'd MMM y H:mm'}}</p>
-                                            </div>
-                                            <div class="row">
-                                                <p>Fin : {{me.dateEnd | date: 'd MMM y H:mm'}}</p>
-                                            </div>
-                                            <div class="row">
-                                                <p>Prix : {{me.priceEvent}} €</p>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <p>Début : {{me.dateStart | date: 'd MMM y H:mm'}}</p>
+                                                </div>
+                                                <div class="row">
+                                                    <p>Fin : {{me.dateEnd | date: 'd MMM y H:mm'}}</p>
+                                                </div>
+                                                <div class="row">
+                                                    <p>Prix : {{me.priceEvent}} €</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
 
-                        </div>
+                            <h4>Les événements de mes amis </h4>
+                            <div class="card p-3 m-3 col-11" *ngFor="let ef of eventsFriends"
+                                [class.toggled]="classToggled">
 
-                        <h4>Les événements de mes amis </h4>
-                        <div class="card p-3 m-3 col-11" *ngFor="let ef of eventsFriends"
-                            [class.toggled]="classToggled">
-
-                            <div class="container m-1 p-1">
-                                <div class="row">
-                                    <div class="col-9">
-                                        <h1 class="title-event">{{ef.titleEvent}}</h1>
-                                    </div>
-                                    <div class="col-3" >
-                                        <button mat-icon-button mat-icon-button >
-                                            <mat-icon svgIcon="information" aria-hidden="false"></mat-icon>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-2">
-                                        <img class="photo_event" src="{{ef.sportEvent.imageSport.nameImage}}" alt="">
-                                    </div>
-                                    <div class="col-5">
-                                        <b>Description : </b>
-                                        <p>{{ef.descriptionEvent}}</p>
-                                        <b>Participants : </b>
-                                        <div *ngFor="let p of ef.participants">
-                                            <p>{{p.loginUser}}</p>
+                                <div class="container m-1 p-1">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <h1 class="title-event">{{ef.titleEvent}}</h1>
+                                        </div>
+                                        <div class="col-3">
+                                            <button mat-icon-button mat-icon-button>
+                                                <mat-icon svgIcon="information" aria-hidden="false"></mat-icon>
+                                            </button>
                                         </div>
                                     </div>
-                                    <div class="col-5">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <img class="photo_event" src="{{ef.sportEvent.imageSport.nameImage}}"
+                                                alt="">
+                                        </div>
+                                        <div class="col-5">
+                                            <b>Description : </b>
+                                            <p>{{ef.descriptionEvent}}</p>
+                                            <b>Participants : </b>
+                                            <div *ngFor="let p of ef.participants">
+                                                <p>{{p.loginUser}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-5">
 
-                                        <div class="container">
-                                            <div class="row">
-                                                <p>Début : {{ef.dateStart | date: 'd MMM y H:mm'}}</p>
-                                            </div>
-                                            <div class="row">
-                                                <p>Fin : {{ef.dateEnd | date: 'd MMM y H:mm'}}</p>
-                                            </div>
-                                            <div class="row">
-                                                <p>Prix : {{ef.priceEvent}} €</p>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <p>Début : {{ef.dateStart | date: 'd MMM y H:mm'}}</p>
+                                                </div>
+                                                <div class="row">
+                                                    <p>Fin : {{ef.dateEnd | date: 'd MMM y H:mm'}}</p>
+                                                </div>
+                                                <div class="row">
+                                                    <p>Prix : {{ef.priceEvent}} €</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
-
                         </div>
                     </li>
                 </div>

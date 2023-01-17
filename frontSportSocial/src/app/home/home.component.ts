@@ -28,6 +28,8 @@ export class HomeComponent implements OnInit {
   classToggled = this.dark.classToggled;
   activiteFriend : any;
   listFriendActivity : Array<any> = [];
+  visibleActivity = true;
+  visibleEvent = false;
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private appComponent : AppComponent, public dark : DarkThemeService,  iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIconLiteral('information', sanitizer.bypassSecurityTrustHtml(information));
@@ -119,7 +121,26 @@ export class HomeComponent implements OnInit {
       error: (err) => { console.log(err); },
 
     })
+  }
 
-
+seeActivity() {
+  if (this.visibleActivity == false) {
+    this.visibleActivity = true;
+    this.visibleEvent = false;
+  } else {
+    this.visibleEvent = false;
+    this.visibleActivity = true;
+  }
 }
+
+seeEvent() {
+  if (this.visibleEvent == false) {
+    this.visibleEvent = true;
+    this.visibleActivity = false;
+  } else {
+    this.visibleEvent = true;
+    this.visibleActivity = false;
+  }
+}
+
 }
