@@ -31,8 +31,8 @@ export class ClubPageComponent implements OnInit {
   classToggled = this.dark.classToggled;
   feed: any;
   comments: any;
-  commentsOn = false;
   idPostCom: any;
+  commentsNumber: any;
 
   ngOnInit(): void {
     this.listFriendsInClub();
@@ -105,7 +105,6 @@ export class ClubPageComponent implements OnInit {
     this.idPostCom = idPost;
     this.http.get('http://localhost:8300/club/posts/comments/' + idPost).subscribe({
       next: (data) => {
-        this.comments = true;
         this.comments = data;
         console.log(this.comments);
       },
@@ -113,4 +112,5 @@ export class ClubPageComponent implements OnInit {
     });
   }
 
+  
 }
