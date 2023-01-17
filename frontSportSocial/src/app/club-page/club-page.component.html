@@ -63,13 +63,13 @@
                             <div class="row">
                                 <div class="col-4">
                                     <div class="text-center">
-                                        <button>{{f.numberLikes}} J'aime</button>
+                                        <button (click)="likePost(f.idPost)">{{f.numberLikes}} J'aime</button>
                                     </div>
 
                                 </div>
                                 <div class="col-4">
                                     <div class="text-center">
-                                        <button (click)="listComments(f.idPost)"> {{f.numberComments}}  Commenter</button>
+                                        <button (click)="listComments(f.idPost)"> {{f.numberComments}}  Commentaires</button>
                                     </div>
 
                                 </div>
@@ -109,14 +109,59 @@
                                         <div class="row">
                                             <div class="col-4">
                                                 <div class="text-center">
-                                                    <button> J'aime</button>
+                                                    <button>{{c.numberLikes}} J'aime</button>
                                                 </div>
             
                                             </div>
                                             <div class="col-4">
                                                 <div class="text-center">
-                                                    <button (click)="listComments(f.idPost)"> Réponses</button>
+                                                    <button (click)="listCommentsInComment(c.idComment)">{{c.numberComments}} Réponses</button>
                                                 </div>
+            
+                                            </div>
+                                        </div>
+                                        <div class=row *ngIf="c.idComment == idComCom">
+                                            <div class="container" *ngFor="let d of commmentsComment">
+                                                <div class="card p-3">
+                                                    <div class="row">
+                                                        <div class="col-2">
+                                                            <img src="{{d.createurComment.imageUser.nameImage}}"
+                                                                style="width: 100%">
+                                                        </div>
+                                                        <div class="col-10">
+                                                            <div class="container">
+                                                                <div class="row">
+                                                                    <p>{{d.createurComment.loginUser}}</p>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <p>{{d.dateCreationComment}}</p>
+                                                                </div>
+                                                            </div>
+            
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div>
+                                                            <p id="just-line-break">{{d.contentComment}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <div class="text-center">
+                                                                <button>{{d.numberLikes}} J'aime</button>
+                                                            </div>
+                        
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div class="text-center">
+                                                                <button (click)="listCommentsInComment(d.idComment)">{{d.numberComments}} Réponses</button>
+                                                            </div>
+                        
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                                
             
                                             </div>
                                         </div>
@@ -125,7 +170,7 @@
 
                                 </div>
                             </div>
-
+                            
 
 
 
