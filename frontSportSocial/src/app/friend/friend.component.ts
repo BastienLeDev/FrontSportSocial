@@ -231,7 +231,7 @@ export class FriendComponent implements OnInit {
             next: (data) => {
               this.lastmsg = "";
               this.lastmsg = data,
-                this.listLastMsg.push(this.lastmsg[0])
+              this.listLastMsg.push(this.lastmsg[0])
               console.log(this.listLastMsg)
             }
           })
@@ -269,13 +269,10 @@ export class FriendComponent implements OnInit {
         this.team = data
         console.log(this.team)
         for (let index in this.team) {
-          console.log(index);
-          console.log(this.team[index].conversation);
           this.listTest = this.team[index].idTeam
           let commentData = {} as any;
           commentData.idTeam = this.listTest;
           this.listLastIdMessage.push(commentData);
-          console.log(this.listLastIdMessage)
           if (this.listLastTeamMsg != null) {
             this.listLastTeamMsg = [];
           }
@@ -284,8 +281,7 @@ export class FriendComponent implements OnInit {
               this.lastteammsg = "";
               this.lastteammsg = data,
               commentData.lastMsg = this.lastteammsg[0];
-                this.listLastTeamMsg.push(commentData)
-              console.log(this.listLastTeamMsg)
+              this.listLastTeamMsg.push(commentData)
             }
           })
         }

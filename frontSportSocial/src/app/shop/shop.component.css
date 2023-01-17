@@ -120,3 +120,7 @@ img {
     height: 100vh;
     height: 100%;
   }
+
+  .toggled .input{
+    color: white;
+  }
