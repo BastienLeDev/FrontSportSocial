@@ -440,7 +440,7 @@
                                     <b id="add_friend_username"> {{d.loginUser}} </b>
                                     <div class="row">
 
-                                        <div class="col-6" style="left: 50px;">
+                                        <div class="col-6" style="left: 70px;">
                                             <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
                                                 <mat-icon>more_vert</mat-icon>
                                             </button>
@@ -507,11 +507,13 @@
                                     <b id="add_friend_username">{{u.loginUser}}</b>
 
                                     <div class="row">
-                                        <div class="col-12">
-                                            <button id="btnadd" (click)="addFriend(u)" type="submit"
-                                                class="btn btnPrincipal btn-block button-30 " style="font-size: 60%;">
-                                                Ajouter <i class="fas fa-check" style="color: rgb(0, 0, 0);"></i>
+                                        <div class="col-6" style="left: 70px;">
+                                            <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                                <mat-icon svgIcon="add-friend" aria-hidden="false"></mat-icon>
                                             </button>
+                                            <mat-menu #menu="matMenu" xPosition="before">
+                                                <button mat-menu-item (click)="addFriend(u)">Ajouter</button>
+                                            </mat-menu>
                                         </div>
                                     </div>
 
