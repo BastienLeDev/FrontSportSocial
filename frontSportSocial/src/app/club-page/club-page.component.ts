@@ -33,6 +33,8 @@ export class ClubPageComponent implements OnInit {
   comments: any;
   idPostCom: any;
   commentsNumber: any;
+  idComCom: any;
+  commmentsComment: any;
 
   ngOnInit(): void {
     this.listFriendsInClub();
@@ -112,5 +114,26 @@ export class ClubPageComponent implements OnInit {
     });
   }
 
+  listCommentsInComment(idComment: any) {
+    console.log(idComment);
+    this.idComCom = idComment;
+    this.http.get('http://localhost:8300/club/posts/comments/comments/' + idComment).subscribe({
+      next: (data) => {
+        this.commmentsComment = data;
+        console.log(this.commmentsComment);
+      },
+      error: (err) => { console.log(err); }
+    });
+  }
+
+  likePost(idPost: any) {
+    this.http.patch('http://localhost:8300/club/posts/like/' + idPost + '/' + this.authService.getUserConnect().idUser, null).subscribe({
+      next: (data) => {
+        
+        this.ngOnInit();
+      },
+      error: (err) => { console.log(err); }
+    });
+  }
   
 }
