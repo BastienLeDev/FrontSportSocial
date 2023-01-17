@@ -168,7 +168,10 @@
                                 <b>{{m.message.expediteurMessage.loginUser}} : </b>
                                 <p>{{m.message.contentMessage}}</p>
                                 <span class="time-right">{{m.message.dateSendMessage |date}}</span>
-                                <i (click)="deleteMessage(m)" class="fas fa-trash" style="color: rgb(255, 255, 255);"></i>
+                                <button mat-icon-button mat-icon-button (click)="deleteMessage(m)">
+                                    <i (click)="deleteMessage(m)" class="fas fa-trash" style="color: rgb(255, 255, 255); font-size: 0.73em;"></i>
+                                </button>
+                                
                             </div>
 
                             <div class="container lighter "
@@ -214,44 +217,39 @@
                         <div>
                             <p class="text-center "><img style=" max-width: 60px; width: 100%; margin-right: 20px; border-radius: 50%;" class="teamImage" src="{{login4?.imageTeam.nameImage}}"> <b>{{login4?.title}}</b>
                             </p>
-                            <mat-icon (click)="messageOption()" svgIcon="userOption" aria-hidden="false"></mat-icon>
+
+                            <div *ngIf="authService.getUserConnect().idUser != login4.admin.idUser && !visibleOption ">
+                                <button mat-icon-button mat-icon-button  [matMenuTriggerFor]="menu" #menuTrigger>
+                                    <mat-icon svgIcon="userOption" aria-hidden="false"></mat-icon>
+                                </button>
+                                <mat-menu #menu="matMenu" xPosition="before">
+                                    <button mat-menu-item (click)="messageOption()" (click)="quitTeam()">Quitter</button>
+                                    <button mat-menu-item (click)="messageOption()" (click)="seeTeamMember()">Voir les membres</button>
+                                    <button mat-menu-item (click)="messageOption()" (click)="addTeamMember()">Ajouter membre</button>
+                                    <button mat-menu-item (click)="messageOption()" (click)="newTeamTitle()">Renomer la conversation</button>
+                                </mat-menu>
+                            </div>
+                            <div *ngIf="authService.getUserConnect().idUser == login4.admin.idUser && !visibleOption">
+                                <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                    <mat-icon svgIcon="userOption" aria-hidden="false"></mat-icon>
+                                </button>
+                                <mat-menu #menu="matMenu" xPosition="before">
+                                    <button mat-menu-item (click)="messageOption()" (click)="deleteTeam()">Supprimer le groupe</button>
+                                    <button mat-menu-item (click)="messageOption()" (click)="seeTeamMember()">Voir les membres</button>
+                                    <button mat-menu-item (click)="messageOption()" (click)="addTeamMember()">Ajouter membre</button>
+                                    <button mat-menu-item (click)="messageOption()" (click)="newTeamTitle()">Renomer la conversation</button>
+                                </mat-menu>
+                            </div>
+                            <div *ngIf="visibleOption ">
+                                <button mat-icon-button mat-icon-button (click)="messageOption()" >
+                                    <mat-icon svgIcon="userOption" aria-hidden="false"></mat-icon>
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                     <div *ngIf="visibleOption" class="card-option">
-                        <div>
-                            <table class="tab">
-                                <th class="col-2">
-                                    <div *ngIf="authService.getUserConnect().idUser != login4.admin.idUser ">
-                                        <button id="quitter" (click)="quitTeam()" type="submit"
-                                            class="btn btn-danger btn-block btn-sm button-30" style="font-size: 50%;">
-                                            Quitter <i class="fas fa-trash" style="color: rgb(255, 255, 255);"></i>
-                                        </button>
-                                    </div>
-                                    <div *ngIf="authService.getUserConnect().idUser == login4.admin.idUser ">
-                                        <button id="quitter" (click)="deleteTeam()" type="submit"
-                                            class="btn btn-danger btn-block btn-sm button-30" style="font-size: 50%;">
-                                            Supprimer le groupe <i class="fas fa-trash"
-                                                style="color: rgb(255, 255, 255);"></i>
-                                        </button>
-                                    </div>
-                                </th>
-                                <th class="col-2">
-                                    <button (click)="seeTeamMember()" type="submit" class="button-30 "
-                                        style="font-size: 60%;"> Voir les membres
-                                    </button>
-                                </th>
-                                <th class="col-2">
-                                    <button (click)="addTeamMember()" type="submit" class="button-30 "
-                                        style="font-size: 60%;">Ajouter
-                                        membre</button>
-                                </th>
-                                <th class="col-2">
-                                    <button (click)="newTeamTitle()" type="submit" class="button-30 "
-                                        style="font-size: 60%;">Renomer la
-                                        conversation</button>
-                                </th>
-                            </table>
-                        </div>
+                        
                         <div *ngIf="visibleTeamTitle">
                             <form #mess="ngForm" (ngSubmit)="renameTeam(mess)">
                                 <table class="tab">
@@ -345,7 +343,9 @@
                                 <b>{{m.expediteurMessage.loginUser}} : </b>
                                 <p>{{m.contentMessage}}</p>
                                 <span class="time-right">{{m.dateSendMessage |date}}</span>
-                                <i (click)="deleteTeamMessage(m)" class="fas fa-trash" style="color: rgb(255, 255, 255);"></i>
+                                <button mat-icon-button mat-icon-button (click)="deleteTeamMessage(m)">
+                                    <i  class="fas fa-trash" style="color: rgb(255, 255, 255); font-size: 0.73em;"></i>
+                                </button>
                             </div>
 
                             <div class="container lighter "
