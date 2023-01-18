@@ -84,6 +84,18 @@ img {
     background-color: #a8ff88 !important;
 }
 
+#feedbtn{
+    background-color: #FFC288 ;
+    color: rgb(0, 0, 0);
+    height: 100px;
+    width: 150px;
+  }
+  
+  #feedbtn-active{
+    background-color: #643f1d ;
+    color: rgb(0, 0, 0);
+  }
+
 /* Dark Mode CSS */
 
 .toggled {
@@ -122,5 +134,15 @@ img {
   }
 
   .toggled .input{
+    color: white;
+  }
+
+  .toggled #feedbtn{
+    background-color: rgb(87, 90, 159)!important;
+    color: white;
+  }
+  
+  .toggled #feedbtn-active{
+    background-color: rgb(56, 57, 97)!important;
     color: white;
   }
