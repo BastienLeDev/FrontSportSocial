@@ -107,6 +107,10 @@ export class HomeComponent implements OnInit {
     this.route.navigateByUrl('ranking');
   }
 
+  goToEvent() {
+    this.route.navigateByUrl('event');
+  }
+
   deleteFrienship(val: any) {
     this.login = val;
     this.http.get('http://localhost:8300/selectaccepted/' + this.authService.getUserConnect().idUser + '/' + this.login.idUser, val).subscribe({

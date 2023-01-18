@@ -77,8 +77,9 @@
                     </div>
                 </li>
                 <li style="margin : 5px; background-color: transparent;" [class.toggled]="classToggled">
-                    <button id="feedbtn"  mat-button (click)="seeActivity()">Activités</button>
-                    <button id="feedbtn"  mat-button (click)="seeEvent()"style="float: right ; margin-right: 20px;">Evènements</button>
+                    <button id="feedbtn" mat-button (click)="seeActivity()">Activités</button>
+                    <button id="feedbtn" mat-button (click)="seeEvent()"
+                        style="float: right ; margin-right: 20px;">Evènements</button>
                 </li>
                 <div>
                     <li id="feed" class="anyClass">
@@ -142,37 +143,39 @@
                                                 alt="">
                                         </div>
                                         <div class="col-7">
-                                            <h1 class="title-event">{{me.titleEvent}} <h4>{{me.dateStart | date: 'd MMM y '}}</h4></h1>
+                                            <h1 class="title-event">{{me.titleEvent}} <h4>{{me.dateStart | date: 'd MMM
+                                                    y '}}</h4>
+                                            </h1>
                                         </div>
                                         <div class="col-3">
                                             <button mat-icon-button mat-icon-button (click)="me.visible =!me.visible">
-                                                <mat-icon  svgIcon="information" aria-hidden="false"></mat-icon>
+                                                <mat-icon svgIcon="information" aria-hidden="false"></mat-icon>
                                             </button>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="row" *ngIf="me.visible">
-                                        <div class="col-5">
-                                            <b>Description : </b>
-                                            <p>{{me.descriptionEvent}}</p>
-                                            <div class="row">
-                                                <b>Prix :  </b>
-                                                <p>{{me.priceEvent}} €</p>
+                                            <div class="col-5">
+                                                <b>Description : </b>
+                                                <p>{{me.descriptionEvent}}</p>
+                                                <div class="row">
+                                                    <b>Prix : </b>
+                                                    <p>{{me.priceEvent}} €</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-5">
+                                            <div class="col-5">
 
-                                            <div class="container">
-                                                <b>Date : </b>
-                                                <div class="row">
-                                                    <p>Début : {{me.dateStart | date: 'd MMM y H:mm'}}</p>
-                                                </div>
-                                                <div class="row">
-                                                    <p>Fin : {{me.dateEnd | date: 'd MMM y H:mm'}}</p>
+                                                <div class="container">
+                                                    <b>Date : </b>
+                                                    <div class="row">
+                                                        <p>Début : {{me.dateStart | date: 'd MMM y H:mm'}}</p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>Fin : {{me.dateEnd | date: 'd MMM y H:mm'}}</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     </div>
                                 </div>
 
@@ -189,11 +192,13 @@
                                                 alt="">
                                         </div>
                                         <div class="col-7">
-                                            <h1 class="title-event">{{ef.titleEvent}} <h4>{{ef.dateStart | date: 'd MMM y '}}</h4></h1>
+                                            <h1 class="title-event">{{ef.titleEvent}} <h4>{{ef.dateStart | date: 'd MMM
+                                                    y '}}</h4>
+                                            </h1>
                                         </div>
                                         <div class="col-3">
                                             <button mat-icon-button mat-icon-button (click)="ef.visible =!ef.visible">
-                                                <mat-icon  svgIcon="information" aria-hidden="false"></mat-icon>
+                                                <mat-icon svgIcon="information" aria-hidden="false"></mat-icon>
                                             </button>
                                         </div>
                                     </div>
@@ -241,8 +246,17 @@
                 </div>
 
                 <div class="card p-3 m-3" *ngFor="let e of events" [class.toggled]="classToggled">
-
+                    <div class="row" >
+                        <div class="col-8">
                     <h3 class="text-center">{{e.titleEvent}}</h3>
+                        </div>
+                        <div class="col-4">
+                    <button (click)="goToEvent()" style="width : 50%; font-size: 50%;" id="feedbtn" mat-button >Information</button>
+                        </div>
+                    </div>
+                    <div *ngFor="let id of e.participants">
+                        <p *ngIf="id.idUser == authService.getUserConnect().idUser" style="font-style: italic;"> Inscrit</p>
+                    </div>
                     <p>Début : {{e.dateStart | date: 'd MMM y H:mm'}} </p>
                     <p>Fin : {{e.dateEnd | date: 'd MMM y H:mm'}}</p>
 
