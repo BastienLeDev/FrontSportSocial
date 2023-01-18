@@ -7,13 +7,10 @@
                 </div>
                 <div class="m-3">
                     <p> Prénom : <b>{{authService.getUserConnect().firstNameUser}}</b> </p>
-
                     <p>Nom : <b>{{authService.getUserConnect().lastNameUser}}</b></p>
-
                     <p>Pseudo : <b>{{authService.getUserConnect().loginUser}}</b></p>
                 </div>
             </div>
-
 
             <div id="card_principal_amis" class="card p-3 m-3" [class.toggled]="classToggled">
                 <div class="card-header">
@@ -23,9 +20,7 @@
                 <!-- card demande d'un ami-->
                 <div class="anyClass">
                     <div class="card p-1 m-1" *ngFor="let f of friends" [class.toggled]="classToggled">
-
                         <div class="container">
-
                             <div class="row">
                                 <!-- photo de profil -->
                                 <div class="col-6">
@@ -51,8 +46,6 @@
                 </div>
             </div>
         </div>
-
-
 
         <div class="col-6 p-4 ">
             <ul style="list-style: none;">
@@ -85,25 +78,24 @@
                     <li id="feed" class="anyClass">
                         <div *ngIf="visibleActivity">
                             <h4>Mes activités</h4>
-
                             <div class="card p-3 m-3 col-11" *ngFor="let a of activite;  "
                                 [class.toggled]="classToggled">
-
                                 <div class="row">
                                     <div class="col-12 justify-content-center">
                                         <h2 class=""> {{a.activity.nameActivity}}</h2>
-
                                     </div>
                                 </div>
                                 <div class="row">
-
-                                    <div class="col-12">
-                                        <p>Date de début : {{a.activity.dateStart | date: 'd MMM y H:mm'}}</p>
-                                        <p>Date de fin : {{a.activity.dateEnd | date: 'd MMM y H:mm'}}</p>
-                                        <p>Description : {{a.activity.descActivity}}</p>
+                                    <div class="col-6">
+                                        <b>Description :</b>
+                                        <p>{{a.activity.descActivity}}</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <b>Date</b>
+                                        <p>Début : {{a.activity.dateStart | date: 'd MMM y H:mm'}}</p>
+                                        <p>Fin : {{a.activity.dateEnd | date: 'd MMM y H:mm'}}</p>
                                     </div>
                                 </div>
-
                             </div>
 
                             <h4>Les activités de mes amis </h4>
@@ -112,18 +104,23 @@
                                     [class.toggled]="classToggled">
 
                                     <div class="row">
-                                        <div class="col-12 justify-content-center">
+                                        <div class="col-2 justify-content-center">
                                             <img class="photo_profil" src="{{a.user.imageUser.nameImage}}">
-                                            <h2 class=""> {{a.user.loginUser}}</h2>
+                                            <h2> {{a.user.loginUser}}</h2>
+                                        </div>
+                                        <div class="col-6">
+                                            <h2>{{a.activity.nameActivity}}</h2>
                                         </div>
                                     </div>
                                     <div class="row">
-
-                                        <div class="col-12">
-                                            <p>Nom de l'activité {{a.activity.nameActivity}}</p>
-                                            <p>Date de début : {{a.activity.dateStart | date: 'd MMM y H:mm'}}</p>
-                                            <p>Date de fin : {{a.activity.dateEnd | date: 'd MMM y H:mm'}}</p>
-                                            <p>Description : {{a.activity.descActivity}}</p>
+                                        <div class="col-6">
+                                            <b>Description :</b>
+                                            <p>{{a.activity.descActivity}}</p>
+                                        </div>
+                                        <div class="col-6">
+                                            <b>Date</b>
+                                            <p>Début : {{a.activity.dateStart | date: 'd MMM y H:mm'}}</p>
+                                            <p>Fin : {{a.activity.dateEnd | date: 'd MMM y H:mm'}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -132,10 +129,8 @@
 
                         <div *ngIf="visibleEvent">
                             <h4>Mes événements</h4>
-
                             <div class="card p-3 m-3 col-11" *ngFor="let me of myEvents;  "
                                 [class.toggled]="classToggled">
-
                                 <div class="container m-1 p-1">
                                     <div class="row">
                                         <div class="col-2">
@@ -143,8 +138,7 @@
                                                 alt="">
                                         </div>
                                         <div class="col-7">
-                                            <h1 class="title-event">{{me.titleEvent}} <h4>{{me.dateStart | date: 'd MMM
-                                                    y '}}</h4>
+                                            <h1 class="title-event">{{me.titleEvent}} <h4>{{me.dateStart | date: 'd MMM y '}}</h4>
                                             </h1>
                                         </div>
                                         <div class="col-3">
@@ -178,23 +172,17 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
 
                             <h4>Les événements de mes amis </h4>
-                            <div class="card p-3 m-3 col-11" *ngFor="let ef of eventsFriends"
-                                [class.toggled]="classToggled">
-
+                            <div class="card p-3 m-3 col-11" *ngFor="let ef of eventsFriends" [class.toggled]="classToggled">
                                 <div class="container m-1 p-1">
                                     <div class="row">
                                         <div class="col-2">
-                                            <img class="photo_event" src="{{ef.sportEvent.imageSport.nameImage}}"
-                                                alt="">
+                                            <img class="photo_event" src="{{ef.sportEvent.imageSport.nameImage}}" alt="">
                                         </div>
                                         <div class="col-7">
-                                            <h1 class="title-event">{{ef.titleEvent}} <h4>{{ef.dateStart | date: 'd MMM
-                                                    y '}}</h4>
-                                            </h1>
+                                            <h1 class="title-event">{{ef.titleEvent}} <h4>{{ef.dateStart | date: 'd MMM y '}}</h4> </h1>
                                         </div>
                                         <div class="col-3">
                                             <button mat-icon-button mat-icon-button (click)="ef.visible =!ef.visible">
@@ -231,7 +219,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </li>
@@ -262,7 +249,6 @@
 
                 </div>
             </div>
-
         </div>
     </div>
 </div>
