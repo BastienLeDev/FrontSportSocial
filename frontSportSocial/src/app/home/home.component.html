@@ -255,7 +255,7 @@
                         </div>
                     </div>
                     <div *ngFor="let id of e.participants">
-                        <p *ngIf="id.idUser == authService.getUserConnect().idUser" style="font-style: italic;"> Inscrit</p>
+                        <p *ngIf="id.idUser == authService.getUserConnect().idUser" style="font-style: italic;"> Inscrit <i class="fas fa-check"></i></p>
                     </div>
                     <p>Début : {{e.dateStart | date: 'd MMM y H:mm'}} </p>
                     <p>Fin : {{e.dateEnd | date: 'd MMM y H:mm'}}</p>
