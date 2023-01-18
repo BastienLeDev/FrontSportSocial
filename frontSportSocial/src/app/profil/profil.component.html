@@ -128,15 +128,14 @@
 
             <div class="card p-3 m-3" id="card-header" [class.toggled]="classToggled">
                 <div class="row ">
-                    <div class="col-6">
-                        <h3 style="font-weight: bold;" class="text-center">Token </h3>
+                    <div class="col-7">
                         <p>Vous possédez actuellement :</p>
-                        <p>{{userInfo.token}} tokens</p>
+                        <p style="font-weight: bold;">{{userInfo.token}} tokens</p>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-5">
                         <button id="feedbtn" mat-button (click)="goToShop()">
-                            <p>Acheter des
+                            <p style="font-size: 70%;">Acheter des
                                 tokens</p>
                             <button mat-icon-button mat-icon-button>
                                 <i class="fas fa-euro-sign" style="color: rgb(255, 255, 255);"></i>
@@ -171,14 +170,8 @@
 
                     </div>
 
-
-
                     <div id="inside-card" class="md-form">
 
-
-                        <div [class.toggled]="classToggled">
-                            <h4>Par sport</h4>
-                        </div>
                         <div *ngIf="visibleMemos" [class.toggled]="classToggled">
                             <div>
                                 <button (click)="showHideMemos()" type="submit" class="btn btn-danger btn-block btn-sm"

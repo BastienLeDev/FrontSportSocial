@@ -79,20 +79,18 @@
 
                         <div class="md-form anyClass" [class.toggled]="classToggled" style="height: 300px;">
 
-                            <div class="card p-4 m-2" *ngFor="let c of coachs" [class.toggled]="classToggled">
+                            <div class="card p-3 m-3" *ngFor="let c of coachs" [class.toggled]="classToggled">
 
                                 <div class="container" [class.toggled]="classToggled">
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-1">
                                             <img class="photo_profil image-rond image-rond-bg"
                                                 src="https://img.freepik.com/vecteurs-libre/illustration-concept-entraineur-personnel_114360-1552.jpg?w=740&t=st=1671228220~exp=1671228820~hmac=45603fee5afa4107866a0646a4c0b87cf460bd86c7320fe765ca0a87c712fea3"
                                                 alt="">
                                         </div>
-
                                         <div class="col-2" [class.toggled]="classToggled">
-                                            <p>Prénom : {{c.firstNameUser}}</p>
-                                            <p>Nom : {{c.lastNameUser}}</p>
-                                            <p>Login : {{c.loginUser}}</p>
+                                            <p>{{c.firstNameUser}}  {{c.lastNameUser}}</p>
+                                            <b>{{c.loginUser}}</b>
                                         </div>
                                         <div class="col-7" [class.toggled]="classToggled">
                                             <div class="row">
