@@ -137,38 +137,42 @@
 
                                 <div class="container m-1 p-1">
                                     <div class="row">
-                                        <div class="col-9">
-                                            <h1 class="title-event">{{me.titleEvent}}</h1>
-                                        </div>
-                                        <div class="col-3">
-                                            <button mat-icon-button mat-icon-button>
-                                                <mat-icon svgIcon="information" aria-hidden="false"></mat-icon>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-2">
                                             <img class="photo_event" src="{{me.sportEvent.imageSport.nameImage}}"
                                                 alt="">
                                         </div>
+                                        <div class="col-7">
+                                            <h1 class="title-event">{{me.titleEvent}} <h4>{{me.dateStart | date: 'd MMM y '}}</h4></h1>
+                                        </div>
+                                        <div class="col-3">
+                                            <button mat-icon-button mat-icon-button (click)="me.visible =!me.visible">
+                                                <mat-icon  svgIcon="information" aria-hidden="false"></mat-icon>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="row" *ngIf="me.visible">
                                         <div class="col-5">
                                             <b>Description : </b>
                                             <p>{{me.descriptionEvent}}</p>
+                                            <div class="row">
+                                                <b>Prix :  </b>
+                                                <p>{{me.priceEvent}} €</p>
+                                            </div>
                                         </div>
                                         <div class="col-5">
 
                                             <div class="container">
+                                                <b>Date : </b>
                                                 <div class="row">
                                                     <p>Début : {{me.dateStart | date: 'd MMM y H:mm'}}</p>
                                                 </div>
                                                 <div class="row">
                                                     <p>Fin : {{me.dateEnd | date: 'd MMM y H:mm'}}</p>
                                                 </div>
-                                                <div class="row">
-                                                    <p>Prix : {{me.priceEvent}} €</p>
-                                                </div>
                                             </div>
                                         </div>
+                                    </div>
                                     </div>
                                 </div>
 
@@ -180,39 +184,43 @@
 
                                 <div class="container m-1 p-1">
                                     <div class="row">
-                                        <div class="col-9">
-                                            <h1 class="title-event">{{ef.titleEvent}}</h1>
-                                        </div>
-                                        <div class="col-3">
-                                            <button mat-icon-button mat-icon-button>
-                                                <mat-icon svgIcon="information" aria-hidden="false"></mat-icon>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-2">
                                             <img class="photo_event" src="{{ef.sportEvent.imageSport.nameImage}}"
                                                 alt="">
                                         </div>
-                                        <div class="col-5">
+                                        <div class="col-7">
+                                            <h1 class="title-event">{{ef.titleEvent}} <h4>{{ef.dateStart | date: 'd MMM y '}}</h4></h1>
+                                        </div>
+                                        <div class="col-3">
+                                            <button mat-icon-button mat-icon-button (click)="ef.visible =!ef.visible">
+                                                <mat-icon  svgIcon="information" aria-hidden="false"></mat-icon>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngIf="ef.visible">
+                                        <div class="col-4">
                                             <b>Description : </b>
                                             <p>{{ef.descriptionEvent}}</p>
+                                            <div class="row">
+                                                <b>Prix : </b>
+                                                <p>{{ef.priceEvent}} €</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
                                             <b>Participants : </b>
                                             <div *ngFor="let p of ef.participants">
                                                 <p>{{p.loginUser}}</p>
                                             </div>
                                         </div>
-                                        <div class="col-5">
+                                        <div class="col-4">
 
                                             <div class="container">
+                                                <b>Date : </b>
                                                 <div class="row">
                                                     <p>Début : {{ef.dateStart | date: 'd MMM y H:mm'}}</p>
                                                 </div>
                                                 <div class="row">
                                                     <p>Fin : {{ef.dateEnd | date: 'd MMM y H:mm'}}</p>
-                                                </div>
-                                                <div class="row">
-                                                    <p>Prix : {{ef.priceEvent}} €</p>
                                                 </div>
                                             </div>
                                         </div>

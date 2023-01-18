@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
   listFriendActivity : Array<any> = [];
   visibleActivity = true;
   visibleEvent = false;
+  visibleInformation = true;
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private appComponent : AppComponent, public dark : DarkThemeService,  iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIconLiteral('information', sanitizer.bypassSecurityTrustHtml(information));
@@ -140,6 +141,14 @@ seeEvent() {
   } else {
     this.visibleEvent = true;
     this.visibleActivity = false;
+  }
+}
+
+seeInformation() {
+  if (this.visibleInformation == false) {
+    this.visibleInformation = true;
+  } else {
+    this.visibleInformation = false;
   }
 }
 
