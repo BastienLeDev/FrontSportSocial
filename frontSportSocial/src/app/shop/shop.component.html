@@ -175,7 +175,7 @@
                                         </div>
 
                                         <div *ngIf="!verifAvatarAchete(a)" [class.toggled]="classToggled">
-                                            <button (click)="achatProduit(a.idProduit)" id="valider" type="submit"
+                                            <button style="width : 50%" (click)="achatProduit(a.idProduit)" id="valider" type="submit"
                                                 class="btn btnPrincipal btn-block btn-sm">Acheter</button>
 
                                         </div>
@@ -235,7 +235,7 @@
                             *ngIf="transaction==false">
                             <p>La transaction refusée.</p>
                         </div>
-                        <div [class.toggled]="classToggled" class="col-2">
+                        <div style="display: block; margin: auto;" [class.toggled]="classToggled" class="col-2">
                             <button (click)="achatTokenEuro(transactEuro.value)"
                                 (click)="achatToken(transact.value)" type="submit"
                                 class="btn btnPrincipal btn-block btn-sm">Acheter</button>

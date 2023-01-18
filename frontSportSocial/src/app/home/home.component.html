@@ -6,9 +6,18 @@
                     <h3 class="text-center">Données personnelles </h3>
                 </div>
                 <div class="m-3">
-                    <p> Prénom : <b>{{authService.getUserConnect().firstNameUser}}</b> </p>
-                    <p>Nom : <b>{{authService.getUserConnect().lastNameUser}}</b></p>
-                    <p>Pseudo : <b>{{authService.getUserConnect().loginUser}}</b></p>
+                    <div class="row">
+                        <div class="col-4">
+                    <p> Prénom : </p>
+                    <p>Nom : </p>
+                    <p>Pseudo : </p>
+                    </div>
+                    <div class="col-6">
+                        <p><b>{{authService.getUserConnect().firstNameUser}}</b></p>
+                        <p><b>{{authService.getUserConnect().lastNameUser}}</b> </p>
+                        <p><b>{{authService.getUserConnect().loginUser}}</b></p>
+                    </div>
+                    </div>
                 </div>
             </div>
 

@@ -58,15 +58,17 @@
 
   /* Card size  */
 
-  .card {
-    width: min(100%, 500px);
-  }
 
   #inside-card {
     height: 100px;
   }
 
   .card-header {
+    background-color: #FCECDD;
+    color: black;
+  }
+
+  #card-header {
     background-color: #FCECDD;
     color: black;
   }
@@ -100,6 +102,20 @@
   h4 {
     color : white;
   }
+
+  #feedbtn{
+    display: block;
+    margin: auto;
+    background-color: #FFC288 ;
+    color: rgb(0, 0, 0);
+    height: 100px;
+    width: 150px;
+  }
+  
+  #feedbtn-active{
+    background-color: #643f1d ;
+    color: rgb(0, 0, 0);
+  }
   
 /* Dark Mode CSS */
 
@@ -109,6 +125,11 @@
 }
 
 .toggled .card-header {
+  background-color: rgb(136, 142, 183);
+  color: black;
+}
+
+.toggled #card-header {
   background-color: rgb(136, 142, 183);
   color: black;
 }
@@ -130,5 +151,15 @@
 
 .toggled .btnPrincipal {
   background-color: #3f4a6e !important;
+}
+
+.toggled #feedbtn{
+  background-color: rgb(87, 90, 159)!important;
+  color: white;
+}
+
+.toggled #feedbtn-active{
+  background-color: rgb(56, 57, 97)!important;
+  color: white;
 }
 
