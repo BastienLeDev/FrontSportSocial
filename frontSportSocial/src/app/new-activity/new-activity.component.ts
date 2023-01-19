@@ -14,10 +14,17 @@ export class NewActivityComponent {
   constructor(private http: HttpClient, private route: Router, public dialogRef: MatDialogRef<NewActivityComponent>, public authService: AuthService ) { }
 
   sports: any;
+  nameActivity : any = localStorage.getItem('nameActivity');
+  dateEnd : any = localStorage.getItem('dateEnd');
+  dateStart : any =  localStorage.getItem('dateStart');
+  descActivity : any = localStorage.getItem('descActivity');
+  id : any = localStorage.getItem('idActivity');
+  modify : boolean = true ;
 
 
   ngOnInit(): void {
     this.listSport();
+    
   }
 
   createActivity(val: any) {
@@ -28,6 +35,20 @@ export class NewActivityComponent {
     });
   }
 
+  modifyActivity(val: any) {
+    this.http.post('http://localhost:8300/schedule/modify/' + this.authService.getUserConnect().idUser + '/' + this.id, val).subscribe({
+      next: (data) => {
+        localStorage.removeItem('dateEnd');
+        localStorage.removeItem('dateStart');
+        localStorage.removeItem('descActivity');
+        localStorage.removeItem('nameActivity');
+        localStorage.removeItem('idActivity');
+      },
+      error: (err) => { console.log(err) },
+    });
+  }
+
+
   listSport() {
     this.http.get('http://localhost:8300/sport').subscribe({
       next: (data) => { this.sports = data },
@@ -37,17 +58,11 @@ export class NewActivityComponent {
 
   onNoClick(): void {
     this.dialogRef.close();
+    localStorage.removeItem('dateEnd');
+    localStorage.removeItem('dateStart');
+    localStorage.removeItem('descActivity');
+    localStorage.removeItem('nameActivity');
+    localStorage.removeItem('idActivity');
   }
-
-  /*
-  addEventToUser(idEvent: bigint) {
-    this.http.patch('http://localhost:8300/event/participer/' + this.authService.getUserConnect().idUser + '/' + idEvent, null).subscribe({
-      next: (data) => { this.ngOnInit },
-      error: (err) => { console.log(err) },
-    });
-  }
-  */
-
-
 
 }

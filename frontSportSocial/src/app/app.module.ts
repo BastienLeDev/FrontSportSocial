@@ -72,7 +72,7 @@ import { NewActivityComponent } from './new-activity/new-activity.component';
     ClubPageComponent,
     PopUpCoachComponent,
     PopUpEchangeComponent,
-    NewActivityComponent
+    NewActivityComponent,
   ],
 
   imports: [

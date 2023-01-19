@@ -214,6 +214,7 @@ export class FriendComponent implements OnInit {
       },
       error: (err) => { console.log(err) }
     });
+    
 
   }
 
