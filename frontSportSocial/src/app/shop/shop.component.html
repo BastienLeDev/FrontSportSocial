@@ -3,7 +3,7 @@
         <div class="col-12 p-4">
             <div class="card p-3 m-3" [class.toggled]="classToggled">
 
-                <div id="header" class="card-header m-6 " >
+                <div id="header" class="card-header m-6 ">
                     <h2 class="alignement text-center" style=" font-weight: bold;">Que souhaitez vous acheter ?</h2>
                 </div>
 
@@ -13,10 +13,10 @@
                         <div class="col-2">
                             <button id="feedbtn" mat-button (click)="showHideCoach()">
                                 <p>Coachs</p>
-                                <button mat-icon-button mat-icon-button >
+                                <button mat-icon-button mat-icon-button>
                                     <i class="fas fa-user" style="color: rgb(255, 255, 255);"></i>
                                 </button>
-                                </button>
+                            </button>
                         </div>
 
                         <div class="col-2">
@@ -24,10 +24,10 @@
                         </div>
                         <div class="col-2">
                             <button id="feedbtn" mat-button (click)="showHideAvatar()">
-                            <p>Avatar</p>
-                            <button mat-icon-button mat-icon-button >
-                                <i class="fas fa-medal" style="color: rgb(255, 255, 255);"></i>
-                            </button>
+                                <p>Avatar</p>
+                                <button mat-icon-button mat-icon-button>
+                                    <i class="fas fa-medal" style="color: rgb(255, 255, 255);"></i>
+                                </button>
                             </button>
                         </div>
 
@@ -38,10 +38,10 @@
                         <div class="col-2">
                             <button id="feedbtn" mat-button (click)="showHideTokens()">
                                 <p>Tokens</p>
-                                <button mat-icon-button mat-icon-button >
+                                <button mat-icon-button mat-icon-button>
                                     <i class="fas fa-euro-sign" style="color: rgb(255, 255, 255);"></i>
                                 </button>
-                                </button>
+                            </button>
                         </div>
 
 
@@ -89,7 +89,7 @@
                                                 alt="">
                                         </div>
                                         <div class="col-2" [class.toggled]="classToggled">
-                                            <p>{{c.firstNameUser}}  {{c.lastNameUser}}</p>
+                                            <p>{{c.firstNameUser}} {{c.lastNameUser}}</p>
                                             <b>{{c.loginUser}}</b>
                                         </div>
                                         <div class="col-7" [class.toggled]="classToggled">
@@ -173,7 +173,8 @@
                                         </div>
 
                                         <div *ngIf="!verifAvatarAchete(a)" [class.toggled]="classToggled">
-                                            <button style="width : 50%" (click)="achatProduit(a.idProduit)" id="valider" type="submit"
+                                            <button style="width : 100%" (click)="achatProduit(a.idProduit)"
+                                                id="valider" type="submit"
                                                 class="btn btnPrincipal btn-block btn-sm">Acheter</button>
 
                                         </div>
@@ -217,12 +218,12 @@
                         <div class="container" [class.toggled]="classToggled">
                             <div class="row" [class.toggled]="classToggled">
                                 <p class="col-2 p-2">Montant en tokens :</p>
-                                <input  [class.toggled]="classToggled" ngModel="" #transact type='number' id='transaction'
-                                    class="form-control search-form col-3 p-2" placeholder="Token">
+                                <input [class.toggled]="classToggled" ngModel="" #transact type='number'
+                                    id='transaction' class="form-control search-form col-3 p-2" placeholder="Token">
                                 <p class="col-1"></p>
                                 <p class="'col-2 p-2">Montant en euros (€) :</p>
-                                <input [class.toggled]="classToggled" ngModel="" #transactEuro type='number' id='transaction'
-                                    class="form-control search-form col-3 p-2" placeholder="€">
+                                <input [class.toggled]="classToggled" ngModel="" #transactEuro type='number'
+                                    id='transaction' class="form-control search-form col-3 p-2" placeholder="€">
                             </div>
                         </div>
                         <div [class.toggled]="classToggled" class="d-flex justify-content-center p-5"
@@ -234,9 +235,8 @@
                             <p>La transaction refusée.</p>
                         </div>
                         <div style="display: block; margin: auto;" [class.toggled]="classToggled" class="col-2">
-                            <button (click)="achatTokenEuro(transactEuro.value)"
-                                (click)="achatToken(transact.value)" type="submit"
-                                class="btn btnPrincipal btn-block btn-sm">Acheter</button>
+                            <button (click)="achatTokenEuro(transactEuro.value)" (click)="achatToken(transact.value)"
+                                type="submit" class="btn btnPrincipal btn-block btn-sm">Acheter</button>
                         </div>
 
                     </div>
