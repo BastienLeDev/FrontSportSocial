@@ -6,14 +6,15 @@
                     <div>
                         <h3>Calendrier</h3>
                     </div>
-                    <div>
-                        <button (click)="openModifDonneesPersosModal()" type="submit"
-                            class="btn btnPrincipal btn-block " style="font-size: 60%; width: 150px;">Ajouter une
-                            activité</button>
+                    <div class="row">
+                        <div class="col-12" style="margin-top: 20px;">
+                            <a [class.toggled]="classToggled" id="btn_dropdown" mat-raised-button (click)="openNewActivity()">
+                                Ajouter une activité
+                                <mat-icon>add</mat-icon>
+                            </a>
+                        </div>
                     </div>
                 </div>
-
-
 
 
                 <div class="row text-center" style="margin: 3px;">

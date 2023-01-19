@@ -34,6 +34,23 @@
                                 <p *ngIf="userInfo.coachUser != true">Coach : </p>
                                 <p *ngIf="authService.getUserConnect().addressUser != null">Adresse :</p>
                                 <p *ngIf="authService.getUserConnect().addressUser == null">Adresse :</p>
+                                <div style="text-align: left; ">
+                                    <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                        <mat-icon svgIcon="Option" aria-hidden="false"></mat-icon>
+                                    </button>
+                                    <mat-menu #menu="matMenu" xPosition="before">
+                                        <button mat-menu-item (click)="openModifDonneesPersosModal()">Modifier les
+                                            données
+                                            personnelles</button>
+                                        <button mat-menu-item (click)="openInventaire()">Changer de photo de
+                                            profil</button>
+                                        <button mat-menu-item (click)="openChangerMdp()">Changer le mot de
+                                            passe</button>
+                                        <button mat-menu-item
+                                            (click)="disableAccount(authService.getUserConnect())">Désactiver
+                                            son compte</button>
+                                    </mat-menu>
+                                </div>
                             </div>
                             <div class="col-6">
                                 <p><b>{{userInfo.lastNameUser}} </b></p>
@@ -49,23 +66,13 @@
                                         {{authService.getUserConnect().addressUser.cityAddress}}</b></p>
                                 <p *ngIf="authService.getUserConnect().addressUser == null">Adresse : <b>Non
                                         précisée</b></p>
+
                             </div>
+
 
                         </div>
                     </div>
-                    <div style="text-align: right; margin: 3px;">
-                        <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
-                            <mat-icon svgIcon="Option" aria-hidden="false"></mat-icon>
-                        </button>
-                        <mat-menu #menu="matMenu" xPosition="before">
-                            <button mat-menu-item (click)="openModifDonneesPersosModal()">Modifier les données
-                                personnelles</button>
-                            <button mat-menu-item (click)="openInventaire()">Changer de photo de profil</button>
-                            <button mat-menu-item (click)="openChangerMdp()">Changer le mot de passe</button>
-                            <button mat-menu-item (click)="disableAccount(authService.getUserConnect())">Désactiver
-                                son compte</button>
-                        </mat-menu>
-                    </div>
+
                 </div>
 
 
@@ -128,14 +135,13 @@
 
             <div class="card p-3 m-3" id="card-header" [class.toggled]="classToggled">
                 <div class="row ">
-                    <div class="col-7">
-                        <p>Vous possédez actuellement :</p>
+                    <div class="col-5">
+                        <p style="font-size: 80%;">Vous possédez actuellement :</p>
                         <p style="font-weight: bold;">{{userInfo.token}} tokens</p>
                     </div>
-
                     <div class="col-5">
                         <button id="feedbtn" mat-button (click)="goToShop()">
-                            <p style="font-size: 70%;">Acheter des
+                            <p style="font-size: 65%;">Acheter des
                                 tokens</p>
                             <button mat-icon-button mat-icon-button>
                                 <i class="fas fa-euro-sign" style="color: rgb(255, 255, 255);"></i>

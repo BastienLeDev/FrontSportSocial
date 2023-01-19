@@ -222,6 +222,8 @@ export class FriendComponent implements OnInit {
     this.http.get('http://localhost:8300/friend/receiver/' + this.authService.getUserConnect().idUser).subscribe({ // Affiche la liste de Friend
       next: (data) => {
         this.friends = data
+        console.log(this.friends);
+        
         for (let index in this.friends) {
           console.log(index)
           if (this.listLastMsg != null) {
@@ -231,6 +233,8 @@ export class FriendComponent implements OnInit {
             next: (data) => {
               this.lastmsg = "";
               this.lastmsg = data,
+              console.log(this.lastmsg);
+              
               this.listLastMsg.push(this.lastmsg[0])
               console.log(this.listLastMsg)
             }
@@ -282,6 +286,8 @@ export class FriendComponent implements OnInit {
               this.lastteammsg = data,
               commentData.lastMsg = this.lastteammsg[0];
               this.listLastTeamMsg.push(commentData)
+              console.log(this.listLastTeamMsg);
+              
             }
           })
         }

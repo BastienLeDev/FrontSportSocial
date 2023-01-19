@@ -43,6 +43,7 @@ import { ClubPageComponent } from './club-page/club-page.component';
 import { PopUpCoachComponent } from './pop-up-coach/pop-up-coach.component';
 import { PopUpEchangeComponent } from './pop-up-echange/pop-up-echange.component';
 import { from } from 'rxjs';
+import { NewActivityComponent } from './new-activity/new-activity.component';
 
 
 
@@ -70,7 +71,8 @@ import { from } from 'rxjs';
     PopUpQuitClubComponent,
     ClubPageComponent,
     PopUpCoachComponent,
-    PopUpEchangeComponent
+    PopUpEchangeComponent,
+    NewActivityComponent
   ],
 
   imports: [

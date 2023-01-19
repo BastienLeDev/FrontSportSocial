@@ -11,6 +11,8 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { DarkThemeService } from '../services/dark-theme.service';
+import { NewEventComponent } from '../new-event/new-event.component';
+import { NewActivityComponent } from '../new-activity/new-activity.component';
 
 const colors: any = {
   red: {
@@ -95,28 +97,13 @@ export class ScheduleComponent implements OnInit {
     //this.openAppointmentList(x)
   }
 
-  openModifDonneesPersosModal() {
-    const dialogRef = this.dialog.open(PopUpScheduleComponent)
-  }
+  openNewActivity() {
+    const dialogRef = this.dialog.open(NewActivityComponent);
+    dialogRef.afterClosed().subscribe(() => { //Pour lancer des fonctions lorsqu'on ferme le popup
+      this.ngOnInit(); //pour reload les cards event => affiche le nouvel event sans reload page
+    });
 
-  addEvent(): void {
-    
-    this.events = [
-      ...this.events,
-      {
-        title: 'New event',
-        start: startOfDay(new Date()),
-        end: endOfDay(new Date()),
-        color: colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true
-        }
-      }
-    ];
   }
 
 
 }
-
