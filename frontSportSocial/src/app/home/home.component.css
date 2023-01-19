@@ -1,43 +1,36 @@
-/* CSS de la bare de recherche
-*/
-
-.well {
-  background-color: #ffffee
-}
+  /* CSS de la search bar*/
+  .well {
+    background-color: #FCECDD;
+  }
 
 
-.search-form {
-  border-radius: 30px 0 0 30px;
-}
+  .search-form {
+    border-radius: 30px 0 0 30px;
+    margin: 6px;
+  }
 
-.input-group {
-  width: 100%;
-}
+  .input-group {
+    width: 90%;
+  }
 
-input-group-btn {
-  max-width: 35px;
-}
+  input-group-btn {
+    max-width: 38px;
+  }
 
-#search {
-  border: 1px;
-  background-color: #FCECDD;
+  #search {
+    border: 1px;
+    background-color: #FCECDD;
 }
 
 #search-this {
-  background-color: #FFC288;
+    background-color: #FFC288;
 }
 
 .search-btn {
-  cursor: pointer;
-  border-radius: 0 30px 30px 0;
-  color: rgb(255, 255, 255);
-  margin: 10px;
-
-}
-
-#search-card {
-  height: 70px;
-  width: 600px;
+    cursor: pointer;
+    border-radius: 0 30px 30px 0;
+    color: rgb(255, 255, 255);
+    margin-top: 10px;
 
 }
 

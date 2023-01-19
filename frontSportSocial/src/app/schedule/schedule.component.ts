@@ -5,12 +5,12 @@ import { CalendarView } from 'angular-calendar';
 import { CalendarEvent } from 'angular-calendar';
 import { endOfDay, startOfDay } from 'date-fns';
 
-import { PopUpScheduleComponent } from '../pop-up-schedule/pop-up-schedule.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { DarkThemeService } from '../services/dark-theme.service';
+import { NewActivityComponent } from '../new-activity/new-activity.component';
 
 const colors: any = {
   red: {
@@ -37,8 +37,6 @@ const colors: any = {
 })
 
 
-
-
 export class ScheduleComponent implements OnInit {
 
   schedules: any;
@@ -52,13 +50,14 @@ export class ScheduleComponent implements OnInit {
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog, private appComponent : AppComponent, public dark : DarkThemeService) { }
 
-
-
   ngOnInit(): void {
-    this.listSchedule()
+    this.listSchedule();
+    localStorage.removeItem('dateEnd');
+    localStorage.removeItem('dateStart');
+    localStorage.removeItem('descActivity');
+    localStorage.removeItem('nameActivity');
+    localStorage.removeItem('idActivity');
   }
-
- 
 
   setView(view: CalendarView) {
     this.view = view;
@@ -66,7 +65,6 @@ export class ScheduleComponent implements OnInit {
 
   events: CalendarEvent[] = [
     {
-
       start: new Date(2022, 2, 8, 0),
       end: new Date(2022, 2, 18, 0),
       title: 'appointment_date',
@@ -83,7 +81,6 @@ export class ScheduleComponent implements OnInit {
     this.http.get('http://localhost:8300/schedule/').subscribe({
       next: (data) => {
         this.schedules = data
-
       },
       error: (err) => { console.log(err); }
     });
@@ -91,32 +88,15 @@ export class ScheduleComponent implements OnInit {
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     console.log(date);
-    //let x=this.adminService.dateFormat(date)
-    //this.openAppointmentList(x)
   }
 
-  openModifDonneesPersosModal() {
-    const dialogRef = this.dialog.open(PopUpScheduleComponent)
-  }
+  openNewActivity() {
+    const dialogRef = this.dialog.open(NewActivityComponent);
+    dialogRef.afterClosed().subscribe(() => { //Pour lancer des fonctions lorsqu'on ferme le popup
+      this.ngOnInit(); //pour reload les cards event => affiche le nouvel event sans reload page
+    });
 
-  addEvent(): void {
-    
-    this.events = [
-      ...this.events,
-      {
-        title: 'New event',
-        start: startOfDay(new Date()),
-        end: endOfDay(new Date()),
-        color: colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true
-        }
-      }
-    ];
   }
 
 
 }
-

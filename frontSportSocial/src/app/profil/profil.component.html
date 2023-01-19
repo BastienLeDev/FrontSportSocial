@@ -3,15 +3,11 @@
         <div class="col-3 p-4">
 
             <div class="card p-3 m-3" [class.toggled]="classToggled">
-                <div class="card-header">
-                    <h3 class="text-center">Photo de profil </h3>
+                <div class="card-header" style="margin: 5px; border-radius: 15px;">
+                    <h3 style="font-weight: bold" class="text-center">{{userInfo.loginUser}} </h3>
                 </div>
                 <div class="mx-auto text-center p-2">
                     <img src="{{userInfo.imageUser.nameImage}}">
-                </div>
-                <div>
-                    <button (click)="openInventaire()" type="submit" class="btn btnPrincipal btn-block btn-sm"> Changer
-                        de photo de profil</button>
                 </div>
             </div>
 
@@ -20,42 +16,70 @@
                     <h3 class="text-center">Données personnelles</h3>
                 </div>
 
-                <div class="md-form" [class.toggled]="classToggled" >
-                    <div class="p-3" [class.toggled]="classToggled" >
-                        <p *ngIf="authService.getUserConnect().idUser" style="font-style: italic;"> <i
+                <div class="md-form" [class.toggled]="classToggled">
+                    <div class="p-3" [class.toggled]="classToggled">
+                        <p *ngIf="authService.getUserConnect().idUser"
+                            style="font-style: italic; font-weight: lighter !important; font-size: 50%;"> <i
                                 class="fas fa-circle" style="color: rgb(150, 211, 137); size: 50%;"></i> En ligne</p>
-                        <p *ngIf="!authService.getUserConnect().idUser" style="font-style: italic;"> <i
+                        <p *ngIf="!authService.getUserConnect().idUser"
+                            style="font-style: italic; font-weight: lighter !important; font-size: 50%;"> <i
                                 class="fas fa-circle" style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne</p>
-                        <p>Nom : <b>{{userInfo.lastNameUser}} </b></p>
-                        <p>Prénom : <b>{{userInfo.firstNameUser}}</b></p>
-                        <p>Date de naissance: <b>{{userInfo.birthDateUser}}</b></p>
-                        <p>Pseudo : <b>{{userInfo.loginUser}}</b></p>
-                        <p *ngIf="userInfo.coachUser == true">Coach : <b>Oui</b></p>
-                        <p *ngIf="userInfo.coachUser != true">Coach : <b>Non</b></p>
-                        <p *ngIf="authService.getUserConnect().addressUser != null">Adresse :
-                            <b>{{authService.getUserConnect().addressUser.streetAddress}}</b>
-                        </p>
-                        <p><b>{{authService.getUserConnect().addressUser.zipCodeAddress}}
-                                {{authService.getUserConnect().addressUser.cityAddress}}</b></p>
-                        <p *ngIf="authService.getUserConnect().addressUser == null">Adresse : <b>Non précisée</b></p>
-                        <div style="text-align: right; margin: 3px;">
-                            <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
-                                <mat-icon svgIcon="Option" aria-hidden="false"></mat-icon>
-                            </button>
-                            <mat-menu #menu="matMenu" xPosition="before">
-                                <button mat-menu-item (click)="openModifDonneesPersosModal()">Modifier les données personnelles</button>
-                                <button mat-menu-item (click)="openChangerMdp()">Changer le mot de passe</button>
-                                <button mat-menu-item (click)="disableAccount(authService.getUserConnect())">Désactiver son compte</button>
-                            </mat-menu>
+                        <div class="row">
+                            <div class="col-6">
+                                <p>Nom : </p>
+                                <p>Prénom : </p>
+                                <p>Date de naissance: </p>
+                                <p>Pseudo : </p>
+                                <p *ngIf="userInfo.coachUser == true">Coach : </p>
+                                <p *ngIf="userInfo.coachUser != true">Coach : </p>
+                                <p *ngIf="authService.getUserConnect().addressUser != null">Adresse :</p>
+                                <p *ngIf="authService.getUserConnect().addressUser == null">Adresse :</p>
+                                <div style="text-align: left; ">
+                                    <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                        <mat-icon svgIcon="Option" aria-hidden="false"></mat-icon>
+                                    </button>
+                                    <mat-menu #menu="matMenu" xPosition="before">
+                                        <button mat-menu-item (click)="openModifDonneesPersosModal()">Modifier les
+                                            données
+                                            personnelles</button>
+                                        <button mat-menu-item (click)="openInventaire()">Changer de photo de
+                                            profil</button>
+                                        <button mat-menu-item (click)="openChangerMdp()">Changer le mot de
+                                            passe</button>
+                                        <button mat-menu-item
+                                            (click)="disableAccount(authService.getUserConnect())">Désactiver
+                                            son compte</button>
+                                    </mat-menu>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <p><b>{{userInfo.lastNameUser}} </b></p>
+                                <p><b>{{userInfo.firstNameUser}}</b></p>
+                                <p><b>{{userInfo.birthDateUser | date: 'd MMM y'}}</b></p>
+                                <p><b>{{userInfo.loginUser}}</b></p>
+                                <p *ngIf="userInfo.coachUser == true"><b>Oui</b></p>
+                                <p *ngIf="userInfo.coachUser != true"><b>Non</b></p>
+                                <p *ngIf="authService.getUserConnect().addressUser != null">
+                                    <b>{{authService.getUserConnect().addressUser.streetAddress}}</b>
+                                </p>
+                                <p><b>{{authService.getUserConnect().addressUser.zipCodeAddress}}
+                                        {{authService.getUserConnect().addressUser.cityAddress}}</b></p>
+                                <p *ngIf="authService.getUserConnect().addressUser == null">Adresse : <b>Non
+                                        précisée</b></p>
+
+                            </div>
+
+
                         </div>
                     </div>
 
-
                 </div>
+
 
             </div>
 
         </div>
+
 
         <div class="col-6 p-4 ">
             <ul style="list-style: none;">
@@ -80,50 +104,58 @@
 
                     </div>
                 </li>
-                <div class="p-3">
+                <div>
                     <li class="anyClass">
                         <h4>Mes activités</h4>
-
                         <div class="card p-3 m-3 col-11" *ngFor="let a of activite;  " [class.toggled]="classToggled">
-
                             <div class="row">
                                 <div class="col-12 justify-content-center">
-                                    <h2 class=""> {{a.user.loginUser}}</h2>
-
+                                    <h2 class=""> {{a.activity.nameActivity}}</h2>
                                 </div>
                             </div>
                             <div class="row">
-
-                                <div class="col-12">
-                                    <p>Sport : {{a.activity.nameActivity}}</p>
-                                    <p>Date de début : {{a.activity.dateStart | date: 'd MMM y H:mm'}}</p>
-                                    <p>Date de fin : {{a.activity.dateEnd | date: 'd MMM y H:mm'}}</p>
-                                    <p>Description : {{a.activity.descActivity}}</p>
+                                <div class="col-6">
+                                    <b>Description :</b>
+                                    <p>{{a.activity.descActivity}}</p>
+                                </div>
+                                <div class="col-6">
+                                    <b>Date</b>
+                                    <p>Début : {{a.activity.dateStart | date: 'd MMM y H:mm'}}</p>
+                                    <p>Fin : {{a.activity.dateEnd | date: 'd MMM y H:mm'}}</p>
                                 </div>
                             </div>
-
                         </div>
+
                     </li>
                 </div>
             </ul>
         </div>
 
-        <div class="col-3 p-4">
+        <div class="col-3 p-4" [class.toggled]="classToggled" style="background-color: transparent;">
 
-            <div class="card p-3 m-3" [class.toggled]="classToggled">
-                <div class="card-header">
-                    <h3 class="text-center">Token </h3>
+            <div class="card p-3 m-3" id="card-header" [class.toggled]="classToggled">
+                <div class="row ">
+                    <div class="col-5">
+                        <p style="font-size: 80%;">Vous possédez actuellement :</p>
+                        <p style="font-weight: bold;">{{userInfo.token}} tokens</p>
+                    </div>
+                    <div class="col-5">
+                        <button id="feedbtn" mat-button (click)="goToShop()">
+                            <p style="font-size: 65%;">Acheter des
+                                tokens</p>
+                            <button mat-icon-button mat-icon-button>
+                                <i class="fas fa-euro-sign" style="color: rgb(255, 255, 255);"></i>
+                            </button>
+                        </button>
+                    </div>
                 </div>
-                <div [class.toggled]="classToggled">
-                    <p>Vous possédez actuellement : {{userInfo.token}} tokens</p>
-                </div>
-                <div>
-                    <button (click)="goToShop()" type="submit" class="btn btnPrincipal btn-block btn-sm"> Acheter des
-                        tokens</button>
+                <div class="row ">
+
                 </div>
             </div>
 
-            <div class="btnRang">
+            <div class="card p-3 m-3" [class.toggled]="classToggled"
+                style="background-color: transparent ; border: none; box-shadow: none !important;">
                 <div [class.toggled]="classToggled" style="background-color: transparent">
                     <button (click)="goToRanking()" type="submit" class="btn btnPrincipal btn-block btn-lg">Classement
                         Personnel <i class="fas fa-crown" style="color: yellow;"></i></button>
@@ -144,14 +176,8 @@
 
                     </div>
 
-
-
                     <div id="inside-card" class="md-form">
 
-
-                        <div [class.toggled]="classToggled">
-                            <h4>Par sport</h4>
-                        </div>
                         <div *ngIf="visibleMemos" [class.toggled]="classToggled">
                             <div>
                                 <button (click)="showHideMemos()" type="submit" class="btn btn-danger btn-block btn-sm"

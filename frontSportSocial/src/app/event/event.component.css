@@ -98,6 +98,10 @@ input-group-btn {
   border-radius: 5px;
 }
 
+#card_data {
+  height: auto;
+}
+
 /* Dark Mode CSS */
 
 .toggled {
