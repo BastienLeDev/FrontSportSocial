@@ -36,7 +36,8 @@ export class ClubPageComponent implements OnInit {
   idComCom: any;
   commmentsComment: any;
   varCheckLike: any;
-  
+  listLikePosts: Array<any> = [];
+
 
   ngOnInit(): void {
     this.listFriendsInClub();
@@ -99,6 +100,34 @@ export class ClubPageComponent implements OnInit {
       next: (data) => {
         this.feed = data;
         console.log(this.feed);
+        for (let index in this.feed) {
+          let likePost = {} as any;
+          likePost.idPost = this.feed[index].idPost
+          console.log(this.feed[index].idPost)
+          this.http.get('http://localhost:8300/club/posts/checkLike/' + this.feed[index].idPost + '/' + this.authService.getUserConnect().idUser).subscribe({
+            next: (data) => {
+              likePost.boolLike = data;
+              console.log(likePost.boolLike)
+            },
+            error: (err) => { console.log(err); }
+          });
+          console.log(likePost);
+          this.listLikePosts.push(likePost);
+          console.log(this.listLikePosts);
+          console.log(this.listLikePosts[0]);
+          console.log(this.listLikePosts[1]);
+          console.log(this.listLikePosts[0].boolLike);
+
+          this.listLikePosts.forEach(element => {
+            console.log(element)
+            console.log(element.idPost)
+
+            console.log(element.boolLike)
+
+            console.log(element.idPost.boolLike)
+
+          });
+        }
       },
       error: (err) => { console.log(err); }
     });
@@ -131,7 +160,7 @@ export class ClubPageComponent implements OnInit {
   likePost(idPost: any) {
     this.http.patch('http://localhost:8300/club/posts/like/' + idPost + '/' + this.authService.getUserConnect().idUser, null).subscribe({
       next: (data) => {
-        
+
         this.ngOnInit();
       },
       error: (err) => { console.log(err); }
@@ -141,14 +170,13 @@ export class ClubPageComponent implements OnInit {
   unlikePost(idPost: any) {
     this.http.patch('http://localhost:8300/club/posts/unlike/' + idPost + '/' + this.authService.getUserConnect().idUser, null).subscribe({
       next: (data) => {
-        
+
         this.ngOnInit();
       },
       error: (err) => { console.log(err); }
     });
   }
-  
-  
+
 
 
 }
