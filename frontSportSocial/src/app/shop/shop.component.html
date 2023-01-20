@@ -1,13 +1,13 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 p-4">
-            <div class="card p-3 m-3" [class.toggled]="classToggled">
+            <div id="card_achat" class="card p-0 m-0" [class.toggled]="classToggled">
 
-                <div id="header" class="card-header m-6 ">
+                <div id="header" class="card-header">
                     <h2 class="alignement text-center" style=" font-weight: bold;">Que souhaitez vous acheter ?</h2>
                 </div>
 
-                <div class="container">
+                <div class="container" style="margin-bottom : 50px">
                     <div class="row">
 
                         <div class="col-2">
@@ -50,18 +50,9 @@
 
 
                 <!--Page coach-->
-                <div class="card p-3 m-3" *ngIf="visibleCoach" [class.toggled]="classToggled">
+                <div *ngIf="visibleCoach" [class.toggled]="classToggled">
 
                     <div [class.toggled]="classToggled">
-                        <div class="card p-9" [class.toggled]="classToggled">
-                            <div class="card-header">
-                                <h3 class="alignement text-center" style=" font-weight: bold;">Coachs :</h3>
-                            </div>
-
-                        </div>
-
-
-
 
                         <form class='form-inline, alignement' #namesport="ngForm"
                             (ngSubmit)="listCoachsBySport(nameSportIn.value)" [class.toggled]="classToggled">
@@ -137,10 +128,9 @@
 
 
                 <!--Page Avatar-->
-                <div class="card p-3 m-3" *ngIf="visibleAvatar" [class.toggled]="classToggled">
+                <div *ngIf="visibleAvatar" [class.toggled]="classToggled">
 
                     <div [class.toggled]="classToggled">
-                        <h3 class="alignement" style="font-weight: bold;">Avatar :</h3>
 
                         <form class='form-inline, alignement' (ngSubmit)="listAvatarDescription(avatar.value)">
                             <div class="input-group" [class.toggled]="classToggled">
@@ -154,10 +144,11 @@
                                 </span>
                             </div>
                         </form>
-                        <div class="md-form">
+
+                        <div class="md-form" style="margin-left: 50px;">
                             <div class="row">
                                 <div class="col-2" *ngFor="let a of avatars" [class.toggled]="classToggled">
-                                    <div class="card p-4 m-1" [class.toggled]="classToggled">
+                                    <div class="card p-3 m-1" [class.toggled]="classToggled">
                                         <div class="row justify-content-center">
                                             <img class="photo_profil image-rond image-rond-bg"
                                                 src="{{a.imageProduit.nameImage}}" alt="">
@@ -211,7 +202,7 @@
 
 
                 <!--Page Token-->
-                <div class="card p-3 m-3" *ngIf="visibleTokens" [class.toggled]="classToggled">
+                <div *ngIf="visibleTokens" [class.toggled]="classToggled">
 
                     <div class="md-form" [class.toggled]="classToggled">
                         <h3 class="alignement" style="font-weight: bold;">Tokens (1€ = 3 Tokens) :</h3>
