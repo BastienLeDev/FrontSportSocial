@@ -81,6 +81,16 @@ input-group-btn {
   border-radius: 75px;
 }
 
+#feedbtn{
+  background-color: #FFC288 ;
+  color: white;
+}
+
+#feedbtn-active{
+  background-color: #643f1d ;
+  color: white;
+}
+
   
 /* Dark Mode CSS */
 
@@ -111,4 +121,14 @@ input-group-btn {
 
 .toggled .btnPrincipal {
   background-color: #3f4a6e !important;
+}
+
+.toggled #feedbtn{
+  background-color: rgb(87, 90, 159)!important;
+  color: white;
+}
+
+.toggled #feedbtn-active{
+  background-color: rgb(56, 57, 97)!important;
+  color: white;
 }
