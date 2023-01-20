@@ -100,13 +100,15 @@ input-group-btn {
 
 #card_data {
   height: auto;
+  border-right: 0px;
+  border-left: 0px;
 }
 
 /* Dark Mode CSS */
 
 .toggled {
   color: rgb(255, 255, 255);
-  background: rgb(42, 42, 42) ;
+  background: rgb(42, 42, 42);
 }
 
 .toggled .card-header {
@@ -137,7 +139,24 @@ input-group-btn {
   background-color: #3f4a6e !important;
 }
 
-.toggled #filter{
+.toggled #filter {
   background-color: #3f4a6e !important;
   color: white;
+}
+
+#card_event {
+  margin-top: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#col_events {
+  padding-left: 0px;
+  padding-right: 0px;
+
+
+}
+
+.card {
+  border-radius: 0px;
 }
