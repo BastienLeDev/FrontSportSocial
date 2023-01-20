@@ -165,10 +165,19 @@ input-group-btn {
 #card_principal_amis {
   min-height: 350px;
   max-height: 520px;
+  margin: 25px !important;
+  border: none;
 }
 
 #card_data {
   min-height: 200px;
+  margin: 25px !important;
+  border: none;
+}
+
+#card_next_events{
+  margin: 25px !important;
+  border: none;
 }
 
 #feed {
