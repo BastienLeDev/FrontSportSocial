@@ -25,11 +25,12 @@ export class ProfilComponent implements OnInit {
   activite: any;
   userInfo: any;
   visibleMemos = true;
+  exchange: any;
   classToggled = this.dark.classToggled;
 
-  constructor(public authService: AuthService, private route: Router, private dialog: MatDialog, private http: HttpClient, private appComponent : AppComponent, public dark : DarkThemeService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  constructor(public authService: AuthService, private route: Router, private dialog: MatDialog, private http: HttpClient, private appComponent: AppComponent, public dark: DarkThemeService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIconLiteral('Option', sanitizer.bypassSecurityTrustHtml(Option));
-   }
+  }
 
   ngOnInit(): void {
     if (!this.authService.isConnected()) {
@@ -37,6 +38,7 @@ export class ProfilComponent implements OnInit {
     }
     this.infoUser();
     this.listActivite();
+    this.showExchange();
   }
 
   showHideMemos() {
@@ -103,12 +105,22 @@ export class ProfilComponent implements OnInit {
     });
   }
 
-  disableAccount(val : any){
+  disableAccount(val: any) {
     this.http.put('http://localhost:8300/user/delete/' + this.authService.getUserConnect().idUser, val).subscribe({
-      next: (data) => { 
+      next: (data) => {
         this.route.navigateByUrl('connexion');
       },
       error: (err) => { console.log(err); }
+    });
+  }
+
+  showExchange() {
+    this.http.get('http://localhost:8300/echange/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => {
+        this.exchange = data;
+        console.log(this.exchange)
+      },
+      error: (err) => { console.log(err) }
     });
   }
 }

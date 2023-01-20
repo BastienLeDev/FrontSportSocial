@@ -128,6 +128,22 @@
 
                     </li>
                 </div>
+                <div>
+                    <li class="anyClass">
+                        <h4>Notifications</h4>
+                        <div class="row card p-3 m-3 col-11" *ngIf="exchange.length==0">
+                            <p>Vous n'avez pas reçu de Tokens</p>
+                        </div>
+                        <div class="row" *ngIf="exchange.length!=0">
+                            <div class="card p-3 m-3 col-11" *ngFor="let e of exchange" [class.toggled]="classToggled">
+                                <div class="row" *ngIf="exchange.length!=0">
+                                    {{e.notification}}
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                </div>
             </ul>
         </div>
 
