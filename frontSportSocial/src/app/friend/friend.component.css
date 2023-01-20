@@ -21,11 +21,15 @@
     height: 200 px;
     max-height: 290px;
     margin-bottom: 30px;
+    margin: 25px !important;
+    border: none;
 }
 
 #ajout_amis {
     height: 550px;
     max-height: 450px;
+    margin: 25px !important;
+    border: none;
 }
 
 /* CSS de la bare de recherche
@@ -140,9 +144,18 @@ input-group-btn {
 
 /* CSS zone de visalisation des amis */
 
-#card_principal_amis {
-    min-height: 750px;
-    max-height: 750px;
+#card_amis {
+    min-height: 350px;
+    max-height: 450px;
+    margin: 25px !important;
+    border: none;
+}
+
+#card_teams {
+    min-height: 250px;
+    max-height: 350px;
+    margin: 25px !important;
+    border: none;
 }
 
 
@@ -205,7 +218,15 @@ td {
     height: 770px;
 }
 
+#feedbtn{
+    background-color: #FFC288 ;
+    color: white;
+    margin: 5px;
+  }
 
+
+  
+  
 
 /* CSS */
 .button-30 {
@@ -354,3 +375,11 @@ td {
 .toggled #teammember {
     background-color: rgb(126, 132, 179);
 }
+
+.toggled #feedbtn{
+    background-color: rgb(87, 90, 159)!important;
+    
+  }
+  
+  
+  
