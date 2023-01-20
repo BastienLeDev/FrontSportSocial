@@ -70,7 +70,7 @@
                                         </div>   
                                         <div *ngIf="l.idPost == f.idPost && l.boolLike "  >
                                             <div class="text-center" >
-                                                <button (click)="unlikePost(f.idPost)">{{f.numberLikes}} YOUYOU</button>
+                                                <button (click)="unlikePost(f.idPost)">{{f.numberLikes}} Je n'aime plus</button>
                                             </div>
                                         </div>                              
                                     </div>
@@ -179,7 +179,26 @@
                                 </div>
                             </div>
                             
+                            <!-- Zone de saisie de messages -->
 
+                            <div id="zone_saisie_message" class="card p-1" [class.toggled]="classToggled">
+                                <div class="container">
+                                    <div class="row">
+                                        <form #comment="ngForm" (ngSubmit)="postComment(comment.value.contentComment, f.idPost)">
+                                            <div class="col-10" [class.toggled]="classToggled">
+                                                <input id="contentComment" class="form-control" [class.toggled]="classToggled"
+                                                    name="contentComment" ngModel="" type="text" class="form-control" placeholder="..."
+                                                    style="width: 600px; margin: 5px;" required class="form-control">
+                                            </div>
+                                            <div class="col-2">
+                                                <button [disabled]="!comment.form.valid" type="submit" class="button-30 "
+                                                    style="font-size: 60%;">Envoyer <i class="fas fa-envelope"
+                                                        style="color: rgb(0, 0, 0);"></i></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
 
 
 
