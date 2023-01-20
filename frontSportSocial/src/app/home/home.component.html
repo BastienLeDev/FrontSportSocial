@@ -172,12 +172,17 @@
                                             <img class="photo_event" src="{{me.sportEvent.imageSport.nameImage}}"
                                                 alt="">
                                         </div>
-                                        <div class="col-7">
+                                        <div class="col-5">
                                             <h1 class="title-event">{{me.titleEvent}} <h4>{{me.dateStart | date: 'd MMM
                                                     y '}}</h4>
                                             </h1>
                                         </div>
                                         <div class="col-3">
+                                            <h4 *ngIf="(me.dateStart | date: 'd MMM y ') == (dateNow | date: 'd MMM y ')"> Aujourd'hui</h4>
+                                            <h4 *ngIf="me.pastDate"> Fini</h4>
+                                            <h4 *ngIf="!me.pastDate"> A venir</h4>
+                                        </div>
+                                        <div class="col-2">
                                             <button mat-icon-button mat-icon-button (click)="me.visible =!me.visible">
                                                 <mat-icon style=" font-size: 0.73em;" svgIcon="information" aria-hidden="false"></mat-icon>
                                             </button>
@@ -219,12 +224,17 @@
                                             <img class="photo_event" src="{{ef.sportEvent.imageSport.nameImage}}"
                                                 alt="">
                                         </div>
-                                        <div class="col-7">
+                                        <div class="col-5">
                                             <h1 class="title-event">{{ef.titleEvent}} <h4>{{ef.dateStart | date: 'd MMM
                                                     y '}}</h4>
                                             </h1>
                                         </div>
                                         <div class="col-3">
+                                            <h4 *ngIf="(ef.dateStart | date: 'd MMM y ') == (dateNow | date: 'd MMM y ')"> Aujourd'hui</h4>
+                                            <h4 *ngIf="ef.pastDate"> Fini</h4>
+                                            <h4 *ngIf="!ef.pastDate"> A venir</h4>
+                                        </div>
+                                        <div class="col-2">
                                             <button mat-icon-button mat-icon-button (click)="ef.visible =!ef.visible">
                                                 <mat-icon style=" font-size: 0.73em;" svgIcon="information" aria-hidden="false"></mat-icon>
                                             </button>
