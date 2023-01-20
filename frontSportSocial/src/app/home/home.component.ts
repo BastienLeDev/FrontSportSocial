@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
   visibleInformation = true;
   localId : any;
   sports : any;
+  dateNow = new Date;
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private appComponent : AppComponent, public dark : DarkThemeService,  iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private dialog: MatDialog) {
     iconRegistry.addSvgIconLiteral('information', sanitizer.bypassSecurityTrustHtml(information));
@@ -60,12 +61,15 @@ export class HomeComponent implements OnInit {
     this.listEventsFriends();
     this.listMyEvents();
     this.listSport();
+    this.currentDate();
 
   } 
 
   listActivite() {
     this.http.get('http://localhost:8300/activity/' + this.authService.getUserConnect().idUser).subscribe({
-      next: (data) => { this.activite = data, console.log(this.activite); },
+      next: (data) => { 
+        this.activite = data, 
+        console.log(this.activite); },
       error: (err) => { console.log(err); }
     });
   }
@@ -120,7 +124,9 @@ export class HomeComponent implements OnInit {
 
   listMyEvents() {
     this.http.get('http://localhost:8300/event/' + this.authService.getUserConnect().idUser).subscribe({
-      next: (data) => { this.myEvents = data },
+      next: (data) => { 
+        this.myEvents = data
+      },
       error: (err) => { console.log(err); }
     });
 
@@ -196,6 +202,12 @@ openModifyActivity(val: any) {
   dialogRef.afterClosed().subscribe(() => { //Pour lancer des fonctions lorsqu'on ferme le popup
   this.ngOnInit(); //pour reload les cards event => affiche le nouvel event sans reload page
  });
+
+}
+
+currentDate(){
+  this.dateNow;
+  console.log(this.dateNow)
 
 }
 
