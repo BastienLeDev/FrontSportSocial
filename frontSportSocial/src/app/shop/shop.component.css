@@ -77,7 +77,7 @@ img {
 }
 
 #header {
-    margin: 10px;
+    margin-bottom: 30px;
 }
 
 #valider {
@@ -95,6 +95,11 @@ img {
     background-color: #643f1d ;
     color: rgb(0, 0, 0);
   }
+
+  #card_achat {
+    margin: 25px !important;
+    border: none;
+}
 
 /* Dark Mode CSS */
 
