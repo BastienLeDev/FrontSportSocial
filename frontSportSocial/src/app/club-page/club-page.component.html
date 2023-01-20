@@ -62,17 +62,18 @@
                             </div>
                             <div class="row">
                                 <div class="col-4">
-                                    <div>
-                                        <div class="text-center">
-                                            <button (click)="likePost(f.idPost)">{{f.numberLikes}} J'aime</button>
-                                        </div>
+                                    <div *ngFor=" let l of listLikePosts">
+                                        <div *ngIf="l.idPost == f.idPost && !l.boolLike">
+                                            <div class="text-center"  >
+                                                <button (click)="likePost(f.idPost)">{{f.numberLikes}} J'aime</button>
+                                            </div>
+                                        </div>   
+                                        <div *ngIf="l.idPost == f.idPost && l.boolLike "  >
+                                            <div class="text-center" >
+                                                <button (click)="unlikePost(f.idPost)">{{f.numberLikes}} YOUYOU</button>
+                                            </div>
+                                        </div>                              
                                     </div>
-                                    <div>
-                                        <div class="text-center">
-                                            <button (click)="likePost(f.idPost)">{{f.numberLikes}} YOUYOU</button>
-                                        </div>
-                                    </div>
-
                                 </div>
                                 <div class="col-4">
                                     <div class="text-center">

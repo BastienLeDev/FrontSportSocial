@@ -37,6 +37,8 @@ export class ClubPageComponent implements OnInit {
   commmentsComment: any;
   varCheckLike: any;
   listLikePosts: Array<any> = [];
+  check = false;
+  boolLike: any;
 
 
   ngOnInit(): void {
@@ -44,6 +46,7 @@ export class ClubPageComponent implements OnInit {
     this.listNonFriendsInClub();
     this.listAskedFriends();
     this.listPost();
+    console.log(this.listLikePosts);
   }
 
   listFriendsInClub() {
@@ -99,35 +102,49 @@ export class ClubPageComponent implements OnInit {
     this.http.get('http://localhost:8300/club/posts/' + this.idClub).subscribe({
       next: (data) => {
         this.feed = data;
-        console.log(this.feed);
         for (let index in this.feed) {
+          console.log(index)
           let likePost = {} as any;
-          likePost.idPost = this.feed[index].idPost
-          console.log(this.feed[index].idPost)
+          likePost.idPost = this.feed[index].idPost;
           this.http.get('http://localhost:8300/club/posts/checkLike/' + this.feed[index].idPost + '/' + this.authService.getUserConnect().idUser).subscribe({
             next: (data) => {
-              likePost.boolLike = data;
-              console.log(likePost.boolLike)
+              this.boolLike = data;
+              console.log(data)
+              console.log(this.boolLike)
+              console.log(this.boolLike)
+          likePost.boolLike = this.boolLike;
+          console.log(likePost.boolLike)
+          if(this.listLikePosts.length == 0){
+            this.listLikePosts.push(likePost);
+          }
+          else{
+            this.listLikePosts.forEach(element => {
+              console.log(element);
+              console.log(element.idPost);
+              console.log(likePost.idPost);
+              console.log(element.boolLike);
+              console.log(likePost.boolLike);
+              if(element.idPost == likePost.idPost && element.boolLike == likePost.boolLike){
+                this.check = true;
+              }
+              else if (element.idPost == likePost.idPost && element.boolLike != likePost.boolLike){
+                console.log(element.boolLike);
+                console.log(likePost.boolLike);
+                element.boolLike = likePost.boolLike;
+                this.check = true;
+              }
+            });
+            if(this.check == false){
+              this.listLikePosts.push(likePost);
+              console.log(this.listLikePosts)
+            }
+          }  
             },
             error: (err) => { console.log(err); }
           });
-          console.log(likePost);
-          this.listLikePosts.push(likePost);
-          console.log(this.listLikePosts);
-          console.log(this.listLikePosts[0]);
-          console.log(this.listLikePosts[1]);
-          console.log(this.listLikePosts[0].boolLike);
-
-          this.listLikePosts.forEach(element => {
-            console.log(element)
-            console.log(element.idPost)
-
-            console.log(element.boolLike)
-
-            console.log(element.idPost.boolLike)
-
-          });
+                
         }
+        console.log(this.listLikePosts)
       },
       error: (err) => { console.log(err); }
     });
@@ -160,7 +177,6 @@ export class ClubPageComponent implements OnInit {
   likePost(idPost: any) {
     this.http.patch('http://localhost:8300/club/posts/like/' + idPost + '/' + this.authService.getUserConnect().idUser, null).subscribe({
       next: (data) => {
-
         this.ngOnInit();
       },
       error: (err) => { console.log(err); }
@@ -170,7 +186,6 @@ export class ClubPageComponent implements OnInit {
   unlikePost(idPost: any) {
     this.http.patch('http://localhost:8300/club/posts/unlike/' + idPost + '/' + this.authService.getUserConnect().idUser, null).subscribe({
       next: (data) => {
-
         this.ngOnInit();
       },
       error: (err) => { console.log(err); }
