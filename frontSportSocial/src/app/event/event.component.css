@@ -135,6 +135,10 @@ input-group-btn {
   background-color: #3f4a6e !important;
 }
 
+#btn_dropdown {
+  background-color: #FFC288;
+}
+
 .toggled #btn_dropdown {
   background-color: #3f4a6e !important;
 }
@@ -148,15 +152,15 @@ input-group-btn {
   margin-top: 10px;
   padding-left: 30px;
   padding-right: 30px;
+  border-radius: 0px !important;
 }
 
 #col_events {
   padding-left: 0px;
   padding-right: 0px;
-
-
 }
 
-.card {
-  border-radius: 0px;
+#btn-filter-event {
+  background-color: #fd0000;
+  background: #04AA6D;
 }
