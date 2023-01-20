@@ -11,7 +11,7 @@
                 </div>
             </div>
 
-            <div id="card_data"  class="card p-0 m-0" [class.toggled]="classToggled" style="height: 475px;">
+            <div id="card_data" class="card p-0 m-0" [class.toggled]="classToggled" style="height: 475px;">
                 <div class="card-header">
                     <h3 class="text-center">Données personnelles</h3>
                 </div>
@@ -124,23 +124,26 @@
                                     <p>Fin : {{a.activity.dateEnd | date: 'd MMM y H:mm'}}</p>
                                 </div>
                             </div>
+                   
                         </div>
-
-                    </li>
-                </div>
-                <div>
-                    <li class="anyClass">
                         <h4>Notifications</h4>
-                        <div class="row card p-3 m-3 col-11" *ngIf="exchange.length==0" [class.toggled]="classToggled">
-                            <p>Vous n'avez pas reçu de Tokens</p>
-                        </div>
-                        <div class="row" *ngIf="exchange.length!=0" [class.toggled]="classToggled">
-                            <div class="card p-3 m-3 col-11" *ngFor="let e of exchange" [class.toggled]="classToggled">
-                                <div class="row" *ngIf="exchange.length!=0">
-                                    {{e.notification}}
+                        <div class="card p-3 m-3 col-11" *ngFor="let e of exchange"  [class.toggled]="classToggled">
+                            <div class="row">
+                                <div class="col-12 justify-content-center" *ngIf="exchange.length==0">
+                                    <p>Vous n'avez pas reçu de Tokens</p>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-12" *ngIf="exchange.length!=0" >
+                                    <div class="row" *ngIf="exchange.length!=0">
+                                        {{e.notification}}
+                                    </div>
+                                </div>
+
+                            </div>
+                   
                         </div>
+
 
                     </li>
                 </div>
@@ -192,9 +195,9 @@
 
                     </div>
 
-                    <div *ngIf="visibleMemos" id="inside-card" class="card p-2 m-2" [class.toggled]="classToggled" >
+                    <div *ngIf="visibleMemos" id="inside-card" class="card p-2 m-2" [class.toggled]="classToggled">
 
-                        <div  [class.toggled]="classToggled">
+                        <div [class.toggled]="classToggled">
                             <div>
                                 <button (click)="showHideMemos()" type="submit" class="btn btn-danger btn-block btn-sm"
                                     style="font-size: 60%; width: 10%; margin : 3px;">x </button>
