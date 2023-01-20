@@ -60,7 +60,7 @@
 
 
   #inside-card {
-    height: 100px;
+    height: auto;
   }
 
   .card-header {
@@ -87,6 +87,8 @@
 
   #card_training {
     height: 400px;
+    margin: 25px !important;
+    border: none;
   }
 
   #training {
@@ -116,6 +118,15 @@
     background-color: #643f1d;
     color: rgb(0, 0, 0);
   }
+
+  #card_data {
+    min-height: 350px;
+    max-height: 450px;
+    margin: 25px !important;
+    border: none;
+  }
+
+  /* Dark Mode CSS */
 
   /* Dark Mode CSS */
 

@@ -82,6 +82,13 @@ input-group-btn {
   font-size: 0;
 }
 
+#card_clubs {
+  min-height: 350px;
+  max-height: 450px;
+  margin: 25px !important;
+  border: none;
+}
+
 /* Dark Mode CSS */
 
 .toggled {
