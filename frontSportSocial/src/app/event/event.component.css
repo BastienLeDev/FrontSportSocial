@@ -148,6 +148,7 @@ input-group-btn {
   margin-top: 10px;
   padding-left: 30px;
   padding-right: 30px;
+  border-radius: 0px !important;
 }
 
 #col_events {
@@ -155,8 +156,4 @@ input-group-btn {
   padding-right: 0px;
 
 
-}
-
-.card {
-  border-radius: 0px;
 }
