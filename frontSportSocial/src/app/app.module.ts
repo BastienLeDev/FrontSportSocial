@@ -44,6 +44,7 @@ import { PopUpCoachComponent } from './pop-up-coach/pop-up-coach.component';
 import { PopUpEchangeComponent } from './pop-up-echange/pop-up-echange.component';
 import { from } from 'rxjs';
 import { NewActivityComponent } from './new-activity/new-activity.component';
+import { PopUpAddPostComponent } from './pop-up-add-post/pop-up-add-post.component';
 
 
 
@@ -73,6 +74,7 @@ import { NewActivityComponent } from './new-activity/new-activity.component';
     PopUpCoachComponent,
     PopUpEchangeComponent,
     NewActivityComponent,
+    PopUpAddPostComponent,
   ],
 
   imports: [
