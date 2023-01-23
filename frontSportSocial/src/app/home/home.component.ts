@@ -38,6 +38,8 @@ export class HomeComponent implements OnInit {
   visibleActivity = true;
   visibleEvent = false;
   visibleInformation = true;
+  visibleFriendActivity = false;
+  visibleFriendEvent = false;
   localId : any;
   sports : any;
   dateNow = new Date;
@@ -187,6 +189,22 @@ seeInformation() {
     this.visibleInformation = true;
   } else {
     this.visibleInformation = false;
+  }
+}
+
+searchFriendActivity(){
+  if (this.visibleFriendActivity == false) {
+    this.visibleFriendActivity = true;
+  } else {
+    this.visibleFriendActivity = false;
+  }
+}
+
+searchFriendEvent(){
+  if (this.visibleFriendEvent == false) {
+    this.visibleFriendEvent = true;
+  } else {
+    this.visibleFriendEvent = false;
   }
 }
 
