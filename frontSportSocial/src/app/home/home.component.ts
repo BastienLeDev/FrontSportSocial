@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
   localId : any;
   sports : any;
   dateNow = new Date;
+  idActivity : any;
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private appComponent : AppComponent, public dark : DarkThemeService,  iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private dialog: MatDialog) {
     iconRegistry.addSvgIconLiteral('information', sanitizer.bypassSecurityTrustHtml(information));
@@ -217,7 +218,16 @@ openCreateActivity() {
 currentDate(){
   this.dateNow;
   console.log(this.dateNow)
+}
 
+DeleteActivity(val : any){
+  this.idActivity = val;
+  this.http.post('http://localhost:8300/schedule/delete/' + this.idActivity.activity.idActivity, val).subscribe({
+    next: (data) => { 
+      this.ngOnInit();
+    },
+    error: (err) => { console.log(err); }
+  });
 }
 
 }
