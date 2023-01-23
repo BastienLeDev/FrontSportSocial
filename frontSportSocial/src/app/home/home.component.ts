@@ -90,11 +90,11 @@ export class HomeComponent implements OnInit {
         for (let index in this.friends) {
         this.http.get('http://localhost:8300/activity/' + this.friends[index].idUser).subscribe({
           next: (data) => { 
-            console.log(data);
             this.activiteFriend = "";
             this.activiteFriend = data, 
             console.log(this.activiteFriend);
-            this.listFriendActivity.push(this.activiteFriend[0])
+            for (let index in this.activiteFriend) {
+            this.listFriendActivity.push(this.activiteFriend[index])}
              },
           error: (err) => { console.log(err); }
         });
