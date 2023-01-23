@@ -25,16 +25,16 @@
         <div id="milieu" class="col-6 p-4">
             <div class="card p-3 m-3 vh-100" [class.toggled]="classToggled">
 
-                <div *ngIf="feed == null">
+                <div *ngIf="feed == null" [class.toggled]="classToggled">
 
                 </div>
 
-                <div *ngIf="feed != null">
+                <div *ngIf="feed != null" [class.toggled]="classToggled">
                     <div class="container" *ngFor="let f of feed">
-                        <div class="card p-3">
+                        <div class="card p-3"  [class.toggled]="classToggled">
                             <div class="row">
                                 <div class="col-2">
-                                    <img src="{{f.createurPost.imageUser.nameImage}}" style="width: 100%">
+                                    <img class="photo_conversation" src="{{f.createurPost.imageUser.nameImage}}" style="width: 100%">
                                 </div>
                                 <div class="col-10">
                                     <div class="container">
@@ -62,26 +62,26 @@
                             </div>
                             <div class="row">
                                 <div class="col-4">
-                                    <div *ngFor=" let l of listLikePosts">
-                                        <div *ngIf="l.idPost == f.idPost && !l.boolLike">
+                                    <div *ngFor=" let l of listLikePosts" >
+                                        <div *ngIf="l.idPost == f.idPost && !l.boolLike"  [class.toggled]="classToggled">
                                             <div class="text-center"  >
                                                 <button (click)="likePost(f.idPost)">{{f.numberLikes}} J'aime</button>
                                             </div>
                                         </div>   
-                                        <div *ngIf="l.idPost == f.idPost && l.boolLike "  >
+                                        <div *ngIf="l.idPost == f.idPost && l.boolLike "  [class.toggled]="classToggled"  >
                                             <div class="text-center" >
                                                 <button (click)="unlikePost(f.idPost)">{{f.numberLikes}} Je n'aime plus</button>
                                             </div>
                                         </div>                              
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-4"  [class.toggled]="classToggled">
                                     <div class="text-center">
                                         <button (click)="listComments(f.idPost)"> {{f.numberComments}}  Commentaires</button>
                                     </div>
 
                                 </div>
-                                <div class="col-4">
+                                <div class="col-4" [class.toggled]="classToggled">
                                     <div class="text-center">
                                         <button>Partager</button>
                                     </div>
@@ -90,11 +90,11 @@
 
                             </div>
                             <div class=row *ngIf="f.idPost == idPostCom">
-                                <div class="container" *ngFor="let c of comments">
-                                    <div class="card p-3">
+                                <div class="container" *ngFor="let c of comments"  [class.toggled]="classToggled">
+                                    <div class="card p-3"  [class.toggled]="classToggled">
                                         <div class="row">
                                             <div class="col-2">
-                                                <img src="{{c.createurComment.imageUser.nameImage}}"
+                                                <img class="photo_conversation" src="{{c.createurComment.imageUser.nameImage}}"
                                                     style="width: 100%">
                                             </div>
                                             <div class="col-10">
@@ -242,7 +242,7 @@
                                 <div class="row">
                                     <!-- photo de profil -->
                                     <div class="col-4">
-                                        <img src="{{f.imageUser.nameImage}}" style="width: 100%">
+                                        <img class="photo_conversation" src="{{f.imageUser.nameImage}}" style="width: 100%">
                                     </div>
                                     <!-- nom user -->
                                     <div class="col-6">
@@ -265,7 +265,7 @@
                                 <div class="row">
                                     <!-- photo de profil -->
                                     <div class="col-4">
-                                        <img src="{{f.imageUser.nameImage}}" style="width: 100%">
+                                        <img class="photo_conversation" src="{{f.imageUser.nameImage}}" style="width: 100%">
                                     </div>
                                     <!-- nom user -->
                                     <div class="col-6">
@@ -297,7 +297,7 @@
                                 <div class="row">
                                     <!-- photo de profil -->
                                     <div class="col-4">
-                                        <img src="{{f.imageUser.nameImage}}" style="width: 100%">
+                                        <img class="photo_conversation" src="{{f.imageUser.nameImage}}" style="width: 100%">
                                     </div>
                                     <!-- nom user -->
                                     <div class="col-6">

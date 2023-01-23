@@ -83,3 +83,15 @@ input-group-btn {
   #just-line-break {
     white-space: pre-line;
   }
+
+/*  Photo profil */
+
+.photo_conversation {
+    background-size: contain;
+    background-position: 50% 50%;
+    display: inline-block;
+    border: none;
+    -moz-border-radius: 75px;
+    -webkit-border-radius: 75px;
+    border-radius: 75px;
+}
