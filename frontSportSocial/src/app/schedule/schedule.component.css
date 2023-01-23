@@ -66,8 +66,11 @@ input-group-btn {
 /* Dark Mode CSS */
 
 .toggled {
-    color: rgb(255, 255, 255);
     background: rgb(42, 42, 42) ;
+  }
+
+  .toggled #schedule{
+    color: white !important;
   }
   
   .toggled .card-header {
@@ -103,5 +106,9 @@ input-group-btn {
     background-color: rgb(56, 57, 97)!important;
     color: white;
   }
-  
 
+  
+  .toggled #body {
+    background-color: peachpuff !important;
+    color: black !important;
+}
