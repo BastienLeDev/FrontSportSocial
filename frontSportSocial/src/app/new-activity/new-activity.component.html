@@ -32,6 +32,11 @@
                     required>
             </div>
             <div class="md-form">
+                <label>Activité visible par vos amis </label>
+                <br><br>
+                <mat-slide-toggle name="publicActivity" [(ngModel)]="isChecked" ></mat-slide-toggle>
+            </div>
+            <div class="md-form">
                 <div class="row">
                     <div class="col-6">
                         <span class="input-group-btn" style="width:39px">
@@ -65,6 +70,11 @@
             <div class="md-form">
                 <input placeholder="Description" name="descActivity" [(ngModel)]="descActivity" type="text" class="form-control"
                     required>
+            </div>
+            <div class="md-form">
+                <label>Activité visible par vos amis </label>
+                <br><br>
+                <mat-slide-toggle name="publicActivity" [(ngModel)]="isChecked" ></mat-slide-toggle>
             </div>
             <div class="md-form">
                 <div class="row">

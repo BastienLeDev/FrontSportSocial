@@ -11,41 +11,69 @@ import { AuthService } from '../services/auth.service';
 })
 export class NewActivityComponent {
 
-  constructor(private http: HttpClient, private route: Router, public dialogRef: MatDialogRef<NewActivityComponent>, public authService: AuthService ) { }
+  constructor(private http: HttpClient, private route: Router, public dialogRef: MatDialogRef<NewActivityComponent>, public authService: AuthService) { }
 
   sports: any;
-  nameActivity : any = localStorage.getItem('nameActivity');
-  dateEnd : any = localStorage.getItem('dateEnd');
-  dateStart : any =  localStorage.getItem('dateStart');
-  descActivity : any = localStorage.getItem('descActivity');
-  id : any = localStorage.getItem('idActivity');
-  modify : boolean = true ;
+  nameActivity: any = localStorage.getItem('nameActivity');
+  dateEnd: any = localStorage.getItem('dateEnd');
+  dateStart: any = localStorage.getItem('dateStart');
+  descActivity: any = localStorage.getItem('descActivity');
+  id: any = localStorage.getItem('idActivity');
+  modify: boolean = true;
+  isChecked = true;
 
 
   ngOnInit(): void {
     this.listSport();
-    
+
   }
 
   createActivity(val: any) {
-    this.http.post('http://localhost:8300/schedule/' + this.authService.getUserConnect().idUser, val).subscribe({
-      next: (data) => {
-      },
-      error: (err) => { console.log(err) },
-    });
+    if (this.isChecked == true) {
+      val.publicActivity = true;
+      this.http.post('http://localhost:8300/schedule/' + this.authService.getUserConnect().idUser, val).subscribe({
+        next: (data) => {
+        },
+        error: (err) => { console.log(err) },
+      });
+    }
+    if (this.isChecked == false) {
+      val.publicActivity = false;
+      this.http.post('http://localhost:8300/schedule/' + this.authService.getUserConnect().idUser, val).subscribe({
+        next: (data) => {
+        },
+        error: (err) => { console.log(err) },
+      });
+    }
   }
 
   modifyActivity(val: any) {
-    this.http.post('http://localhost:8300/schedule/modify/' + this.authService.getUserConnect().idUser + '/' + this.id, val).subscribe({
-      next: (data) => {
-        localStorage.removeItem('dateEnd');
-        localStorage.removeItem('dateStart');
-        localStorage.removeItem('descActivity');
-        localStorage.removeItem('nameActivity');
-        localStorage.removeItem('idActivity');
-      },
-      error: (err) => { console.log(err) },
-    });
+    if (this.isChecked == true) {
+      val.publicActivity = true;
+      this.http.post('http://localhost:8300/schedule/modify/' + this.authService.getUserConnect().idUser + '/' + this.id, val).subscribe({
+        next: (data) => {
+          localStorage.removeItem('dateEnd');
+          localStorage.removeItem('dateStart');
+          localStorage.removeItem('descActivity');
+          localStorage.removeItem('nameActivity');
+          localStorage.removeItem('idActivity');
+        },
+        error: (err) => { console.log(err) },
+      });
+    }
+    if (this.isChecked == false) {
+      val.publicActivity = false;
+      this.http.post('http://localhost:8300/schedule/modify/' + this.authService.getUserConnect().idUser + '/' + this.id, val).subscribe({
+        next: (data) => {
+          localStorage.removeItem('dateEnd');
+          localStorage.removeItem('dateStart');
+          localStorage.removeItem('descActivity');
+          localStorage.removeItem('nameActivity');
+          localStorage.removeItem('idActivity');
+        },
+        error: (err) => { console.log(err) },
+      });
+    }
   }
 
 

@@ -159,7 +159,7 @@
                                 </div>
                             </div>
                             <div *ngFor="let a of listFriendActivity ">
-                                <div *ngIf="listFriendActivity.length!=0">
+                                <div *ngIf="listFriendActivity.length!=0 && a.activity.publicActivity == true">
                                     <div *ngIf="a.activity !== undefined" class="card p-3 m-3 col-11"
                                         [class.toggled]="classToggled">
 
