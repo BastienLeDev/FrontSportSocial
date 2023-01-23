@@ -269,6 +269,15 @@ filterFriendsActivity(val: any) {
   
 }
 
+filterFriendsEvent(val: any) {
+  this.filterFriendEvent = val;
+  this.http.get('http://localhost:8300/event/friends/search/' + this.authService.getUserConnect().idUser + '/' + val ).subscribe({
+    next: (data) => {
+      this.eventsFriends = data;
+    }
+  })
+}
+
 openModifyActivity(val: any) {
   this.localId = val.activity;
   console.log(this.localId);

@@ -307,9 +307,9 @@
                             <div class="container" *ngIf="visibleFriendEvent">
                                 <div id="search-card" [class.toggled]="classToggled" style="background-color: transparent;">
                                     <div id="content">
-                                        <form class='form-inline'>
+                                        <form EventF="ngForm"  (ngSubmit)="filterFriendsEvent(EventF.value)">
                                             <div class="input-group">
-                                                <input type='text' id='search' class="form-control search-form"
+                                                <input ngModel="" #EventF name="EventF" type='text' id='search' class="form-control search-form"
                                                     placeholder="Rechercher...">
                                                 <span class="input-group-btn" style="width:39px">
                                                     <button id="search-this" type="button" class="pull-right btn search-btn">
