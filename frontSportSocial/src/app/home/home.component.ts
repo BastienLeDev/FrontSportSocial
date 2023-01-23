@@ -40,10 +40,16 @@ export class HomeComponent implements OnInit {
   visibleInformation = true;
   visibleFriendActivity = false;
   visibleFriendEvent = false;
+  visibleSearchActivity = true;
+  visibleSearchEvent = false;
   localId : any;
   sports : any;
   dateNow = new Date;
   idActivity : any;
+  filterActivity : any;
+  filterEvent : any;
+  filterFriendActivity : any;
+  filterFriendEvent : any;
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private appComponent : AppComponent, public dark : DarkThemeService,  iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private dialog: MatDialog) {
     iconRegistry.addSvgIconLiteral('information', sanitizer.bypassSecurityTrustHtml(information));
@@ -206,6 +212,35 @@ searchFriendEvent(){
   } else {
     this.visibleFriendEvent = false;
   }
+}
+
+searchActivity(){
+    this.visibleSearchActivity = true;
+    this.visibleSearchEvent = false;
+  
+}
+
+searchEvent(){
+    this.visibleSearchEvent = true;
+    this.visibleSearchActivity = false;
+}
+
+FilterActivity(val: any) {
+  this.filterActivity = val;
+  this.http.get('http://localhost:8300/activity/search/' + this.authService.getUserConnect().idUser + '/' + val ).subscribe({
+    next: (data) => {
+      this.activite = data;
+    }
+  })
+}
+
+FilterEvent(val: any) {
+  this.filterEvent = val;
+  this.http.get('http://localhost:8300/event/search/' + this.authService.getUserConnect().idUser + '/' + val ).subscribe({
+    next: (data) => {
+      this.myEvents = data;
+    }
+  })
 }
 
 openModifyActivity(val: any) {

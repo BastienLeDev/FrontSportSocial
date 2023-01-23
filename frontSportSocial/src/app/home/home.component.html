@@ -71,12 +71,29 @@
             <ul style="list-style: none;">
                 <li>
                     <!--Search bar : centrée, avec bouton "search" à droite-->
-                    <div class="container">
+                    <div class="container" *ngIf="visibleSearchActivity">
                         <div id="search-card" [class.toggled]="classToggled" style="background-color: transparent;">
                             <div id="content">
-                                <form class='form-inline'>
+                                <form Activity="ngForm"  (ngSubmit)="FilterActivity(Activity.value)">
                                     <div class="input-group">
-                                        <input type='text' id='search' class="form-control search-form"
+                                        <input ngModel="" #Activity name="Activity" type='text' id='search' class="form-control search-form"
+                                            placeholder="Rechercher...">
+                                        <span class="input-group-btn" style="width:39px">
+                                            <button id="search-this" type="button" class="pull-right btn search-btn">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container" *ngIf="visibleSearchEvent">
+                        <div id="search-card" [class.toggled]="classToggled" style="background-color: transparent;">
+                            <div id="content">
+                                <form Event="ngForm"  (ngSubmit)="FilterEvent(Event.value)">
+                                    <div class="input-group">
+                                        <input ngModel="" #Event name="Event" type='text' id='search' class="form-control search-form"
                                             placeholder="Rechercher...">
                                         <span class="input-group-btn" style="width:39px">
                                             <button id="search-this" type="button" class="pull-right btn search-btn">
@@ -90,8 +107,8 @@
                     </div>
                 </li>
                 <li style="margin : 5px; background-color: transparent;" [class.toggled]="classToggled">
-                    <button id="feedbtn" mat-button (click)="seeActivity()">Activités</button>
-                    <button id="feedbtn" mat-button (click)="seeEvent()"
+                    <button id="feedbtn" mat-button (click)="searchActivity()" (click)="seeActivity()">Activités</button>
+                    <button id="feedbtn" mat-button (click)="searchEvent()" (click)="seeEvent()"
                         style="float: right ; margin-right: 20px;">Evènements</button>
                 </li>
                 <div>
