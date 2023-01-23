@@ -3,7 +3,7 @@
         <div class="col-12 p-4">
             <div id="schedule" class="card p-3 m-3" [class.toggled]="classToggled">
                 <div class="md-form">
-                    <div class="row text-center" >
+                    <div class="row text-center" id="schedule" [class.toggled]="classToggled" >
                         <h1>Calendrier</h1>
                     </div>
                     <div class="row">
@@ -33,7 +33,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-md-2" id="schedule" [class.toggled]="classToggled">
                         <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
                     </div>
 
@@ -57,7 +57,7 @@
 
                 </div>
 
-                <div [ngSwitch]="view" [class.toggled]="classToggled">
+                <div [ngSwitch]="view" [class.toggled]="classToggled" class="view">
 
                     <mwl-calendar-month-view (dayClicked)="dayClicked($event.day)" *ngSwitchCase="CalendarView.Month"
                         [viewDate]="viewDate" [events]="events" [class.toggled]="classToggled">
