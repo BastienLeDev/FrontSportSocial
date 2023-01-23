@@ -3,8 +3,8 @@
         <div class="col-12 p-4">
             <div id="schedule" class="card p-3 m-3" [class.toggled]="classToggled">
                 <div class="md-form">
-                    <div>
-                        <h3>Calendrier</h3>
+                    <div class="row text-center" >
+                        <h1>Calendrier</h1>
                     </div>
                     <div class="row">
                         <div class="col-12" style="margin-top: 20px;" [class.toggled]="classToggled">
@@ -18,15 +18,15 @@
 
                     <div class="col-md-6">
                         <div class="btn-group">
-                            <div class="btn btnPrincipal btn-block " mwlCalendarPreviousView [view]="view"
+                            <div id="feedbtn" class="btn btnPrincipal btn-block " mwlCalendarPreviousView [view]="view"
                                 [(viewDate)]="viewDate" style="height: 50px; font-size: 60%;">
                                 Précédent
                             </div>
-                            <div class="btn btnPrincipal btn-block " mwlCalendarToday [(viewDate)]="viewDate"
+                            <div id="feedbtn" class="btn btnPrincipal btn-block " mwlCalendarToday [(viewDate)]="viewDate"
                                 style="height: 50px; font-size: 60%;">
                                 Aujourd'hui
                             </div>
-                            <div class="btn btnPrincipal btn-block " mwlCalendarNextView [view]="view"
+                            <div id="feedbtn" class="btn btnPrincipal btn-block " mwlCalendarNextView [view]="view"
                                 [(viewDate)]="viewDate" style="height: 50px;  font-size: 60%;">
                                 Suivant
                             </div>
@@ -39,15 +39,15 @@
 
                     <div class="col-md-4">
                         <div class="btn-group">
-                            <div class="btn btnPrincipal btn-block " (click)="setView(CalendarView.Month)"
+                            <div id="feedbtn" class="btn btnPrincipal btn-block " (click)="setView(CalendarView.Month)"
                                 [class.active]="view === CalendarView.Month" style="height: 50px;  font-size: 60%;">
                                 Mois
                             </div>
-                            <div class="btn btnPrincipal btn-block " (click)="setView(CalendarView.Week)"
+                            <div id="feedbtn" class="btn btnPrincipal btn-block " (click)="setView(CalendarView.Week)"
                                 [class.active]="view === CalendarView.Week" style="height: 50px;  font-size: 60%;">
                                 Semaine
                             </div>
-                            <div class="btn btnPrincipal btn-block " (click)="setView(CalendarView.Day)"
+                            <div id="feedbtn" class="btn btnPrincipal btn-block " (click)="setView(CalendarView.Day)"
                                 [class.active]="view === CalendarView.Day" style="height: 50px;  font-size: 60%;">
                                 Jour
                             </div>

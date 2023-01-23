@@ -243,6 +243,32 @@ FilterEvent(val: any) {
   })
 }
 
+filterFriendsActivity(val: any) {
+  this.filterActivity = val;
+  this.listFriendActivity = []
+  this.http.get('http://localhost:8300/friend/receiver/' + this.authService.getUserConnect().idUser).subscribe({
+    next: (data) => { this.friends = data 
+      console.log(this.friends);
+      for (let index in this.friends) {
+      this.http.get('http://localhost:8300/activity/search/' + this.friends[index].idUser + '/' + val ).subscribe({
+        next: (data) => { 
+          this.activiteFriend = "";
+          this.activiteFriend = data, 
+          console.log(this.activiteFriend);
+          for (let index in this.activiteFriend) {
+          this.listFriendActivity.push(this.activiteFriend[index])}
+           },
+        error: (err) => { console.log(err); }
+      });
+    }
+    },
+    error: (err) => { console.log(err); }
+
+  });
+  console.log(this.listFriendActivity);
+  
+}
+
 openModifyActivity(val: any) {
   this.localId = val.activity;
   console.log(this.localId);
