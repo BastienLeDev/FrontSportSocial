@@ -41,6 +41,13 @@
     border-radius: 50%;
   }
 
+  .photo_profil {
+    float: left;
+    max-height: 80px;
+    max-width: 80px;
+    border: none;
+  }
+
 
 
   /* CSS du scroll */
