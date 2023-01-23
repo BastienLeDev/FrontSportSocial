@@ -241,7 +241,7 @@
                         <div *ngIf="visibleEvent">
                             <h4>Mes événements</h4>
                             <div *ngIf="myEvents.length==0">
-                                <div class="card p-3 m-3 col-11">
+                                <div class="card p-3 m-3 col-11" [class.toggled]="classToggled">
                                     <p>Aucun évènement</p>
                                 </div>
                             </div>
@@ -296,6 +296,12 @@
                                                             <p>Fin : {{me.dateEnd | date: 'd MMM y H:mm'}}</p>
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <button *ngIf="!me.pastDate" (click)="removeUserFromEvent(me)" style="width : 50%; font-size: 50%;" id="feedbtn"
+                                                    mat-button>Se désister</button>
+                                                    <button *ngIf="me.pastDate" (click)="removeUserFromEvent(me)" style="width : 50%; font-size: 50%;" id="feedbtn"
+                                                    mat-button>Supprimer</button>
                                                 </div>
                                             </div>
                                         </div>

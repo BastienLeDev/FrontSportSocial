@@ -50,6 +50,7 @@ export class HomeComponent implements OnInit {
   filterEvent : any;
   filterFriendActivity : any;
   filterFriendEvent : any;
+  idEvent : any;
 
   constructor(private http: HttpClient, public authService: AuthService, private route: Router, private appComponent : AppComponent, public dark : DarkThemeService,  iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private dialog: MatDialog) {
     iconRegistry.addSvgIconLiteral('information', sanitizer.bypassSecurityTrustHtml(information));
@@ -316,6 +317,17 @@ DeleteActivity(val : any){
     },
     error: (err) => { console.log(err); }
   });
+}
+
+removeUserFromEvent(val : any) {
+  this.idEvent = val;
+  this.http.patch('http://localhost:8300/event/desister/' + this.authService.getUserConnect().idUser + '/' + this.idEvent.idEvent, null).subscribe({
+    next: (data) => {
+      this.ngOnInit();
+    },
+    error: (err) => { console.log(err) },
+  });
+
 }
 
 }
