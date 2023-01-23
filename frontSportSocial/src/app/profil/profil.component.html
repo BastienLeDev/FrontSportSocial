@@ -124,24 +124,28 @@
                                     <p>Fin : {{a.activity.dateEnd | date: 'd MMM y H:mm'}}</p>
                                 </div>
                             </div>
-                   
+
                         </div>
                         <h4>Notifications</h4>
-                        <div class="card p-3 m-3 col-11" *ngFor="let e of exchange"  [class.toggled]="classToggled">
-                            <div class="row">
-                                <div class="col-12 justify-content-center" *ngIf="exchange.length==0">
-                                    <p>Vous n'avez pas reçu de Tokens</p>
-                                </div>
+                        <div class="card p-3 m-3 col-11" *ngIf="exchange.length==0" [class.toggled]="classToggled">
+
+                            <div class="col-12 justify-content-center">
+                                <p>Vous n'avez pas reçu de Tokens</p>
                             </div>
-                            <div class="row">
-                                <div class="col-12" *ngIf="exchange.length!=0" >
-                                    <div class="row" *ngIf="exchange.length!=0">
-                                        {{e.notification}}
+                        </div>
+                        <div *ngIf="exchange.length!=0" [class.toggled]="classToggled">
+                            <div class="card p-3 m-3 col-11" *ngFor="let e of exchange">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <p class="photo_profil col-3"><img src="{{e.applicant.imageUser.nameImage}}"
+                                                alt="">
+                                        </p>
+                                        <p class="col-9" style="align-items: center;">{{e.notification}}</p>
                                     </div>
                                 </div>
 
                             </div>
-                   
+
                         </div>
 
 
