@@ -86,7 +86,9 @@
                                 </div>
                                 <div class="col-4" [class.toggled]="classToggled">
                                     <div class="text-center">
-                                        <button (click)="listComments(f.idPost)"> {{f.numberComments}}
+                                        <button *ngIf="f.numberComments!=0" (click)="listComments(f.idPost)"> {{f.numberComments}}
+                                            Commentaires</button>
+                                        <button *ngIf="f.numberComments==0"> {{f.numberComments}}
                                             Commentaires</button>
                                     </div>
 
@@ -128,6 +130,8 @@
                                             <div class="col-4">
                                                 <div *ngFor=" let lc of listLikeComment">
                                                     <div *ngIf="lc.idComment == c.idComment && !lc.boolLike" [class.toggled]="classToggled">
+                                                        {{lc.idComment}}
+                                                        {{c.idComment}}
                                                         <div class="text-center">
                                                             <button (click)="likeComment(c.idComment)">{{c.numberLikes}} J'aime</button>
                                                         </div>
@@ -142,11 +146,36 @@
                                             </div>
                                             <div class="col-4" [class.toggled]="classToggled">
                                                 <div class="text-center">
-                                                    <button (click)="listCommentsInComment(c.idComment)">{{c.numberComments}}
+                                                    <button *ngIf="c.numberComments !=0" (click)="listCommentsInComment(c.idComment)">{{c.numberComments}}
+                                                        Réponses</button>
+                                                    <button *ngIf="c.numberComments ==0">{{c.numberComments}}
                                                         Réponses</button>
                                                 </div>
 
                                             </div>
+                                            <!-- Zone de saisie de messages -->
+
+                            <div id="zone_saisie_message" class="card p-1" [class.toggled]="classToggled">
+                                <div class="container">
+                                    <div class="row">
+                                        <form #comment="ngForm"
+                                            (ngSubmit)="commentComment(comment.value.contentComment, c.idComment)">
+                                            <div class="col-10" [class.toggled]="classToggled">
+                                                <input id="message" class="form-control" [class.toggled]="classToggled"
+                                                    name="contentComment" ngModel="" type="text" class="form-control"
+                                                    placeholder="..." style="width: 600px; margin: 5px;" required
+                                                    class="form-control">
+                                            </div>
+                                            <div class="col-2">
+                                                <button [disabled]="!comment.form.valid" type="submit"
+                                                    class="button-30 " style="font-size: 60%;">Envoyer <i
+                                                        class="fas fa-envelope"
+                                                        style="color: rgb(0, 0, 0);"></i></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                                         </div>
                                         <div class=row *ngIf="c.idComment == idComCom">
                                             <div class="container" *ngFor="let d of commmentsComment">
@@ -176,8 +205,20 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-4">
-                                                            <div class="text-center">
-                                                                <button>{{d.numberLikes}} J'aime</button>
+                                                            <div *ngFor=" let lcc of listLikeCommentComment">
+                                                                {{lcc.idComment}}
+                                                        {{d.idComment}}
+                                                                <div *ngIf="lcc.idComment == d.idComment && !lcc.boolLike" [class.toggled]="classToggled">
+                                                                    <div class="text-center">
+                                                                        <button (click)="likeComment(d.idComment)">{{d.numberLikes}} J'aime</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div *ngIf="lcc.idComment == d.idComment && lcc.boolLike " [class.toggled]="classToggled">
+                                                                    <div class="text-center">
+                                                                        <button (click)="unlikeComment(d.idComment)">{{d.numberLikes}} Je n'aime
+                                                                            plus</button>
+                                                                    </div>
+                                                                </div>
                                                             </div>
 
                                                         </div>
@@ -186,9 +227,7 @@
                                                                 <button
                                                                     *ngIf="d.numberComments != 0" (click)="listCommentsInComment(d.idComment)">{{d.numberComments}}
                                                                     Réponses</button>
-                                                                    <button
-                                                                    *ngIf="d.numberComments == 0">{{d.numberComments}}
-                                                                    Réponses</button>
+                                                                <button *ngIf="d.numberComments == 0">{{d.numberComments}} Réponses</button>
                                                             </div>
 
                                                         </div>
