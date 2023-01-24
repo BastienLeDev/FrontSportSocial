@@ -116,11 +116,17 @@
                     <li id="feed" class="anyClass">
                         <div *ngIf="visibleActivity">
                             <h4>Mes activités</h4>
-                            <div *ngIf="activite.length==0">
+                            <div *ngIf="activite.length==0 && filterActivity !== 'hippo où es-tu ?'">
                                 <div class="card p-3 m-3 col-11" [class.toggled]="classToggled">
                                     <p>Aucune activité enregistrée </p>
                                     <button (click)="openCreateActivity()" style="width : 50%; font-size: 50%;"
                                         id="feedbtn" mat-button>Ajouter une activité </button>
+                                </div>
+                            </div>
+                            <div *ngIf="filterActivity == 'hippo où es-tu ?'" >
+                                <div class="card p-3 m-3 col-11" [class.toggled]="classToggled">
+                                    <p>Aucune activité enregistrée </p>
+                                    <i class="fas fa-hippo"></i>
                                 </div>
                             </div>
                             <div *ngIf="activite.length!=0">
