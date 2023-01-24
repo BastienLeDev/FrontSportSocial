@@ -47,13 +47,13 @@ export class ClubPageComponent implements OnInit {
   checkComment = false;
   boolLikeComment: any;
 
-  commentOpen = false;
 
   ngOnInit(): void {
     this.listFriendsInClub();
     this.listNonFriendsInClub();
     this.listAskedFriends();
     this.listPost();
+    this.listComments(this.idPostCom);
   }
 
   listFriendsInClub() {
@@ -140,7 +140,7 @@ export class ClubPageComponent implements OnInit {
 
   listComments(idComment: any) {
     this.idPostCom = idComment;
-    this.commentOpen = true;
+    console.log(this.idPostCom)
     this.http.get('http://localhost:8300/club/posts/comments/' + idComment).subscribe({
       next: (data) => {
         this.comments = data;
@@ -230,7 +230,7 @@ export class ClubPageComponent implements OnInit {
       next: (data) => {
         console.log(data);
         this.ngOnInit();
-        this.listComments(idComment);
+        
       },
       error: (err) => { console.log(err); }
     });
@@ -241,7 +241,6 @@ export class ClubPageComponent implements OnInit {
       next: (data) => {
         console.log(data);
         this.ngOnInit();
-        this.listComments(idComment);
       },
       error: (err) => { console.log(err); }
     });
