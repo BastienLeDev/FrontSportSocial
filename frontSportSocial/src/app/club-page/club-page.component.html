@@ -130,8 +130,6 @@
                                             <div class="col-4">
                                                 <div *ngFor=" let lc of listLikeComment">
                                                     <div *ngIf="lc.idComment == c.idComment && !lc.boolLike" [class.toggled]="classToggled">
-                                                        {{lc.idComment}}
-                                                        {{c.idComment}}
                                                         <div class="text-center">
                                                             <button (click)="likeComment(c.idComment)">{{c.numberLikes}} J'aime</button>
                                                         </div>
@@ -206,8 +204,6 @@
                                                     <div class="row">
                                                         <div class="col-4">
                                                             <div *ngFor=" let lcc of listLikeCommentComment">
-                                                                {{lcc.idComment}}
-                                                        {{d.idComment}}
                                                                 <div *ngIf="lcc.idComment == d.idComment && !lcc.boolLike" [class.toggled]="classToggled">
                                                                     <div class="text-center">
                                                                         <button (click)="likeComment(d.idComment)">{{d.numberLikes}} J'aime</button>
