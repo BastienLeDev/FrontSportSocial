@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../services/auth.service';
+import { DarkThemeService } from '../services/dark-theme.service';
 
 @Component({
   selector: 'app-new-club',
@@ -10,9 +11,10 @@ import { AuthService } from '../services/auth.service';
 })
 export class NewClubComponent implements OnInit {
 
-  constructor(private http: HttpClient, public authService: AuthService, public dialogRef: MatDialogRef<NewClubComponent>) { }
+  constructor(private http: HttpClient, public authService: AuthService, public dialogRef: MatDialogRef<NewClubComponent>, public dark: DarkThemeService) { }
 
   sports: any;
+  classToggled = this.dark.classToggled;
 
   ngOnInit(): void {
     this.listSport();

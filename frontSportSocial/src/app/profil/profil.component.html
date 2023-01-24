@@ -88,9 +88,9 @@
                     <div class="container" [class.toggled]="classToggled" style="background-color: transparent;">
 
                         <div id="content" id="search-card">
-                            <form class='form-inline'>
+                            <form Activity="ngForm"  (ngSubmit)="FilterActivity(Activity.value)">
                                 <div class="input-group">
-                                    <input type='text' id='search' class="form-control search-form"
+                                    <input ngModel="" #Activity name="Activity" type='text' id='search' class="form-control search-form"
                                         placeholder="Rechercher...">
                                     <span class="input-group-btn" style="width:39px">
                                         <button id="search-this" type="button" class="pull-right btn search-btn">

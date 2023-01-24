@@ -64,6 +64,12 @@
     transform: translateY(2px);
 }
 
+.toggled #feedbtn{
+    background-color: rgb(87, 90, 159)!important;
+    
+  }
+  
+
 /* CSS de la bare de recherche
 */
 
@@ -173,3 +179,15 @@ input-group-btn {
     box-shadow: #D6D6E7 0 3px 7px inset;
     transform: translateY(2px);
 }
+
+#feedbtn{
+    background-color: #FFC288 ;
+    color: white;
+  }
+  
+  #feedbtn-active{
+    background-color: #643f1d ;
+    color: white;
+  }
+
+

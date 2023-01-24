@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CoachService } from '../services/coach.service';
 import { HttpClient } from '@angular/common/http';
+import { DarkThemeService } from '../services/dark-theme.service';
 
 @Component({
   selector: 'app-pop-up-coach',
@@ -9,13 +10,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PopUpCoachComponent implements OnInit {
 
-  constructor(private CoachService: CoachService, private http: HttpClient) { };
+  constructor(private CoachService: CoachService, private http: HttpClient, public dark: DarkThemeService) { };
 
   coach = this.CoachService.getCoachToSee();
   coachSport: any;
   allCoach: any;
   imageSport: any = [];
   sports: any = [];
+  classToggled = this.dark.classToggled;
 
   ngOnInit(): void {
     this.getUserSport(this.coach.idUser)
