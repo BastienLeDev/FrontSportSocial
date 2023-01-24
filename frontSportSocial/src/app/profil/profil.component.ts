@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { PopUpProfilComponent } from '../pop-up-profil/pop-up-profil.component';
@@ -35,6 +35,9 @@ export class ProfilComponent implements OnInit {
   classToggled = this.dark.classToggled;
   filterActivity : any;
   training : any;
+  idTraining : any;
+  visibleAddTraining = false;
+  sports : any;
 
   constructor(public authService: AuthService, private route: Router, private dialog: MatDialog, private http: HttpClient, private appComponent: AppComponent, public dark: DarkThemeService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIconLiteral('Option', sanitizer.bypassSecurityTrustHtml(Option))
@@ -54,6 +57,7 @@ export class ProfilComponent implements OnInit {
     this.listActivite();
     this.showExchange();
     this.myTraining();
+    this.listSport();
   }
 
   showHideMemos() {
@@ -152,10 +156,48 @@ export class ProfilComponent implements OnInit {
     this.http.get('http://localhost:8300/training/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.training = data;
-        console.log(this.training);
-        
       },
       error: (err) => { console.log(err) }
+    })
+  }
+
+  deleteTraining(val :any){
+    this.idTraining = val;
+    this.http.delete('http://localhost:8300/training/delete/' + this.idTraining.idTraining).subscribe({
+      next: (data) => { this.ngOnInit();},
+      error: (err) => { console.log(err) }
+    })
+
+  }
+
+  visibleAddTrainingFonction(){
+    if(this.visibleAddTraining == true){
+    this.visibleAddTraining = false;
+  }
+  if(this.visibleAddTraining == false){
+    this.visibleAddTraining = true;
+  }
+
+  }
+
+  listSport() {
+    this.http.get('http://localhost:8300/sport').subscribe({
+      next: (data) => {
+        this.sports = data;
+        console.log(this.sports)
+      },
+      error: (err) => { console.log(err); }
+    });
+  }
+
+  createTraining(val: any) {
+    this.http.post('http://localhost:8300/training/add/' + this.authService.getUserConnect().idUser, val).subscribe({
+      next: (data) => {
+        this.ngOnInit();
+        val.reset();
+      },
+      error: (err) => { console.log(err) },
+
     })
   }
 

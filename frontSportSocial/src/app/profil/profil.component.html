@@ -194,9 +194,34 @@
                 <div id="training" [class.toggled]="classToggled">
 
                     <div>
-                        <button type="submit" class="btn btnPrincipal btn-block btn-sm"
-                            style="margin : 3px; width :40%">Ajouter <i class="fas fa-plus"></i></button>
-
+                        <button type="submit" (click)="visibleAddTrainingFonction()" class="btn btnPrincipal btn-block btn-sm"
+                            style="margin : 3px; width :40%">Ajouter </button>
+                    </div>
+                    <div *ngIf="visibleAddTraining" [class.toggled]="classToggled">
+                        <form #infosTraining="ngForm" (ngSubmit)="createTraining(infosTraining.value)">
+                            <div class="card p-3" [class.toggled]="classToggled" style="border: none; box-shadow: none;">
+                                <div class="md-form">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>
+                                            Sport :
+                                        </mat-label>
+                                        <mat-select class="" name="trainingSport" ngModel="" required>
+                                            <mat-option [value]="s" *ngFor="let s of sports">
+                                                {{s.nameSport}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <label>Entrainement</label>
+                                <div class="md-form" [class.toggled]="classToggled">
+                                    <input  id="newMemo" name="memo" ngModel="" class="form-control">
+                                </div>
+                                <div >
+                                    <button>
+                                        <i class="fas fa-plus" style="color: black ; "></i></button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
 
                     <div *ngIf="training.length !=0" id="inside-card" class="card p-2 m-2" [class.toggled]="classToggled">
@@ -219,6 +244,12 @@
                         <mat-icon style=" font-size: 0.73em;"
                             *ngIf="t.trainingSport.nameSport == 'Basketball' "
                             svgIcon="basket" aria-hidden="false"></mat-icon>
+                                <button style="left : 150px;" mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                    <mat-icon>more_vert</mat-icon>
+                                </button>
+                                <mat-menu #menu="matMenu" xPosition="before">
+                                    <button mat-menu-item (click)="deleteTraining(t)">Supprimer</button>
+                                </mat-menu>
                             <p>{{t.memo}}</p>
                         </div>
 

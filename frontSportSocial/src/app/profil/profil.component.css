@@ -180,3 +180,7 @@
     background-color: rgb(56, 57, 97) !important;
     color: white;
   }
+
+  .toggled #newMemo{
+    color : white;
+  }
