@@ -199,18 +199,33 @@
 
                     </div>
 
-                    <div *ngIf="visibleMemos" id="inside-card" class="card p-2 m-2" [class.toggled]="classToggled">
+                    <div *ngIf="training.length !=0" id="inside-card" class="card p-2 m-2" [class.toggled]="classToggled">
 
-                        <div [class.toggled]="classToggled">
-                            <div>
-                                <button (click)="showHideMemos()" type="submit" class="btn btn-danger btn-block btn-sm"
-                                    style="font-size: 60%; width: 10%; margin : 3px;">x </button>
-                            </div>
-                            <b>Course à pied : </b>
-                            <p>S'échauffer pendant 10 mins puis courrir 10km </p>
-
+                        <div *ngFor="let t of training" [class.toggled]="classToggled">
+                            <b>{{t.trainingSport.nameSport}}</b>
+                            <i *ngIf="t.trainingSport.nameSport == 'Football' "
+                            class="fas fa-futbol"></i>
+                        <i *ngIf="t.trainingSport.nameSport == 'Escalade' "
+                            class="fas fa-mountain"></i>
+                        <mat-icon style=" font-size: 0.73em;"
+                            *ngIf="t.trainingSport.nameSport == 'Rugby'" svgIcon="rugby"
+                            aria-hidden="false"></mat-icon>
+                        <mat-icon style=" font-size: 0.73em;"
+                            *ngIf="t.trainingSport.nameSport == 'Course à pied' "
+                            svgIcon="running" aria-hidden="false"></mat-icon>
+                        <mat-icon style=" font-size: 0.73em;"
+                            *ngIf="t.trainingSport.nameSport == 'Natation' " svgIcon="swim"
+                            aria-hidden="false"></mat-icon>
+                        <mat-icon style=" font-size: 0.73em;"
+                            *ngIf="t.trainingSport.nameSport == 'Basketball' "
+                            svgIcon="basket" aria-hidden="false"></mat-icon>
+                            <p>{{t.memo}}</p>
                         </div>
 
+
+                    </div>
+                    <div *ngIf="training.length ==0" id="inside-card" class="card p-2 m-2" [class.toggled]="classToggled">
+                        <p>Aucun entrainement enregistré</p>
 
                     </div>
                 </div>
