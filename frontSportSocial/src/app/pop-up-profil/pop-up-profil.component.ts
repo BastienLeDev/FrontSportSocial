@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
+import { DarkThemeService } from '../services/dark-theme.service';
 
 @Component({
   selector: 'app-pop-up-profil',
@@ -11,11 +12,12 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class PopUpProfilComponent {
 
-  constructor(private http: HttpClient, private route: Router, public authService: AuthService, private dialog: MatDialog) { }
+  constructor(private http: HttpClient, private route: Router, public authService: AuthService, private dialog: MatDialog, public dark: DarkThemeService) { }
 
   user: any;
   isChecked = true;
   errorMsg = "";
+  classToggled = this.dark.classToggled;
 
   modifInfosUser(val: any) {
     if(val.lastNameUser != '' && val.firstNameUser != '' && val.birthDateUser != '' && val.loginUser != ''){

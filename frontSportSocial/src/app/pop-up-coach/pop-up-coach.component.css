@@ -30,17 +30,16 @@ h4 {
   color: white;
 }
 
-.toggled {
-  color: rgb(255, 255, 255);
-  background: rgb(42, 42, 42);
+#card_data {
+  margin: 25px !important;
+  border: none;
 }
+
+
+/* Dark Mode CSS */
+
 
 .toggled .card-header {
-  background-color: rgb(136, 142, 183);
-  color: black;
-}
-
-.toggled #card-header {
   background-color: rgb(136, 142, 183);
   color: black;
 }
@@ -72,4 +71,9 @@ h4 {
 .toggled #feedbtn-active {
   background-color: rgb(56, 57, 97) !important;
   color: white;
+}
+
+.toggled #card_data {
+  background: rgb(42, 42, 42) !important;
+  color: white !important;
 }

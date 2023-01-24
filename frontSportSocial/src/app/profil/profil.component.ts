@@ -27,6 +27,7 @@ export class ProfilComponent implements OnInit {
   visibleMemos = true;
   exchange: any;
   classToggled = this.dark.classToggled;
+  filterActivity : any;
 
   constructor(public authService: AuthService, private route: Router, private dialog: MatDialog, private http: HttpClient, private appComponent: AppComponent, public dark: DarkThemeService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIconLiteral('Option', sanitizer.bypassSecurityTrustHtml(Option));
@@ -123,4 +124,14 @@ export class ProfilComponent implements OnInit {
       error: (err) => { console.log(err) }
     });
   }
+
+  FilterActivity(val: any) {
+    this.filterActivity = val;
+    this.http.get('http://localhost:8300/activity/search/' + this.authService.getUserConnect().idUser + '/' + val ).subscribe({
+      next: (data) => {
+        this.activite = data;
+      }
+    })
+  }
+
 }

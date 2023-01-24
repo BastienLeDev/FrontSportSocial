@@ -1,8 +1,7 @@
-<body [class.toggled]="classToggled">
-
+<div [class.toggled]="classToggled">
     <div class="row">
         <div class="col-3 p-4">
-            <div class="card p-1 m-1">
+            <div class="card p-0 m-0" id="card_data">
                 <div class="card-header">
                     <h3 class="text-center">Photo de profil </h3>
                 </div>
@@ -10,7 +9,7 @@
                     <img src="{{coach.imageUser.nameImage}}">
                 </div>
             </div>
-            <div class="card p-1 m-1">
+            <div class="card p-0 m-0" id="card_data">
                 <div class="card-header">
                     <h3 class="text-center">Données personnelles</h3>
                 </div>
@@ -29,7 +28,7 @@
 
             </div>
         </div>
-        <div class="card col-9 p-1 m-4">
+        <div class="card col-9 p-0 m-0" id="card_data">
             <div class="card-header p-3">
                 <h1 class="text-center">Profil de {{coach.loginUser}}</h1>
             </div>
@@ -53,22 +52,23 @@
         </div>
     </div>
     <div class="row">
-        <div class="card m-3" style="width: 950px;">
-            <div class="card-header m-1">
-                <p class="text-center"> Score <i class="fas fa-crown" style="color: yellow;"></i></p>
-            </div>
+        <div class="col-12 p-4">
+            <div class="card p-0 m-0" id="card_data" style="width: auto;">
+                <div class="card-header ">
+                    <p class="text-center"> Score <i class="fas fa-crown" style="color: yellow;"></i></p>
+                </div>
 
-            <div class="row">
-                <div class="col-3 m-1" *ngFor="let sc of allCoach">
-                    <div class="card p-1">
-                        <div class="card-header m-1">
-                            <p class="text-center">{{sc.sport.nameSport}}</p>
+                <div>
+                    <div class="col-3 " *ngFor="let sc of allCoach">
+                        <div class="card p-0 m-0" id="card_data">
+                            <div class="card-header ">
+                                <p class="text-center">{{sc.sport.nameSport}}</p>
+                            </div>
+                            <p>Score : {{sc.score}}</p>
                         </div>
-                        <p>Score : {{sc.score}}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-</body>
+</div>

@@ -14,7 +14,7 @@ import { DarkThemeService } from '../services/dark-theme.service';
 
 
 export class PopUpInventaireComponent implements OnInit {
-  constructor(private http: HttpClient, private route: Router, public dark: DarkThemeService, public authService: AuthService, private dialog: MatDialog) { }
+  constructor(private http: HttpClient, private route: Router, public authService: AuthService, private dialog: MatDialog, public dark: DarkThemeService) { }
 
   images: any;
   changement: any;

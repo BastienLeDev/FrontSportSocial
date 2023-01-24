@@ -10,7 +10,7 @@ import { DarkThemeService } from '../services/dark-theme.service';
 })
 export class PopUpCoachComponent implements OnInit {
 
-  constructor(private CoachService: CoachService, public dark: DarkThemeService, private http: HttpClient) { };
+  constructor(private CoachService: CoachService, private http: HttpClient, public dark: DarkThemeService) { };
 
   coach = this.CoachService.getCoachToSee();
   coachSport: any;
