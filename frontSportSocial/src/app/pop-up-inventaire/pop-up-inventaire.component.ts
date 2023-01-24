@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
+import { DarkThemeService } from '../services/dark-theme.service';
 
 @Component({
   selector: 'app-pop-up-inventaire',
@@ -13,10 +14,11 @@ import { HttpClient } from '@angular/common/http';
 
 
 export class PopUpInventaireComponent implements OnInit {
-  constructor(private http: HttpClient, private route: Router, public authService: AuthService, private dialog: MatDialog) { }
+  constructor(private http: HttpClient, private route: Router, public authService: AuthService, private dialog: MatDialog, public dark: DarkThemeService) { }
 
   images: any;
   changement: any;
+  classToggled = this.dark.classToggled;
 
   ngOnInit() {
     this.getInventaire()
