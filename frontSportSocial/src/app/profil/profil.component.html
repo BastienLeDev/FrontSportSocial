@@ -88,10 +88,10 @@
                     <div class="container" [class.toggled]="classToggled" style="background-color: transparent;">
 
                         <div id="content" id="search-card">
-                            <form Activity="ngForm"  (ngSubmit)="FilterActivity(Activity.value)">
+                            <form Activity="ngForm" (ngSubmit)="FilterActivity(Activity.value)">
                                 <div class="input-group">
-                                    <input ngModel="" #Activity name="Activity" type='text' id='search' class="form-control search-form"
-                                        placeholder="Rechercher...">
+                                    <input ngModel="" #Activity name="Activity" type='text' id='search'
+                                        class="form-control search-form" placeholder="Rechercher...">
                                     <span class="input-group-btn" style="width:39px">
                                         <button id="search-this" type="button" class="pull-right btn search-btn">
                                             <i class="fa fa-search"></i>
@@ -133,7 +133,7 @@
                                 <p>Vous n'avez pas reçu de Tokens</p>
                             </div>
                         </div>
-                        <div *ngIf="exchange.length!=0" [class.toggled]="classToggled">
+                        <div *ngIf="exchange.length!=0">
                             <div class="card p-3 m-3 col-11" *ngFor="let e of exchange">
                                 <div class="col-12">
                                     <div class="row">
