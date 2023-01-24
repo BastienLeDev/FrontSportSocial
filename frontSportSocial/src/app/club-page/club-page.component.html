@@ -99,7 +99,7 @@
                                 </div>
 
                             </div>
-                            <div class=row *ngIf="f.idPost == idPostCom">
+                            <div class=row *ngIf="f.idPost == idPostCom && commentOpen == true">
                                 <div class="container" *ngFor="let c of comments" [class.toggled]="classToggled">
                                     <div class="card p-3" [class.toggled]="classToggled">
                                         <div class="row">
@@ -126,10 +126,19 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-4">
-                                                <div class="text-center">
-                                                    <button>{{c.numberLikes}} J'aime</button>
+                                                <div *ngFor=" let lc of listLikeComment">
+                                                    <div *ngIf="lc.idComment == c.idComment && !lc.boolLike" [class.toggled]="classToggled">
+                                                        <div class="text-center">
+                                                            <button (click)="likeComment(c.idComment)">{{c.numberLikes}} J'aime</button>
+                                                        </div>
+                                                    </div>
+                                                    <div *ngIf="lc.idComment == c.idComment && lc.boolLike " [class.toggled]="classToggled">
+                                                        <div class="text-center">
+                                                            <button (click)="unlikeComment(c.idComment)">{{c.numberLikes}} Je n'aime
+                                                                plus</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
-
                                             </div>
                                             <div class="col-4" [class.toggled]="classToggled">
                                                 <div class="text-center">
@@ -176,7 +185,10 @@
                                                         <div class="col-4">
                                                             <div class="text-center">
                                                                 <button
-                                                                    (click)="listCommentsInComment(d.idComment)">{{d.numberComments}}
+                                                                    *ngIf="d.numberComments != 0" (click)="listCommentsInComment(d.idComment)">{{d.numberComments}}
+                                                                    Réponses</button>
+                                                                    <button
+                                                                    *ngIf="d.numberComments == 0">{{d.numberComments}}
                                                                     Réponses</button>
                                                             </div>
 
