@@ -1,4 +1,4 @@
-<body class="anyClass">
+<body class="anyClass" [class.toggled]="classToggled">
     <div *ngIf="images.length!=0">
         <div class="card p-5 m-4" *ngFor="let i of images">
             <div class="row justify-content-center">
@@ -11,7 +11,7 @@
                     photo de
                     profil</button>
             </div>
-            
+
         </div>
     </div>
     <div class="null m-2" *ngIf="images.length==1">

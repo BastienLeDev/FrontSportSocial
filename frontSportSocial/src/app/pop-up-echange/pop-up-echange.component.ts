@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CoachService } from '../services/coach.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
+import { DarkThemeService } from '../services/dark-theme.service';
 
 @Component({
   selector: 'app-pop-up-echange',
@@ -11,7 +12,7 @@ import { AuthService } from '../services/auth.service';
 
 export class PopUpEchangeComponent implements OnInit {
 
-  constructor(private CoachService: CoachService, private http: HttpClient, public authService: AuthService) { };
+  constructor(private CoachService: CoachService, private http: HttpClient, public dark: DarkThemeService, public authService: AuthService) { };
 
   ngOnInit(): void {
 
@@ -20,6 +21,7 @@ export class PopUpEchangeComponent implements OnInit {
   coach = this.CoachService.getCoachToSee();
   coachId = this.coach.idUser;
   echange: any;
+  classToggled = this.dark.classToggled;
   msg: any;
 
   echangeToken(val: any) {
