@@ -133,8 +133,8 @@
                                 <p>Vous n'avez pas reçu de Tokens</p>
                             </div>
                         </div>
-                        <div *ngIf="exchange.length!=0" [class.toggled]="classToggled">
-                            <div class="card p-3 m-3 col-11" *ngFor="let e of exchange">
+                        <div *ngIf="exchange.length!=0" >
+                            <div class="card p-3 m-3 col-11" *ngFor="let e of exchange" [class.toggled]="classToggled">
                                 <div class="col-12">
                                     <div class="row">
                                         <p class="photo_profil col-3"><img src="{{e.applicant.imageUser.nameImage}}"

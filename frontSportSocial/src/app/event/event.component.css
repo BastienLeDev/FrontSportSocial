@@ -139,10 +139,11 @@ input-group-btn {
   background-color: #3f4a6e !important;
   color: white;
 }
-
+/*
 .toggled #card_data {
   background: #6e3f3f !important;
 }
+*/
 
 .toggled .transparent_toggled {
   background-color: #ffffff00 !important;
@@ -164,10 +165,8 @@ input-group-btn {
 
 #card_data {
   height: auto;
-  border-right: 0px;
-  border-left: 0px;
-  border-radius: 0px !important;
-  border-bottom: 0px !important;
+  border: none!important;
+  box-shadow : none!important;
 }
 
 
