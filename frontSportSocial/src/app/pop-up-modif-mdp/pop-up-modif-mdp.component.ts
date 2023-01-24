@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NewEventComponent } from '../new-event/new-event.component';
 import { AuthService } from '../services/auth.service';
+import { DarkThemeService } from '../services/dark-theme.service';
 
 @Component({
   selector: 'app-pop-up-modif-mdp',
@@ -16,8 +17,9 @@ export class PopUpModifMdpComponent {
   msgErr = '';
   u: any;
   ok = false;
+  classToggled = this.dark.classToggled;
 
-  constructor(private http: HttpClient, private route: Router, private dialog: MatDialog, public authService: AuthService,  public dialogRef: MatDialogRef<NewEventComponent>) { }
+  constructor(private http: HttpClient, private route: Router, private dialog: MatDialog, public authService: AuthService,  public dialogRef: MatDialogRef<NewEventComponent>, public dark: DarkThemeService) { }
 
   modifMdp(val: any) {
     console.log(val)
