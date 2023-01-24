@@ -67,8 +67,7 @@
             </div>
         </div>
 
-        <div class="col-6  " style="height: 100%;"  >
-            <div id="card_data" class="card p-0 m-0 row event window" [class.toggled]="classToggled">
+        <div class="col-6 p-4 ">
             <ul style="list-style: none;">
                 <li>
                     <!--Search bar : centrée, avec bouton "search" à droite-->
@@ -113,7 +112,7 @@
                         style="float: right ; margin-right: 20px;">Evènements</button>
                 </li>
                 <div>
-                    <li id="feed" class="anyClass" style="width: 100%;">
+                    <li id="feed" class="anyClass">
                         <div *ngIf="visibleActivity">
                             <h4>Mes activités</h4>
                             <div *ngIf="activite.length==0">
@@ -395,7 +394,6 @@
                 </div>
             </ul>
         </div>
-    </div>
 
         <div class="col-3 p-4">
             <div id="card_next_events" class="card p-0 m-0" [class.toggled]="classToggled">

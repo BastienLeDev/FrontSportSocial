@@ -53,22 +53,22 @@
     </div>
     <div class="row">
         <div class="col-12 p-4">
-            <div class="card p-0 m-0" id="card_data" style="width: auto;">
-                <div class="card-header ">
-                    <p class="text-center"> Score <i class="fas fa-crown" style="color: yellow;"></i></p>
-                </div>
+        <div class="card p-0 m-0" id="card_data" style="width: auto;">
+            <div class="card-header ">
+                <p class="text-center"> Score <i class="fas fa-crown" style="color: yellow;"></i></p>
+            </div>
 
-                <div class="row">
-                    <div class="col-3 " *ngFor="let sc of allCoach">
-                        <div class="card p-0 m-0" id="card_data">
-                            <div class="card-header ">
-                                <p class="text-center">{{sc.sport.nameSport}}</p>
-                            </div>
-                            <p>Score : {{sc.score}}</p>
+            <div>
+                <div class="col-3 " *ngFor="let sc of allCoach">
+                    <div class="card p-0 m-0" id="card_data">
+                        <div class="card-header ">
+                            <p class="text-center">{{sc.sport.nameSport}}</p>
                         </div>
+                        <p>Score : {{sc.score}}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
