@@ -58,13 +58,12 @@ button {
   background-color: #3f4a6e !important;
 }
 
-.toggled #feedbtn{
-  background-color: rgb(87, 90, 159)!important;
+.toggled #feedbtn {
+  background-color: rgb(87, 90, 159) !important;
   color: white;
 }
 
-.toggled #feedbtn-active{
-  background-color: rgb(56, 57, 97)!important;
+.toggled #feedbtn-active {
+  background-color: rgb(56, 57, 97) !important;
   color: white;
 }
-
