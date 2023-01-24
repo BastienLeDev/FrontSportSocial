@@ -1,7 +1,10 @@
 /* CSS de la navbar */
 .navbar {
   overflow: hidden;
+  background:#FF8538;
+  /*
   background-image: linear-gradient(to bottom right, #e7684c, #FFC371);
+  */
 
 }
 
@@ -73,7 +76,6 @@
 /* Dark mode CSS */ 
 
 .toggled .navbar {
-
   overflow: hidden;
   background: linear-gradient(to bottom right, rgb(15, 30, 57), #1c2535);
 }
