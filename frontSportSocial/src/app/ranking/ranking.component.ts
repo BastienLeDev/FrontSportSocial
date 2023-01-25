@@ -32,6 +32,7 @@ export class RankingComponent implements OnInit {
   classToggled = this.dark.classToggled;
   visibleAddRanking = false;
   connectedUser = this.authService.getUserConnect();
+  filterScore : any;
 
   constructor(private http: HttpClient, private route: Router, private authService: AuthService, private appComponent : AppComponent, public dark : DarkThemeService,  iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) { 
     iconRegistry.addSvgIconLiteral('information', sanitizer.bypassSecurityTrustHtml(information));
@@ -43,7 +44,6 @@ export class RankingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.ListSport();
     this.ListSportIndividu();
   }
@@ -63,8 +63,8 @@ export class RankingComponent implements OnInit {
 
   ListSportIndividu() {
     this.http.get('http://localhost:8300/classement/me/' + this.authService.getUserConnect().idUser).subscribe({
-      next: (dataaa) => {
-        this.individu = dataaa
+      next: (data) => {
+        this.individu = data
       },
       error: (err) => { console.log(err); }
     });
@@ -75,7 +75,6 @@ export class RankingComponent implements OnInit {
     this.http.get('http://localhost:8300/classement/' + this.sporta.sports.nameSport + '/desc').subscribe({
       next: (data) => {
         this.score = data
-        console.log(this.score)
       },
       error: (err) => { console.log(err); }
     });
@@ -99,6 +98,15 @@ export class RankingComponent implements OnInit {
     else {
       this.visibleAddRanking = true;
     }
+  }
+
+  filterMyScore(val: any) {
+    this.filterScore = val;
+    this.http.get('http://localhost:8300/classement/search/' + this.authService.getUserConnect().idUser + '/' + val ).subscribe({
+      next: (data) => {
+        this.individu = data;
+      }
+    })
   }
 
 }

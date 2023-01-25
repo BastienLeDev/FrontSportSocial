@@ -4,9 +4,7 @@
             <div class="card p-3 m-3" [class.toggled]="classToggled">
                 <div class="row">
                     <div class="col-6 p-4">
-
                         <h1>Classement</h1>
-
                         <p>Vous souhaitez connaître le classement des meilleurs utilisateurs par sport ? </p>
                         <div class="row">
                             <form #choixSport="ngForm" (ngSubmit)="ListRankingdesc(choixSport.value)">
@@ -32,21 +30,15 @@
                             </form>
                         </div>
                         <div class="row">
-
                             <div id="images">
                                 <h2>Et vous ?</h2>
-                                <h3>Vous aussi, vous voulez apparaître au sommet du classement de votre sport favori
-                                    ?
+                                <h3>Vous aussi, vous voulez apparaître au sommet du classement de votre sport favori ?
                                 </h3>
-                                <h4>N'attendez plus, réservez une session d'entraînement avec l'un de nos coachs
-                                    sportifs!
+                                <h4>N'attendez plus, réservez une session d'entraînement avec l'un de nos coachs sportifs!
                                 </h4>
-                                <button id="feedbtn" mat-button (click)="goToShop()">Réserver une session avec un
-                                    coach</button>
+                                <button id="feedbtn" mat-button (click)="goToShop()">Réserver une session avec un coach</button>
                             </div>
-
                         </div>
-
                     </div>
                     <div class="col-6 p-4">
                         <h1>Classement par activité : </h1>
@@ -100,9 +92,7 @@
                                         <p>Score : {{s.score}}</p>
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -115,30 +105,36 @@
                     <h3 class="text-center">Vos scores</h3>
                 </div>
                 <div class="container">
-                    <div id="content">
-                        <form class='form-inline'>
-                            <div class="input-group">
-                                <input type='text' id='search' class="form-control search-form"
-                                    placeholder="Rechercher...">
-                                <span class="input-group-btn" style="width:39px">
-                                    <button id="search-this" type="button" class="pull-right btn search-btn">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
+                    <div class="row">
+                        <div class="col-10">
+                            <div id="content">
+                                <form Score="ngForm" (ngSubmit)="filterMyScore(Score.value)">
+                                    <div class="input-group">
+                                        <input ngModel="" #Score name="Score" type='text' id='search'
+                                            class="form-control search-form" placeholder="Rechercher...">
+                                        <span class="input-group-btn" style="width:39px">
+                                            <button id="search-this" type="button" class="pull-right btn search-btn">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
-
+                        </div>
+                        <div class="col-2">
+                            <div *ngIf="!visibleAddRanking" class="row" [class.toggled]="classToggled">
+                                <button mat-icon-button mat-icon-button (click)="visibleAddRankingFonction()">
+                                    <i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="container">
-                    <div *ngIf="!visibleAddRanking" class="row" [class.toggled]="classToggled">
-                        <button mat-icon-button mat-icon-button (click)="visibleAddRankingFonction()">
-                            <i class="fas fa-plus"></i></button>
-                    </div>
                     <div *ngIf="visibleAddRanking" [class.toggled]="classToggled">
                         <form #infosRanking="ngForm" (ngSubmit)="addRanking(infosRanking.value)">
-                            <div class="card p-3" [class.toggled]="classToggled" style="border: none; box-shadow: none;">
+                            <div class="card p-3" [class.toggled]="classToggled"
+                                style="border: none; box-shadow: none;">
                                 <div class="md-form">
                                     <mat-form-field>
                                         <mat-label>
@@ -153,16 +149,18 @@
                                 </div>
                                 <label>Score</label>
                                 <div class="md-form" [class.toggled]="classToggled">
-                                    <input  id="newRanking" name="score" type='number' ngModel="" class="form-control" required>
+                                    <input id="newRanking" name="score" type='number' ngModel="" class="form-control"
+                                        required>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
-                                    <button mat-icon-button mat-icon-button  >
-                                        <i class="fas fa-plus" ></i></button>
+                                        <button mat-icon-button mat-icon-button>
+                                            <i class="fas fa-plus"></i></button>
                                     </div>
                                     <div class="col-6">
-                                        <button id="feedbtn" mat-button (click)="visibleAddRankingFonction()" style="width: auto; height : auto;">Annuler</button>
-                                        </div>
+                                        <button id="feedbtn" mat-button (click)="visibleAddRankingFonction()"
+                                            style="width: auto; height : auto;">Annuler</button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -189,14 +187,9 @@
                                 <p>Score : {{i.score}}</p>
                             </div>
                         </div>
-
                     </div>
-
-
                 </div>
-
             </div>
-
         </div>
     </div>
 </div>
