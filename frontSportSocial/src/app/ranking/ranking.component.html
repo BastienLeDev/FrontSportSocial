@@ -58,15 +58,20 @@
                         </div>
                         <div class="container">
                             <div class="card p-3 m-3 col-11" *ngFor="let s of score;  " [class.toggled]="classToggled">
+                                <div></div>
                                 <div class="row">
                                     <div class="col-5 justify-content-center">
                                         <h2 class="">{{s.user.loginUser}}</h2>
                                         <i *ngIf="score[0].user.idUser == s.user.idUser" class="fas fa-crown"
                                             style="color: #FFD700;"></i>
-                                        <i *ngIf="score[1].user.idUser == s.user.idUser" class="fas fa-crown"
-                                            style="color: #C0C0C0 ;"></i>
-                                        <i *ngIf="score[2].user.idUser == s.user.idUser" class="fas fa-crown"
-                                            style="color: #CD7F32;"></i>
+                                        <div *ngIf="score[1] != null">
+                                            <i *ngIf="score[1].user.idUser == s.user.idUser" class="fas fa-crown"
+                                                style="color: #C0C0C0 ;"></i>
+                                        </div>
+                                        <div *ngIf="score[2] != null">
+                                            <i *ngIf="score[2].user.idUser == s.user.idUser" class="fas fa-crown"
+                                                style="color: #CD7F32;"></i>
+                                        </div>
                                     </div>
                                     <div class="col-5">
                                         <p>{{s.sport.nameSport}}</p>
