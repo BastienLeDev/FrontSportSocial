@@ -93,13 +93,26 @@
   }
 
   #card_training {
-    height: 400px;
+    height: auto;
     margin: 25px !important;
     border: none;
+
+  }
+
+  #card-user{
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
   }
 
   #training {
     height: auto;
+  }
+
+  #loginUser{
+    margin: 5px;
+    border-radius: 15px;
+    width: auto;
   }
 
   /* CSS du scroll */
@@ -119,6 +132,15 @@
     color: rgb(0, 0, 0);
     height: 100px;
     width: 150px;
+  }
+
+  #btnranking {
+    display: block;
+    margin: auto;
+    background-color: #FFC288;
+    color: rgb(0, 0, 0);
+    height: auto;
+    width: 250px;
   }
 
   #feedbtn-active {
@@ -178,5 +200,14 @@
 
   .toggled #feedbtn-active {
     background-color: rgb(56, 57, 97) !important;
+    color: white;
+  }
+
+  .toggled #newMemo{
+    color : white;
+  }
+
+  #btnranking {
+    background-color: rgb(87, 90, 159) !important;
     color: white;
   }

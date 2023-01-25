@@ -12,7 +12,7 @@ import { DarkThemeService } from '../services/dark-theme.service';
 
 export class PopUpEchangeComponent implements OnInit {
 
-  constructor(private CoachService: CoachService, private http: HttpClient, public dark: DarkThemeService, public authService: AuthService) { };
+  constructor(private CoachService: CoachService, private http: HttpClient, public authService: AuthService, public dark: DarkThemeService) { };
 
   ngOnInit(): void {
 
@@ -21,8 +21,8 @@ export class PopUpEchangeComponent implements OnInit {
   coach = this.CoachService.getCoachToSee();
   coachId = this.coach.idUser;
   echange: any;
-  classToggled = this.dark.classToggled;
   msg: any;
+  classToggled = this.dark.classToggled;
 
   echangeToken(val: any) {
     this.http.get("http://localhost:8300/boutique/echangeToken/" + this.authService.getUserConnect().idUser + "/" + this.coachId + "/" + val).subscribe({

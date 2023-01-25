@@ -98,11 +98,7 @@ input-group-btn {
   border-radius: 5px;
 }
 
-#card_data {
-  height: auto;
-  border-right: 0px;
-  border-left: 0px;
-}
+
 
 /* Dark Mode CSS */
 
@@ -135,10 +131,6 @@ input-group-btn {
   background-color: #3f4a6e !important;
 }
 
-#btn_dropdown {
-  background-color: #FFC288;
-}
-
 .toggled #btn_dropdown {
   background-color: #3f4a6e !important;
 }
@@ -147,16 +139,39 @@ input-group-btn {
   background-color: #3f4a6e !important;
   color: white;
 }
+/*
+.toggled #card_data {
+  background: #6e3f3f !important;
+}
+*/
+
+.toggled .transparent_toggled {
+  background-color: #ffffff00 !important;
+}
+
+/* End Dark Mode CSS*/
+
+#btn_dropdown {
+  background-color: #FFC288;
+}
 
 #card_event {
   margin-top: 10px;
   padding-left: 30px;
   padding-right: 30px;
   border-radius: 0px !important;
+  box-shadow: none !important;
 }
+
+#card_data {
+  height: auto;
+  border: none!important;
+  box-shadow : none!important;
+}
+
+
 
 #col_events {
   padding-left: 0px;
   padding-right: 0px;
 }
-

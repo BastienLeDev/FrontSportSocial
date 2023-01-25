@@ -1,41 +1,41 @@
 .anyClass {
-  height: auto;
-  overflow-y: scroll;
+    height: auto;
+    overflow-y: scroll;
 }
 
 img {
 
-  max-width: 75px;
-  max-height: 75px;
-  width: 100%;
-  height: 100%;
-  margin-right: 20px;
-  border-radius: 50%;
-}
+    max-width: 75px;
+    max-height: 75px;
+    width: 100%;
+    height: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
 
-.card {
-  width: min(100%, 600px);
-}
+  .card {
+    width: min(100%, 600px);
+  }
 
-#inside-card {
-  height: 100px;
-}
+  #inside-card {
+    height: 100px;
+  }
 
-.card-header {
-  background-color: #FCECDD;
-  color: black;
-}
+  .card-header {
+    background-color: #FCECDD;
+    color: black;
+  }
 
-h4 {
-  color: white;
-}
+  h4 {
+    color : white;
+  }
 
-#card_data {
-  margin: 25px !important;
-  border: none;
-}
+  #card_data {
+    margin: 25px !important;
+    border: none;
+  }
 
-
+  
 /* Dark Mode CSS */
 
 
@@ -63,13 +63,13 @@ h4 {
   background-color: #3f4a6e !important;
 }
 
-.toggled #feedbtn {
-  background-color: rgb(87, 90, 159) !important;
+.toggled #feedbtn{
+  background-color: rgb(87, 90, 159)!important;
   color: white;
 }
 
-.toggled #feedbtn-active {
-  background-color: rgb(56, 57, 97) !important;
+.toggled #feedbtn-active{
+  background-color: rgb(56, 57, 97)!important;
   color: white;
 }
 
@@ -77,3 +77,4 @@ h4 {
   background: rgb(42, 42, 42) !important;
   color: white !important;
 }
+

@@ -74,10 +74,10 @@
                     <div class="container" *ngIf="visibleSearchActivity">
                         <div id="search-card" [class.toggled]="classToggled" style="background-color: transparent;">
                             <div id="content">
-                                <form Activity="ngForm"  (ngSubmit)="FilterActivity(Activity.value)">
+                                <form Activity="ngForm" (ngSubmit)="FilterActivity(Activity.value)">
                                     <div class="input-group">
-                                        <input ngModel="" #Activity name="Activity" type='text' id='search' class="form-control search-form"
-                                            placeholder="Rechercher...">
+                                        <input ngModel="" #Activity name="Activity" type='text' id='search'
+                                            class="form-control search-form" placeholder="Rechercher...">
                                         <span class="input-group-btn" style="width:39px">
                                             <button id="search-this" type="button" class="pull-right btn search-btn">
                                                 <i class="fa fa-search"></i>
@@ -91,10 +91,10 @@
                     <div class="container" *ngIf="visibleSearchEvent">
                         <div id="search-card" [class.toggled]="classToggled" style="background-color: transparent;">
                             <div id="content">
-                                <form Event="ngForm"  (ngSubmit)="FilterEvent(Event.value)">
+                                <form Event="ngForm" (ngSubmit)="FilterEvent(Event.value)">
                                     <div class="input-group">
-                                        <input ngModel="" #Event name="Event" type='text' id='search' class="form-control search-form"
-                                            placeholder="Rechercher...">
+                                        <input ngModel="" #Event name="Event" type='text' id='search'
+                                            class="form-control search-form" placeholder="Rechercher...">
                                         <span class="input-group-btn" style="width:39px">
                                             <button id="search-this" type="button" class="pull-right btn search-btn">
                                                 <i class="fa fa-search"></i>
@@ -107,7 +107,8 @@
                     </div>
                 </li>
                 <li style="margin : 5px; background-color: transparent;" [class.toggled]="classToggled">
-                    <button id="feedbtn" mat-button (click)="searchActivity()" (click)="seeActivity()">Activités</button>
+                    <button id="feedbtn" mat-button (click)="searchActivity()"
+                        (click)="seeActivity()">Activités</button>
                     <button id="feedbtn" mat-button (click)="searchEvent()" (click)="seeEvent()"
                         style="float: right ; margin-right: 20px;">Evènements</button>
                 </li>
@@ -115,11 +116,17 @@
                     <li id="feed" class="anyClass">
                         <div *ngIf="visibleActivity">
                             <h4>Mes activités</h4>
-                            <div *ngIf="activite.length==0">
+                            <div *ngIf="activite.length==0 && filterActivity !== 'hippo où es-tu ?'">
                                 <div class="card p-3 m-3 col-11" [class.toggled]="classToggled">
                                     <p>Aucune activité enregistrée </p>
                                     <button (click)="openCreateActivity()" style="width : 50%; font-size: 50%;"
                                         id="feedbtn" mat-button>Ajouter une activité </button>
+                                </div>
+                            </div>
+                            <div *ngIf="filterActivity == 'hippo où es-tu ?'" >
+                                <div class="card p-3 m-3 col-11" [class.toggled]="classToggled">
+                                    <p>Aucune activité enregistrée </p>
+                                    <i class="fas fa-hippo" ></i>
                                 </div>
                             </div>
                             <div *ngIf="activite.length!=0">
@@ -145,13 +152,14 @@
                                                 *ngIf="a.activity.sportActivity.nameSport == 'Basketball' "
                                                 svgIcon="basket" aria-hidden="false"></mat-icon>
                                         </div>
-                                        <div class="col-1" >
-                                            <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                        <div class="col-1">
+                                            <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu"
+                                                #menuTrigger>
                                                 <mat-icon>more_vert</mat-icon>
                                             </button>
                                             <mat-menu #menu="matMenu" xPosition="before">
-                                                <button mat-menu-item (click)="openModifyActivity(a)" >Modifier</button>
-                                                <button mat-menu-item (click)="DeleteActivity(a)" >Supprimer</button>
+                                                <button mat-menu-item (click)="openModifyActivity(a)">Modifier</button>
+                                                <button mat-menu-item (click)="DeleteActivity(a)">Supprimer</button>
                                             </mat-menu>
                                         </div>
                                     </div>
@@ -169,16 +177,19 @@
                                 </div>
                             </div>
 
-                            <h4>Les activités de mes amis  <i (click)="searchFriendActivity()" class="fa fa-search"></i></h4>
+                            <h4>Les activités de mes amis <i (click)="searchFriendActivity()" class="fa fa-search"></i>
+                            </h4>
                             <div class="container" *ngIf="visibleFriendActivity">
-                                <div id="search-card" [class.toggled]="classToggled" style="background-color: transparent;">
+                                <div id="search-card" [class.toggled]="classToggled"
+                                    style="background-color: transparent;">
                                     <div id="content">
-                                        <form ActivityF="ngForm"  (ngSubmit)="filterFriendsActivity(ActivityF.value)">
+                                        <form ActivityF="ngForm" (ngSubmit)="filterFriendsActivity(ActivityF.value)">
                                             <div class="input-group">
-                                                <input ngModel="" #ActivityF name="ActivityF" type='text' id='search' class="form-control search-form"
-                                                    placeholder="Rechercher...">
+                                                <input ngModel="" #ActivityF name="ActivityF" type='text' id='search'
+                                                    class="form-control search-form" placeholder="Rechercher...">
                                                 <span class="input-group-btn" style="width:39px">
-                                                    <button id="search-this" type="button" class="pull-right btn search-btn">
+                                                    <button id="search-this" type="button"
+                                                        class="pull-right btn search-btn">
                                                         <i class="fa fa-search"></i>
                                                     </button>
                                                 </span>
@@ -298,10 +309,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-2">
-                                                    <button *ngIf="!me.pastDate" (click)="removeUserFromEvent(me)" style="width : 50%; font-size: 50%;" id="feedbtn"
-                                                    mat-button>Se désister</button>
-                                                    <button *ngIf="me.pastDate" (click)="removeUserFromEvent(me)" style="width : 50%; font-size: 50%;" id="feedbtn"
-                                                    mat-button>Supprimer</button>
+                                                    <button *ngIf="!me.pastDate" (click)="removeUserFromEvent(me)"
+                                                        style="width : 50%; font-size: 50%;" id="feedbtn" mat-button>Se
+                                                        désister</button>
+                                                    <button *ngIf="me.pastDate" (click)="removeUserFromEvent(me)"
+                                                        style="width : 50%; font-size: 50%;" id="feedbtn"
+                                                        mat-button>Supprimer</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -309,16 +322,19 @@
                                 </div>
                             </div>
 
-                            <h4>Les événements de mes amis <i (click)="searchFriendEvent()" class="fa fa-search"></i></h4>
+                            <h4>Les événements de mes amis <i (click)="searchFriendEvent()" class="fa fa-search"></i>
+                            </h4>
                             <div class="container" *ngIf="visibleFriendEvent">
-                                <div id="search-card" [class.toggled]="classToggled" style="background-color: transparent;">
+                                <div id="search-card" [class.toggled]="classToggled"
+                                    style="background-color: transparent;">
                                     <div id="content">
-                                        <form EventF="ngForm"  (ngSubmit)="filterFriendsEvent(EventF.value)">
+                                        <form EventF="ngForm" (ngSubmit)="filterFriendsEvent(EventF.value)">
                                             <div class="input-group">
-                                                <input ngModel="" #EventF name="EventF" type='text' id='search' class="form-control search-form"
-                                                    placeholder="Rechercher...">
+                                                <input ngModel="" #EventF name="EventF" type='text' id='search'
+                                                    class="form-control search-form" placeholder="Rechercher...">
                                                 <span class="input-group-btn" style="width:39px">
-                                                    <button id="search-this" type="button" class="pull-right btn search-btn">
+                                                    <button id="search-this" type="button"
+                                                        class="pull-right btn search-btn">
                                                         <i class="fa fa-search"></i>
                                                     </button>
                                                 </span>
@@ -327,8 +343,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div *ngIf="eventsFriends.length==0" >
-                                <div class="card p-3 m-3 col-11"  [class.toggled]="classToggled">
+                            <div *ngIf="eventsFriends.length==0">
+                                <div class="card p-3 m-3 col-11" [class.toggled]="classToggled">
                                     <p>Aucun évènement</p>
                                 </div>
                             </div>

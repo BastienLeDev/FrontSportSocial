@@ -75,9 +75,7 @@
                                 <div class="container" [class.toggled]="classToggled">
                                     <div class="row">
                                         <div class="col-1">
-                                            <img class="photo_profil image-rond image-rond-bg"
-                                                src="https://img.freepik.com/vecteurs-libre/illustration-concept-entraineur-personnel_114360-1552.jpg?w=740&t=st=1671228220~exp=1671228820~hmac=45603fee5afa4107866a0646a4c0b87cf460bd86c7320fe765ca0a87c712fea3"
-                                                alt="">
+                                            <img class="photo_profil image-rond image-rond-bg" src="{{c.imageUser.nameImage}}" alt="">
                                         </div>
                                         <div class="col-2" [class.toggled]="classToggled">
                                             <p>{{c.firstNameUser}} {{c.lastNameUser}}</p>

@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-3 p-4">
 
-            <div class="card p-0 m-0" [class.toggled]="classToggled">
-                <div class="card-header" style="margin: 5px; border-radius: 15px;">
+            <div id="card-user" class="card p-0 m-0" [class.toggled]="classToggled">
+                <div  id="loginUser" class="card-header" >
                     <h3 style="font-weight: bold" class="text-center">{{userInfo.loginUser}} </h3>
                 </div>
                 <div class="mx-auto text-center p-2">
@@ -88,10 +88,10 @@
                     <div class="container" [class.toggled]="classToggled" style="background-color: transparent;">
 
                         <div id="content" id="search-card">
-                            <form Activity="ngForm" (ngSubmit)="FilterActivity(Activity.value)">
+                            <form Activity="ngForm"  (ngSubmit)="FilterActivity(Activity.value)">
                                 <div class="input-group">
-                                    <input ngModel="" #Activity name="Activity" type='text' id='search'
-                                        class="form-control search-form" placeholder="Rechercher...">
+                                    <input ngModel="" #Activity name="Activity" type='text' id='search' class="form-control search-form"
+                                        placeholder="Rechercher...">
                                     <span class="input-group-btn" style="width:39px">
                                         <button id="search-this" type="button" class="pull-right btn search-btn">
                                             <i class="fa fa-search"></i>
@@ -133,8 +133,8 @@
                                 <p>Vous n'avez pas reçu de Tokens</p>
                             </div>
                         </div>
-                        <div *ngIf="exchange.length!=0">
-                            <div class="card p-3 m-3 col-11" *ngFor="let e of exchange">
+                        <div *ngIf="exchange.length!=0" >
+                            <div class="card p-3 m-3 col-11" *ngFor="let e of exchange" [class.toggled]="classToggled">
                                 <div class="col-12">
                                     <div class="row">
                                         <p class="photo_profil col-3"><img src="{{e.applicant.imageUser.nameImage}}"
@@ -179,10 +179,13 @@
 
             <div class="card p-3 m-3" [class.toggled]="classToggled"
                 style="background-color: transparent ; border: none; box-shadow: none !important;">
-                <div [class.toggled]="classToggled" style="background-color: transparent">
-                    <button (click)="goToRanking()" type="submit" class="btn btnPrincipal btn-block btn-lg">Classement
-                        Personnel <i class="fas fa-crown" style="color: yellow;"></i></button>
-                </div>
+                <button id="btnranking" mat-button (click)="goToRanking()">
+                    <p style="font-size: 80%;">Classement
+                        Personnel</p>
+                    <button mat-icon-button mat-icon-button>
+                        <i class="fas fa-crown" style="color: yellow;"></i>
+                    </button>
+                </button>
             </div>
 
             <div id="card_training" class="card p-0 m-0" [class.toggled]="classToggled">
@@ -193,24 +196,75 @@
 
                 <div id="training" [class.toggled]="classToggled">
 
-                    <div>
-                        <button type="submit" class="btn btnPrincipal btn-block btn-sm"
-                            style="margin : 3px; width :40%">Ajouter <i class="fas fa-plus"></i></button>
-
+                    <div *ngIf="!visibleAddTraining" >
+                        <button (click)="visibleAddTrainingFonction()"  mat-icon-button mat-icon-button >
+                            <i class="fas fa-plus" ></i></button>
+                    </div>
+                    <div *ngIf="visibleAddTraining" [class.toggled]="classToggled">
+                        <form #infosTraining="ngForm" (ngSubmit)="createTraining(infosTraining.value)">
+                            <div class="card p-3" [class.toggled]="classToggled" style="border: none; box-shadow: none;">
+                                <div class="md-form">
+                                    <mat-form-field>
+                                        <mat-label>
+                                            Sport :
+                                        </mat-label>
+                                        <mat-select class="" name="trainingSport" ngModel="" required>
+                                            <mat-option [value]="s" *ngFor="let s of sports">
+                                                {{s.nameSport}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <label>Entrainement</label>
+                                <div class="md-form" [class.toggled]="classToggled">
+                                    <input  id="newMemo" name="memo" ngModel="" class="form-control" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                    <button mat-icon-button mat-icon-button  >
+                                        <i class="fas fa-plus" ></i></button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button id="feedbtn" mat-button (click)="visibleAddTrainingFonction()" style="width: auto; height : auto;">Annuler</button>
+                                        </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
 
-                    <div *ngIf="visibleMemos" id="inside-card" class="card p-2 m-2" [class.toggled]="classToggled">
+                    <div *ngIf="training.length !=0" id="inside-card" class="card p-2 m-2" style="border: none; box-shadow: none;" [class.toggled]="classToggled">
 
-                        <div [class.toggled]="classToggled">
-                            <div>
-                                <button (click)="showHideMemos()" type="submit" class="btn btn-danger btn-block btn-sm"
-                                    style="font-size: 60%; width: 10%; margin : 3px;">x </button>
-                            </div>
-                            <b>Course à pied : </b>
-                            <p>S'échauffer pendant 10 mins puis courrir 10km </p>
-
+                        <div *ngFor="let t of training" [class.toggled]="classToggled">
+                            <b>{{t.trainingSport.nameSport}}</b>
+                            <i *ngIf="t.trainingSport.nameSport == 'Football' "
+                            class="fas fa-futbol"></i>
+                        <i *ngIf="t.trainingSport.nameSport == 'Escalade' "
+                            class="fas fa-mountain"></i>
+                        <mat-icon style=" font-size: 0.73em;"
+                            *ngIf="t.trainingSport.nameSport == 'Rugby'" svgIcon="rugby"
+                            aria-hidden="false"></mat-icon>
+                        <mat-icon style=" font-size: 0.73em;"
+                            *ngIf="t.trainingSport.nameSport == 'Course à pied' "
+                            svgIcon="running" aria-hidden="false"></mat-icon>
+                        <mat-icon style=" font-size: 0.73em;"
+                            *ngIf="t.trainingSport.nameSport == 'Natation' " svgIcon="swim"
+                            aria-hidden="false"></mat-icon>
+                        <mat-icon style=" font-size: 0.73em;"
+                            *ngIf="t.trainingSport.nameSport == 'Basketball' "
+                            svgIcon="basket" aria-hidden="false"></mat-icon>
+                                <button style=" float: right;" mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                    <mat-icon>more_vert</mat-icon>
+                                </button>
+                                <mat-menu #menu="matMenu" xPosition="before">
+                                    <button mat-menu-item (click)="deleteTraining(t)">Supprimer</button>
+                                </mat-menu>
+                            <p>{{t.memo}}</p>
                         </div>
 
+
+                    </div>
+                    <div *ngIf="training.length ==0" id="inside-card" class="card p-2 m-2" [class.toggled]="classToggled">
+                        <p>Aucun entrainement enregistré</p>
 
                     </div>
                 </div>

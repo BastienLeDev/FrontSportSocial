@@ -43,12 +43,22 @@ export class ClubPageComponent implements OnInit {
   check = false;
   boolLike: any;
 
+  listLikeComment: Array<any> = [];
+  checkComment = false;
+  boolLikeComment: any;
+
+  listLikeCommentComment: Array<any> = [];
+  checkCommentComment = false;
+  boolLikeCommentComment: any;
+
 
   ngOnInit(): void {
     this.listFriendsInClub();
     this.listNonFriendsInClub();
     this.listAskedFriends();
     this.listPost();
+    this.listComments(this.idPostCom);
+    this.listCommentsInComment(this.idComCom);
   }
 
   listFriendsInClub() {
@@ -134,11 +144,42 @@ export class ClubPageComponent implements OnInit {
   }
 
   listComments(idPost: any) {
-    console.log(idPost);
     this.idPostCom = idPost;
+    this.listLikeComment = [];
+    console.log(this.idPostCom)
     this.http.get('http://localhost:8300/club/posts/comments/' + idPost).subscribe({
       next: (data) => {
         this.comments = data;
+        for (let index in this.comments) {
+          let likeComment = {} as any;
+          likeComment.idComment = this.comments[index].idComment;
+          this.http.get('http://localhost:8300/comments/checkLike/' + this.authService.getUserConnect().idUser + '/' + this.comments[index].idComment ).subscribe({
+            next: (data) => {
+              this.boolLikeComment = data;
+              likeComment.boolLike = this.boolLikeComment;
+
+              if (this.listLikeComment.length == 0) {
+                this.listLikeComment.push(likeComment);
+              }
+              else {
+                this.listLikeComment.forEach(element => {
+                  if (element.idComment == likeComment.idComment && element.boolLike == likeComment.boolLike) {
+                    this.checkComment = true;
+                  }
+                  else if (element.idComment == likeComment.idComment && element.boolLike != likeComment.boolLike) {
+                    element.boolLike = likeComment.boolLike;
+                    this.checkComment = true;
+                  }
+                });
+                if (this.checkComment == false) {
+                  this.listLikeComment.push(likeComment);
+                }
+              }
+            },
+            error: (err) => { console.log(err); }
+          });
+
+        }
       },
       error: (err) => { console.log(err); }
     });
@@ -147,9 +188,41 @@ export class ClubPageComponent implements OnInit {
   listCommentsInComment(idComment: any) {
     console.log(idComment);
     this.idComCom = idComment;
+    this.listLikeCommentComment = [];
+    console.log(this.idComCom);
     this.http.get('http://localhost:8300/club/posts/comments/comments/' + idComment).subscribe({
       next: (data) => {
         this.commmentsComment = data;
+        for (let index in this.commmentsComment) {
+          let likeCommentComment = {} as any;
+          likeCommentComment.idComment = this.commmentsComment[index].idComment;
+          this.http.get('http://localhost:8300/comments/checkLike/' + this.authService.getUserConnect().idUser + '/' + this.commmentsComment[index].idComment ).subscribe({
+            next: (data) => {
+              this.boolLikeCommentComment = data;
+              likeCommentComment.boolLike = this.boolLikeCommentComment;
+
+              if (this.listLikeCommentComment.length == 0) {
+                this.listLikeCommentComment.push(likeCommentComment);
+              }
+              else {
+                this.listLikeCommentComment.forEach(element => {
+                  if (element.idComment == likeCommentComment.idComment && element.boolLike == likeCommentComment.boolLike) {
+                    this.checkCommentComment = true;
+                  }
+                  else if (element.idComment == likeCommentComment.idComment && element.boolLike != likeCommentComment.boolLike) {
+                    element.boolLike = likeCommentComment.boolLike;
+                    this.checkCommentComment = true;
+                  }
+                });
+                if (this.checkCommentComment == false) {
+                  this.listLikeCommentComment.push(likeCommentComment);
+                }
+              }
+            },
+            error: (err) => { console.log(err); }
+          });
+
+        }
       },
       error: (err) => { console.log(err); }
     });
@@ -177,7 +250,6 @@ export class ClubPageComponent implements OnInit {
     this.http.post('http://localhost:8300/post/comment/' + this.authService.getUserConnect().idUser + '/' + idPost, val).subscribe({
       next: (data) => {
         this.ngOnInit();
-        this.listComments(idPost);
       },
       error: (err) => { console.log(err); }
     });
@@ -189,6 +261,39 @@ export class ClubPageComponent implements OnInit {
       this.ngOnInit(); //pour reload les Posts
     });
   }
+
+  likeComment(idComment: any) {
+    this.http.patch('http://localhost:8300/comment/like/'+ this.authService.getUserConnect().idUser + '/' + idComment  , null).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.ngOnInit();
+        
+      },
+      error: (err) => { console.log(err); }
+    });
+  }
+
+  unlikeComment(idComment: any) {
+    this.http.patch('http://localhost:8300/comment/unlike/'+ this.authService.getUserConnect().idUser + '/' + idComment  , null).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.ngOnInit();
+      },
+      error: (err) => { console.log(err); }
+    });
+  }
+
+  commentComment(val: NgForm, idComment: any){
+    this.http.post('http://localhost:8300/comment/comment/' + this.authService.getUserConnect().idUser + '/' + idComment, val).subscribe({
+      next: (data) => {
+        this.ngOnInit();
+        
+      },
+      error: (err) => { console.log(err); }
+    });
+  }
+
+
 
 }
 

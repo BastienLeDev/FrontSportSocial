@@ -23,12 +23,12 @@ export class PopUpCoachComponent implements OnInit {
     this.getUserSport(this.coach.idUser)
   }
 
-  getUserSport(val: any) {
-    this.http.get('http://localhost:8300/classement/me/' + val).subscribe({
+  getUserSport(val : any){
+    this.http.get('http://localhost:8300/classement/me/'+ val).subscribe({
       next: (data) => {
         this.allCoach = data;
-        this.allCoach.forEach((s: any) => { this.sports.push(s.sport.nameSport) });
-        this.allCoach.forEach((i: any) => { this.imageSport.push(i.sport) })
+        this.allCoach.forEach((s: any) => {this.sports.push(s.sport.nameSport)});
+        this.allCoach.forEach((i: any) => {this.imageSport.push(i.sport)})
         console.log(this.sports)
       },
       error: (err) => { console.log(err); }

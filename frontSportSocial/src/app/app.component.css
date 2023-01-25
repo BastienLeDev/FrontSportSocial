@@ -1,9 +1,9 @@
 /* CSS de la navbar */
 .navbar {
   overflow: hidden;
-  background-image: linear-gradient(to bottom right, #e7684c, #FFC371);
+  background-color: #c86c26;
 
-}
+} 
 
 .navbar a {
   float: left;
@@ -65,7 +65,7 @@
 .menu-active {
   letter-spacing: 2px;
   color: rgb(49, 49, 49) !important;
-  background-color: #FFC288;
+  background-color: #e99c62;
   margin: 0;
 
 }
