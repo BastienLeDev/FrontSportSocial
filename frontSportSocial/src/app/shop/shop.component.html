@@ -13,8 +13,24 @@
                                 </button>
                             </button>
                         </div>
+                        <div *ngIf="!visibleCoach"  class="col-2">
+                            <button id="feedbtn" mat-button (click)="showHideCoach()">
+                                <p>Coachs</p>
+                                <button mat-icon-button mat-icon-button>
+                                    <i class="fas fa-user" style="color: rgb(255, 255, 255);"></i>
+                                </button>
+                            </button>
+                        </div>
                         <div *ngIf="visibleAvatar" class="col-2">
                             <button id="feedbtn-true" mat-button (click)="showHideAvatar()">
+                                <p>Avatar</p>
+                                <button mat-icon-button mat-icon-button>
+                                    <i class="fas fa-medal" style="color: rgb(255, 255, 255);"></i>
+                                </button>
+                            </button>
+                        </div>
+                        <div *ngIf="!visibleAvatar" class="col-2">
+                            <button id="feedbtn" mat-button (click)="showHideAvatar()">
                                 <p>Avatar</p>
                                 <button mat-icon-button mat-icon-button>
                                     <i class="fas fa-medal" style="color: rgb(255, 255, 255);"></i>
@@ -26,22 +42,6 @@
                                 <p>Tokens</p>
                                 <button mat-icon-button mat-icon-button>
                                     <i class="fas fa-euro-sign" style="color: rgb(255, 255, 255);"></i>
-                                </button>
-                            </button>
-                        </div>
-                        <div *ngIf="!visibleCoach"  class="col-2">
-                            <button id="feedbtn" mat-button (click)="showHideCoach()">
-                                <p>Coachs</p>
-                                <button mat-icon-button mat-icon-button>
-                                    <i class="fas fa-user" style="color: rgb(255, 255, 255);"></i>
-                                </button>
-                            </button>
-                        </div>
-                        <div *ngIf="!visibleAvatar" class="col-2">
-                            <button id="feedbtn" mat-button (click)="showHideAvatar()">
-                                <p>Avatar</p>
-                                <button mat-icon-button mat-icon-button>
-                                    <i class="fas fa-medal" style="color: rgb(255, 255, 255);"></i>
                                 </button>
                             </button>
                         </div>
