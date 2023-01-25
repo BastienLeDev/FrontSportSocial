@@ -216,15 +216,20 @@
                                 <div class="md-form" [class.toggled]="classToggled">
                                     <input  id="newMemo" name="memo" ngModel="" class="form-control" required>
                                 </div>
-                                <div >
+                                <div class="row">
+                                    <div class="col-6">
                                     <button mat-icon-button mat-icon-button  >
-                                        <i class="fas fa-plus" (click)="visibleAddTrainingFonction()"></i></button>
+                                        <i class="fas fa-plus" (click)="visibleAddTraining = !visibleAddTraining"></i></button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button id="feedbtn" mat-button (click)="visibleAddTrainingFonction()" style="width: auto; height : auto;">Annuler</button>
+                                        </div>
                                 </div>
                             </div>
                         </form>
                     </div>
 
-                    <div *ngIf="training.length !=0" id="inside-card" class="card p-2 m-2" [class.toggled]="classToggled">
+                    <div *ngIf="training.length !=0" id="inside-card" class="card p-2 m-2" style="border: none; box-shadow: none;" [class.toggled]="classToggled">
 
                         <div *ngFor="let t of training" [class.toggled]="classToggled">
                             <b>{{t.trainingSport.nameSport}}</b>

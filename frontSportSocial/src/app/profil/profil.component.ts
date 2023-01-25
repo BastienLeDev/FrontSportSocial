@@ -193,6 +193,7 @@ export class ProfilComponent implements OnInit {
     this.http.post('http://localhost:8300/training/add/' + this.authService.getUserConnect().idUser, val).subscribe({
       next: (data) => {
         this.ngOnInit();
+        this.visibleAddTraining = false;
         val.reset();
       },
       error: (err) => { console.log(err) },
