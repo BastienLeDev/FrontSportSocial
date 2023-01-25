@@ -134,6 +134,15 @@
     width: 150px;
   }
 
+  #btnranking {
+    display: block;
+    margin: auto;
+    background-color: #FFC288;
+    color: rgb(0, 0, 0);
+    height: auto;
+    width: 250px;
+  }
+
   #feedbtn-active {
     background-color: #643f1d;
     color: rgb(0, 0, 0);
@@ -196,4 +205,9 @@
 
   .toggled #newMemo{
     color : white;
+  }
+
+  #btnranking {
+    background-color: rgb(87, 90, 159) !important;
+    color: white;
   }

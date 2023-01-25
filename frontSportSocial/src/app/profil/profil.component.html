@@ -179,10 +179,13 @@
 
             <div class="card p-3 m-3" [class.toggled]="classToggled"
                 style="background-color: transparent ; border: none; box-shadow: none !important;">
-                <div [class.toggled]="classToggled" style="background-color: transparent">
-                    <button (click)="goToRanking()" type="submit" class="btn btnPrincipal btn-block btn-lg">Classement
-                        Personnel <i class="fas fa-crown" style="color: yellow;"></i></button>
-                </div>
+                <button id="btnranking" mat-button (click)="goToRanking()">
+                    <p style="font-size: 80%;">Classement
+                        Personnel</p>
+                    <button mat-icon-button mat-icon-button>
+                        <i class="fas fa-crown" style="color: yellow;"></i>
+                    </button>
+                </button>
             </div>
 
             <div id="card_training" class="card p-0 m-0" [class.toggled]="classToggled">
