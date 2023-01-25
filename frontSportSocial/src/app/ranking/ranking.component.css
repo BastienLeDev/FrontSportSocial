@@ -49,13 +49,6 @@ input-group-btn {
   border: 10px;
 }
 
-#fondcarte {
-  background: rgba(233, 229, 222, 0.6);
-  padding: 20px;
-  height: auto;
-  border: 10px;
-}
-
 .btnPrincipal {
   background-color: #FFC288 !important;
 }
@@ -90,6 +83,14 @@ input-group-btn {
   background-color: #643f1d ;
   color: white;
 }
+
+#card_scores {
+  height: auto;
+  margin: 25px !important;
+  border: none;
+
+}
+
 
   
 /* Dark Mode CSS */
