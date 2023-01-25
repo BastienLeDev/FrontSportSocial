@@ -174,7 +174,7 @@ export class ProfilComponent implements OnInit {
     if(this.visibleAddTraining == true){
     this.visibleAddTraining = false;
   }
-  if(this.visibleAddTraining == false){
+  else {
     this.visibleAddTraining = true;
   }
 
@@ -184,7 +184,6 @@ export class ProfilComponent implements OnInit {
     this.http.get('http://localhost:8300/sport').subscribe({
       next: (data) => {
         this.sports = data;
-        console.log(this.sports)
       },
       error: (err) => { console.log(err); }
     });
@@ -197,8 +196,7 @@ export class ProfilComponent implements OnInit {
         val.reset();
       },
       error: (err) => { console.log(err) },
-
-    })
+    });
   }
 
 }
