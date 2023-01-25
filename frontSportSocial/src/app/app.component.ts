@@ -22,7 +22,7 @@ export class AppComponent {
   status = 'Enable';
 
 
-  constructor(public authService: AuthService, public darkThem : DarkThemeService,) { };
+  constructor(public authService: AuthService, public darkThem : DarkThemeService , private route: Router) { };
 
   ngOnInit () {
     if (localStorage.getItem('active') !== null)
@@ -58,6 +58,27 @@ export class AppComponent {
     } else {
       this.dark = false;
     }
+  }
+
+  goToShopAvatar() {
+    localStorage.removeItem('coach');
+    localStorage.removeItem('tokens');
+    localStorage.setItem('avatar', '1');
+    this.route.navigateByUrl('shop');
+  }
+
+  goToShopTokens() {
+    localStorage.removeItem('avatar');
+    localStorage.removeItem('coach');
+    localStorage.setItem('tokens', '1');
+    this.route.navigateByUrl('shop');
+  }
+
+  goToShopCoach() {
+    localStorage.removeItem('avatar');
+    localStorage.removeItem('tokens');
+    localStorage.setItem('coach', '1');
+    this.route.navigateByUrl('shop');
   }
   
 

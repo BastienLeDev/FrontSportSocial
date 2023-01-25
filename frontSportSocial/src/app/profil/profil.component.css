@@ -207,7 +207,7 @@
     color : white;
   }
 
-  #btnranking {
+  .toggled #btnranking {
     background-color: rgb(87, 90, 159) !important;
     color: white;
   }

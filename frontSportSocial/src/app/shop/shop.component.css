@@ -96,6 +96,18 @@ img {
     color: rgb(0, 0, 0);
   }
 
+  #feedbtn-true{
+    background-color: #b27c49 ;
+    color: rgb(0, 0, 0);
+    height: 100px;
+    width: 150px;
+  }
+  
+  #feedbtn-true-active{
+    background-color: #643f1d ;
+    color: rgb(0, 0, 0);
+  }
+
   #card_achat {
     margin: 25px !important;
     border: none;
@@ -146,8 +158,20 @@ img {
     background-color: rgb(87, 90, 159)!important;
     color: white;
   }
+
   
   .toggled #feedbtn-active{
+    background-color: rgb(56, 57, 97)!important;
+    color: white;
+  }
+
+  .toggled #feedbtn-true{
+    background-color: rgb(53, 55, 123)!important;
+    color: white;
+  }
+
+  
+  .toggled #feedbtn-true-active{
     background-color: rgb(56, 57, 97)!important;
     color: white;
   }

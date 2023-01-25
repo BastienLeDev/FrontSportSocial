@@ -1,16 +1,35 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 p-4">
-            <div id="card_achat" class="card p-0 m-0" [class.toggled]="classToggled">
-
-                <div id="header" class="card-header">
-                    <h2 class="alignement text-center" style=" font-weight: bold;">Que souhaitez vous acheter ?</h2>
-                </div>
-
-                <div class="container" style="margin-bottom : 50px">
+            <div id="card_achat" class="card p-0 m-0" [class.toggled]="classToggled"
+                style="background-color: transparent ; border: none; box-shadow: none;">
+                <div class="container">
                     <div class="row">
-
-                        <div class="col-2">
+                        <div *ngIf="visibleCoach"  class="col-2">
+                            <button id="feedbtn-true" mat-button (click)="showHideCoach()">
+                                <p>Coachs</p>
+                                <button mat-icon-button mat-icon-button>
+                                    <i class="fas fa-user" style="color: rgb(255, 255, 255);"></i>
+                                </button>
+                            </button>
+                        </div>
+                        <div *ngIf="visibleAvatar" class="col-2">
+                            <button id="feedbtn-true" mat-button (click)="showHideAvatar()">
+                                <p>Avatar</p>
+                                <button mat-icon-button mat-icon-button>
+                                    <i class="fas fa-medal" style="color: rgb(255, 255, 255);"></i>
+                                </button>
+                            </button>
+                        </div>
+                        <div *ngIf="visibleTokens"  class="col-2">
+                            <button id="feedbtn-true" mat-button (click)="showHideTokens()">
+                                <p>Tokens</p>
+                                <button mat-icon-button mat-icon-button>
+                                    <i class="fas fa-euro-sign" style="color: rgb(255, 255, 255);"></i>
+                                </button>
+                            </button>
+                        </div>
+                        <div *ngIf="!visibleCoach"  class="col-2">
                             <button id="feedbtn" mat-button (click)="showHideCoach()">
                                 <p>Coachs</p>
                                 <button mat-icon-button mat-icon-button>
@@ -18,11 +37,7 @@
                                 </button>
                             </button>
                         </div>
-
-                        <div class="col-2">
-
-                        </div>
-                        <div class="col-2">
+                        <div *ngIf="!visibleAvatar" class="col-2">
                             <button id="feedbtn" mat-button (click)="showHideAvatar()">
                                 <p>Avatar</p>
                                 <button mat-icon-button mat-icon-button>
@@ -30,12 +45,7 @@
                                 </button>
                             </button>
                         </div>
-
-                        <div class="col-2">
-
-                        </div>
-
-                        <div class="col-2">
+                        <div *ngIf="!visibleTokens" class="col-2">
                             <button id="feedbtn" mat-button (click)="showHideTokens()">
                                 <p>Tokens</p>
                                 <button mat-icon-button mat-icon-button>
@@ -43,29 +53,44 @@
                                 </button>
                             </button>
                         </div>
+                        <div *ngIf="visibleAvatar"  class="col-6" style="background-color: transparent ; border: none; box-shadow: none;">
+                            <form class='form-inline, alignement' (ngSubmit)="listAvatarDescription(avatar.value)">
+                                <div class="input-group" [class.toggled]="classToggled" style="background-color: transparent ; border: none; box-shadow: none;">
+                                    <input ngModel="" #avatar name="avatar" type='text' id='search'
+                                        class="form-control search-form" placeholder="Rechercher...">
+                                    <span class="input-group-btn" style="width:39px">
+                                        <button id="search-this" type="submit" class="pull-right btn search-btn">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                        <div *ngIf="visibleCoach"  class="col-6" style="background-color: transparent ; border: none; box-shadow: none;">
+                            <form class='form-inline, alignement' #namesport="ngForm" (ngSubmit)="listCoachsBySport(nameSportIn.value)" >
+                                <div class="input-group" [class.toggled]="classToggled" style="background-color: transparent ; border: none; box-shadow: none;">
+                                    <input ngModel="" #nameSportIn name="nameSport" type='text' id='search'
+                                        class="form-control search-form" placeholder="Rechercher...">
+                                    <span class="input-group-btn" style="width:39px">
+                                        <button id="search-this" type="submit" class="pull-right btn search-btn">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
 
 
                     </div>
                 </div>
 
+            </div>
 
+            <div id="card_achat" class="card p-0 m-0" [class.toggled]="classToggled">
                 <!--Page coach-->
                 <div *ngIf="visibleCoach" [class.toggled]="classToggled">
 
                     <div [class.toggled]="classToggled">
-
-                        <form class='form-inline, alignement' #namesport="ngForm"
-                            (ngSubmit)="listCoachsBySport(nameSportIn.value)" [class.toggled]="classToggled">
-                            <div class="input-group">
-                                <input ngModel="" #nameSportIn name="nameSport" type='text' id='search'
-                                    class="form-control search-form" placeholder="Filtrer par sport...">
-                                <span class="input-group-btn" style="width:39px">
-                                    <button id="search-this" type="submit" class="pull-right btn search-btn">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </form>
 
 
                         <div class="md-form anyClass" [class.toggled]="classToggled" style="height: 300px;">
@@ -75,7 +100,8 @@
                                 <div class="container" [class.toggled]="classToggled">
                                     <div class="row">
                                         <div class="col-1">
-                                            <img class="photo_profil image-rond image-rond-bg" src="{{c.imageUser.nameImage}}" alt="">
+                                            <img class="photo_profil image-rond image-rond-bg"
+                                                src="{{c.imageUser.nameImage}}" alt="">
                                         </div>
                                         <div class="col-2" [class.toggled]="classToggled">
                                             <p>{{c.firstNameUser}} {{c.lastNameUser}}</p>
@@ -129,19 +155,6 @@
                 <div *ngIf="visibleAvatar" [class.toggled]="classToggled">
 
                     <div [class.toggled]="classToggled">
-
-                        <form class='form-inline, alignement' (ngSubmit)="listAvatarDescription(avatar.value)">
-                            <div class="input-group" [class.toggled]="classToggled">
-                                <input ngModel="" #avatar name="avatar" type='text' id='search'
-                                    class="form-control search-form" placeholder="Rechercher...">
-                                <span class="input-group-btn" style="width:39px">
-                                    <button id="search-this" type="submit" class="pull-right btn search-btn">
-
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </form>
 
                         <div class="md-form" style="margin-left: 50px;">
                             <div class="row">
