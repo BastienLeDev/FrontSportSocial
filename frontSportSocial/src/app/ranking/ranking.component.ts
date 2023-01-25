@@ -30,6 +30,8 @@ export class RankingComponent implements OnInit {
   position = 0;
   individu: any;
   classToggled = this.dark.classToggled;
+  visibleAddRanking = false;
+  connectedUser = this.authService.getUserConnect();
 
   constructor(private http: HttpClient, private route: Router, private authService: AuthService, private appComponent : AppComponent, public dark : DarkThemeService,  iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) { 
     iconRegistry.addSvgIconLiteral('information', sanitizer.bypassSecurityTrustHtml(information));
@@ -77,6 +79,26 @@ export class RankingComponent implements OnInit {
       },
       error: (err) => { console.log(err); }
     });
+  }
+
+  addRanking(val: any) {
+    val.user = this.connectedUser;
+    this.http.post('http://localhost:8300/classement/add/' + this.authService.getUserConnect().idUser, val).subscribe({
+      next: (data) => {
+        this.ngOnInit();
+        this.visibleAddRanking = false;
+      },
+      error: (err) => { console.log(err) },
+    });
+  }
+
+  visibleAddRankingFonction() {
+    if(this.visibleAddRanking == true){
+      this.visibleAddRanking = false;
+    }
+    else {
+      this.visibleAddRanking = true;
+    }
   }
 
 }

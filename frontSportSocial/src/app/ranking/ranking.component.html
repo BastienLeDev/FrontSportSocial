@@ -132,9 +132,40 @@
                 </div>
 
                 <div class="container">
-                    <div class="row" [class.toggled]="classToggled">
-                        <button mat-icon-button mat-icon-button>
+                    <div *ngIf="!visibleAddRanking" class="row" [class.toggled]="classToggled">
+                        <button mat-icon-button mat-icon-button (click)="visibleAddRankingFonction()">
                             <i class="fas fa-plus"></i></button>
+                    </div>
+                    <div *ngIf="visibleAddRanking" [class.toggled]="classToggled">
+                        <form #infosRanking="ngForm" (ngSubmit)="addRanking(infosRanking.value)">
+                            <div class="card p-3" [class.toggled]="classToggled" style="border: none; box-shadow: none;">
+                                <div class="md-form">
+                                    <mat-form-field>
+                                        <mat-label>
+                                            Sport :
+                                        </mat-label>
+                                        <mat-select class="" name="sport" ngModel="" required>
+                                            <mat-option [value]="s" *ngFor="let s of sports">
+                                                {{s.nameSport}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <label>Score</label>
+                                <div class="md-form" [class.toggled]="classToggled">
+                                    <input  id="newRanking" name="score" type='number' ngModel="" class="form-control" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                    <button mat-icon-button mat-icon-button  >
+                                        <i class="fas fa-plus" ></i></button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button id="feedbtn" mat-button (click)="visibleAddRankingFonction()" style="width: auto; height : auto;">Annuler</button>
+                                        </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
 
                     <div class="container" *ngFor="let i of individu;" [class.toggled]="classToggled">
