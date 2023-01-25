@@ -43,9 +43,9 @@
                     <div class="col-6 p-4">
                         <div class="container">
                             <div id="content">
-                                <form class='form-inline'>
+                                <form #infosClub="ngForm" (ngSubmit)="filterClub(Club.value)">
                                     <div class="input-group">
-                                        <input type='text' id='search' class="form-control search-form"
+                                        <input ngModel="" #Club name="Club"  type='text' id='search' class="form-control search-form"
                                             placeholder="Recherche un club...">
                                         <span class="input-group-btn" style="width:39px">
                                             <button id="search-this" type="button" class="pull-right btn search-btn">

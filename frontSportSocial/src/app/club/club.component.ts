@@ -24,6 +24,7 @@ export class ClubComponent implements OnInit {
   otherClubs: any;
   classToggled = this.dark.classToggled;
   clubToJoin: any;
+  filterOtherClub : any;
 
 
 
@@ -107,6 +108,15 @@ export class ClubComponent implements OnInit {
     this.clubService.setClubToSee(val);
     this.route.navigateByUrl('clubPage');
 
+  }
+
+  filterClub(val: any) {
+    this.filterOtherClub = val;
+    this.http.get('http://localhost:8300/club/search/' + val + '/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => {
+        this.otherClubs = data;
+      }
+    })
   }
 
 }
