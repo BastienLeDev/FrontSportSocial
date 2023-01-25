@@ -94,6 +94,7 @@ export class ScheduleComponent implements OnInit {
   openNewActivity() {
     const dialogRef = this.dialog.open(NewActivityComponent);
     dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
     })
 
   }
