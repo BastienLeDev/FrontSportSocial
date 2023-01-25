@@ -145,6 +145,7 @@ export class ClubPageComponent implements OnInit {
 
   listComments(idPost: any) {
     this.idPostCom = idPost;
+    this.listLikeComment = [];
     console.log(this.idPostCom)
     this.http.get('http://localhost:8300/club/posts/comments/' + idPost).subscribe({
       next: (data) => {
@@ -187,6 +188,7 @@ export class ClubPageComponent implements OnInit {
   listCommentsInComment(idComment: any) {
     console.log(idComment);
     this.idComCom = idComment;
+    this.listLikeCommentComment = [];
     console.log(this.idComCom);
     this.http.get('http://localhost:8300/club/posts/comments/comments/' + idComment).subscribe({
       next: (data) => {
@@ -247,7 +249,6 @@ export class ClubPageComponent implements OnInit {
   postComment(val: NgForm, idPost: any) {
     this.http.post('http://localhost:8300/post/comment/' + this.authService.getUserConnect().idUser + '/' + idPost, val).subscribe({
       next: (data) => {
-        this.idPostCom = idPost;
         this.ngOnInit();
       },
       error: (err) => { console.log(err); }
@@ -285,7 +286,6 @@ export class ClubPageComponent implements OnInit {
   commentComment(val: NgForm, idComment: any){
     this.http.post('http://localhost:8300/comment/comment/' + this.authService.getUserConnect().idUser + '/' + idComment, val).subscribe({
       next: (data) => {
-        this.idComCom = idComment;
         this.ngOnInit();
         
       },
