@@ -1,7 +1,7 @@
 <div class="container-fluid ">
     <div class="row">
         <div class="col-3 p-4 vh-900">
-            <div id="card_clubs" class="card p-0 m-0 h-100" [class.toggled]="classToggled">
+            <div id="card_clubs" class="card p-0 m-0" [class.toggled]="classToggled">
                 <div class="card-header">
                     <p class="text-center">Mes clubs</p>
                 </div>
@@ -40,7 +40,7 @@
             <div class="card p-3 m-3" [class.toggled]="classToggled">
 
                 <div class="row">
-                    <div class="col-6 p-4">
+                    <div class="col-5 p-4">
                         <div class="container">
                             <div id="content">
                                 <form #infosClub="ngForm" (ngSubmit)="filterClub(Club.value)">
@@ -59,10 +59,10 @@
 
                         </div>
                     </div>
-                    <div class="col-3 p-4" [class.toggled]="classToggled">
-                        <form>
-
-                            <div class="text-center">
+                    <div class="col-4 p-4" [class.toggled]="classToggled">
+                        <form #choixSport="ngForm" (ngSubmit)="filterClubBySport(choixSport.value)">
+                            <div class="row">
+                            <div class="text-center col-7">
                                 <mat-form-field>
                                     <mat-label>
                                         Filtrer par sport :
@@ -75,6 +75,11 @@
                                     </mat-select>
                                 </mat-form-field>
                             </div>
+                            <div class="col-1">
+                            <button mat-icon-button mat-icon-button>
+                                <i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
                         </form>
                     </div>
                     <div class="col-3 p-4" [class.toggled]="classToggled">
