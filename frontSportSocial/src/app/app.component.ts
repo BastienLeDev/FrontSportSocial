@@ -26,6 +26,7 @@ export class AppComponent {
   constructor(public authService: AuthService, private http: HttpClient, public darkThem : DarkThemeService , private route: Router) { };
 
   ngOnInit () {
+    this.infoUser();
     if (localStorage.getItem('active') !== null)
     this.classToggled = !this.classToggled;
     if (this.classToggled == true) {
@@ -61,6 +62,30 @@ export class AppComponent {
     }
   }
 
+  goToMap() {;
+    this.route.navigateByUrl('map');
+  }
+
+  goToFriend() {;
+    this.route.navigateByUrl('friend');
+  }
+
+  goToEvent() {;
+    this.route.navigateByUrl('event');
+  }
+
+  goToSchedule() {;
+    this.route.navigateByUrl('schedule');
+  }
+
+  goToClub() {;
+    this.route.navigateByUrl('club');
+  }
+  
+  goToHome() {;
+    this.route.navigateByUrl('home');
+  }
+
   goToShopAvatar() {
     localStorage.removeItem('coach');
     localStorage.removeItem('tokens');
@@ -82,7 +107,7 @@ export class AppComponent {
     this.route.navigateByUrl('shop');
   }
 
-  goToShopProfil() {
+  goToProfil() {
     this.route.navigateByUrl('profil');
   }
 

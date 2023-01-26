@@ -91,6 +91,9 @@ export class ProfilComponent implements OnInit {
   }
 
   goToShop() {
+    localStorage.removeItem('avatar');
+    localStorage.removeItem('coach');
+    localStorage.setItem('tokens', '1');
     this.route.navigateByUrl('shop');
   }
 

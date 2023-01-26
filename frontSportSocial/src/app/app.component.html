@@ -1,53 +1,61 @@
 <body [class.toggled]="classToggled">
 
-
   <div class="back">
-
     <div class="text-center" *ngIf="authService.isConnected()">
       <ul [class.toggled]="classToggled" class="nav navbar nav-fill w-100 z-depth-2">
-        <li class="nav-item">
-          <a routerLink="home" routerLinkActive="menu-active" class="nav-link white-text">Accueil</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="schedule" routerLinkActive="menu-active" class="nav-link white-text">Planning</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="friend" routerLinkActive="menu-active" class="nav-link white-text">Amis</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="club" routerLinkActive="menu-active" class="nav-link white-text">Club</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="event" routerLinkActive="menu-active" class="nav-link white-text">Evenements</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="map" routerLinkActive="menu-active" class="nav-link white-text">Carte</a>
-        </li>
-        <li>
-          <a  routerLinkActive="menu-active" class="nav-link white-text">
-          <button mat-button [matMenuTriggerFor]="menu" class="nav-link white-text ">Boutique</button>
+        <li class="nav-item" style="width: 10%;">
+          <button mat-button [matMenuTriggerFor]="menu" class="nav-link white-text " style="width : 250px"><i
+              class="fas fa-bars"></i>Menu</button>
           <mat-menu #menu="matMenu" style="background-color: white;">
-            <button style="background-color: white;" mat-menu-item (click)="goToShopAvatar()" routerLinkActive="menu-active">Avatar</button>
-            <button style="background-color: white;" mat-menu-item (click)="goToShopCoach()"  routerLinkActive="menu-active">Coach</button>
-            <button style="background-color: white;" mat-menu-item (click)="goToShopTokens()" routerLinkActive="menu-active">Tokens</button>
+            <button style="background-color: white;" mat-menu-item (click)="goToHome()"
+              routerLinkActive="menu-active">Accueil</button>
+            <button style="background-color: white;" mat-menu-item (click)="goToSchedule()"
+              routerLinkActive="menu-active">Planning</button>
+            <button style="background-color: white;" mat-menu-item (click)="goToFriend()"
+              routerLinkActive="menu-active">Amis</button>
+            <button style="background-color: white;" mat-menu-item (click)="goToClub()"
+              routerLinkActive="menu-active">Club</button>
+            <button style="background-color: white;" mat-menu-item (click)="goToEvent()"
+              routerLinkActive="menu-active">Evenement</button>
+            <button style="background-color:  white;" mat-menu-item [matMenuTriggerFor]="shop" 
+              routerLinkActive="menu-active">Boutique</button>
+            <button style="background-color: white;" mat-menu-item (click)="goToMap()"
+              routerLinkActive="menu-active">Carte</button>
           </mat-menu>
-        </a>
+          <mat-menu #shop="matMenu" style="background-color: white;">
+            <button style="background-color:  white;" mat-menu-item  (click)="goToShopAvatar()"
+            routerLinkActive="menu-active">Avatar</button>
+            <button style="background-color:  white;" mat-menu-item (click)="goToShopCoach()"
+            routerLinkActive="menu-active">Coach</button>
+            <button style="background-color:  white;" mat-menu-item (click)="goToShopTokens()"
+            routerLinkActive="menu-active">Tokens</button>
+          </mat-menu>
         </li>
-        <li class="nav-item">
-          <a  routerLinkActive="menu-active" class="nav-link white-text ">
-            <button mat-button [matMenuTriggerFor]="profil" class="nav-link white-text ">Profil</button>
+        <li style="width: 30%;">
+        </li>
+        <li style="width: 10%;">
+          <a class="white-text " style="width : 250px">SportSocial </a>
+        </li>
+        <li style="width: 30%;">
+        </li>
+        <li class="nav-item" style="width: 10%;">
+          <a routerLinkActive="menu-active" class="nav-link white-text ">
+            <button mat-button [matMenuTriggerFor]="profil" class="nav-link white-text " style="width : 250px  "><img
+                src="{{userInfo.imageUser.nameImage}}" class="rounded-circle" height="32" alt=""
+                loading="lazy" /></button>
             <mat-menu #profil="matMenu" style="background-color: white;">
-              <button style="background-color: white;" mat-menu-item (click)="goToShopProfil()" routerLinkActive="menu-active">Voir son profil</button>
-              <button style="background-color: white;" mat-menu-item (click)="authService.logout()" > Déconnexion</button>
+              <button style="background-color: white;" mat-menu-item (click)="goToProfil()"
+                routerLinkActive="menu-active">Voir son profil</button>
+              <button *ngIf="!dark" style="background-color: white;" mat-menu-item (click)="darkMode()"
+                (click)="darkTheme()">
+                Dark theme</button>
+              <button *ngIf="dark" style="background-color: white;" mat-menu-item (click)="darkMode()"
+                (click)="darkTheme()">
+                Light theme</button>
+              <button style="background-color: white;" mat-menu-item (click)="authService.logout()">
+                Déconnexion</button>
             </mat-menu>
           </a>
-        </li>
-        <li class="nav-item">
-          <div>
-            <input type="checkbox" id="toggle" (click)="darkMode()" (click)="darkTheme()">
-            <label *ngIf="dark" for="toggle"><i for="toggle" class="fas fa-moon black-text"></i></label>
-            <label *ngIf="!dark" for="toggle"><i for="toggle" class="fas fa-sun white-text"></i></label>
-          </div>
         </li>
       </ul>
     </div>
