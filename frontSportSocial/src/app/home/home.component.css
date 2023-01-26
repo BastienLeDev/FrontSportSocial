@@ -176,6 +176,8 @@ input-group-btn {
 }
 
 #card_next_events{
+  min-height: auto;
+  max-height: 800px;
   margin: 25px !important;
   border: none;
 }
