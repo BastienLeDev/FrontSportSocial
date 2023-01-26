@@ -430,28 +430,31 @@
                 <div class="card-header">
                     <h3 class="text-center">Prochains évènements</h3>
                 </div>
-
-                <div class="anyClass">
-                <div class="card p-3 m-3" *ngFor="let e of events" [class.toggled]="classToggled">
-                    <div class="row">
-                        <div class="col-8">
-                            <h3 class="text-center">{{e.titleEvent}}</h3>
-                        </div>
-                        <div class="col-4">
-                            <button (click)="goToEvent()" style="width : 50%; font-size: 50%;" id="feedbtn"
-                                mat-button>Information</button>
-                        </div>
-                    </div>
-                    <div *ngFor="let id of e.participants">
-                        <p *ngIf="id.idUser == authService.getUserConnect().idUser" style="font-style: italic;"> Inscrit
-                            <i class="fas fa-check"></i>
-                        </p>
-                    </div>
-                    <p>Début : {{e.dateStart | date: 'd MMM y H:mm'}} </p>
-                    <p>Fin : {{e.dateEnd | date: 'd MMM y H:mm'}}</p>
-
+                <div class="p-3 " *ngIf="events.length ==0">
+                    <p>Aucun évènement à venir</p>
                 </div>
-            </div>
+                <div class="anyClass" *ngIf="events.length !=0">
+                    <div class="card p-3 m-3" *ngFor="let e of events" [class.toggled]="classToggled">
+                        <div class="row">
+                            <div class="col-8">
+                                <h3 class="text-center">{{e.titleEvent}}</h3>
+                            </div>
+                            <div class="col-4">
+                                <button (click)="goToEvent()" style="width : 50%; font-size: 50%;" id="feedbtn"
+                                    mat-button>Information</button>
+                            </div>
+                        </div>
+                        <div *ngFor="let id of e.participants">
+                            <p *ngIf="id.idUser == authService.getUserConnect().idUser" style="font-style: italic;">
+                                Inscrit
+                                <i class="fas fa-check"></i>
+                            </p>
+                        </div>
+                        <p>Début : {{e.dateStart | date: 'd MMM y H:mm'}} </p>
+                        <p>Fin : {{e.dateEnd | date: 'd MMM y H:mm'}}</p>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
