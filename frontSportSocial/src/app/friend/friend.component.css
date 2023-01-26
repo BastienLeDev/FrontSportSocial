@@ -152,7 +152,7 @@ input-group-btn {
 }
 
 #card_teams {
-    min-height: 250px;
+    min-height: auto;
     max-height: 350px;
     margin: 25px !important;
     border: none;
@@ -179,6 +179,7 @@ td {
     border: none;
     color: black;
 }
+
 
 .card-option {
     background-color: #FCECDD;
@@ -211,6 +212,8 @@ td {
 #card_principal_messages {
     height: 700px;
     max-height: 700px;
+    margin: 25px !important;
+    border: none;
 
 }
 

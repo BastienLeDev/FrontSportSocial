@@ -237,7 +237,10 @@ export class FriendComponent implements OnInit {
 
   listNotFriends() {
     this.http.get('http://localhost:8300/notfriend/receiver/' + this.authService.getUserConnect().idUser).subscribe({
-      next: (data) => { this.notfriends = data },
+      next: (data) => { this.notfriends = data
+      console.log(this.notfriends);
+      
+      },
       error: (err) => { console.log(err); }
     });
   }
