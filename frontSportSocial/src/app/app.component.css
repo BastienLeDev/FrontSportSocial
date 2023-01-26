@@ -62,13 +62,14 @@
   display: block;
 }
 
+/*
 .menu-active {
   letter-spacing: 2px;
   color: rgb(49, 49, 49) !important;
   background-color: #e99c62;
   margin: 0;
-
 }
+*/
 
 /* Dark mode CSS */ 
 
@@ -93,9 +94,10 @@
   z-index: 1;
 }
 
+/*
 .toggled .menu-active {
   letter-spacing: 2px;
   color: rgb(136, 142, 183) !important;
   background-color: #343568;
-
 }
+*/

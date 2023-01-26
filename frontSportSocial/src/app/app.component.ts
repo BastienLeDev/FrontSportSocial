@@ -20,9 +20,10 @@ export class AppComponent {
   classToggled: boolean = false;
   vrai = 1;
   status = 'Enable';
+  userInfo : any;
 
 
-  constructor(public authService: AuthService, public darkThem : DarkThemeService , private route: Router) { };
+  constructor(public authService: AuthService, private http: HttpClient, public darkThem : DarkThemeService , private route: Router) { };
 
   ngOnInit () {
     if (localStorage.getItem('active') !== null)
@@ -79,6 +80,20 @@ export class AppComponent {
     localStorage.removeItem('tokens');
     localStorage.setItem('coach', '1');
     this.route.navigateByUrl('shop');
+  }
+
+  goToShopProfil() {
+    this.route.navigateByUrl('profil');
+  }
+
+  infoUser() {
+    this.http.get('http://localhost:8300/user/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => {
+        this.userInfo = data;
+        console.log(this.userInfo)
+      },
+      error: (err) => { console.log(err); }
+    });
   }
   
 

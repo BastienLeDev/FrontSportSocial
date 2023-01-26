@@ -28,13 +28,19 @@
           <button mat-button [matMenuTriggerFor]="menu" class="nav-link white-text ">Boutique</button>
           <mat-menu #menu="matMenu" style="background-color: white;">
             <button style="background-color: white;" mat-menu-item (click)="goToShopAvatar()" routerLinkActive="menu-active">Avatar</button>
-            <button style="background-color: white;" mat-menu-item (click)="goToShopCoach()" routerLink="shop" routerLinkActive="menu-active">Coach</button>
-            <button style="background-color: white;" mat-menu-item (click)="goToShopTokens()" routerLink="shop" routerLinkActive="menu-active">Tokens</button>
+            <button style="background-color: white;" mat-menu-item (click)="goToShopCoach()"  routerLinkActive="menu-active">Coach</button>
+            <button style="background-color: white;" mat-menu-item (click)="goToShopTokens()" routerLinkActive="menu-active">Tokens</button>
           </mat-menu>
         </a>
         </li>
         <li class="nav-item">
-          <a routerLink="profil" routerLinkActive="menu-active" class="nav-link white-text ">Profil</a>
+          <a  routerLinkActive="menu-active" class="nav-link white-text ">
+            <button mat-button [matMenuTriggerFor]="profil" class="nav-link white-text ">Profil</button>
+            <mat-menu #profil="matMenu" style="background-color: white;">
+              <button style="background-color: white;" mat-menu-item (click)="goToShopProfil()" routerLinkActive="menu-active">Voir son profil</button>
+              <button style="background-color: white;" mat-menu-item (click)="authService.logout()" > Déconnexion</button>
+            </mat-menu>
+          </a>
         </li>
         <li class="nav-item">
           <div>
@@ -42,11 +48,6 @@
             <label *ngIf="dark" for="toggle"><i for="toggle" class="fas fa-moon black-text"></i></label>
             <label *ngIf="!dark" for="toggle"><i for="toggle" class="fas fa-sun white-text"></i></label>
           </div>
-        </li>
-        <li class="nav-item">
-          <a routerLink="" (click)="authService.logout()" class="nav-link">
-            <i class="fas fa-power-off white-text"></i>
-          </a>
         </li>
       </ul>
     </div>
