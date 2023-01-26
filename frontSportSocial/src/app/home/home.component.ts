@@ -295,6 +295,10 @@ openModifyActivity(val: any) {
 
 }
 
+openFriendPage() {
+  this.route.navigateByUrl('friend');
+}
+
 openCreateActivity() {
   this.route.navigateByUrl('schedule');
   const dialogRef = this.dialog.open(NewActivityComponent);
