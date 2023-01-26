@@ -1,6 +1,155 @@
 <div class="container-fluid">
     <div class="row">
         <div id="gauche" class="col-3 p-4">
+            <!--Si aucun ami enregistré -->
+            <div *ngIf="friends.length ==0">
+                <!-- card gobale des demandes d'amis-->
+                <div id="demande_amis" class="card p-0 m-0" [class.toggled]="classToggled"
+                    *ngIf="deletefriend.length != 0 || notfriends.length != 0">
+                    <div class="card-header">
+                        <p class="text-center">Demandes d'amis</p>
+                    </div>
+    
+                    <div class="anyClass">
+                        <!-- card demande d'un ami-->
+                        <div class="card p-1 m-1" *ngFor="let nf of notfriends" [class.toggled]="classToggled">
+    
+                            <div class="container">
+    
+                                <div class="row">
+                                    <!-- photo de profil -->
+                                    <div class="col-6">
+    
+                                        <img src="{{nf.imageUser.nameImage}}">
+                                    </div>
+                                    <!-- nom user -->
+                                    <div class="col-6">
+                                        <b id="add_friend_username"> {{nf.loginUser}} </b>
+                                        <div class="col-6" style="left: 50px;">
+                                            <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                                <mat-icon>more_vert</mat-icon>
+                                            </button>
+                                            <mat-menu #menu="matMenu" xPosition="before">
+                                                <button mat-menu-item (click)="acceptFrienship(nf)">Accepter</button>
+                                                <button mat-menu-item (click)="deleteFrienship(nf)">Supprimer</button>
+                                            </mat-menu>
+                                        </div>
+    
+                                    </div>
+    
+                                </div>
+    
+                            </div>
+    
+                        </div>
+                        <div class="card p-1 m-1" *ngFor="let d of deletefriend" [class.toggled]="classToggled">
+    
+                            <div class="container">
+    
+                                <div class="row">
+                                    <!-- photo de profil -->
+                                    <div class="col-6">
+    
+                                        <img src="{{d.imageUser.nameImage}}">
+                                    </div>
+                                    <!-- nom user -->
+                                    <div class="col-6">
+                                        <b id="add_friend_username"> {{d.loginUser}} </b>
+                                        <div class="row">
+    
+                                            <div class="col-6" style="left: 70px;">
+                                                <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu"
+                                                    #menuTrigger>
+                                                    <mat-icon>more_vert</mat-icon>
+                                                </button>
+                                                <mat-menu #menu="matMenu" xPosition="before">
+                                                    <button mat-menu-item (click)="deleteFrienship(d)">Supprimer</button>
+                                                </mat-menu>
+                                            </div>
+                                        </div>
+    
+                                    </div>
+    
+                                </div>
+    
+                            </div>
+    
+                        </div>
+    
+                    </div>
+    
+    
+                </div>
+    
+                <!-- card ajouter et rechercher un ami -->
+                <div id="ajout_amis" class="card p-0 m-0" [class.toggled]="classToggled">
+                    <div class="card-header">
+                        <p class="text-center">Ajouter un ami</p>
+                    </div>
+    
+                    <div class="anyClass">
+                        <!-- ajout barre de recherche -->
+                        <!--Search bar : centrée, avec bouton "search" à droite-->
+                        <div class="container" [class.toggled]="classToggled">
+                            <div id="content">
+                                <form #infosUsers="ngForm" (ngSubmit)="FilterUser(UserS.value)">
+                                    <div class="input-group">
+                                        <input ngModel="" #UserS name="UserS" type='text' id='search'
+                                            class="form-control search-form" placeholder="Rechercher...">
+                                        <span class="input-group-btn" style="width:30px">
+                                            <button id="search-this" type="button" class="pull-right btn search-btn">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+    
+    
+                        <!-- card demande d'un ami-->
+    
+                        <div *ngFor="let u of user" class="card p-1 m-1" [class.toggled]="classToggled">
+    
+                            <div class="container">
+    
+                                <div class="row">
+                                    <!-- photo de profil -->
+                                    <div class="col-6">
+    
+                                        <img src="{{u.imageUser.nameImage}}">
+                                    </div>
+                                    <!-- nom user photo_profil image-rond image-rond-bg-->
+    
+                                    <div class="col-6">
+                                        <b id="add_friend_username">{{u.loginUser}}</b>
+    
+                                        <div class="row">
+                                            <div class="col-6" style="left: 70px;">
+                                                <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu"
+                                                    #menuTrigger>
+                                                    <mat-icon svgIcon="add-friend" aria-hidden="false"></mat-icon>
+                                                </button>
+                                                <mat-menu #menu="matMenu" xPosition="before">
+                                                    <button mat-menu-item (click)="addFriend(u)">Ajouter</button>
+                                                </mat-menu>
+                                            </div>
+                                        </div>
+    
+                                    </div>
+    
+    
+                                </div>
+    
+    
+    
+                            </div>
+                        </div>
+                    </div>
+    
+    
+                </div>
+            </div>
             <!-- zone d'affichage des amis et des conversations-->
             <div id="card_amis" class="card p-0 m-0" [class.toggled]="classToggled" *ngIf="friends.length !=0">
                 <div class="card-header">
@@ -147,7 +296,12 @@
         </div>
 
         <div id="centre" class="col-6 p-4">
-            <div *ngIf="!visibleMessage && !visibleTeam">
+            <div *ngIf="friends.length ==0">
+                <div id="card_empty_messages" class="card p-4" [class.toggled]="classToggled">
+                    <p style="text-align: center;">Envie de discuter avec les autres utilisateurs ? Ajoutez des amis et rejoignez-vous pour vos futures séances de sport !</p>
+                </div>
+            </div>
+            <div *ngIf="!visibleMessage && !visibleTeam && friends.length !=0">
                 <!-- zone d'affichage des messages-->
                 <div id="card_empty_messages" class="card p-4" [class.toggled]="classToggled">
                     <p style="text-align: center;">Veuillez selectionner une conversation !</p>
@@ -419,7 +573,7 @@
 
             <!-- card gobale des demandes d'amis-->
             <div id="demande_amis" class="card p-0 m-0" [class.toggled]="classToggled"
-                *ngIf="deletefriend.length != 0 || notfriends.length != 0">
+                *ngIf="deletefriend.length != 0 && friends.length !=0 || notfriends.length != 0 && friends.length !=0">
                 <div class="card-header">
                     <p class="text-center">Demandes d'amis</p>
                 </div>
@@ -496,7 +650,7 @@
             </div>
 
             <!-- card ajouter et rechercher un ami -->
-            <div id="ajout_amis" class="card p-0 m-0" [class.toggled]="classToggled">
+            <div id="ajout_amis" class="card p-0 m-0" [class.toggled]="classToggled" *ngIf="friends.length !=0">
                 <div class="card-header">
                     <p class="text-center">Ajouter un ami</p>
                 </div>
