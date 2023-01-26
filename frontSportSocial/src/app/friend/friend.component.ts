@@ -107,7 +107,7 @@ export class FriendComponent implements OnInit {
   displayFriendConversation(val: any) {
     this.login = val;
     this.visibleTeam = false;
-    this.http.get('http://localhost:8300/messagetrue/me/' + this.authService.getUserConnect().idUser + '/' + this.login.idUser + '/combine').subscribe({
+    this.http.get('http://localhost:8300/messagetrue/me/' + this.authService.getUserConnect().idUser + '/' + this.login.idUser + '/'  + this.authService.getUserConnect().idUser + '/combine').subscribe({
       next: (data) => {
       },
       error: (err) => { console.log(err) }
@@ -131,7 +131,7 @@ export class FriendComponent implements OnInit {
     this.visibleTeamMember = false;
     this.visibleAddTeamMember = false;
     this.sendmessagesasc = null;
-    this.http.get('http://localhost:8300/team/truemessage/' + this.login4.idTeam ).subscribe({
+    this.http.get('http://localhost:8300/team/truemessage/' + this.login4.idTeam + '/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
       },
       error: (err) => { console.log(err) }
