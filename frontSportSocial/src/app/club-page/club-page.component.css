@@ -129,6 +129,7 @@ input-group-btn {
 #card {
     margin: 25px !important;
     border: none;
+    min-height: auto;
 }
 
 /*  CSS bouton */

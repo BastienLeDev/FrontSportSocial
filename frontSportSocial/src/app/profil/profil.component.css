@@ -70,6 +70,10 @@
     height: auto;
   }
 
+  #card_memo {
+    height: auto;
+  }
+
   .card-header {
     background-color: #FCECDD;
     color: black;
@@ -114,6 +118,19 @@
     border-radius: 15px;
     width: auto;
   }
+
+  #memo {
+    text-overflow: ellipsis !important; /* will make [...] at the end */
+    height: 50px;
+    overflow: hidden !important; /* older browsers */
+}
+
+#memo_parag{
+  white-space: nowrap; 
+  text-overflow: ellipsis; 
+  display: block; 
+  overflow: hidden;
+}
 
   /* CSS du scroll */
   .anyClass {
