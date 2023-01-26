@@ -62,6 +62,9 @@ export class ShopComponent implements OnInit {
   showHideCoach() {
     if (this.visibleCoach == false) {
       this.visibleCoach = true;
+      localStorage.removeItem('avatar');
+      localStorage.removeItem('tokens');
+      localStorage.setItem('coach', '1');
       this.visibleTokens = false;
       this.visibleAvatar = false;
     } else {
@@ -72,6 +75,9 @@ export class ShopComponent implements OnInit {
   showHideAvatar() {
     if (this.visibleAvatar == false) {
       this.visibleAvatar = true;
+      localStorage.removeItem('coach');
+      localStorage.removeItem('tokens');
+      localStorage.setItem('avatar', '1');
       this.visibleTokens = false;
       this.visibleCoach = false;
     } else {
@@ -82,6 +88,9 @@ export class ShopComponent implements OnInit {
 
   showHideTokens() {
     if (this.visibleTokens == false) {
+      localStorage.removeItem('coach');
+      localStorage.removeItem('avatar');
+      localStorage.setItem('tokens', '1');
       this.visibleTokens = true;
       this.visibleCoach = false;
       this.visibleAvatar = false;
@@ -89,20 +98,6 @@ export class ShopComponent implements OnInit {
       this.visibleTokens = true;
     }
   }
-
-
-  showHideAll() {
-    if (this.visibleCoach == true) {
-      this.visibleCoach = false;
-    }
-    if (this.visibleTokens == true) {
-      this.visibleTokens = false;
-    }
-    if (this.visibleAvatar == true) {
-      this.visibleAvatar = false;
-    }
-  }
-
 
   listCoachs() {
     this.http.get('http://localhost:8300/coach').subscribe({
