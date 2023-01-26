@@ -82,7 +82,7 @@ td {
 }
 
 #card_principal_messages {
-  min-height: 800px;
+  max-height: 800px;
 }
 
 /* CSS de la bare de recherche
@@ -163,7 +163,7 @@ input-group-btn {
 /* CSS zone de visalisation des amis */
 
 #card_principal_amis {
-  min-height: 350px;
+  min-height: auto;
   max-height: 520px;
   margin: 25px !important;
   border: none;
@@ -176,6 +176,8 @@ input-group-btn {
 }
 
 #card_next_events{
+  min-height: auto;
+  max-height: 800px;
   margin: 25px !important;
   border: none;
 }
@@ -199,7 +201,6 @@ h4 {
   background-color: #643f1d ;
   color: white;
 }
-
 
 
 /* Dark Mode CSS */

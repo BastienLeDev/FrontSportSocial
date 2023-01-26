@@ -39,6 +39,7 @@ export class PopUpInventaireComponent implements OnInit {
       next: (data) => {
         this.changement = data
         console.log(this.changement)
+        this.dialog.closeAll();
       },
       error: (err) => { console.log(err); }
     })

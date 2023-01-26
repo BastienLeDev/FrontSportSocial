@@ -1,9 +1,158 @@
 <div class="container-fluid">
     <div class="row">
         <div id="gauche" class="col-3 p-4">
+            <!--Si aucun ami enregistré -->
+            <div *ngIf="friends.length ==0">
+                <!-- card gobale des demandes d'amis-->
+                <div id="demande_amis" class="card p-0 m-0" [class.toggled]="classToggled"
+                    *ngIf="deletefriend.length != 0 || notfriends.length != 0">
+                    <div class="card-header">
+                        <p class="text-center">Demandes d'amis</p>
+                    </div>
+    
+                    <div class="anyClass">
+                        <!-- card demande d'un ami-->
+                        <div class="card p-1 m-1" *ngFor="let nf of notfriends" [class.toggled]="classToggled">
+    
+                            <div class="container">
+    
+                                <div class="row">
+                                    <!-- photo de profil -->
+                                    <div class="col-6">
+    
+                                        <img src="{{nf.imageUser.nameImage}}">
+                                    </div>
+                                    <!-- nom user -->
+                                    <div class="col-6">
+                                        <b id="add_friend_username"> {{nf.loginUser}} </b>
+                                        <div class="col-6" style="left: 50px;">
+                                            <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                                <mat-icon>more_vert</mat-icon>
+                                            </button>
+                                            <mat-menu #menu="matMenu" xPosition="before">
+                                                <button mat-menu-item (click)="acceptFrienship(nf)">Accepter</button>
+                                                <button mat-menu-item (click)="deleteFrienship(nf)">Supprimer</button>
+                                            </mat-menu>
+                                        </div>
+    
+                                    </div>
+    
+                                </div>
+    
+                            </div>
+    
+                        </div>
+                        <div class="card p-1 m-1" *ngFor="let d of deletefriend" [class.toggled]="classToggled">
+    
+                            <div class="container">
+    
+                                <div class="row">
+                                    <!-- photo de profil -->
+                                    <div class="col-6">
+    
+                                        <img src="{{d.imageUser.nameImage}}">
+                                    </div>
+                                    <!-- nom user -->
+                                    <div class="col-6">
+                                        <b id="add_friend_username"> {{d.loginUser}} </b>
+                                        <div class="row">
+    
+                                            <div class="col-6" style="left: 70px;">
+                                                <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu"
+                                                    #menuTrigger>
+                                                    <mat-icon>more_vert</mat-icon>
+                                                </button>
+                                                <mat-menu #menu="matMenu" xPosition="before">
+                                                    <button mat-menu-item (click)="deleteFrienship(d)">Supprimer</button>
+                                                </mat-menu>
+                                            </div>
+                                        </div>
+    
+                                    </div>
+    
+                                </div>
+    
+                            </div>
+    
+                        </div>
+    
+                    </div>
+    
+    
+                </div>
+    
+                <!-- card ajouter et rechercher un ami -->
+                <div id="ajout_amis" class="card p-0 m-0" [class.toggled]="classToggled">
+                    <div class="card-header">
+                        <p class="text-center">Ajouter un ami</p>
+                    </div>
+    
+                    <div class="anyClass">
+                        <!-- ajout barre de recherche -->
+                        <!--Search bar : centrée, avec bouton "search" à droite-->
+                        <div class="container" [class.toggled]="classToggled">
+                            <div id="content">
+                                <form #infosUsers="ngForm" (ngSubmit)="FilterUser(UserS.value)">
+                                    <div class="input-group">
+                                        <input ngModel="" #UserS name="UserS" type='text' id='search'
+                                            class="form-control search-form" placeholder="Rechercher...">
+                                        <span class="input-group-btn" style="width:30px">
+                                            <button id="search-this" type="button" class="pull-right btn search-btn">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+    
+    
+                        <!-- card demande d'un ami-->
+    
+                        <div *ngFor="let u of user" class="card p-1 m-1" [class.toggled]="classToggled">
+    
+                            <div class="container">
+    
+                                <div class="row">
+                                    <!-- photo de profil -->
+                                    <div class="col-6">
+    
+                                        <img src="{{u.imageUser.nameImage}}">
+                                    </div>
+                                    <!-- nom user photo_profil image-rond image-rond-bg-->
+    
+                                    <div class="col-6">
+                                        <b id="add_friend_username">{{u.loginUser}}</b>
+    
+                                        <div class="row">
+                                            <div class="col-6" style="left: 70px;">
+                                                <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu"
+                                                    #menuTrigger>
+                                                    <mat-icon svgIcon="add-friend" aria-hidden="false"></mat-icon>
+                                                </button>
+                                                <mat-menu #menu="matMenu" xPosition="before">
+                                                    <button mat-menu-item (click)="addFriend(u)">Ajouter</button>
+                                                </mat-menu>
+                                            </div>
+                                        </div>
+    
+                                    </div>
+    
+    
+                                </div>
+    
+    
+    
+                            </div>
+                        </div>
+                    </div>
+    
+    
+                </div>
+            </div>
             <!-- zone d'affichage des amis et des conversations-->
-            <div id="card_amis" class="card p-0 m-0" [class.toggled]="classToggled">
-                <div class="card-header" >
+            <div id="card_amis" class="card p-0 m-0" [class.toggled]="classToggled" *ngIf="friends.length !=0">
+                <div class="card-header">
                     <p class="text-center">Discutez avec un ami</p>
                 </div>
                 <!--Search bar : centrée, avec bouton "search" à droite-->
@@ -28,7 +177,8 @@
                 <div class="anyClass">
                     <div class="card p-1 m-1" *ngFor="let f of friends, ; let i = index; "
                         [class.toggled]="classToggled">
-                        <button (click)="displayFriendConversation(f)" style="border-radius: 10px; border: none; background-color: transparent;"
+                        <button (click)="displayFriendConversation(f)"
+                            style="border-radius: 10px; border: none; background-color: transparent;"
                             [class.toggled]="classToggled">
                             <div class="container">
 
@@ -47,15 +197,17 @@
                                                     style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne
                                             </p>
                                         </div>
-                                        <div *ngFor="let lm of listLastMsg" >
+                                        <div *ngFor="let lm of listLastMsg">
                                             <div *ngIf="lm !== undefined ">
                                                 <p id="last_message">
-                                                    <span *ngIf="lm.message.lu != true && (lm.destinataire.idUser ==  authService.getUserConnect().idUser && lm.message.expediteurMessage.idUser == f.idUser)">
-                                                        <i class="fas fa-envelope" style="color: rgb(184, 40, 40); margin-right: 3px;"></i></span>
+                                                    <span
+                                                        *ngIf="lm.message.lu != true && (lm.destinataire.idUser ==  authService.getUserConnect().idUser && lm.message.expediteurMessage.idUser == f.idUser)">
+                                                        <i class="fas fa-envelope"
+                                                            style="color: rgb(184, 40, 40); margin-right: 3px;"></i></span>
                                                     <span id="last_message" style="font-size: 70%; text-align:left "
-                                                    *ngIf="(lm.destinataire.idUser ==  authService.getUserConnect().idUser && lm.message.expediteurMessage.idUser == f.idUser)|| lm.destinataire.idUser ==  f.idUser">
-                                                    {{lm.message.contentMessage}}</span>
-                                             </p>
+                                                        *ngIf="(lm.destinataire.idUser ==  authService.getUserConnect().idUser && lm.message.expediteurMessage.idUser == f.idUser)|| lm.destinataire.idUser ==  f.idUser">
+                                                        {{lm.message.contentMessage}}</span>
+                                                </p>
                                             </div>
                                         </div>
 
@@ -72,78 +224,84 @@
 
             </div>
 
-            <div id="card_teams" class="card p-0 m-0" [class.toggled]="classToggled">
-            <div class="card-header" >
-                <p class="text-center">Discutez avec votre équipe</p>
-            </div>
-            <div class="container" [class.toggled]="classToggled">
-                <div id="content">
-                    <form #infosTeam="ngForm" (ngSubmit)="FilterTeam(TeamS.value)">
-                        <div class="input-group">
-                            <input ngModel="" #TeamS name="TeamS" type='text' id='search'
-                                class="form-control search-form" placeholder="Rechercher...">
-                            <span class="input-group-btn" style="width:39px">
-                                <button id="search-this" type="button" class="pull-right btn search-btn">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
-                    </form>
-
+            <div id="card_teams" class="card p-0 m-0" [class.toggled]="classToggled" *ngIf="friends.length !=0">
+                <div class="card-header">
+                    <p class="text-center">Discutez avec votre équipe</p>
                 </div>
-            </div>
+                <div class="container" [class.toggled]="classToggled">
+                    <div id="content" *ngIf="team.length !=0">
+                        <form #infosTeam="ngForm" (ngSubmit)="FilterTeam(TeamS.value)">
+                            <div class="input-group">
+                                <input ngModel="" #TeamS name="TeamS" type='text' id='search'
+                                    class="form-control search-form" placeholder="Rechercher...">
+                                <span class="input-group-btn" style="width:39px">
+                                    <button id="search-this" type="button" class="pull-right btn search-btn">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
 
-            <!-- card team-->
-            <div class="anyClass">
-                <div class="card p-2 m-2" *ngFor="let t of team" [class.toggled]="classToggled">
-                    <button (click)="displayTeamConversation(t)" style="border-radius: 10px; border: none; background-color: transparent;"
-                        [class.toggled]="classToggled">
-                        <div class="container">
+                    </div>
+                </div>
 
-                            <div class="row">
-                                <!-- photo de profil -->
-                                <div class="col-5">
-                                    <img class="teamImage" src="{{t.imageTeam.nameImage}}">
-                                    <div *ngFor="let ltm of listLastTeamMsg">
-                                        <div *ngIf="ltm.lastMsg !== undefined  ">
-                                            <p
-                                                *ngIf="ltm.lastMsg.lu != true && t.idTeam == ltm.idTeam && ltm.lastMsg.expediteurMessage.idUser != authService.getUserConnect().idUser ">
-                                                <i class="fas fa-envelope" style="color: rgb(184, 40, 40);"></i>
-                                            </p>
+                <!-- card team-->
+                <div class="anyClass">
+                    <div class="card p-2 m-2" *ngFor="let t of team" [class.toggled]="classToggled">
+                        <button (click)="displayTeamConversation(t)"
+                            style="border-radius: 10px; border: none; background-color: transparent;"
+                            [class.toggled]="classToggled">
+                            <div class="container">
+
+                                <div class="row">
+                                    <!-- photo de profil -->
+                                    <div class="col-5">
+                                        <img class="teamImage" src="{{t.imageTeam.nameImage}}">
+                                        <div *ngFor="let ltm of listLastTeamMsg">
+                                            <div *ngIf="ltm.lastMsg !== undefined  ">
+                                                <p
+                                                    *ngIf="ltm.lastMsg.lu != true && t.idTeam == ltm.idTeam && ltm.lastMsg.expediteurMessage.idUser != authService.getUserConnect().idUser ">
+                                                    <i class="fas fa-envelope" style="color: rgb(184, 40, 40);"></i>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- nom user -->
+                                    <div class="col-7">
+                                        <p class="conv_title"> {{t.title}}
+                                        <p>
+                                        <div *ngFor="let ltm of listLastTeamMsg">
+                                            <div *ngIf="ltm.lastMsg !== undefined ">
+                                                <p id="last_message" style="font-size: 70%; text-align:left;"
+                                                    *ngIf="t.idTeam == ltm.idTeam ">
+                                                    {{ltm.lastMsg.contentMessage}}</p>
+                                            </div>
                                         </div>
                                     </div>
 
-                                </div>
-                                <!-- nom user -->
-                                <div class="col-7">
-                                    <p class="conv_title"> {{t.title}}
-                                    <p>
-                                    <div *ngFor="let ltm of listLastTeamMsg">
-                                        <div *ngIf="ltm.lastMsg !== undefined ">
-                                            <p id="last_message" style="font-size: 70%; text-align:left;"
-                                                *ngIf="t.idTeam == ltm.idTeam ">
-                                                {{ltm.lastMsg.contentMessage}}</p>
-                                        </div>
-                                    </div>
                                 </div>
 
                             </div>
+                        </button>
+                    </div>
 
-                        </div>
-                    </button>
+
                 </div>
-
-
+                <div>
+                    <button id="feedbtn" mat-button (click)="openNewTeamModal()">Créer une team</button>
+                </div>
             </div>
-            <div>
-                <button id="feedbtn" mat-button (click)="openNewTeamModal()">Créer une team</button>
-            </div>
-        </div>
 
         </div>
 
         <div id="centre" class="col-6 p-4">
-            <div *ngIf="!visibleMessage && !visibleTeam">
+            <div *ngIf="friends.length ==0">
+                <div id="card_empty_messages" class="card p-4" [class.toggled]="classToggled">
+                    <p style="text-align: center;">Envie de discuter avec les autres utilisateurs ? Ajoutez des amis et rejoignez-vous pour vos futures séances de sport !</p>
+                </div>
+            </div>
+            <div *ngIf="!visibleMessage && !visibleTeam && friends.length !=0">
                 <!-- zone d'affichage des messages-->
                 <div id="card_empty_messages" class="card p-4" [class.toggled]="classToggled">
                     <p style="text-align: center;">Veuillez selectionner une conversation !</p>
@@ -153,10 +311,12 @@
 
             <div *ngIf="visibleMessage">
                 <!-- zone d'affichage des messages-->
-                <div id="card_principal_messages" class="card p-3" [class.toggled]="classToggled">
+                <div id="card_principal_messages" class="card p-0 m-0" [class.toggled]="classToggled">
                     <div class="card-header">
                         <div>
-                            <p class="text-center "><img style=" max-width: 60px; width: 100%; margin-right: 20px; border-radius: 50%;" src="{{login?.imageUser.nameImage}}"> <b>{{login?.loginUser}}</b>
+                            <p class="text-center "><img
+                                    style=" max-width: 60px; width: 100%; margin-right: 20px; border-radius: 50%;"
+                                    src="{{login?.imageUser.nameImage}}"> <b>{{login?.loginUser}}</b>
                             </p>
                         </div>
                     </div>
@@ -170,9 +330,10 @@
                                 <p>{{m.message.contentMessage}}</p>
                                 <span class="time-right">{{m.message.dateSendMessage |date}}</span>
                                 <button mat-icon-button mat-icon-button (click)="deleteMessage(m)">
-                                    <i (click)="deleteMessage(m)" class="fas fa-trash" style="color: rgb(255, 255, 255); font-size: 0.73em;"></i>
+                                    <i (click)="deleteMessage(m)" class="fas fa-trash"
+                                        style="color: rgb(255, 255, 255); font-size: 0.73em;"></i>
                                 </button>
-                                
+
                             </div>
 
                             <div class="container lighter "
@@ -213,21 +374,27 @@
 
             <div *ngIf="visibleTeam">
                 <!-- zone d'affichage des messages-->
-                <div id="card_principal_messages" class="card p-3" [class.toggled]="classToggled">
+                <div id="card_principal_messages" class="card p-0 m-0" [class.toggled]="classToggled">
                     <div class="card-header">
                         <div>
-                            <p class="text-center "><img style=" max-width: 60px; width: 100%; margin-right: 20px; border-radius: 50%;" class="teamImage" src="{{login4?.imageTeam.nameImage}}"> <b>{{login4?.title}}</b>
+                            <p class="text-center "><img
+                                    style=" max-width: 60px; width: 100%; margin-right: 20px; border-radius: 50%;"
+                                    class="teamImage" src="{{login4?.imageTeam.nameImage}}"> <b>{{login4?.title}}</b>
                             </p>
 
                             <div *ngIf="authService.getUserConnect().idUser != login4.admin.idUser && !visibleOption ">
-                                <button mat-icon-button mat-icon-button  [matMenuTriggerFor]="menu" #menuTrigger>
+                                <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
                                     <mat-icon svgIcon="userOption" aria-hidden="false"></mat-icon>
                                 </button>
                                 <mat-menu #menu="matMenu" xPosition="before">
-                                    <button mat-menu-item (click)="messageOption()" (click)="quitTeam()">Quitter</button>
-                                    <button mat-menu-item (click)="messageOption()" (click)="seeTeamMember()">Voir les membres</button>
-                                    <button mat-menu-item (click)="messageOption()" (click)="addTeamMember()">Ajouter membre</button>
-                                    <button mat-menu-item (click)="messageOption()" (click)="newTeamTitle()">Renomer la conversation</button>
+                                    <button mat-menu-item (click)="messageOption()"
+                                        (click)="quitTeam()">Quitter</button>
+                                    <button mat-menu-item (click)="messageOption()" (click)="seeTeamMember()">Voir les
+                                        membres</button>
+                                    <button mat-menu-item (click)="messageOption()" (click)="addTeamMember()">Ajouter
+                                        membre</button>
+                                    <button mat-menu-item (click)="messageOption()" (click)="newTeamTitle()">Renomer la
+                                        conversation</button>
                                 </mat-menu>
                             </div>
                             <div *ngIf="authService.getUserConnect().idUser == login4.admin.idUser && !visibleOption">
@@ -235,14 +402,18 @@
                                     <mat-icon svgIcon="userOption" aria-hidden="false"></mat-icon>
                                 </button>
                                 <mat-menu #menu="matMenu" xPosition="before">
-                                    <button mat-menu-item (click)="messageOption()" (click)="deleteTeam()">Supprimer le groupe</button>
-                                    <button mat-menu-item (click)="messageOption()" (click)="seeTeamMember()">Voir les membres</button>
-                                    <button mat-menu-item (click)="messageOption()" (click)="addTeamMember()">Ajouter membre</button>
-                                    <button mat-menu-item (click)="messageOption()" (click)="newTeamTitle()">Renomer la conversation</button>
+                                    <button mat-menu-item (click)="messageOption()" (click)="deleteTeam()">Supprimer le
+                                        groupe</button>
+                                    <button mat-menu-item (click)="messageOption()" (click)="seeTeamMember()">Voir les
+                                        membres</button>
+                                    <button mat-menu-item (click)="messageOption()" (click)="addTeamMember()">Ajouter
+                                        membre</button>
+                                    <button mat-menu-item (click)="messageOption()" (click)="newTeamTitle()">Renomer la
+                                        conversation</button>
                                 </mat-menu>
                             </div>
                             <div *ngIf="visibleOption ">
-                                <button mat-icon-button mat-icon-button (click)="messageOption()" >
+                                <button mat-icon-button mat-icon-button (click)="messageOption()">
                                     <mat-icon svgIcon="userOption" aria-hidden="false"></mat-icon>
                                 </button>
                             </div>
@@ -250,7 +421,7 @@
                         </div>
                     </div>
                     <div *ngIf="visibleOption" class="card-option">
-                        
+
                         <div *ngIf="visibleTeamTitle">
                             <form #mess="ngForm" (ngSubmit)="renameTeam(mess)">
                                 <table class="tab">
@@ -258,7 +429,7 @@
                                     <th class="col-8">
                                         <input id="message" [class.toggled]="classToggled" name="message" ngModel=""
                                             type="text" class="form-control" placeholder={{login4?.title}}
-                                            style="width: auto; margin: 5px;" required class="form-control" >
+                                            style="width: auto; margin: 5px;" required class="form-control">
                                     </th>
                                     <th class="col-2">
                                         <button [disabled]="!mess.form.valid" type="submit" class="button-30 "
@@ -286,15 +457,17 @@
                                             <div class="row"
                                                 *ngIf="t.idUser != authService.getUserConnect().idUser && login4.admin.idUser == authService.getUserConnect().idUser">
                                                 <div class="col-6" style="left: 70px;">
-                                                    <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                                    <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu"
+                                                        #menuTrigger>
                                                         <mat-icon>more_vert</mat-icon>
                                                     </button>
                                                     <mat-menu #menu="matMenu" xPosition="before">
-                                                        <button mat-menu-item (click)="deleteTeamMember(t)">Supprimer</button>
+                                                        <button mat-menu-item
+                                                            (click)="deleteTeamMember(t)">Supprimer</button>
                                                     </mat-menu>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="row" *ngIf="t.idUser == login4.admin.idUser ">
                                                 <p>Admin</p>
                                             </div>
@@ -323,11 +496,13 @@
 
                                             <div class="row">
                                                 <div class="col-6" style="left: 70px;">
-                                                    <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                                    <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu"
+                                                        #menuTrigger>
                                                         <mat-icon svgIcon="add-friend" aria-hidden="false"></mat-icon>
                                                     </button>
                                                     <mat-menu #menu="matMenu" xPosition="before">
-                                                        <button mat-menu-item (click)="addTeamMembers(nm)">Ajouter</button>
+                                                        <button mat-menu-item
+                                                            (click)="addTeamMembers(nm)">Ajouter</button>
                                                     </mat-menu>
                                                 </div>
                                             </div>
@@ -353,7 +528,7 @@
                                 <p>{{m.contentMessage}}</p>
                                 <span class="time-right">{{m.dateSendMessage |date}}</span>
                                 <button mat-icon-button mat-icon-button (click)="deleteTeamMessage(m)">
-                                    <i  class="fas fa-trash" style="color: rgb(255, 255, 255); font-size: 0.73em;"></i>
+                                    <i class="fas fa-trash" style="color: rgb(255, 255, 255); font-size: 0.73em;"></i>
                                 </button>
                             </div>
 
@@ -397,7 +572,8 @@
         <div id="droite" class="col-3 p-4">
 
             <!-- card gobale des demandes d'amis-->
-            <div id="demande_amis" class="card p-0 m-0" [class.toggled]="classToggled">
+            <div id="demande_amis" class="card p-0 m-0" [class.toggled]="classToggled"
+                *ngIf="deletefriend.length != 0 && friends.length !=0 || notfriends.length != 0 && friends.length !=0">
                 <div class="card-header">
                     <p class="text-center">Demandes d'amis</p>
                 </div>
@@ -450,7 +626,8 @@
                                     <div class="row">
 
                                         <div class="col-6" style="left: 70px;">
-                                            <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                            <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu"
+                                                #menuTrigger>
                                                 <mat-icon>more_vert</mat-icon>
                                             </button>
                                             <mat-menu #menu="matMenu" xPosition="before">
@@ -473,7 +650,7 @@
             </div>
 
             <!-- card ajouter et rechercher un ami -->
-            <div id="ajout_amis" class="card p-0 m-0" [class.toggled]="classToggled">
+            <div id="ajout_amis" class="card p-0 m-0" [class.toggled]="classToggled" *ngIf="friends.length !=0">
                 <div class="card-header">
                     <p class="text-center">Ajouter un ami</p>
                 </div>
@@ -517,7 +694,8 @@
 
                                     <div class="row">
                                         <div class="col-6" style="left: 70px;">
-                                            <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                            <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu"
+                                                #menuTrigger>
                                                 <mat-icon svgIcon="add-friend" aria-hidden="false"></mat-icon>
                                             </button>
                                             <mat-menu #menu="matMenu" xPosition="before">

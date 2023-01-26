@@ -1,25 +1,27 @@
-<div class="card p-2 m-2">
-
-    <div class="container">
-        <div class="row card-header">
-            <h1 class="text-center">Échange de Tokens avec {{coach.loginUser}}</h1>
-        </div>
-        <div class="md-form">
-            <p class="col-6 p-2">Saisissez un montant en tokens :</p>
-            <input ngModel="" #echangeT type='number' id='transaction' class="form-control search-form col-12 p-2"
-                placeholder="Token">
-        </div>
-    </div>
+<div id="echange" [class.toggled]="classToggled"  >
     <div class="row">
-        <p class="col-5"></p>
-        <button (click)="echangeToken(echangeT.value)" type="submit"
-            class="btn btnPrincipal btn-block btn-sm col-3">Envoyer les
-            tokens</button>
-    </div>
-    <div class="row m-4" *ngIf="echange">
-        <p class="text-center">{{msg}} {{coach.loginUser}} !</p>
-    </div>
-    <div class="m-4" *ngIf="!echange">
-        <p class="text-center"> {{msg}} </p>
+        <div id="card-echange" class="card p-0 m-0" [class.toggled]="classToggled" >
+            <div class="container">
+                <div class="row card-header">
+                    <h1 class="text-center">Échange de Tokens avec {{coach.loginUser}}</h1>
+                </div>
+                <div class="md-form">
+                    <p class="col-6 p-2">Saisissez un montant en tokens :</p>
+                    <input ngModel="" #echangeT type='number' id='transaction' class="form-control search-form col-12 p-2" placeholder="Token">
+                </div>
+            </div>
+            <div class="row">
+                <p class="col-5"></p>
+                <button (click)="echangeToken(echangeT.value)" type="submit"
+                    class="btn btnPrincipal btn-block btn-sm col-3">Envoyer les
+                    tokens</button>
+            </div>
+            <div class="row m-4" *ngIf="echange" >
+                <p class="text-center">{{msg}} {{coach.loginUser}} !</p>
+            </div>
+            <div class="m-4" *ngIf="!echange" >
+                <p class="text-center"> {{msg}} </p>
+            </div>
+        </div>
     </div>
 </div>

@@ -42,16 +42,17 @@ export class ScheduleComponent implements OnInit {
   schedules: any;
   start: any;
   end: any;
-  title:  any;
+  title: any;
   viewDate: Date = new Date();
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
   classToggled = this.dark.classToggled;
 
-  constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog, private appComponent : AppComponent, public dark : DarkThemeService) { }
+  constructor(private http: HttpClient, public authService: AuthService, private route: Router, private dialog: MatDialog, private appComponent: AppComponent, public dark: DarkThemeService) { }
 
   ngOnInit(): void {
     this.listSchedule();
+    this.setView(this.CalendarView.Day);
     localStorage.removeItem('dateEnd');
     localStorage.removeItem('dateStart');
     localStorage.removeItem('descActivity');
@@ -59,28 +60,28 @@ export class ScheduleComponent implements OnInit {
     localStorage.removeItem('idActivity');
   }
 
+
+
   setView(view: CalendarView) {
     this.view = view;
   }
 
   events: CalendarEvent[] = [
     {
-      start: new Date(2022, 2, 8, 0),
-      end: new Date(2022, 2, 18, 0),
-      title: 'appointment_date',
-    },
-    {
       start: startOfDay(new Date()),
       end: endOfDay(new Date()),
-      title: 'Second event',
+      title: "Aujourd'hui",
     }
   ]
 
 
   listSchedule() {
-    this.http.get('http://localhost:8300/schedule/').subscribe({
+    this.http.get('http://localhost:8300/activity/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
-        this.schedules = data
+        this.schedules = data;
+        this.schedules.map((a: { activity: any }) => this.events.push({ start: new Date(a.activity.dateStart), end: new Date(a.activity.dateEnd), title: a.activity.nameActivity }));
+        this.setView(CalendarView.Month);
+        console.log(this.schedules)
       },
       error: (err) => { console.log(err); }
     });
@@ -92,9 +93,9 @@ export class ScheduleComponent implements OnInit {
 
   openNewActivity() {
     const dialogRef = this.dialog.open(NewActivityComponent);
-    dialogRef.afterClosed().subscribe(() => { //Pour lancer des fonctions lorsqu'on ferme le popup
-      this.ngOnInit(); //pour reload les cards event => affiche le nouvel event sans reload page
-    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    })
 
   }
 

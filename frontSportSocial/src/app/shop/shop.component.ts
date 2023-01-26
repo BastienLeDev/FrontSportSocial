@@ -21,9 +21,9 @@ import { PopUpEchangeComponent } from '../pop-up-echange/pop-up-echange.componen
 
 export class ShopComponent implements OnInit {
 
-  visibleCoach = false;
-  visibleAvatar = false;
-  visibleTokens = false;
+  visibleCoach : boolean = false;
+  visibleAvatar : boolean = false;
+  visibleTokens : boolean = false;
   coachs: any;
   sports : any;
   avatars: any;
@@ -37,11 +37,25 @@ export class ShopComponent implements OnInit {
   constructor(private http: HttpClient, public authService: AuthService,private dialog: MatDialog, private route: Router, private coachService: CoachService, private appComponent : AppComponent, public dark : DarkThemeService) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('avatar') !== null){
+      this.visibleAvatar = true;
+      this.visibleCoach = false;
+      this.visibleTokens = false;
+    }
+    if (localStorage.getItem('coach') !== null){
+      this.visibleAvatar = false;
+      this.visibleCoach = true;
+      this.visibleTokens = false;
+    }
+    if (localStorage.getItem('tokens') !== null){
+      this.visibleAvatar = false;
+      this.visibleCoach = false;
+      this.visibleTokens = true;
+    }
     this.listCoachs();
     this.listAvatars();
     this.infoUser();
-    this.verifAvatarAchete(this.avatars);
-    
+    this.verifAvatarAchete(this.avatars);    
   }
 
 
@@ -191,7 +205,6 @@ export class ShopComponent implements OnInit {
     this.http.get('http://localhost:8300/user/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.userInfo = data;
-        console.log(this.userInfo)
       },
       error: (err) => { console.log(err); }
     });

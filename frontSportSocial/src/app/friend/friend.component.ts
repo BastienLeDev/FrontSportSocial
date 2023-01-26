@@ -98,28 +98,24 @@ export class FriendComponent implements OnInit {
   }
 
   listSendMessages() {
-
     this.http.get('http://localhost:8300/message/me/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => { this.sendmessages = data },
       error: (err) => { console.log(err) }
     });
-
   }
 
   displayFriendConversation(val: any) {
     this.login = val;
     this.visibleTeam = false;
-    this.http.get('http://localhost:8300/messagetrue/me/' + this.authService.getUserConnect().idUser + '/' + this.login.idUser + '/combine').subscribe({
+    this.http.get('http://localhost:8300/messagetrue/me/' + this.authService.getUserConnect().idUser + '/' + this.login.idUser + '/'  + this.authService.getUserConnect().idUser + '/combine').subscribe({
       next: (data) => {
       },
       error: (err) => { console.log(err) }
     });
     if (this.visibleMessage == false) {
       this.visibleMessage = true;
-
     } else {
     }
-
     if (val != null) {
       this.listSendAndReceivedMessagesAsc();
     } else {
@@ -135,23 +131,20 @@ export class FriendComponent implements OnInit {
     this.visibleTeamMember = false;
     this.visibleAddTeamMember = false;
     this.sendmessagesasc = null;
-    this.http.get('http://localhost:8300/team/truemessage/' + this.login4.idTeam ).subscribe({
+    this.http.get('http://localhost:8300/team/truemessage/' + this.login4.idTeam + '/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
       },
       error: (err) => { console.log(err) }
     });
     if (this.visibleTeam == false) {
       this.visibleTeam = true;
-
     } else {
     }
-
     if (val != null) {
       this.listTeamMessages();
     } else {
       this.visibleTeam = true;
     }
-
   }
 
   messageOption() {
@@ -214,8 +207,6 @@ export class FriendComponent implements OnInit {
       },
       error: (err) => { console.log(err) }
     });
-    
-
   }
 
   listFriends() {
@@ -224,7 +215,6 @@ export class FriendComponent implements OnInit {
       next: (data) => {
         this.friends = data
         console.log(this.friends);
-        
         for (let index in this.friends) {
           console.log(index)
           if (this.listLastMsg != null) {
@@ -235,7 +225,6 @@ export class FriendComponent implements OnInit {
               this.lastmsg = "";
               this.lastmsg = data,
               console.log(this.lastmsg);
-              
               this.listLastMsg.push(this.lastmsg[0])
               console.log(this.listLastMsg)
             }
@@ -244,24 +233,22 @@ export class FriendComponent implements OnInit {
       },
       error: (err) => { console.log(err); }
     });
-
   }
 
   listNotFriends() {
-
     this.http.get('http://localhost:8300/notfriend/receiver/' + this.authService.getUserConnect().idUser).subscribe({
-      next: (data) => { this.notfriends = data },
+      next: (data) => { this.notfriends = data
+      console.log(this.notfriends);
+      
+      },
       error: (err) => { console.log(err); }
-
     });
   }
 
   listNotFriendsDelete() {
-
     this.http.get('http://localhost:8300/notfriend/receiverdelete/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => { this.deletefriend = data },
       error: (err) => { console.log(err); }
-
     });
   }
 
@@ -288,7 +275,6 @@ export class FriendComponent implements OnInit {
               commentData.lastMsg = this.lastteammsg[0];
               this.listLastTeamMsg.push(commentData)
               console.log(this.listLastTeamMsg);
-              
             }
           })
         }
@@ -324,12 +310,10 @@ export class FriendComponent implements OnInit {
       },
       error: (err) => { console.log(err) }
     });
-
   }
 
 
   sendMess(val: NgForm) {
-
     let messag = { contentMessage: val.value.message };
     let messagerie = { message: messag };
     if ( val.value.message.trim()) {
@@ -340,16 +324,12 @@ export class FriendComponent implements OnInit {
         this.ngOnInit()
       },
       error: (err) => { console.log(err) },
-
-
-
     })
   }
 
   }
 
   sendTeamMess(val: NgForm) {
-
     let messag = { contentMessage: val.value.message };
     this.http.post('http://localhost:8300/team/envoyer/' + this.login4.idTeam + '/' + this.authService.getUserConnect().idUser, messag).subscribe({
       next: (data) => {
@@ -520,7 +500,6 @@ export class FriendComponent implements OnInit {
 
   deleteMessage(val : any) {
     this.infoMessage = val;
-    console.log(this.infoMessage)
     this.http.delete('http://localhost:8300/message/delete/' + this.authService.getUserConnect().idUser + '/' + this.infoMessage.message.idMessage).subscribe({
       next: (data) => {
         this.ngOnInit();
@@ -531,7 +510,6 @@ export class FriendComponent implements OnInit {
 
   deleteTeamMessage(val : any) {
     this.infoMessage = val;
-    console.log(this.infoMessage)
     this.http.delete('http://localhost:8300/team/message/delete/' + this.authService.getUserConnect().idUser + '/' + this.infoMessage.idMessage  + '/' + this.login4.idTeam).subscribe({
       next: (data) => {
         this.ngOnInit();
