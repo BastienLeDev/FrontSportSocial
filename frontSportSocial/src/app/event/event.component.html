@@ -8,21 +8,22 @@
                         <div class="container">
                             <form>
                                 <div class="row">
-                                    <div class="col-12">
-                                        <div>
-                                            <mat-form-field id="btn-filter-event">
-                                                <mat-label>
-                                                    Filtrer par sport :
-                                                </mat-label>
-                                                <mat-select id="btn-filter-event" class="" name="sportEvent" ngModel="">
-                                                    <mat-option>Tous les sports</mat-option>
-                                                    <mat-option [value]="s" *ngFor="let s of sports">
-                                                        {{s.nameSport}}
-                                                    </mat-option>
-                                                </mat-select>
-                                            </mat-form-field>
-                                        </div>
-
+                                    <div class="col-7">
+                                        <mat-form-field id="btn-filter-event">
+                                            <mat-label>
+                                                Filtrer par sport :
+                                            </mat-label>
+                                            <mat-select id="btn-filter-event" class="" name="sportEvent" ngModel="">
+                                                <mat-option>Tous les sports</mat-option>
+                                                <mat-option [value]="s" *ngFor="let s of sports">
+                                                    {{s.nameSport}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-5">
+                                        <button style="left : 50px" mat-icon-button mat-icon-button>
+                                            <i class="fa fa-search"></i></button>
                                     </div>
                                 </div>
                             </form>
@@ -42,8 +43,10 @@
             </div>
         </div>
 
-        <div class="col-9 transparent_toggled" [class.toggled]="classToggled" style="background-color: transparent; border : none">
-            <div id="card_data" class="card p-0 m-0 row event window" style="background-color: transparent; border : none">
+        <div class="col-9 transparent_toggled" [class.toggled]="classToggled"
+            style="background-color: transparent; border : none">
+            <div id="card_data" class="card p-0 m-0 row event window"
+                style="background-color: transparent; border : none">
 
                 <div class="row">
                     <div class="col-12 ">
