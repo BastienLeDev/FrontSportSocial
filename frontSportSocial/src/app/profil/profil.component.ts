@@ -39,6 +39,7 @@ export class ProfilComponent implements OnInit {
   idActivity : any;
   visibleAddTraining = false;
   sports : any;
+  scoreTot : any;
 
   constructor(public authService: AuthService, private route: Router, private dialog: MatDialog, private http: HttpClient, private appComponent: AppComponent, public dark: DarkThemeService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIconLiteral('Option', sanitizer.bypassSecurityTrustHtml(Option))
@@ -59,6 +60,7 @@ export class ProfilComponent implements OnInit {
     this.showExchange();
     this.myTraining();
     this.listSport();
+    this.globalRanking();  
   }
 
   showHideMemos() {
@@ -209,6 +211,15 @@ export class ProfilComponent implements OnInit {
       },
       error: (err) => { console.log(err) },
     })
+  }
+
+  globalRanking() {
+    this.http.get('http://localhost:8300/classement/total').subscribe({
+      next: (data) => {
+        this.scoreTot = data
+        console.log(data) },
+      error: (err) => { console.log(err); }
+    });
   }
 
 }

@@ -3,8 +3,24 @@
         <div class="col-3 p-4">
 
             <div id="card-user" class="card p-0 m-0" [class.toggled]="classToggled">
-                <div id="loginUser" class="card-header">
-                    <h3 style="font-weight: bold" class="text-center">{{userInfo.loginUser}} </h3>
+                <div id="loginUser" class="card-header" >
+                    <div class="row">
+                    <div class="col-10">
+                        <h3 style="font-weight: bold" class="text-center">{{userInfo.loginUser}} </h3>
+                    </div>
+                    <div class="col-2" *ngFor="let s of scoreTot.slice(0, 1);">
+                        <i *ngIf="scoreTot[0].user.idUser == authService.getUserConnect().idUser" class="fas fa-crown"
+                            style="color: #FFD700;"></i>
+                        <div *ngIf="scoreTot[1] != null">
+                            <i *ngIf="scoreTot[1].user.idUser == authService.getUserConnect().idUser"
+                                class="fas fa-crown" style="color:#C0C0C0;"></i>
+                        </div>
+                        <div *ngIf="scoreTot[2] != null">
+                            <i *ngIf="scoreTot[2].user.idUser == authService.getUserConnect().idUser"
+                                class="fas fa-crown" style="color: #CD7F32;"></i>
+                        </div>
+                    </div>
+                </div>
                 </div>
                 <div class="mx-auto text-center p-2">
                     <img src="{{userInfo.imageUser.nameImage}}">
@@ -110,10 +126,12 @@
                                 <div class="col-9 justify-content-center">
                                     <h2> {{a.activity.nameActivity}}</h2>
                                 </div>
-                                <div *ngIf="a.activity.done == true && a.activity.pastDateActivity == true" class="col-3 justify-content-center">
+                                <div *ngIf="a.activity.done == true && a.activity.pastDateActivity == true"
+                                    class="col-3 justify-content-center">
                                     <b>+ 100 points</b>
                                 </div>
-                                <div *ngIf="a.activity.done == false && a.activity.pastDateActivity == true" class="col-3 justify-content-center">
+                                <div *ngIf="a.activity.done == false && a.activity.pastDateActivity == true"
+                                    class="col-3 justify-content-center">
                                     <button id="btn_done" mat-button (click)="doneActivity(a)"> Fait !</button>
                                 </div>
                             </div>
@@ -201,7 +219,7 @@
                         <div class="col-1">
                             <div *ngIf="!visibleAddTraining">
                                 <button (click)="visibleAddTrainingFonction()" mat-icon-button mat-icon-button>
-                                    <i class="fas fa-plus" ></i></button>
+                                    <i class="fas fa-plus"></i></button>
                             </div>
                         </div>
                     </div>
@@ -231,7 +249,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
-                                        <button id="feedbtn" mat-button style="width: auto; height : auto;">Ajouter</button>
+                                        <button id="feedbtn" mat-button
+                                            style="width: auto; height : auto;">Ajouter</button>
                                     </div>
                                     <div class="col-6">
                                         <button id="feedbtn" mat-button (click)="visibleAddTrainingFonction()"
