@@ -37,9 +37,12 @@ export class ProfilComponent implements OnInit {
   training : any;
   idTraining : any;
   idActivity : any;
+  idEvent : any
   visibleAddTraining = false;
   sports : any;
   scoreTot : any;
+  myEvents : any;
+  dateNow = new Date;
 
   constructor(public authService: AuthService, private route: Router, private dialog: MatDialog, private http: HttpClient, private appComponent: AppComponent, public dark: DarkThemeService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIconLiteral('Option', sanitizer.bypassSecurityTrustHtml(Option))
@@ -60,7 +63,8 @@ export class ProfilComponent implements OnInit {
     this.showExchange();
     this.myTraining();
     this.listSport();
-    this.globalRanking();  
+    this.globalRanking(); 
+    this.listMyEvents(); 
   }
 
   showHideMemos() {
@@ -111,9 +115,21 @@ export class ProfilComponent implements OnInit {
 
   listActivite() {
     this.http.get('http://localhost:8300/activity/' + this.authService.getUserConnect().idUser).subscribe({
-      next: (data) => { this.activite = data, console.log(this.activite); },
+      next: (data) => { this.activite = data },
       error: (err) => { console.log(err); }
     });
+  }
+
+  listMyEvents() {
+    this.http.get('http://localhost:8300/event/' + this.authService.getUserConnect().idUser).subscribe({
+      next: (data) => { 
+        this.myEvents = data
+        console.log(this.myEvents);
+        
+      },
+      error: (err) => { console.log(err); }
+    });
+
   }
 
 
@@ -121,7 +137,6 @@ export class ProfilComponent implements OnInit {
     this.http.get('http://localhost:8300/user/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.userInfo = data;
-        console.log(this.userInfo)
       },
       error: (err) => { console.log(err); }
     });
@@ -140,7 +155,6 @@ export class ProfilComponent implements OnInit {
     this.http.get('http://localhost:8300/echange/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.exchange = data;
-        console.log(this.exchange)
       },
       error: (err) => { console.log(err) }
     });
@@ -213,13 +227,34 @@ export class ProfilComponent implements OnInit {
     })
   }
 
+  doneEvent(val : any){
+    this.idEvent = val;
+    this.http.post('http://localhost:8300/event/done/' + this.idEvent.idEvent + '/' + this.authService.getUserConnect().idUser, val).subscribe({
+      next: (data) => {
+        this.listMyEvents();
+      },
+      error: (err) => { console.log(err) },
+    })
+  }
+
   globalRanking() {
     this.http.get('http://localhost:8300/classement/total').subscribe({
       next: (data) => {
-        this.scoreTot = data
-        console.log(data) },
+        this.scoreTot = data },
       error: (err) => { console.log(err); }
     });
   }
+
+  
+removeUserFromEvent(val : any) {
+  this.idEvent = val;
+  this.http.patch('http://localhost:8300/event/desister/' + this.authService.getUserConnect().idUser + '/' + this.idEvent.idEvent, null).subscribe({
+    next: (data) => {
+      this.ngOnInit();
+    },
+    error: (err) => { console.log(err) },
+  });
+
+}
 
 }

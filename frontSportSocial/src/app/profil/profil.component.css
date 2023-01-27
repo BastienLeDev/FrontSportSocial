@@ -151,6 +151,13 @@
     width: 150px;
   }
 
+  #btn_event {
+    display: block;
+    margin: auto;
+    background-color: #FFC288;
+    color: rgb(0, 0, 0);
+  }
+
   #btn_done {
     display: block;
     margin: auto;
@@ -223,6 +230,12 @@
   }
 
   .toggled #btn_done {
+    background-color: rgb(87, 90, 159) !important;
+    color: white;
+  }
+
+  
+  .toggled #btn_event {
     background-color: rgb(87, 90, 159) !important;
     color: white;
   }
