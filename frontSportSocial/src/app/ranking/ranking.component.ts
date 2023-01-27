@@ -23,6 +23,7 @@ const rugby = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-
 export class RankingComponent implements OnInit {
 
   score: any;
+  scoreTot : any;
   texte = "";
   sports: any;
   sporta: any;
@@ -46,6 +47,7 @@ export class RankingComponent implements OnInit {
   ngOnInit(): void {
     this.ListSport();
     this.ListSportIndividu();
+    this.globalRanking();
   }
 
   goToShop() {
@@ -80,6 +82,15 @@ export class RankingComponent implements OnInit {
     });
   }
 
+  globalRanking() {
+    this.http.get('http://localhost:8300/classement/total').subscribe({
+      next: (data) => {
+        this.scoreTot = data
+        console.log(data) },
+      error: (err) => { console.log(err); }
+    });
+  }
+
   addRanking(val: any) {
     val.user = this.connectedUser;
     this.http.post('http://localhost:8300/classement/add/' + this.authService.getUserConnect().idUser, val).subscribe({
@@ -105,7 +116,8 @@ export class RankingComponent implements OnInit {
     this.http.get('http://localhost:8300/classement/search/' + this.authService.getUserConnect().idUser + '/' + val ).subscribe({
       next: (data) => {
         this.individu = data;
-      }
+      },
+      error: (err) => { console.log(err) },
     })
   }
 
