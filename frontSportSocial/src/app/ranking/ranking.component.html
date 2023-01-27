@@ -50,7 +50,11 @@
                                 [class.toggled]="classToggled">
                                 <div class="row">
                                     <div class="col-5 justify-content-center">
+                                        <div class="row">
+                                            <div class="col-10">
                                         <h2 class="">{{s.user.loginUser}}</h2>
+                                    </div>
+                                    <div class="col-2">
                                         <i *ngIf="scoreTot[0].user.idUser == s.user.idUser" class="fas fa-crown"
                                             style="color: #FFD700;"></i>
                                         <div *ngIf="scoreTot[1] != null">
@@ -62,6 +66,8 @@
                                                 style="color: #CD7F32;"></i>
                                         </div>
                                     </div>
+                                    </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-4">
@@ -69,7 +75,7 @@
                                             src="{{s.user.imageUser.nameImage}}" alt="">
                                     </div>
                                     <div class="col-8">
-                                        <p>Score : {{s.sum}}</p>
+                                        <p>{{s.sum}} points </p>
                                     </div>
                                 </div>
                             </div>
@@ -81,8 +87,10 @@
                             <div class="card p-3 m-3 col-11" *ngFor="let s of score;  " [class.toggled]="classToggled">
                                 <div></div>
                                 <div class="row">
-                                    <div class="col-5 justify-content-center">
+                                    <div class="col-3 justify-content-center">
                                         <h2 class="">{{s.user.loginUser}}</h2>
+                                    </div>
+                                    <div class="col-1">
                                         <i *ngIf="score[0].user.idUser == s.user.idUser" class="fas fa-crown"
                                             style="color: #FFD700;"></i>
                                         <div *ngIf="score[1] != null">
@@ -94,10 +102,11 @@
                                                 style="color: #CD7F32;"></i>
                                         </div>
                                     </div>
+
                                     <div class="col-5">
                                         <p>{{s.sport.nameSport}}</p>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-1">
                                         <i *ngIf="s.sport.nameSport == 'Football' " class="fas fa-futbol"></i>
                                         <i *ngIf="s.sport.nameSport == 'Escalade' " class="fas fa-mountain"></i>
                                         <mat-icon style=" font-size: 0.73em;" *ngIf="s.sport.nameSport == 'Rugby'"
@@ -117,7 +126,7 @@
                                             src="{{s.user.imageUser.nameImage}}" alt="">
                                     </div>
                                     <div class="col-8">
-                                        <p>Score : {{s.score}}</p>
+                                        <p>{{s.score}} points</p>
                                     </div>
                                 </div>
                             </div>
@@ -212,7 +221,7 @@
                                     svgIcon="basket" aria-hidden="false"></mat-icon>
                             </div>
                             <div class="col-5">
-                                <p>Score : {{i.score}}</p>
+                                <p>{{i.score}} points</p>
                             </div>
                         </div>
                     </div>
