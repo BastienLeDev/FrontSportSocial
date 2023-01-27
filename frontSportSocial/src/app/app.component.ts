@@ -125,7 +125,6 @@ export class AppComponent {
     this.http.get('http://localhost:8300/user/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.userInfo = data;
-        console.log(this.userInfo)
       },
       error: (err) => { console.log(err); }
     });

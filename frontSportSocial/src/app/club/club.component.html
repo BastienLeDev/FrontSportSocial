@@ -5,6 +5,7 @@
                 <div class="card-header">
                     <p class="text-center">Mes clubs</p>
                 </div>
+                <div class="anyClass">
                 <div class="card p-3 m-2" *ngFor="let c of myClubs" [class.toggled]="classToggled">
                     <div class="row">
                         <div class="col-10">
@@ -30,6 +31,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
 
@@ -90,7 +92,7 @@
                         style="background-color: transparent;">
                         <div class="card p-3 m-3" id="card_otherClub" [class.toggled]="classToggled">
                             <div class="row m-2">
-                                <div class="col-4">
+                                <div class="col-4" *ngIf="c.imageClub != null">
                                     <img src="{{c.imageClub.nameImage}}" style="width: 60%" alt="">
                                 </div>
                                 <div class="col-8">

@@ -113,6 +113,12 @@ img {
     border: none;
 }
 
+#card_coach {
+  height: 600px;
+  min-height: auto;
+  background-color: transparent !important;
+}
+
 /* Dark Mode CSS */
 
 .toggled {

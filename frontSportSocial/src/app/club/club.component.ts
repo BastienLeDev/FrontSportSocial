@@ -31,7 +31,6 @@ export class ClubComponent implements OnInit {
 
   constructor(private http: HttpClient, private clubService: ClubsService, private authService: AuthService, private route: Router, public dialog: MatDialog, private appComponent: AppComponent, public dark: DarkThemeService) { }
 
-
   ngOnInit(): void {
     this.listSport();
     this.listMyClubs();
@@ -40,7 +39,6 @@ export class ClubComponent implements OnInit {
       this.route.navigateByUrl('connexion')
     }
   }
-
 
   listSport() {
     this.http.get('http://localhost:8300/sport').subscribe({
@@ -54,8 +52,6 @@ export class ClubComponent implements OnInit {
     this.http.get('http://localhost:8300/mesClubs/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.myClubs = data;
-        console.log(this.myClubs);
-
       },
       error: (err) => { console.log(err); }
     });
@@ -65,7 +61,6 @@ export class ClubComponent implements OnInit {
     this.http.get('http://localhost:8300/autresClubs/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.otherClubs = data;
-        console.log(this.otherClubs);
         for (let index in this.otherClubs) {
         this.http.get('http://localhost:8300/club/amis/' + this.authService.getUserConnect().idUser + '/' + this.otherClubs[index].idClub).subscribe({
           next: (data) => {
@@ -106,7 +101,6 @@ export class ClubComponent implements OnInit {
     });
   }
 
-
   openClubPage(val: any) {
     this.clubService.setClubToSee(val);
     this.route.navigateByUrl('clubPage');
@@ -124,23 +118,11 @@ export class ClubComponent implements OnInit {
 
   filterClubBySport(val: any) {
     this.filterBySport = val;
-    console.log(this.filterBySport);
     this.http.get('http://localhost:8300/club/filter/' + this.authService.getUserConnect().idUser +'/' + val.sportEvent.nameSport).subscribe({
       next: (data) => {
         this.otherClubs = data;
       }
     })
   }
-
-  /*
-  listFriendsInClub() {
-    this.http.get('http://localhost:8300/club/amis/' + this.authService.getUserConnect().idUser + '/' + this.idClub).subscribe({
-      next: (data) => {
-        this.myFriends = data;
-      },
-      error: (err) => { console.log(err); }
-    });
-  }
-  */
 
 }
