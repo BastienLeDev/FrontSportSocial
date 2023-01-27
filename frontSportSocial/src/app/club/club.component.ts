@@ -28,6 +28,8 @@ export class ClubComponent implements OnInit {
   filterBySport : any;
   myFriends : any;
   idClub : any;
+  visibleSearch = false;
+  visibleFilter = false;
 
   constructor(private http: HttpClient, private clubService: ClubsService, private authService: AuthService, private route: Router, public dialog: MatDialog, private appComponent: AppComponent, public dark: DarkThemeService) { }
 
@@ -123,6 +125,24 @@ export class ClubComponent implements OnInit {
         this.otherClubs = data;
       }
     })
+  }
+
+  goToFriends() {
+    this.route.navigateByUrl('friend');
+  }
+
+  visibleSearchClub(){
+    if (this.visibleSearch == false){
+      this.visibleSearch = true
+      this.visibleFilter = false
+    }
+  }
+
+  visibleFilterClub(){
+    if (this.visibleFilter == false){
+      this.visibleSearch = false
+      this.visibleFilter = true
+    }
   }
 
 }
