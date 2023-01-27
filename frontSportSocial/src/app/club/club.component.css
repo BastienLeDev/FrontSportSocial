@@ -90,6 +90,20 @@ input-group-btn {
   height: 400px;
 }
 
+.photo_club {
+  background-size: contain;
+  background-position: 50% 50%;
+  border: none;
+  border-radius: 5px;
+}
+
+#card_style{
+  box-shadow: none;
+  border-top: white !important;
+  border-left: white !important;
+  border-right: white !important;
+}
+
 /* Dark Mode CSS */
 
 .toggled {

@@ -5,7 +5,7 @@
                 style="background-color: transparent ; border: none; box-shadow: none;">
                 <div class="container">
                     <div class="row">
-                        <div *ngIf="visibleCoach"  class="col-2">
+                        <div *ngIf="visibleCoach" class="col-2">
                             <button id="feedbtn-true" mat-button (click)="showHideCoach()">
                                 <p>Coachs</p>
                                 <button mat-icon-button mat-icon-button>
@@ -13,7 +13,7 @@
                                 </button>
                             </button>
                         </div>
-                        <div *ngIf="!visibleCoach"  class="col-2">
+                        <div *ngIf="!visibleCoach" class="col-2">
                             <button id="feedbtn" mat-button (click)="showHideCoach()">
                                 <p>Coachs</p>
                                 <button mat-icon-button mat-icon-button>
@@ -37,7 +37,7 @@
                                 </button>
                             </button>
                         </div>
-                        <div *ngIf="visibleTokens"  class="col-2">
+                        <div *ngIf="visibleTokens" class="col-2">
                             <button id="feedbtn-true" mat-button (click)="showHideTokens()">
                                 <p>Tokens</p>
                                 <button mat-icon-button mat-icon-button>
@@ -53,9 +53,11 @@
                                 </button>
                             </button>
                         </div>
-                        <div *ngIf="visibleAvatar"  class="col-6" style="background-color: transparent ; border: none; box-shadow: none;">
+                        <div *ngIf="visibleAvatar" class="col-6"
+                            style="background-color: transparent ; border: none; box-shadow: none;">
                             <form class='form-inline, alignement' (ngSubmit)="listAvatarDescription(avatar.value)">
-                                <div class="input-group" [class.toggled]="classToggled" style="background-color: transparent ; border: none; box-shadow: none;">
+                                <div class="input-group" [class.toggled]="classToggled"
+                                    style="background-color: transparent ; border: none; box-shadow: none;">
                                     <input ngModel="" #avatar name="avatar" type='text' id='search'
                                         class="form-control search-form" placeholder="Rechercher...">
                                     <span class="input-group-btn" style="width:39px">
@@ -66,9 +68,12 @@
                                 </div>
                             </form>
                         </div>
-                        <div *ngIf="visibleCoach"  class="col-6" style="background-color: transparent ; border: none; box-shadow: none;">
-                            <form class='form-inline, alignement' #namesport="ngForm" (ngSubmit)="listCoachsBySport(nameSportIn.value)" >
-                                <div class="input-group" [class.toggled]="classToggled" style="background-color: transparent ; border: none; box-shadow: none;">
+                        <div *ngIf="visibleCoach" class="col-6"
+                            style="background-color: transparent ; border: none; box-shadow: none;">
+                            <form class='form-inline, alignement' #namesport="ngForm"
+                                (ngSubmit)="listCoachsBySport(nameSportIn.value)">
+                                <div class="input-group" [class.toggled]="classToggled"
+                                    style="background-color: transparent ; border: none; box-shadow: none;">
                                     <input ngModel="" #nameSportIn name="nameSport" type='text' id='search'
                                         class="form-control search-form" placeholder="Rechercher...">
                                     <span class="input-group-btn" style="width:39px">
@@ -86,13 +91,11 @@
 
             </div>
 
-            <div id="card_achat" class="card p-0 m-0" [class.toggled]="classToggled">
+            <div id="card_achat" class="card p-0 m-0" [class.toggled]="classToggled" style="background-color: transparent !important; box-shadow: none;">
                 <!--Page coach-->
-                <div *ngIf="visibleCoach" [class.toggled]="classToggled">
-
-                    <div [class.toggled]="classToggled">
+                <div *ngIf="visibleCoach" [class.toggled]="classToggled"  style="background-color: transparent !important;">
                         <div class="md-form anyClass" [class.toggled]="classToggled" id=card_coach>
-                            <div class="card p-3 m-3" *ngFor="let c of coachs" [class.toggled]="classToggled">
+                            <div class="card p-3 m-3" *ngFor="let c of coachs" [class.toggled]="classToggled" style="width: auto;">
 
                                 <div class="container" [class.toggled]="classToggled">
                                     <div class="row">
@@ -132,30 +135,16 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
-
                         </div>
-
-
-
-                    </div>
                 </div>
 
-
-
-
-
-
                 <!--Page Avatar-->
-                <div *ngIf="visibleAvatar" [class.toggled]="classToggled">
-
-                    <div [class.toggled]="classToggled">
-
-                        <div class="md-form" style="margin-left: 50px;">
+                <div *ngIf="visibleAvatar" [class.toggled]="classToggled"  style="background-color: transparent !important;">
+                    <div [class.toggled]="classToggled" style="background-color: transparent !important;">
+                        <div class="md-form" style="margin-left: 50px;"  style="background-color: transparent !important;">
                             <div class="row">
-                                <div class="col-2" *ngFor="let a of avatars" [class.toggled]="classToggled">
+                                <div class="col-2" *ngFor="let a of avatars" [class.toggled]="classToggled"  style="background-color: transparent !important;">
                                     <div class="card p-3 m-1" [class.toggled]="classToggled">
                                         <div class="row justify-content-center">
                                             <img class="photo_profil image-rond image-rond-bg"
@@ -210,9 +199,9 @@
 
 
                 <!--Page Token-->
-                <div *ngIf="visibleTokens" [class.toggled]="classToggled">
+                <div *ngIf="visibleTokens" [class.toggled]="classToggled"  style="background-color: transparent !important;">
 
-                    <div class="md-form" [class.toggled]="classToggled">
+                    <div class=" card md-form" [class.toggled]="classToggled" >
                         <h3 class="alignement" style="font-weight: bold;">Tokens (1€ = 3 Tokens) :</h3>
                         <div class="container" [class.toggled]="classToggled">
                             <div class="row" [class.toggled]="classToggled">

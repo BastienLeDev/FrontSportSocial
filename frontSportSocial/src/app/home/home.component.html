@@ -43,7 +43,7 @@
 
                 <!-- card demande d'un ami-->
                 <div class="anyClass">
-                    <div class="card p-1 m-1" *ngFor="let f of friends" [class.toggled]="classToggled">
+                    <div id="card_friend" class="card p-1 m-1" *ngFor="let f of friends" [class.toggled]="classToggled">
                         <div class="container">
                             <div class="row">
                                 <!-- photo de profil -->
@@ -71,7 +71,7 @@
             </div>
         </div>
 
-        <div class="col-6 p-4 ">
+        <div class="col-6 p-4 " id="feed">
             <ul style="list-style: none;">
                 <li>
                     <!--Search bar : centrée, avec bouton "search" à droite-->
@@ -434,7 +434,7 @@
                     <p>Aucun évènement à venir</p>
                 </div>
                 <div class="anyClass" *ngIf="events.length !=0">
-                    <div class="card p-3 m-3" *ngFor="let e of events" [class.toggled]="classToggled">
+                    <div id="next_event" class="card p-3 m-3" *ngFor="let e of events" [class.toggled]="classToggled">
                         <div class="row">
                             <div class="col-8">
                                 <h3 class="text-center">{{e.titleEvent}}</h3>

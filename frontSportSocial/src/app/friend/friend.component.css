@@ -302,6 +302,13 @@ td {
 
 }
 
+#card_style{
+    box-shadow: none;
+    border-top: white !important;
+    border-left: white !important;
+    border-right: white !important;
+  }
+
 /* Dark Mode CSS */
 
 .toggled {

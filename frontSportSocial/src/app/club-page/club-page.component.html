@@ -1,13 +1,13 @@
 <div class="container-fluid">
     <div class="row">
         <div id="gauche" class="col-3 p-4">
-            <div id="card" class="card p-0 m-0" [class.toggled]="classToggled">
-                <div class="card-header">
+            <div id="card" class="card p-0 m-0" [class.toggled]="classToggled" style="background-color: transparent; box-shadow: none;">
+                <div class="title_club">
                     <p class="text-center">{{club.titleClub}}</p>
                 </div>
-                <div class="mx-auto text-center p-2">
+                <div class="mx-auto text-center p-2" >
                     <div class="col-12">
-                        <img src="{{club.imageClub.nameImage}}" style="width: 100%">
+                        <img  class="photo_club" src="{{club.imageClub.nameImage}}" style="width: 100%">
                     </div>
                 </div>
             </div>
@@ -23,10 +23,6 @@
 
 
         <div id="milieu" class="col-5 p-4" style="background-color : transparent !important">
-
-
-
-
             <div *ngIf="feed == null" [class.toggled]="classToggled" style="background-color : transparent !important">
 
             </div>
@@ -45,7 +41,7 @@
                                         <p>{{f.createurPost.loginUser}}</p>
                                     </div>
                                     <div class="row">
-                                        <p>{{f.dateCreationPost}}</p>
+                                        <p>{{f.dateCreationPost |date}}</p>
                                     </div>
                                 </div>
 
@@ -156,7 +152,7 @@
                                         </div>
                                         <div class="col-4">
                                             <div class="row">
-                                                <p>{{c.dateCreationComment}}</p>
+                                                <p>{{c.dateCreationComment |date}}</p>
                                             </div>
                                         </div>
                                         <!-- Zone de saisie de messages -->
@@ -238,7 +234,7 @@
 
                                                     </div>
                                                     <div class="col-4">
-                                                        <p>{{d.dateCreationComment}}</p>
+                                                        <p>{{d.dateCreationComment |date}}</p>
                                                     </div>
 
                                                 </div>
@@ -276,9 +272,6 @@
                             </div>
                         </div>
 
-
-
-
                     </div>
 
                 </div>
@@ -296,8 +289,6 @@
                 </a>
             </div>
         </div>
-
-
 
         <div id="droite" class="col-3 p-4">
             <div id="card" class="card p-0 m-0 " [class.toggled]="classToggled">
@@ -324,7 +315,7 @@
 
                     <!-- card ami-->
                     <div class="anyClass" [class.toggled]="classToggled">
-                        <div class="card p-1 m-1" *ngFor="let f of myFriends" [class.toggled]="classToggled">
+                        <div class="card p-1 m-1" id="card_style" *ngFor="let f of myFriends" [class.toggled]="classToggled">
                             <div class="container">
 
                                 <div class="row">
@@ -336,10 +327,10 @@
                                     <!-- nom user -->
                                     <div class="col-6">
                                         <b> {{f.loginUser}} <p
-                                                style="font-style: italic; font-weight: lighter !important;"> <i
-                                                    class="fas fa-circle"
-                                                    style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne
-                                            </p></b>
+                                            style="font-style: italic; font-weight: lighter !important; font-size: 50%;">
+                                            <i class="fas fa-circle"
+                                                style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne
+                                        </p></b>
                                     </div>
                                 </div>
                             </div>
@@ -348,7 +339,7 @@
 
                     <!-- card ami en attente d'ajout-->
                     <div class="anyClass" [class.toggled]="classToggled">
-                        <div class="card p-1 m-1" *ngFor="let f of askedFriends" [class.toggled]="classToggled">
+                        <div class="card p-1 m-1" id="card_style" *ngFor="let f of askedFriends" [class.toggled]="classToggled">
                             <div class="container">
 
                                 <div class="row">
@@ -360,10 +351,10 @@
                                     <!-- nom user -->
                                     <div class="col-6">
                                         <b> {{f.loginUser}} <p
-                                                style="font-style: italic; font-weight: lighter !important;"> <i
-                                                    class="fas fa-circle"
-                                                    style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne
-                                            </p></b>
+                                            style="font-style: italic; font-weight: lighter !important; font-size: 50%;">
+                                            <i class="fas fa-circle"
+                                                style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne
+                                        </p></b>
                                     </div>
                                     <div class="col-2">
                                         <button (click)="goToFriends()" type="submit" class="butInvisible"><mat-icon
@@ -381,7 +372,7 @@
 
                     <!-- card non ami-->
                     <div class="anyClass" [class.toggled]="classToggled">
-                        <div class="card p-1 m-1" *ngFor="let f of nonFriends" [class.toggled]="classToggled">
+                        <div class="card p-1 m-1" id="card_style" *ngFor="let f of nonFriends" [class.toggled]="classToggled">
                             <div class="container">
 
                                 <div class="row">
@@ -393,10 +384,10 @@
                                     <!-- nom user -->
                                     <div class="col-6">
                                         <b> {{f.loginUser}} <p
-                                                style="font-style: italic; font-weight: lighter !important;"> <i
-                                                    class="fas fa-circle"
-                                                    style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne
-                                            </p></b>
+                                            style="font-style: italic; font-weight: lighter !important; font-size: 50%;">
+                                            <i class="fas fa-circle"
+                                                style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne
+                                        </p></b>
                                     </div>
                                     <div class="col-2">
                                         <button (click)="addFriend(f)" type="submit" class="butInvisible"><mat-icon

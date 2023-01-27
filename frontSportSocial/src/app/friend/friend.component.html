@@ -12,10 +12,8 @@
     
                     <div class="anyClass">
                         <!-- card demande d'un ami-->
-                        <div class="card p-1 m-1" *ngFor="let nf of notfriends" [class.toggled]="classToggled">
-    
+                        <div id="card_style" class="card p-1 m-1" *ngFor="let nf of notfriends" [class.toggled]="classToggled">
                             <div class="container">
-    
                                 <div class="row">
                                     <!-- photo de profil -->
                                     <div class="col-6">
@@ -42,7 +40,7 @@
                             </div>
     
                         </div>
-                        <div class="card p-1 m-1" *ngFor="let d of deletefriend" [class.toggled]="classToggled">
+                        <div id="card_style" class="card p-1 m-1" *ngFor="let d of deletefriend" [class.toggled]="classToggled">
     
                             <div class="container">
     
@@ -67,18 +65,11 @@
                                                 </mat-menu>
                                             </div>
                                         </div>
-    
                                     </div>
-    
                                 </div>
-    
                             </div>
-    
                         </div>
-    
                     </div>
-    
-    
                 </div>
     
                 <!-- card ajouter et rechercher un ami -->
@@ -109,7 +100,7 @@
     
                         <!-- card demande d'un ami-->
     
-                        <div *ngFor="let u of user" class="card p-1 m-1" [class.toggled]="classToggled">
+                        <div id="card_style" *ngFor="let u of user" class="card p-1 m-1" [class.toggled]="classToggled">
     
                             <div class="container">
     
@@ -175,7 +166,7 @@
 
                 <!-- card ami-->
                 <div class="anyClass">
-                    <div class="card p-1 m-1" *ngFor="let f of friends, ; let i = index; "
+                    <div id="card_style" class="card p-1 m-1" *ngFor="let f of friends, ; let i = index; "
                         [class.toggled]="classToggled">
                         <button (click)="displayFriendConversation(f)"
                             style="border-radius: 10px; border: none; background-color: transparent;"
@@ -247,7 +238,7 @@
 
                 <!-- card team-->
                 <div class="anyClass">
-                    <div class="card p-2 m-2" *ngFor="let t of team" [class.toggled]="classToggled">
+                    <div class="card p-2 m-2" id="card_style" *ngFor="let t of team" [class.toggled]="classToggled">
                         <button (click)="displayTeamConversation(t)"
                             style="border-radius: 10px; border: none; background-color: transparent;"
                             [class.toggled]="classToggled">
@@ -285,8 +276,6 @@
                             </div>
                         </button>
                     </div>
-
-
                 </div>
                 <div>
                     <button id="feedbtn" mat-button (click)="openNewTeamModal()">Créer une team</button>
@@ -580,7 +569,7 @@
 
                 <div class="anyClass">
                     <!-- card demande d'un ami-->
-                    <div class="card p-1 m-1" *ngFor="let nf of notfriends" [class.toggled]="classToggled">
+                    <div id="card_style" class="card p-1 m-1" *ngFor="let nf of notfriends" [class.toggled]="classToggled">
 
                         <div class="container">
 
@@ -610,7 +599,7 @@
                         </div>
 
                     </div>
-                    <div class="card p-1 m-1" *ngFor="let d of deletefriend" [class.toggled]="classToggled">
+                    <div id="card_style" class="card p-1 m-1" *ngFor="let d of deletefriend" [class.toggled]="classToggled">
 
                         <div class="container">
 
@@ -677,7 +666,7 @@
 
                     <!-- card demande d'un ami-->
 
-                    <div *ngFor="let u of user" class="card p-1 m-1" [class.toggled]="classToggled">
+                    <div id="card_style" *ngFor="let u of user" class="card p-1 m-1" [class.toggled]="classToggled">
 
                         <div class="container">
 

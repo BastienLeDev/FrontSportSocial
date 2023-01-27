@@ -88,7 +88,18 @@ input-group-btn {
   height: auto;
   margin: 25px !important;
   border: none;
+}
 
+#btnranking {
+  background-color: rgb(87, 90, 159) !important;
+  color: white;
+}
+
+#card_style{
+  box-shadow: none;
+  border-top: white !important;
+  border-left: white !important;
+  border-right: white !important;
 }
 
 
@@ -143,7 +154,6 @@ input-group-btn {
     color : white;
   }
 
-  #btnranking {
-    background-color: rgb(87, 90, 159) !important;
-    color: white;
+  .toggled #card_style{
+    border-color: rgb(255, 255, 255);
   }
