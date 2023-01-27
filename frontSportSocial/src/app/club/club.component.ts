@@ -26,13 +26,10 @@ export class ClubComponent implements OnInit {
   clubToJoin: any;
   filterOtherClub : any;
   filterBySport : any;
-
-
-
+  myFriends : any;
+  idClub : any;
 
   constructor(private http: HttpClient, private clubService: ClubsService, private authService: AuthService, private route: Router, public dialog: MatDialog, private appComponent: AppComponent, public dark: DarkThemeService) { }
-
-
 
 
   ngOnInit(): void {
@@ -69,7 +66,14 @@ export class ClubComponent implements OnInit {
       next: (data) => {
         this.otherClubs = data;
         console.log(this.otherClubs);
-
+        for (let index in this.otherClubs) {
+        this.http.get('http://localhost:8300/club/amis/' + this.authService.getUserConnect().idUser + '/' + this.otherClubs[index].idClub).subscribe({
+          next: (data) => {
+            this.myFriends = data;
+          },
+          error: (err) => { console.log(err); }
+        });
+      }
       },
       error: (err) => { console.log(err); }
     });
@@ -88,8 +92,6 @@ export class ClubComponent implements OnInit {
       next: (data) => {
         this.listOtherClubs();
         this.ngOnInit();
-
-        console.log(this.myClubs);
       },
       error: (err) => { console.log(err); }
     })
@@ -129,5 +131,16 @@ export class ClubComponent implements OnInit {
       }
     })
   }
+
+  /*
+  listFriendsInClub() {
+    this.http.get('http://localhost:8300/club/amis/' + this.authService.getUserConnect().idUser + '/' + this.idClub).subscribe({
+      next: (data) => {
+        this.myFriends = data;
+      },
+      error: (err) => { console.log(err); }
+    });
+  }
+  */
 
 }

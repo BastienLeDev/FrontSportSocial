@@ -89,6 +89,10 @@ input-group-btn {
   border: none;
 }
 
+#card_otherClub {
+  height: 400px;
+}
+
 /* Dark Mode CSS */
 
 .toggled {

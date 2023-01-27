@@ -183,6 +183,8 @@ input-group-btn {
 #feedbtn {
     background-color: #FFC288;
     color: white;
+    height: 100px;
+    width: 130px;
 }
 
 #feedbtn-active {

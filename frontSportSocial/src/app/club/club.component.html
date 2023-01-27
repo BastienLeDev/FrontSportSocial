@@ -31,16 +31,11 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
-
-
         <div class="col-9 p-4">
-
-
             <div class="row">
-                <div class="col-5 p-4">
+                <div class="col-5 p-4" [class.toggled]="classToggled" style="background-color: transparent;">
                     <div class="container">
                         <div id="content">
                             <form #infosClub="ngForm" (ngSubmit)="filterClub(Club.value)">
@@ -54,12 +49,11 @@
                                     </span>
                                 </div>
                             </form>
-
                         </div>
 
                     </div>
                 </div>
-                <div class="col-4 p-4" [class.toggled]="classToggled">
+                <div class="col-4 p-4" [class.toggled]="classToggled" style="background-color: transparent;">
                     <form #choixSport="ngForm" (ngSubmit)="filterClubBySport(choixSport.value)">
                         <div class="row">
                             <div class="text-center col-7">
@@ -82,7 +76,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-3 p-4" [class.toggled]="classToggled">
+                <div class="col-3 p-4" [class.toggled]="classToggled" style="background-color: transparent;">
                     <a [class.toggled]="classToggled" id="btn_dropdown" mat-raised-button (click)="openNewClubModal()">
                         Créer un club
                         <mat-icon>add</mat-icon>
@@ -92,20 +86,23 @@
 
             <div class="md-form">
                 <div class="row">
-                    <div class="col-4 p-4" *ngFor="let c of otherClubs" [class.toggled]="classToggled">
-
-
-                        <div class="card p-3 m-3" [class.toggled]="classToggled">
-                            <div class="row">
-                                <h4 class=" nomClub">{{c.titleClub}}</h4>
+                    <div class="col-4 p-4" *ngFor="let c of otherClubs" [class.toggled]="classToggled"
+                        style="background-color: transparent;">
+                        <div class="card p-3 m-3" id="card_otherClub" [class.toggled]="classToggled">
+                            <div class="row m-2">
+                                <div class="col-4">
+                                    <img src="{{c.imageClub.nameImage}}" style="width: 60%" alt="">
+                                </div>
+                                <div class="col-8">
+                                    <h2 class=" nomClub">{{c.titleClub}}</h2>
+                                </div>
                             </div>
-
-                            <div class="row justify-content-center" [class.toggled]="classToggled">
-                                <img src="{{c.imageClub.nameImage}}" style="width: 30%" alt="">
-                            </div>
-                            <h4>Description</h4>
+                            <b>Description</b>
                             <p>{{c.descriptionClub}}</p>
-                            <h4>Amis membres du club</h4>
+                            <b>Amis membres du club</b>
+                            <div *ngFor="let m of myFriends">
+                                <p>{{m.loginUser}}</p>
+                            </div>
                             <div class="row">
 
                                 <div class="row">
