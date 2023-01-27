@@ -37,31 +37,31 @@
 
 
         <div class="col-9 p-4">
-            <div class="card p-3 m-3" [class.toggled]="classToggled">
 
-                <div class="row">
-                    <div class="col-5 p-4">
-                        <div class="container">
-                            <div id="content">
-                                <form #infosClub="ngForm" (ngSubmit)="filterClub(Club.value)">
-                                    <div class="input-group">
-                                        <input ngModel="" #Club name="Club"  type='text' id='search' class="form-control search-form"
-                                            placeholder="Recherche un club...">
-                                        <span class="input-group-btn" style="width:39px">
-                                            <button id="search-this" type="button" class="pull-right btn search-btn">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </form>
 
-                            </div>
+            <div class="row">
+                <div class="col-5 p-4">
+                    <div class="container">
+                        <div id="content">
+                            <form #infosClub="ngForm" (ngSubmit)="filterClub(Club.value)">
+                                <div class="input-group">
+                                    <input ngModel="" #Club name="Club" type='text' id='search'
+                                        class="form-control search-form" placeholder="Recherche un club...">
+                                    <span class="input-group-btn" style="width:39px">
+                                        <button id="search-this" type="button" class="pull-right btn search-btn">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
 
                         </div>
+
                     </div>
-                    <div class="col-4 p-4" [class.toggled]="classToggled">
-                        <form #choixSport="ngForm" (ngSubmit)="filterClubBySport(choixSport.value)">
-                            <div class="row">
+                </div>
+                <div class="col-4 p-4" [class.toggled]="classToggled">
+                    <form #choixSport="ngForm" (ngSubmit)="filterClubBySport(choixSport.value)">
+                        <div class="row">
                             <div class="text-center col-7">
                                 <mat-form-field>
                                     <mat-label>
@@ -76,66 +76,65 @@
                                 </mat-form-field>
                             </div>
                             <div class="col-5">
-                            <button style="left : 15px" mat-icon-button mat-icon-button>
-                                <i class="fa fa-search"></i></button>
+                                <button style="left : 15px" mat-icon-button mat-icon-button>
+                                    <i class="fa fa-search"></i></button>
                             </div>
                         </div>
-                        </form>
-                    </div>
-                    <div class="col-3 p-4" [class.toggled]="classToggled">
-                            <a [class.toggled]="classToggled" id="btn_dropdown" mat-raised-button
-                            (click)="openNewClubModal()">
-                            Créer un club
-                            <mat-icon>add</mat-icon>
-                        </a>
-                    </div>
+                    </form>
                 </div>
+                <div class="col-3 p-4" [class.toggled]="classToggled">
+                    <a [class.toggled]="classToggled" id="btn_dropdown" mat-raised-button (click)="openNewClubModal()">
+                        Créer un club
+                        <mat-icon>add</mat-icon>
+                    </a>
+                </div>
+            </div>
 
-                <div class="md-form">
-                    <div class="row">
-                        <div class="col-4 p-4" *ngFor="let c of otherClubs" [class.toggled]="classToggled">
+            <div class="md-form">
+                <div class="row">
+                    <div class="col-4 p-4" *ngFor="let c of otherClubs" [class.toggled]="classToggled">
 
 
-                            <div class="card p-3 m-3" [class.toggled]="classToggled">
+                        <div class="card p-3 m-3" [class.toggled]="classToggled">
+                            <div class="row">
+                                <h4 class=" nomClub">{{c.titleClub}}</h4>
+                            </div>
+
+                            <div class="row justify-content-center" [class.toggled]="classToggled">
+                                <img src="{{c.imageClub.nameImage}}" style="width: 30%" alt="">
+                            </div>
+                            <h4>Description</h4>
+                            <p>{{c.descriptionClub}}</p>
+                            <h4>Amis membres du club</h4>
+                            <div class="row">
+
                                 <div class="row">
-                                    <h4 class=" nomClub">{{c.titleClub}}</h4>
-                                </div>
 
-                                <div class="row justify-content-center" [class.toggled]="classToggled">
-                                    <img src="{{c.imageClub.nameImage}}" style="width: 30%" alt="">
-                                </div>
-                                <h4>Description</h4>
-                                <p>{{c.descriptionClub}}</p>
-                                <h4>Amis membres du club</h4>
-                                <div class="row">
-
-                                    <div class="row">
-
-                                        <div class="col-6 p-4">
-                                            <span class="input-group-btn" style="width: 50%;">
-                                                <button (click)="joinClub(c)" type="submit"
-                                                    class="btn btnPrincipal btn-block "
-                                                    style="font-size: 60%;">Rejoindre</button>
-                                            </span>
-                                        </div>
-                                        <div class="col-6 p-4">
-                                            <span class="input-group-btn" style="width: 50%;">
-                                                <button type="submit" class="btn btnPrincipal btn-block "
-                                                    style="font-size: 60%;">Contacter <i class="fas fa-envelope"
-                                                        style="color: rgb(0, 0, 0);"></i></button>
-                                            </span>
-                                        </div>
+                                    <div class="col-6 p-4">
+                                        <span class="input-group-btn" style="width: 50%;">
+                                            <button (click)="joinClub(c)" type="submit"
+                                                class="btn btnPrincipal btn-block "
+                                                style="font-size: 60%;">Rejoindre</button>
+                                        </span>
+                                    </div>
+                                    <div class="col-6 p-4">
+                                        <span class="input-group-btn" style="width: 50%;">
+                                            <button type="submit" class="btn btnPrincipal btn-block "
+                                                style="font-size: 60%;">Contacter <i class="fas fa-envelope"
+                                                    style="color: rgb(0, 0, 0);"></i></button>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
-                    </div>
 
+
+
+                    </div>
                 </div>
+
             </div>
+
         </div>
 
     </div>
