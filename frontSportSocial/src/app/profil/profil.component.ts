@@ -36,6 +36,7 @@ export class ProfilComponent implements OnInit {
   filterActivity : any;
   training : any;
   idTraining : any;
+  idActivity : any;
   visibleAddTraining = false;
   sports : any;
 
@@ -107,12 +108,9 @@ export class ProfilComponent implements OnInit {
   }
 
   listActivite() {
-
     this.http.get('http://localhost:8300/activity/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => { this.activite = data, console.log(this.activite); },
-
       error: (err) => { console.log(err); }
-
     });
   }
 
@@ -201,6 +199,16 @@ export class ProfilComponent implements OnInit {
       },
       error: (err) => { console.log(err) },
     });
+  }
+
+  doneActivity(val : any){
+    this.idActivity = val;
+    this.http.post('http://localhost:8300/activity/done/' + this.idActivity.activity.idActivity + '/' + this.authService.getUserConnect().idUser, val).subscribe({
+      next: (data) => {
+        this.listActivite();
+      },
+      error: (err) => { console.log(err) },
+    })
   }
 
 }

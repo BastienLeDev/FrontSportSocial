@@ -99,9 +99,7 @@
                                     </span>
                                 </div>
                             </form>
-
                         </div>
-
                     </div>
                 </li>
                 <div>
@@ -109,8 +107,14 @@
                         <h4>Mes activités</h4>
                         <div class="card p-3 m-3 col-11" *ngFor="let a of activite;  " [class.toggled]="classToggled">
                             <div class="row">
-                                <div class="col-12 justify-content-center">
-                                    <h2 class=""> {{a.activity.nameActivity}}</h2>
+                                <div class="col-9 justify-content-center">
+                                    <h2> {{a.activity.nameActivity}}</h2>
+                                </div>
+                                <div *ngIf="a.activity.done == true && a.activity.pastDateActivity == true" class="col-3 justify-content-center">
+                                    <b>+ 100 points</b>
+                                </div>
+                                <div *ngIf="a.activity.done == false && a.activity.pastDateActivity == true" class="col-3 justify-content-center">
+                                    <button id="btn_done" mat-button (click)="doneActivity(a)"> Fait !</button>
                                 </div>
                             </div>
                             <div class="row">
