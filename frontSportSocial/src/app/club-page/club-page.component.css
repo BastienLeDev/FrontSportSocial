@@ -111,8 +111,9 @@ input-group-btn {
 #feedbtn {
     background-color: #FFC288;
     color: white;
-    height: 100px;
-    width: 130px;
+    height: auto;
+    width: auto;
+    font-size: 60%;
 }
 
 #feedbtn-active {
@@ -137,7 +138,6 @@ input-group-btn {
 }
 
 .imageDislike {
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,7 +147,6 @@ input-group-btn {
 }
 
 .imageLike {
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -168,10 +167,8 @@ input-group-btn {
 }
 
 .commentInComment {
-
     padding: 10px;
     padding-left: 40px;
-
 }
 
 .photo_club {
