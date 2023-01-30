@@ -104,6 +104,16 @@ input-group-btn {
   border-right: white !important;
 }
 
+#description {
+  text-overflow: ellipsis !important; /* will make [...] at the end */
+  overflow: hidden !important; /* older browsers */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+            line-clamp: 3; 
+    -webkit-box-orient: vertical;
+  
+}
+
 /* Dark Mode CSS */
 
 .toggled {

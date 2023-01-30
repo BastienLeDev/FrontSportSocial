@@ -12,8 +12,18 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12" style="margin-top: 20px;">
-                        <div class="container">
+                    <button mat-button [matMenuTriggerFor]="event" class="nav-link white-text " style="width : auto; margin-left: 40px;"><i
+                        class="fas fa-bars"></i>Filtrer</button>
+                    <mat-menu #event="matMenu" style="background-color: white;">
+                      <button style="background-color: white;" mat-menu-item (click)="visibleSearchEvent()"
+                        routerLinkActive="menu-active">Rechercher un event</button>
+                        <button style="background-color: white;" mat-menu-item (click)="visibleFilterEvent ()"
+                        routerLinkActive="menu-active">Filtrer par sport</button>
+                    </mat-menu>
+                </div>
+                <div class="row">
+                    <div class="col-12" style="margin-top: 20px;" >
+                        <div class="container" *ngIf="visibleFilter">
                             <form>
                                 <div class="row">
                                     <div class="col-7">
@@ -44,8 +54,8 @@
         <div class="col-9 transparent_toggled" [class.toggled]="classToggled" style="background-color: transparent; border : none">
             <div id="card_data" class="card p-0 m-0 row event window" style="background-color: transparent; border : none">
                 <div class="row">
-                    <div class="col-12 " style="margin-top: 20px;">
-                        <div class="container">
+                    <div class="col-12 " style="margin-top: 20px;" >
+                        <div class="container" *ngIf="visibleSearch">
                             <div id="content">
                                 <form #infosEvent="ngForm" (ngSubmit)="FilterEvent(Events.value)">
                                     <div class="input-group">

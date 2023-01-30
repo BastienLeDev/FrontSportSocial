@@ -27,6 +27,8 @@ export class EventComponent implements OnInit {
   userParticipateEvent = false;
   classToggled = this.dark.classToggled;
   filterUser : any;
+  visibleSearch : Boolean = false;
+  visibleFilter : Boolean = false;
 
   constructor(private http: HttpClient, private route: Router, private dialog: MatDialog, public authService: AuthService, private cd: ChangeDetectorRef, private appComponent : AppComponent, public dark : DarkThemeService) { }
 
@@ -43,7 +45,6 @@ export class EventComponent implements OnInit {
     this.http.get('http://localhost:8300/event/tocome').subscribe({
       next: (data) => {
         this.events = data;
-        console.log(this.events)
       },
       error: (err) => { console.log(err); }
     });
@@ -118,6 +119,26 @@ export class EventComponent implements OnInit {
         this.events = data;
       }
     })
+  }
+  
+  visibleSearchEvent(){
+    if (this.visibleSearch == false) {
+    this.visibleFilter = false;
+    this.visibleSearch = true;
+  }
+  console.log(this.visibleSearch);
+  console.log(this.visibleFilter);
+  
+  
+  }
+
+  visibleFilterEvent(){
+    if (this.visibleFilter == false) {
+      this.visibleFilter = true;
+      this.visibleSearch = false;
+    }
+    console.log(this.visibleSearch);
+    console.log(this.visibleFilter);
   }
 
 

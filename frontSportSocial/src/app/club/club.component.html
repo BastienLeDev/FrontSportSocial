@@ -107,25 +107,21 @@
                                     <h2 class=" nomClub">{{c.titleClub}}</h2>
                                 </div>
                             </div>
-                            <b>Description</b>
-                            <p>{{c.descriptionClub}}</p>
-                            <b>Amis membres du club</b>
+                            <b style="margin-top: 20px;">Description</b>
+                            <p id="description">{{c.descriptionClub}}</p>
+                            <b style="margin-top: 20px;">Amis membres du club</b>
                             <div *ngFor="let m of myFriends">
                                 <p>{{m.loginUser}}</p>
                             </div>
                             <div class="row">
-                                <div class="col-6 p-4">
-                                    <span class="input-group-btn" style="width: 50%;">
-                                        <button (click)="joinClub(c)" type="submit" class="btn btnPrincipal btn-block "
-                                            style="font-size: 60%;">Rejoindre <i class="fas fa-plus"></i></button>
-                                    </span>
-                                </div>
-                                <div class="col-6 p-4">
-                                    <span class="input-group-btn" style="width: 50%;">
-                                        <button (click)="goToFriends()" type="submit" class="btn btnPrincipal btn-block "
-                                            style="font-size: 60%;">Contacter <i class="fas fa-envelope"></i></button>
-                                    </span>
-                                </div>
+                                <button mat-button [matMenuTriggerFor]="club" class="nav-link white-text " style="width : auto"><i
+                                    class="fas fa-plus"></i></button>
+                                <mat-menu #club="matMenu" style="background-color: white;">
+                                  <button style="background-color: white;" mat-menu-item (click)="joinClub(c)"
+                                    routerLinkActive="menu-active">Rejoindre</button>
+                                    <button style="background-color: white;" mat-menu-item (click)="goToFriends()"
+                                    routerLinkActive="menu-active">Contacter</button>
+                                </mat-menu>
                             </div>
                         </div>
                     </div>
