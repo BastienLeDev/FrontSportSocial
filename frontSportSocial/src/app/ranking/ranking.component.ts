@@ -51,6 +51,9 @@ export class RankingComponent implements OnInit {
   }
 
   goToShop() {
+    localStorage.removeItem('avatar');
+    localStorage.removeItem('tokens');
+    localStorage.setItem('coach', '1');
     this.route.navigateByUrl('shop');
   }
 
