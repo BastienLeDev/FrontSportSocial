@@ -1,7 +1,8 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-3 p-4">
-            <div id="card_data" class="card p-3 m-3" [class.toggled]="classToggled" style="background-color: transparent;">
+            <div id="card_data" class="card p-3 m-3" [class.toggled]="classToggled"
+                style="background-color: transparent;">
                 <div class="row">
                     <div class="col-12">
                         <a [class.toggled]="classToggled" id="btn_dropdown" mat-raised-button
@@ -11,51 +12,26 @@
                         </a>
                     </div>
                 </div>
-                <div class="row">
-                    <button mat-button [matMenuTriggerFor]="event" class="nav-link white-text " style="width : auto; margin-left: 40px;"><i
-                        class="fas fa-bars"></i>Filtrer</button>
-                    <mat-menu #event="matMenu" style="background-color: white;">
-                      <button style="background-color: white;" mat-menu-item (click)="visibleSearchEvent()"
-                        routerLinkActive="menu-active">Rechercher un event</button>
-                        <button style="background-color: white;" mat-menu-item (click)="visibleFilterEvent ()"
-                        routerLinkActive="menu-active">Filtrer par sport</button>
-                    </mat-menu>
-                </div>
-                <div class="row">
-                    <div class="col-12" style="margin-top: 20px;" >
-                        <div class="container" *ngIf="visibleFilter">
-                            <form>
-                                <div class="row">
-                                    <div class="col-7">
-                                        <mat-form-field id="btn-filter-event">
-                                            <mat-label>
-                                                Filtrer par sport :
-                                            </mat-label>
-                                            <mat-select id="btn-filter-event" class="" name="sportEvent" ngModel="">
-                                                <mat-option>Tous les sports</mat-option>
-                                                <mat-option [value]="s" *ngFor="let s of sports">
-                                                    {{s.nameSport}}
-                                                </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
-                                    <div class="col-5">
-                                        <button style="left : 50px" mat-icon-button mat-icon-button>
-                                            <i class="fa fa-search"></i></button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
-        <div class="col-9 transparent_toggled" [class.toggled]="classToggled" style="background-color: transparent; border : none">
-            <div id="card_data" class="card p-0 m-0 row event window" style="background-color: transparent; border : none">
+        <div class="col-9 transparent_toggled" [class.toggled]="classToggled"
+            style="background-color: transparent; border : none">
+            <div id="card_data" class="card p-0 m-0 row event window"
+                style="background-color: transparent; border : none">
                 <div class="row">
-                    <div class="col-12 " style="margin-top: 20px;" >
-                        <div class="container" *ngIf="visibleSearch">
+                    <div class="col-2" style="margin-top: 20px;">
+                        <button mat-button [matMenuTriggerFor]="event" class="nav-link white-text "
+                            style="width : auto;"><i class="fas fa-bars"></i>Filtrer</button>
+                        <mat-menu #event="matMenu" style="background-color: white;">
+                            <button style="background-color: white;" mat-menu-item (click)="visibleSearchEvent()"
+                                routerLinkActive="menu-active">Rechercher un event</button>
+                            <button style="background-color: white;" mat-menu-item (click)="visibleFilterEvent ()"
+                                routerLinkActive="menu-active">Filtrer par sport</button>
+                        </mat-menu>
+                    </div>
+                    <div class="col-10 " style="margin-top: 20px;" *ngIf="visibleSearch">
+                        <div class="container" >
                             <div id="content">
                                 <form #infosEvent="ngForm" (ngSubmit)="FilterEvent(Events.value)">
                                     <div class="input-group">
@@ -69,6 +45,25 @@
                                     </div>
                                 </form>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-10 " style="margin-top: 20px;" *ngIf="visibleFilter">
+                        <div class="container" >
+                            <form>
+                                <mat-form-field id="btn-filter-event">
+                                    <mat-label>
+                                        Filtrer par sport :
+                                    </mat-label>
+                                    <mat-select id="btn-filter-event" class="" name="sportEvent" ngModel="">
+                                        <mat-option>Tous les sports</mat-option>
+                                        <mat-option [value]="s" *ngFor="let s of sports">
+                                            {{s.nameSport}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <button mat-icon-button mat-icon-button>
+                                    <i class="fa fa-search"></i></button>
+                            </form>
                         </div>
                     </div>
                 </div>

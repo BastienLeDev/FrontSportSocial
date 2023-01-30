@@ -8,11 +8,12 @@
                 <div class="anyClass">
                     <div class="card p-3 m-2" id="card_style" *ngFor="let c of myClubs" [class.toggled]="classToggled">
                         <div class="row">
-                            <div class="col-10">
+                            <div class="col-9">
                                 <button class="butInvisible" type="submit" (click)="openClubPage(c)">
                                     <div class="row">
                                         <div class="col-4">
-                                            <img  class="photo_club" src="{{c.imageClub.nameImage}}" style="width: 100%" alt="">
+                                            <img class="photo_club" src="{{c.imageClub.nameImage}}" style="width: 100%"
+                                                alt="">
                                         </div>
                                         <div class="col-7" [class.toggled]="classToggled">
                                             <h4>{{c.titleClub}}</h4>
@@ -37,15 +38,14 @@
 
         <div class="col-9 p-4">
             <div class="row">
-                <button mat-button [matMenuTriggerFor]="menu" class="nav-link white-text " style="width : auto; margin-left: 40px;"><i
-                    class="fas fa-bars"></i>Filtrer</button>
-                <mat-menu #menu="matMenu" style="background-color: white;">
-                  <button style="background-color: white;" mat-menu-item (click)="visibleSearchClub()"
-                    routerLinkActive="menu-active">Rechercher un club</button>
-                    <button style="background-color: white;" mat-menu-item (click)="visibleFilterClub()"
-                    routerLinkActive="menu-active">Filtrer par sport</button>
-                </mat-menu>
-                <div *ngIf="visibleSearch" class="col-5 p-4" [class.toggled]="classToggled" style="background-color: transparent;">
+                <div class="col-3 p-4" [class.toggled]="classToggled" style="background-color: transparent;">
+                    <a [class.toggled]="classToggled" id="btn_dropdown" mat-raised-button (click)="openNewClubModal()">
+                        Créer un club
+                        <mat-icon>add</mat-icon>
+                    </a>
+                </div>
+                <div *ngIf="visibleSearch" class="col-5 p-4" [class.toggled]="classToggled"
+                    style="background-color: transparent;">
                     <div class="container">
                         <div id="content">
                             <form #infosClub="ngForm" (ngSubmit)="filterClub(Club.value)">
@@ -63,7 +63,8 @@
 
                     </div>
                 </div>
-                <div *ngIf="visibleFilter" class="col-4 p-4" [class.toggled]="classToggled" style="background-color: transparent;">
+                <div *ngIf="visibleFilter" class="col-4 p-4" [class.toggled]="classToggled"
+                    style="background-color: transparent;">
                     <form #choixSport="ngForm" (ngSubmit)="filterClubBySport(choixSport.value)">
                         <div class="row">
                             <div class="text-center col-7">
@@ -86,11 +87,21 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-3 p-4" [class.toggled]="classToggled" style="background-color: transparent;">
-                    <a [class.toggled]="classToggled" id="btn_dropdown" mat-raised-button (click)="openNewClubModal()">
-                        Créer un club
-                        <mat-icon>add</mat-icon>
-                    </a>
+                <div class="col-7" *ngIf="!visibleFilter && !visibleSearch" >
+                </div>
+                <div class="col-2" *ngIf="!visibleFilter && visibleSearch" >
+                </div>
+                <div class="col-3" *ngIf="visibleFilter && !visibleSearch" >
+                </div>
+                <div class="col-2">
+                    <button mat-button [matMenuTriggerFor]="menu" class="nav-link white-text "
+                        style="width : auto; margin-left: 40px;"><i class="fas fa-bars"></i>Filtrer</button>
+                    <mat-menu #menu="matMenu" style="background-color: white;">
+                        <button style="background-color: white;" mat-menu-item (click)="visibleSearchClub()"
+                            routerLinkActive="menu-active">Rechercher un club</button>
+                        <button style="background-color: white;" mat-menu-item (click)="visibleFilterClub()"
+                            routerLinkActive="menu-active">Filtrer par sport</button>
+                    </mat-menu>
                 </div>
             </div>
 
@@ -114,13 +125,13 @@
                                 <p>{{m.loginUser}}</p>
                             </div>
                             <div class="row">
-                                <button mat-button [matMenuTriggerFor]="club" class="nav-link white-text " style="width : auto"><i
-                                    class="fas fa-plus"></i></button>
+                                <button mat-button [matMenuTriggerFor]="club" class="nav-link white-text "
+                                    style="width : auto"><i class="fas fa-plus"></i></button>
                                 <mat-menu #club="matMenu" style="background-color: white;">
-                                  <button style="background-color: white;" mat-menu-item (click)="joinClub(c)"
-                                    routerLinkActive="menu-active">Rejoindre</button>
+                                    <button style="background-color: white;" mat-menu-item (click)="joinClub(c)"
+                                        routerLinkActive="menu-active">Rejoindre</button>
                                     <button style="background-color: white;" mat-menu-item (click)="goToFriends()"
-                                    routerLinkActive="menu-active">Contacter</button>
+                                        routerLinkActive="menu-active">Contacter</button>
                                 </mat-menu>
                             </div>
                         </div>
