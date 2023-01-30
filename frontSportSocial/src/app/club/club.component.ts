@@ -30,6 +30,8 @@ export class ClubComponent implements OnInit {
   idClub : any;
   visibleSearch = false;
   visibleFilter = false;
+  listClubFriend : Array<any> = [];
+  listClubFriendB : Array<any> = [];
 
   constructor(private http: HttpClient, private clubService: ClubsService, private authService: AuthService, private route: Router, public dialog: MatDialog, private appComponent: AppComponent, public dark: DarkThemeService) { }
 
@@ -60,15 +62,33 @@ export class ClubComponent implements OnInit {
   }
 
   listOtherClubs() {
+    this.listClubFriend = [];
     this.http.get('http://localhost:8300/autresClubs/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.otherClubs = data;
         for (let index in this.otherClubs) {
-        this.http.get('http://localhost:8300/club/amis/' + this.authService.getUserConnect().idUser + '/' + this.otherClubs[index].idClub).subscribe({
-          next: (data) => {
-            this.myFriends = data;
-          },
-          error: (err) => { console.log(err); }
+          let commentData = {} as any;
+          commentData.idClub = this.otherClubs[index].idClub
+          if (this.listClubFriend != null) {
+            this.listClubFriend = [];
+          }
+          this.http.get('http://localhost:8300/club/amis/' + this.authService.getUserConnect().idUser + '/' + this.otherClubs[index].idClub).subscribe({
+            next: (data) => {
+              this.myFriends = data;
+              if (this.listClubFriendB != null) {
+                this.listClubFriendB = [];
+              }
+              for (let index in this.myFriends) {
+                let commentDataB = {} as any;
+                commentDataB = this.myFriends[index];
+                this.listClubFriendB.push(commentDataB)
+                if (Number(index) == this.myFriends.length - 1){
+                  commentData.friend = this.listClubFriendB
+                  this.listClubFriend.push(commentData);
+                }
+            }            
+            },
+            error: (err) => { console.log(err); }
         });
       }
       },
@@ -87,7 +107,6 @@ export class ClubComponent implements OnInit {
     this.clubToJoin = val;
     this.http.patch('http://localhost:8300/club/rejoindre/' + this.authService.getUserConnect().idUser + '/' + this.clubToJoin.idClub, null).subscribe({
       next: (data) => {
-        this.listOtherClubs();
         this.ngOnInit();
       },
       error: (err) => { console.log(err); }

@@ -87,11 +87,11 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-7" *ngIf="!visibleFilter && !visibleSearch" >
+                <div class="col-7" *ngIf="!visibleFilter && !visibleSearch">
                 </div>
-                <div class="col-2" *ngIf="!visibleFilter && visibleSearch" >
+                <div class="col-2" *ngIf="!visibleFilter && visibleSearch">
                 </div>
-                <div class="col-3" *ngIf="visibleFilter && !visibleSearch" >
+                <div class="col-3" *ngIf="visibleFilter && !visibleSearch">
                 </div>
                 <div class="col-2">
                     <button mat-button [matMenuTriggerFor]="menu" class="nav-link white-text "
@@ -121,8 +121,12 @@
                             <b style="margin-top: 20px;">Description</b>
                             <p id="description">{{c.descriptionClub}}</p>
                             <b style="margin-top: 20px;">Amis membres du club</b>
-                            <div *ngFor="let m of myFriends">
-                                <p>{{m.loginUser}}</p>
+                            <div *ngFor="let cf of listClubFriend">
+                                <div *ngIf="cf.length != 0 ">
+                                    <div id="friend_club" *ngFor="let f of cf.friend">
+                                        <p *ngIf="cf.idClub == c.idClub" >{{f.loginUser}}</p>
+                                </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <button mat-button [matMenuTriggerFor]="club" class="nav-link white-text "

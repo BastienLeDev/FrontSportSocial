@@ -222,7 +222,6 @@ export class FriendComponent implements OnInit {
           }
           this.http.get('http://localhost:8300/messagelast/me/' + this.authService.getUserConnect().idUser + '/' + this.friends[index].idUser + '/combine').subscribe({
             next: (data) => {
-              this.lastmsg = "";
               this.lastmsg = data,
               console.log(this.lastmsg);
               this.listLastMsg.push(this.lastmsg[0])
