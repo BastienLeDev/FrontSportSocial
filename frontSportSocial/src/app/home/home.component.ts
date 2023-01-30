@@ -78,8 +78,7 @@ export class HomeComponent implements OnInit {
   listActivite() {
     this.http.get('http://localhost:8300/activity/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => { 
-        this.activite = data, 
-        console.log(this.activite); },
+        this.activite = data;},
       error: (err) => { console.log(err); }
     });
   }
@@ -95,13 +94,11 @@ export class HomeComponent implements OnInit {
     this.listFriendActivity = []
     this.http.get('http://localhost:8300/friend/receiver/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => { this.friends = data 
-        console.log(this.friends);
         for (let index in this.friends) {
         this.http.get('http://localhost:8300/activity/' + this.friends[index].idUser).subscribe({
           next: (data) => { 
             this.activiteFriend = "";
-            this.activiteFriend = data, 
-            console.log(this.activiteFriend);
+            this.activiteFriend = data;
             for (let index in this.activiteFriend) {
             this.listFriendActivity.push(this.activiteFriend[index])}
              },
@@ -111,9 +108,7 @@ export class HomeComponent implements OnInit {
       },
       error: (err) => { console.log(err); }
 
-    });
-    console.log(this.listFriendActivity);
-    
+    });   
   }
 
   listEventToCome() {
@@ -126,7 +121,6 @@ export class HomeComponent implements OnInit {
   listEventsFriends() {
     this.http.get('http://localhost:8300/event/friends/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => { this.eventsFriends = data 
-      console.log(this.eventsFriends);
       },
       error: (err) => { console.log(err); }
     });
@@ -159,7 +153,6 @@ export class HomeComponent implements OnInit {
     this.http.get('http://localhost:8300/selectaccepted/' + this.authService.getUserConnect().idUser + '/' + this.login.idUser, val).subscribe({
       next: (data) => {
         this.ami = data;
-        console.log(this.ami);
          this.http.delete('http://localhost:8300/friend/refuse/' + this.ami.idFriend, val).subscribe({
           next: (data) => {
            this.ngOnInit();
@@ -249,13 +242,11 @@ filterFriendsActivity(val: any) {
   this.listFriendActivity = []
   this.http.get('http://localhost:8300/friend/receiver/' + this.authService.getUserConnect().idUser).subscribe({
     next: (data) => { this.friends = data 
-      console.log(this.friends);
       for (let index in this.friends) {
       this.http.get('http://localhost:8300/activity/search/' + this.friends[index].idUser + '/' + val ).subscribe({
         next: (data) => { 
           this.activiteFriend = "";
-          this.activiteFriend = data, 
-          console.log(this.activiteFriend);
+          this.activiteFriend = data; 
           for (let index in this.activiteFriend) {
           this.listFriendActivity.push(this.activiteFriend[index])}
            },
@@ -265,9 +256,7 @@ filterFriendsActivity(val: any) {
     },
     error: (err) => { console.log(err); }
 
-  });
-  console.log(this.listFriendActivity);
-  
+  });  
 }
 
 filterFriendsEvent(val: any) {
@@ -281,7 +270,6 @@ filterFriendsEvent(val: any) {
 
 openModifyActivity(val: any) {
   this.localId = val.activity;
-  console.log(this.localId);
   localStorage.setItem('dateEnd', this.localId.dateEnd)
   localStorage.setItem('dateStart', this.localId.dateStart)
   localStorage.setItem('descActivity', this.localId.descActivity)
@@ -309,8 +297,7 @@ openCreateActivity() {
 }
 
 currentDate(){
-  this.dateNow;
-  console.log(this.dateNow)
+  this.dateNow 
 }
 
 DeleteActivity(val : any){

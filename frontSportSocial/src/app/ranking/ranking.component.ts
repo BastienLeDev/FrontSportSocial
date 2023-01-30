@@ -56,9 +56,8 @@ export class RankingComponent implements OnInit {
 
   ListSport() {
     this.http.get('http://localhost:8300/sport').subscribe({
-      next: (dataa) => {
-        this.sports = dataa
-      },
+      next: (data) => {
+        this.sports = data },
       error: (err) => { console.log(err); }
     });
   }
@@ -86,7 +85,7 @@ export class RankingComponent implements OnInit {
     this.http.get('http://localhost:8300/classement/total').subscribe({
       next: (data) => {
         this.scoreTot = data
-        console.log(data) },
+        },
       error: (err) => { console.log(err); }
     });
   }

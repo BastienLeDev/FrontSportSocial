@@ -86,11 +86,9 @@ export class EventComponent implements OnInit {
   }
 
   listFriends() {
-
     this.http.get('http://localhost:8300/friend/receiver/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => { this.friends = data },
       error: (err) => { console.log(err); }
-
     });
   }
 
@@ -108,7 +106,6 @@ export class EventComponent implements OnInit {
         exist = true;
       }
     });
-
     return exist;
   }
 
@@ -126,10 +123,6 @@ export class EventComponent implements OnInit {
     this.visibleFilter = false;
     this.visibleSearch = true;
   }
-  console.log(this.visibleSearch);
-  console.log(this.visibleFilter);
-  
-  
   }
 
   visibleFilterEvent(){
@@ -137,8 +130,6 @@ export class EventComponent implements OnInit {
       this.visibleFilter = true;
       this.visibleSearch = false;
     }
-    console.log(this.visibleSearch);
-    console.log(this.visibleFilter);
   }
 
 

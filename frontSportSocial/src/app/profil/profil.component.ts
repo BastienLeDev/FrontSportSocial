@@ -124,14 +124,10 @@ export class ProfilComponent implements OnInit {
     this.http.get('http://localhost:8300/event/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => { 
         this.myEvents = data
-        console.log(this.myEvents);
-        
       },
       error: (err) => { console.log(err); }
     });
-
   }
-
 
   infoUser() {
     this.http.get('http://localhost:8300/user/' + this.authService.getUserConnect().idUser).subscribe({
@@ -184,7 +180,6 @@ export class ProfilComponent implements OnInit {
       next: (data) => { this.ngOnInit();},
       error: (err) => { console.log(err) }
     })
-
   }
 
   visibleAddTrainingFonction(){
@@ -194,7 +189,6 @@ export class ProfilComponent implements OnInit {
   else {
     this.visibleAddTraining = true;
   }
-
   }
 
   listSport() {
@@ -246,15 +240,14 @@ export class ProfilComponent implements OnInit {
   }
 
   
-removeUserFromEvent(val : any) {
-  this.idEvent = val;
-  this.http.patch('http://localhost:8300/event/desister/' + this.authService.getUserConnect().idUser + '/' + this.idEvent.idEvent, null).subscribe({
-    next: (data) => {
-      this.ngOnInit();
-    },
-    error: (err) => { console.log(err) },
-  });
-
-}
+  removeUserFromEvent(val : any) {
+    this.idEvent = val;
+    this.http.patch('http://localhost:8300/event/desister/' + this.authService.getUserConnect().idUser + '/' + this.idEvent.idEvent, null).subscribe({
+      next: (data) => {
+        this.ngOnInit();
+      },
+      error: (err) => { console.log(err) },
+    });
+  }
 
 }

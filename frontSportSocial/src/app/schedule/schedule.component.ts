@@ -60,8 +60,6 @@ export class ScheduleComponent implements OnInit {
     localStorage.removeItem('idActivity');
   }
 
-
-
   setView(view: CalendarView) {
     this.view = view;
   }
@@ -81,22 +79,18 @@ export class ScheduleComponent implements OnInit {
         this.schedules = data;
         this.schedules.map((a: { activity: any }) => this.events.push({ start: new Date(a.activity.dateStart), end: new Date(a.activity.dateEnd), title: a.activity.nameActivity }));
         this.setView(CalendarView.Month);
-        console.log(this.schedules)
       },
       error: (err) => { console.log(err); }
     });
   }
 
-  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-    console.log(date);
-  }
+  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {}
 
   openNewActivity() {
     const dialogRef = this.dialog.open(NewActivityComponent);
     dialogRef.afterClosed().subscribe(() => {
       this.ngOnInit();
     })
-
   }
 
 

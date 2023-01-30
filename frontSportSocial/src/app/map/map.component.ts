@@ -26,8 +26,6 @@ export class MapComponent implements OnInit {
     }
   }
 
-
-
   listSport() {
     this.http.get('http://localhost:8300/sport').subscribe({
       next: (data) => { this.sports = data },

@@ -58,7 +58,6 @@ export class ShopComponent implements OnInit {
     this.verifAvatarAchete(this.avatars);    
   }
 
-
   showHideCoach() {
     if (this.visibleCoach == false) {
       this.visibleCoach = true;
@@ -85,7 +84,6 @@ export class ShopComponent implements OnInit {
     }
   }
 
-
   showHideTokens() {
     if (this.visibleTokens == false) {
       localStorage.removeItem('coach');
@@ -111,8 +109,7 @@ export class ShopComponent implements OnInit {
   listCoachsBySport(val: any) {
     this.http.get('http://localhost:8300/coach/' + val).subscribe({
       next: (data) => {
-        this.coachs = data,
-          console.log(this.coachs)
+        this.coachs = data;
       },
       error: (err) => { console.log(err); }
     })
@@ -125,7 +122,6 @@ export class ShopComponent implements OnInit {
         val.stopPropagation()
       },
       error : (err) => {console.log(err);}
-      
     })
   }
 
@@ -138,7 +134,6 @@ export class ShopComponent implements OnInit {
     });
   }
 
-  
   openProfilCoach(val: any) {
     this.coachService.setCoachToSee(val);
     const dialogRef = this.dialog.open(PopUpCoachComponent, {
@@ -149,8 +144,6 @@ export class ShopComponent implements OnInit {
     });
   }
   
-
-
   listAvatarDescription(val: any) {
     this.http.get('http://localhost:8300/avatar/' + val).subscribe({
       next: (data) => {
@@ -212,7 +205,6 @@ export class ShopComponent implements OnInit {
         exist = true;
       }
     });
-
     return exist;
   }
 
@@ -231,6 +223,5 @@ export class ShopComponent implements OnInit {
     });
   }
   
-
 
 }

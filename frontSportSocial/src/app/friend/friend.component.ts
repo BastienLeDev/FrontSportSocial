@@ -214,18 +214,14 @@ export class FriendComponent implements OnInit {
     this.http.get('http://localhost:8300/friend/receiver/' + this.authService.getUserConnect().idUser).subscribe({ // Affiche la liste de Friend
       next: (data) => {
         this.friends = data
-        console.log(this.friends);
         for (let index in this.friends) {
-          console.log(index)
           if (this.listLastMsg != null) {
             this.listLastMsg = [];
           }
           this.http.get('http://localhost:8300/messagelast/me/' + this.authService.getUserConnect().idUser + '/' + this.friends[index].idUser + '/combine').subscribe({
             next: (data) => {
               this.lastmsg = data,
-              console.log(this.lastmsg);
               this.listLastMsg.push(this.lastmsg[0])
-              console.log(this.listLastMsg)
             }
           })
         }
@@ -236,9 +232,7 @@ export class FriendComponent implements OnInit {
 
   listNotFriends() {
     this.http.get('http://localhost:8300/notfriend/receiver/' + this.authService.getUserConnect().idUser).subscribe({
-      next: (data) => { this.notfriends = data
-      console.log(this.notfriends);
-      
+      next: (data) => { this.notfriends = data      
       },
       error: (err) => { console.log(err); }
     });
@@ -258,7 +252,6 @@ export class FriendComponent implements OnInit {
     this.http.get('http://localhost:8300/team/' + this.authService.getUserConnect().idUser).subscribe({
       next: (data) => {
         this.team = data
-        console.log(this.team)
         for (let index in this.team) {
           this.listTest = this.team[index].idTeam
           let commentData = {} as any;
@@ -273,7 +266,6 @@ export class FriendComponent implements OnInit {
               this.lastteammsg = data,
               commentData.lastMsg = this.lastteammsg[0];
               this.listLastTeamMsg.push(commentData)
-              console.log(this.listLastTeamMsg);
             }
           })
         }
@@ -337,11 +329,7 @@ export class FriendComponent implements OnInit {
         this.ngOnInit()
       },
       error: (err) => { console.log(err) },
-
-
-
     })
-
   }
 
   renameTeam(val: NgForm) {
@@ -354,10 +342,8 @@ export class FriendComponent implements OnInit {
         this.ngOnInit()
       },
       error: (err) => { console.log(err) },
-
     })
   }
-
   }
 
   deleteFrienship(val: any) {
@@ -372,10 +358,9 @@ export class FriendComponent implements OnInit {
         })
       },
       error: (err) => { console.log(err); },
-
     })
-
   }
+
   acceptFrienship(val: any) {
     this.login2 = val;
     this.http.get('http://localhost:8300/select/' + this.authService.getUserConnect().idUser + '/' + this.login2.idUser, val).subscribe({
@@ -389,9 +374,7 @@ export class FriendComponent implements OnInit {
         })
       },
       error: (err) => { console.log(err); },
-
     })
-
   }
 
   FilterUser(val: any) {
@@ -428,7 +411,6 @@ export class FriendComponent implements OnInit {
         this.ngOnInit();
       }
     })
-
   }
 
   infoUser() {
@@ -450,7 +432,6 @@ export class FriendComponent implements OnInit {
     this.ngOnInit();
     this.visibleMessage = false;
     this.visibleTeam = false;
-
   }
 
   deleteTeamMember(val: any) {
@@ -474,7 +455,6 @@ export class FriendComponent implements OnInit {
       error: (err) => { console.log(err); },
     })
     this.ngOnInit();
-
   }
 
   openNewTeamModal() {
