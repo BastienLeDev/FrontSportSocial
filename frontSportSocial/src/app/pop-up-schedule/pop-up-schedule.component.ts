@@ -20,7 +20,6 @@ export class PopUpScheduleComponent {
     this.http.post('http://localhost:8300/schedule/', val).subscribe({
       next: (data) => {
         this.scheduleUser = data;
-        console.log(this.scheduleUser);
         this.route.navigateByUrl('schedule');
       },
       error: (err) => { console.log(err) },
