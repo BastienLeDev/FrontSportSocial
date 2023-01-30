@@ -68,9 +68,9 @@
                     </div>
                 </div>
 
-                <div id="card_event" class="card" *ngFor="let e of events" [class.toggled]="classToggled">
+                <div id="card_event" class="card" *ngFor="let e of events" [class.toggled]="classToggled" style="background-color : transparent; border : none">
 
-                    <div class="container m-1 p-1" [class.toggled]="classToggled">
+                    <div class="card m-1 p-1" [class.toggled]="classToggled">
                         <div class="row">
                             <div class="col-3" [class.toggled]="classToggled">
                                 <h2>{{e.sportEvent.nameSport}}</h2>
