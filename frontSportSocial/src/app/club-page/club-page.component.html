@@ -1,13 +1,14 @@
 <div class="container-fluid">
     <div class="row">
         <div id="gauche" class="col-3 p-4">
-            <div id="card" class="card p-0 m-0" [class.toggled]="classToggled" style="background-color: transparent; box-shadow: none;">
+            <div id="card" class="card p-0 m-0" [class.toggled]="classToggled"
+                style="background-color: transparent; box-shadow: none;">
                 <div class="title_club">
                     <p class="text-center">{{club.titleClub}}</p>
                 </div>
-                <div class="mx-auto text-center p-2" >
+                <div class="mx-auto text-center p-2">
                     <div class="col-12">
-                        <img  class="photo_club" src="{{club.imageClub.nameImage}}" style="width: 100%">
+                        <img class="photo_club" src="{{club.imageClub.nameImage}}" style="width: 100%">
                     </div>
                 </div>
             </div>
@@ -59,7 +60,7 @@
 
                         </div>
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div *ngFor=" let l of listLikePosts">
                                     <div *ngIf="l.idPost == f.idPost && !l.boolLike" [class.toggled]="classToggled">
                                         <div class="text-center">
@@ -81,17 +82,21 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4" [class.toggled]="classToggled">
+                            <div class="col-6" [class.toggled]="classToggled">
                                 <div class="text-center">
+                                    <button class="butInvisible">
+                                        <mat-icon svgIcon="letComment" aria-hidden="false"></mat-icon>
+                                    </button>
                                     <button *ngIf="f.numberComments!=0" (click)="listComments(f.idPost)"
                                         class="butInvisible">
                                         Voir les {{f.numberComments}} commentaires</button>
                                     <button *ngIf="f.numberComments==0" class="butInvisible"> Voir les
                                         {{f.numberComments}} commentaires</button>
+
                                 </div>
 
                             </div>
-                            <div class="col-4" [class.toggled]="classToggled">
+                            <div class="col-3" [class.toggled]="classToggled">
                                 <div class="text-center">
                                     <button class="butInvisible">Partager</button>
                                 </div>
@@ -113,7 +118,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <div *ngFor=" let lc of listLikeComment">
                                                 <div *ngIf="lc.idComment == c.idComment && !lc.boolLike"
                                                     [class.toggled]="classToggled">
@@ -138,45 +143,23 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-4" [class.toggled]="classToggled">
+                                        <div class="col-6" [class.toggled]="classToggled">
                                             <div class="text-center">
                                                 <button *ngIf="c.numberComments !=0"
                                                     (click)="listCommentsInComment(c.idComment)"
                                                     class="butInvisible">Voir les {{c.numberComments}}
-                                                    réponses</button>
+                                                    réponses
+                                                </button>
                                                 <button *ngIf="c.numberComments ==0" class="butInvisible">Voir les
                                                     {{c.numberComments}}
-                                                    réponses</button>
+                                                    réponses
+                                                </button>
                                             </div>
 
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <div class="row">
                                                 <p>{{c.dateCreationComment |date}}</p>
-                                            </div>
-                                        </div>
-                                        <!-- Zone de saisie de messages -->
-
-                                        <div id="zone_saisie_message" class="card p-1" [class.toggled]="classToggled">
-                                            <div class="container">
-                                                <div class="row">
-                                                    <form #comment="ngForm"
-                                                        (ngSubmit)="commentComment(comment.value.contentComment, c.idComment)">
-                                                        <div class="col-10" [class.toggled]="classToggled">
-                                                            <input id="message" class="form-control"
-                                                                [class.toggled]="classToggled" name="contentComment"
-                                                                ngModel="" type="text" class="form-control"
-                                                                placeholder="..." style="width: 600px; margin: 5px;"
-                                                                required class="form-control">
-                                                        </div>
-                                                        <div class="col-2">
-                                                            <button [disabled]="!comment.form.valid" type="submit"
-                                                                class="button-30 " style="font-size: 60%;">Envoyer <i
-                                                                    class="fas fa-envelope"
-                                                                    style="color: rgb(0, 0, 0);"></i></button>
-                                                        </div>
-                                                    </form>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -243,6 +226,30 @@
 
                                         </div>
                                     </div>
+
+                                    <!-- Zone de saisie de messages -->
+
+                                    <div id="zone_saisie_message" [class.toggled]="classToggled">
+                                        <form #comment="ngForm"
+                                            (ngSubmit)="postComment(comment.value.contentComment, f.idPost)">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-11" [class.toggled]="classToggled">
+                                                        <input id="message" class="form-control"
+                                                            [class.toggled]="classToggled" name="contentComment"
+                                                            ngModel="" type="text" class="form-control"
+                                                            placeholder="Commenter ..." style="width: 600px;" required
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <button [disabled]="!comment.form.valid" type="submit"
+                                                            class="butInvisible"><mat-icon svgIcon="send" class="send"
+                                                                aria-hidden="false"></mat-icon></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
 
 
@@ -251,25 +258,24 @@
 
                         <!-- Zone de saisie de messages -->
 
-                        <div id="zone_saisie_message" class="card p-1" [class.toggled]="classToggled">
-                            <div class="container">
-                                <div class="row">
-                                    <form #comment="ngForm"
-                                        (ngSubmit)="postComment(comment.value.contentComment, f.idPost)">
-                                        <div class="col-10" [class.toggled]="classToggled">
+                        <div id="zone_saisie_message" [class.toggled]="classToggled">
+                            <form #comment="ngForm" (ngSubmit)="postComment(comment.value.contentComment, f.idPost)">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-11" [class.toggled]="classToggled">
                                             <input id="message" class="form-control" [class.toggled]="classToggled"
                                                 name="contentComment" ngModel="" type="text" class="form-control"
-                                                placeholder="..." style="width: 600px; margin: 5px;" required
+                                                placeholder="Commenter ..." style="width: 600px;" required
                                                 class="form-control">
                                         </div>
-                                        <div class="col-2">
-                                            <button [disabled]="!comment.form.valid" type="submit" class="button-30 "
-                                                style="font-size: 60%;">Envoyer <i class="fas fa-envelope"
-                                                    style="color: rgb(0, 0, 0);"></i></button>
+                                        <div class="col-1">
+                                            <button [disabled]="!comment.form.valid" type="submit"
+                                                class="butInvisible"><mat-icon svgIcon="send" class="send"
+                                                    aria-hidden="false"></mat-icon></button>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
 
                     </div>
@@ -282,8 +288,7 @@
 
         <div id="milieu2" class="col-1 p-4">
             <div class="col-3 p-4" [class.toggled]="classToggled" style="background-color : transparent !important">
-                <a [class.toggled]="classToggled" id="feedbtn" mat-raised-button
-                    (click)="openNewPostModal()">
+                <a [class.toggled]="classToggled" id="feedbtn" mat-raised-button (click)="openNewPostModal()">
                     Créer un post
                 </a>
             </div>
@@ -314,7 +319,8 @@
 
                     <!-- card ami-->
                     <div class="anyClass" [class.toggled]="classToggled">
-                        <div class="card p-1 m-1" id="card_style" *ngFor="let f of myFriends" [class.toggled]="classToggled">
+                        <div class="card p-1 m-1" id="card_style" *ngFor="let f of myFriends"
+                            [class.toggled]="classToggled">
                             <div class="container">
 
                                 <div class="row">
@@ -326,10 +332,10 @@
                                     <!-- nom user -->
                                     <div class="col-6">
                                         <b> {{f.loginUser}} <p
-                                            style="font-style: italic; font-weight: lighter !important; font-size: 50%;">
-                                            <i class="fas fa-circle"
-                                                style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne
-                                        </p></b>
+                                                style="font-style: italic; font-weight: lighter !important; font-size: 50%;">
+                                                <i class="fas fa-circle"
+                                                    style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne
+                                            </p></b>
                                     </div>
                                 </div>
                             </div>
@@ -338,7 +344,8 @@
 
                     <!-- card ami en attente d'ajout-->
                     <div class="anyClass" [class.toggled]="classToggled">
-                        <div class="card p-1 m-1" id="card_style" *ngFor="let f of askedFriends" [class.toggled]="classToggled">
+                        <div class="card p-1 m-1" id="card_style" *ngFor="let f of askedFriends"
+                            [class.toggled]="classToggled">
                             <div class="container">
 
                                 <div class="row">
@@ -350,10 +357,10 @@
                                     <!-- nom user -->
                                     <div class="col-6">
                                         <b> {{f.loginUser}} <p
-                                            style="font-style: italic; font-weight: lighter !important; font-size: 50%;">
-                                            <i class="fas fa-circle"
-                                                style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne
-                                        </p></b>
+                                                style="font-style: italic; font-weight: lighter !important; font-size: 50%;">
+                                                <i class="fas fa-circle"
+                                                    style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne
+                                            </p></b>
                                     </div>
                                     <div class="col-2">
                                         <button (click)="goToFriends()" type="submit" class="butInvisible"><mat-icon
@@ -371,7 +378,8 @@
 
                     <!-- card non ami-->
                     <div class="anyClass" [class.toggled]="classToggled">
-                        <div class="card p-1 m-1" id="card_style" *ngFor="let f of nonFriends" [class.toggled]="classToggled">
+                        <div class="card p-1 m-1" id="card_style" *ngFor="let f of nonFriends"
+                            [class.toggled]="classToggled">
                             <div class="container">
 
                                 <div class="row">
@@ -383,10 +391,10 @@
                                     <!-- nom user -->
                                     <div class="col-6">
                                         <b> {{f.loginUser}} <p
-                                            style="font-style: italic; font-weight: lighter !important; font-size: 50%;">
-                                            <i class="fas fa-circle"
-                                                style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne
-                                        </p></b>
+                                                style="font-style: italic; font-weight: lighter !important; font-size: 50%;">
+                                                <i class="fas fa-circle"
+                                                    style="color: rgb(171, 174, 171); size: 50%;"></i> Hors ligne
+                                            </p></b>
                                     </div>
                                     <div class="col-2">
                                         <button (click)="addFriend(f)" type="submit" class="butInvisible"><mat-icon

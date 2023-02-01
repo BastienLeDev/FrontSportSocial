@@ -176,22 +176,22 @@ input-group-btn {
     background-position: 50% 50%;
     border: none;
     border-radius: 5px;
-  }
+}
 
 .title_club {
-    color : black;
+    color: black;
     font-weight: bold;
     font-size: 150%;
 }
 
-#card_style{
+#card_style {
     box-shadow: none;
     border-top: white !important;
     border-left: white !important;
     border-right: white !important;
-  }
+}
 
-  /* Dark Mode CSS */
+/* Dark Mode CSS */
 
 .toggled {
     color: rgb(255, 255, 255);
@@ -262,9 +262,17 @@ input-group-btn {
 }
 
 .toggled .title_club {
-    color : white;
+    color: white;
 }
 
 .toggled .butInvisible {
     color: white;
+}
+
+
+.send {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFC288;
 }
