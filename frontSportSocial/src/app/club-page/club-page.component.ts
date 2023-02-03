@@ -4,7 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { ClubsService } from '../services/clubs.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
-import { Router } from '@angular/router';
+import { Router, withInMemoryScrolling } from '@angular/router';
 import { DarkThemeService } from '../services/dark-theme.service';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -301,6 +301,15 @@ export class ClubPageComponent implements OnInit {
     });
   }
 
+  respondComment(val: any, idComment: any, idCommentComment: any){
+    this.http.post('http://localhost:8300/comment/response/' + this.authService.getUserConnect().idUser + '/' + idComment + '/' + idCommentComment, val).subscribe({
+      next: (data) => {
+        this.ngOnInit();
+
+      },
+      error: (err) => { console.log(err); }
+    });
+  }
 
 
 }

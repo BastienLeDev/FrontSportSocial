@@ -222,7 +222,29 @@
 
                                                 </div>
                                             </div>
+<!-- Zone de saisie de messages -->
 
+<div id="zone_saisie_message" [class.toggled]="classToggled">
+    <form #response="ngForm"
+        (ngSubmit)="respondComment(response.value.contentComment,c.idComment, d.idComment)">
+        <div class="container">
+            <div class="row">
+                <div class="col-11" [class.toggled]="classToggled">
+                    <input id="message" class="form-control"
+                        [class.toggled]="classToggled" name="contentComment"
+                        [ngModel]="'@'+ d.createurComment.loginUser" type="text" class="form-control"
+                        placeholder=" Répondre ..." style="width: 600px;" required
+                        class="form-control">
+                </div>
+                <div class="col-1">
+                    <button [disabled]="!response.form.valid" type="submit"
+                        class="butInvisible"><mat-icon svgIcon="send" class="send"
+                            aria-hidden="false"></mat-icon></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 
                                         </div>
                                     </div>
@@ -231,7 +253,7 @@
 
                                     <div id="zone_saisie_message" [class.toggled]="classToggled">
                                         <form #comment="ngForm"
-                                            (ngSubmit)="postComment(comment.value.contentComment, f.idPost)">
+                                            (ngSubmit)="commentComment(comment.value.contentComment, c.idComment)">
                                             <div class="container">
                                                 <div class="row">
                                                     <div class="col-11" [class.toggled]="classToggled">
