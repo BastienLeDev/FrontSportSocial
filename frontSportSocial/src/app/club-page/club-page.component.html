@@ -84,9 +84,6 @@
                             </div>
                             <div class="col-6" [class.toggled]="classToggled">
                                 <div class="text-center">
-                                    <button class="butInvisible">
-                                        <mat-icon svgIcon="letComment" aria-hidden="false"></mat-icon>
-                                    </button>
                                     <button *ngIf="f.numberComments!=0" (click)="listComments(f.idPost); f.visible=true"
                                         class="butInvisible">
                                         Voir les {{f.numberComments}} commentaires</button>
@@ -146,7 +143,7 @@
                                         <div class="col-6" [class.toggled]="classToggled">
                                             <div class="text-center">
                                                 <button *ngIf="c.numberComments !=0"
-                                                    (click)="listCommentsInComment(c.idComment); c.visible=true; f.visible = false;"
+                                                    (click)="listCommentsInComment(c.idComment); c.visible=true; f.visible = false"
                                                     class="butInvisible">Voir les {{c.numberComments}}
                                                     réponses
                                                 </button>
