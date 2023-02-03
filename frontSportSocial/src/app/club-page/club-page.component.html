@@ -87,10 +87,10 @@
                                     <button class="butInvisible">
                                         <mat-icon svgIcon="letComment" aria-hidden="false"></mat-icon>
                                     </button>
-                                    <button *ngIf="f.numberComments!=0" (click)="listComments(f.idPost)"
+                                    <button *ngIf="f.numberComments!=0" (click)="listComments(f.idPost); f.visible=true"
                                         class="butInvisible">
                                         Voir les {{f.numberComments}} commentaires</button>
-                                    <button *ngIf="f.numberComments==0" class="butInvisible"> Voir les
+                                    <button *ngIf="f.numberComments==0" class="butInvisible" (click)="f.visible=true"> Voir les
                                         {{f.numberComments}} commentaires</button>
 
                                 </div>
@@ -146,11 +146,11 @@
                                         <div class="col-6" [class.toggled]="classToggled">
                                             <div class="text-center">
                                                 <button *ngIf="c.numberComments !=0"
-                                                    (click)="listCommentsInComment(c.idComment)"
+                                                    (click)="listCommentsInComment(c.idComment); c.visible=true; f.visible = false;"
                                                     class="butInvisible">Voir les {{c.numberComments}}
                                                     réponses
                                                 </button>
-                                                <button *ngIf="c.numberComments ==0" class="butInvisible">Voir les
+                                                <button *ngIf="c.numberComments ==0" class="butInvisible"  (click)="c.visible=true; f.visible = false;">Voir les
                                                     {{c.numberComments}}
                                                     réponses
                                                 </button>
@@ -209,10 +209,10 @@
                                                     <div class="col-4">
                                                         <div class="text-center">
                                                             <button *ngIf="d.numberComments != 0"
-                                                                (click)="listCommentsInComment(d.idComment)"
+                                                                (click)="listCommentsInComment(d.idComment); d.visible=true; c.visible=false; f.visible=false"
                                                                 class="butInvisible"> Répondre</button>
                                                             <button *ngIf="d.numberComments == 0"
-                                                                class="butInvisible">Répondre </button>
+                                                                class="butInvisible" (click)="d.visible=true; c.visible=false; f.visible=false">Répondre </button>
                                                         </div>
 
                                                     </div>
@@ -222,55 +222,57 @@
 
                                                 </div>
                                             </div>
-<!-- Zone de saisie de messages -->
-
-<div id="zone_saisie_message" [class.toggled]="classToggled">
-    <form #response="ngForm"
-        (ngSubmit)="respondComment(response.value.contentComment,c.idComment, d.idComment)">
-        <div class="container">
-            <div class="row">
-                <div class="col-11" [class.toggled]="classToggled">
-                    <input id="message" class="form-control"
-                        [class.toggled]="classToggled" name="contentComment"
-                        [ngModel]="'@'+ d.createurComment.loginUser" type="text" class="form-control"
-                        placeholder=" Répondre ..." style="width: 600px;" required
-                        class="form-control">
-                </div>
-                <div class="col-1">
-                    <button [disabled]="!response.form.valid" type="submit"
-                        class="butInvisible"><mat-icon svgIcon="send" class="send"
-                            aria-hidden="false"></mat-icon></button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
+                                            <!-- Zone de saisie de messages -->
+                                            <div *ngIf="d.visible">
+                                                <div id="zone_saisie_message" [class.toggled]="classToggled">
+                                                    <form #response="ngForm"
+                                                        (ngSubmit)="respondComment(response.value.contentComment,c.idComment, d.idComment)">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-11" [class.toggled]="classToggled">
+                                                                    <input id="message" class="form-control"
+                                                                        [class.toggled]="classToggled" name="contentComment"
+                                                                        [ngModel]="'@'+ d.createurComment.loginUser+ ' '" type="text" class="form-control"
+                                                                        placeholder=" Répondre ..." required
+                                                                        class="form-control">
+                                                                </div>
+                                                                <div class="col-1">
+                                                                    <button [disabled]="!response.form.valid" type="submit"
+                                                                        class="butInvisible"><mat-icon svgIcon="send" class="send"
+                                                                            aria-hidden="false"></mat-icon></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
 
                                         </div>
                                     </div>
 
                                     <!-- Zone de saisie de messages -->
-
-                                    <div id="zone_saisie_message" [class.toggled]="classToggled">
-                                        <form #comment="ngForm"
-                                            (ngSubmit)="commentComment(comment.value.contentComment, c.idComment)">
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="col-11" [class.toggled]="classToggled">
-                                                        <input id="message" class="form-control"
-                                                            [class.toggled]="classToggled" name="contentComment"
-                                                            ngModel="" type="text" class="form-control"
-                                                            placeholder="Commenter ..." style="width: 600px;" required
-                                                            class="form-control">
-                                                    </div>
-                                                    <div class="col-1">
-                                                        <button [disabled]="!comment.form.valid" type="submit"
-                                                            class="butInvisible"><mat-icon svgIcon="send" class="send"
-                                                                aria-hidden="false"></mat-icon></button>
+                                    <div *ngIf="c.visible">
+                                        <div id="zone_saisie_message" [class.toggled]="classToggled">
+                                            <form #comment="ngForm"
+                                                (ngSubmit)="commentComment(comment.value.contentComment, c.idComment)">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-11" [class.toggled]="classToggled">
+                                                            <input id="message" class="form-control"
+                                                                [class.toggled]="classToggled" name="contentComment"
+                                                                ngModel="" type="text" class="form-control"
+                                                                placeholder="Commenter ..." required
+                                                                class="form-control">
+                                                        </div>
+                                                        <div class="col-1">
+                                                            <button [disabled]="!comment.form.valid" type="submit"
+                                                                class="butInvisible"><mat-icon svgIcon="send" class="send"
+                                                                    aria-hidden="false"></mat-icon></button>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -279,7 +281,7 @@
                         </div>
 
                         <!-- Zone de saisie de messages -->
-
+                        <div *ngIf="f.visible">
                         <div id="zone_saisie_message" [class.toggled]="classToggled">
                             <form #comment="ngForm" (ngSubmit)="postComment(comment.value.contentComment, f.idPost)">
                                 <div class="container">
@@ -287,7 +289,7 @@
                                         <div class="col-11" [class.toggled]="classToggled">
                                             <input id="message" class="form-control" [class.toggled]="classToggled"
                                                 name="contentComment" ngModel="" type="text" class="form-control"
-                                                placeholder="Commenter ..." style="width: 600px;" required
+                                                placeholder="Commenter ..." required
                                                 class="form-control">
                                         </div>
                                         <div class="col-1">
@@ -299,6 +301,7 @@
                                 </div>
                             </form>
                         </div>
+                    </div>
 
                     </div>
 

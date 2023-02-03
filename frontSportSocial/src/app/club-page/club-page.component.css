@@ -15,7 +15,7 @@
     width: 90%;
 }
 
-input-group-btn {
+.input-group-btn {
     max-width: 38px;
 }
 
@@ -275,4 +275,9 @@ input-group-btn {
     justify-content: center;
     align-items: center;
     color: #FFC288;
+}
+
+#message{
+    
+    max-width: auto;
 }
