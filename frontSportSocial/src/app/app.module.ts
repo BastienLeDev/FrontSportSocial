@@ -46,6 +46,7 @@ import { from } from 'rxjs';
 import { NewActivityComponent } from './new-activity/new-activity.component';
 import { PopUpAddPostComponent } from './pop-up-add-post/pop-up-add-post.component';
 import { PopUpSupprClubComponent } from './pop-up-suppr-club/pop-up-suppr-club.component';
+import { PopUpSupprPostComponent } from './pop-up-suppr-post/pop-up-suppr-post.component';
 
 
 
@@ -77,6 +78,7 @@ import { PopUpSupprClubComponent } from './pop-up-suppr-club/pop-up-suppr-club.c
     NewActivityComponent,
     PopUpAddPostComponent,
     PopUpSupprClubComponent,
+    PopUpSupprPostComponent,
   ],
 
   imports: [

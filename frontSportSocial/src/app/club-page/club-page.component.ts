@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { ClubsService } from '../services/clubs.service';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -9,6 +9,9 @@ import { DarkThemeService } from '../services/dark-theme.service';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { PopUpAddPostComponent } from '../pop-up-add-post/pop-up-add-post.component';
+import { PopUpSupprClubComponent } from '../pop-up-suppr-club/pop-up-suppr-club.component';
+import { MatMenuTrigger } from '@angular/material/menu';
+import { PostsService } from '../services/posts.service';
 
 const addFriendIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M352 128c0 70.7-57.3 128-128 128s-128-57.3-128-128S153.3 0 224 0s128 57.3 128 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM504 312V248H440c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V136c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H552v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg>';
 const waitingFriendIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M224 256c-70.7 0-128-57.3-128-128S153.3 0 224 0s128 57.3 128 128s-57.3 128-128 128zm-45.7 48h91.4c20.6 0 40.4 3.5 58.8 9.9C323 331 320 349.1 320 368c0 59.5 29.5 112.1 74.8 144H29.7C13.3 512 0 498.7 0 482.3C0 383.8 79.8 304 178.3 304zM640 368c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM496 288c-8.8 0-16 7.2-16 16v64c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H512V304c0-8.8-7.2-16-16-16z"/></svg>';
@@ -23,8 +26,9 @@ const letComment = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512
   styleUrls: ['./club-page.component.css']
 })
 export class ClubPageComponent implements OnInit {
+  @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
 
-  constructor(private clubService: ClubsService, private http: HttpClient, private authService: AuthService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private route: Router, public dark: DarkThemeService, public dialog: MatDialog) {
+  constructor(private clubService: ClubsService, private http: HttpClient, private authService: AuthService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private route: Router, public dark: DarkThemeService, public dialog: MatDialog, public postService : PostsService) {
     iconRegistry.addSvgIconLiteral('add-friend', sanitizer.bypassSecurityTrustHtml(addFriendIcon));
     iconRegistry.addSvgIconLiteral('wait-friend', sanitizer.bypassSecurityTrustHtml(waitingFriendIcon));
     iconRegistry.addSvgIconLiteral('liked', sanitizer.bypassSecurityTrustHtml(liked));
@@ -33,6 +37,7 @@ export class ClubPageComponent implements OnInit {
     iconRegistry.addSvgIconLiteral('letComment', sanitizer.bypassSecurityTrustHtml(letComment));
   };
 
+  idConnectedUser = this.authService.getUserConnect().idUser;
   idClub = this.clubService.getClubToSee().idClub;
   club = this.clubService.getClubToSee();
   myFriends: any;
@@ -311,6 +316,15 @@ export class ClubPageComponent implements OnInit {
     });
   }
 
+  openDialogDeletePost(val:any){
+    this.postService.setPostToDelete(val);
+    const dialogRef = this.dialog.open(PopUpSupprClubComponent, { restoreFocus: false });
+    dialogRef.afterClosed().subscribe(() => this.menuTrigger.focus());
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
+  }
+  
 
 }
 

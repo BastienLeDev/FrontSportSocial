@@ -36,7 +36,7 @@
                                 <img class="photo_conversation" src="{{f.createurPost.imageUser.nameImage}}"
                                     style="width: 100%">
                             </div>
-                            <div class="col-10">
+                            <div class="col-8">
                                 <div class="container">
                                     <div class="row">
                                         <p>{{f.createurPost.loginUser}}</p>
@@ -46,6 +46,14 @@
                                     </div>
                                 </div>
 
+                            </div>
+                            <div class="col-2">
+                                <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                    <mat-icon>more_vert</mat-icon>
+                                </button>
+                                <mat-menu #menu="matMenu" xPosition="before">
+                                        <button mat-menu-item (click)="openDialogDeletePost(f)">Supprimer le club</button>
+                                </mat-menu>
                             </div>
                         </div>
                         <div class="row contentPost">
