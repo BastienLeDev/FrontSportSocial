@@ -28,6 +28,9 @@
                                 </button>
                                 <mat-menu #menu="matMenu" xPosition="before">
                                     <button mat-menu-item (click)="openDialog(c)">Quitter le club</button>
+                                    <div *ngIf="c.createur.idUser == idConnectedUser">
+                                        <button mat-menu-item (click)="openDialogDeleteClub(c)">Supprimer le club</button>
+                                    </div>
                                 </mat-menu>
                             </div>
                         </div>

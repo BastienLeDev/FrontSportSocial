@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Supprimer le club</h1>
+<div mat-dialog-content>
+    Voulez-vous vraiment supprimer le club?
+    Cette action est irréversible et entraînera la suppression  de tous les posts et commentaires associés à celui-ci.
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Non</button>
+    <button (click)="deleteClub()" mat-button mat-dialog-close cdkFocusInitial>Oui</button>
+</div>

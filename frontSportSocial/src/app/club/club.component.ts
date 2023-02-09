@@ -10,6 +10,7 @@ import { DarkThemeService } from '../services/dark-theme.service';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { PopUpQuitClubComponent } from '../pop-up-quit-club/pop-up-quit-club.component';
 import { ClubsService } from '../services/clubs.service';
+import { PopUpSupprClubComponent } from '../pop-up-suppr-club/pop-up-suppr-club.component';
 
 @Component({
   selector: 'app-club',
@@ -19,6 +20,7 @@ import { ClubsService } from '../services/clubs.service';
 export class ClubComponent implements OnInit {
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
 
+  idConnectedUser = this.authService.getUserConnect().idUser;
   sports: any;
   myClubs: any;
   otherClubs: any;
@@ -162,6 +164,15 @@ export class ClubComponent implements OnInit {
       this.visibleSearch = false
       this.visibleFilter = true
     }
+  }
+
+  openDialogDeleteClub(val: any) {
+    this.clubService.setClubToDelete(val);
+    const dialogRef = this.dialog.open(PopUpSupprClubComponent, { restoreFocus: false });
+    dialogRef.afterClosed().subscribe(() => this.menuTrigger.focus());
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
   }
 
 }

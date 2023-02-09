@@ -25,4 +25,14 @@ export class ClubsService {
     return JSON.parse(club);
   }
 
+  setClubToDelete(val: any) {
+    localStorage.setItem('clubToDelete', JSON.stringify(val));
+  }
+
+  getClubToDelete() {
+    let club: any = localStorage.getItem('clubToDelete');
+    return JSON.parse(club);
+  }
+
+
 }
