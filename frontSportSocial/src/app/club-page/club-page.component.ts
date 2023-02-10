@@ -28,7 +28,7 @@ const letComment = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512
 export class ClubPageComponent implements OnInit {
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
 
-  constructor(private clubService: ClubsService, private http: HttpClient, private authService: AuthService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private route: Router, public dark: DarkThemeService, public dialog: MatDialog, public postService : PostsService) {
+  constructor(private clubService: ClubsService, private http: HttpClient, private authService: AuthService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private route: Router, public dark: DarkThemeService, public dialog: MatDialog, public postService: PostsService) {
     iconRegistry.addSvgIconLiteral('add-friend', sanitizer.bypassSecurityTrustHtml(addFriendIcon));
     iconRegistry.addSvgIconLiteral('wait-friend', sanitizer.bypassSecurityTrustHtml(waitingFriendIcon));
     iconRegistry.addSvgIconLiteral('liked', sanitizer.bypassSecurityTrustHtml(liked));
@@ -64,8 +64,10 @@ export class ClubPageComponent implements OnInit {
   checkCommentComment = false;
   boolLikeCommentComment: any;
 
+  checkAdmin = false;
 
   ngOnInit(): void {
+    this.isUserAdmin();
     this.listFriendsInClub();
     this.listNonFriendsInClub();
     this.listAskedFriends();
@@ -306,7 +308,7 @@ export class ClubPageComponent implements OnInit {
     });
   }
 
-  respondComment(val: any, idComment: any, idCommentComment: any){
+  respondComment(val: any, idComment: any, idCommentComment: any) {
     this.http.post('http://localhost:8300/comment/response/' + this.authService.getUserConnect().idUser + '/' + idComment + '/' + idCommentComment, val).subscribe({
       next: (data) => {
         this.ngOnInit();
@@ -316,7 +318,7 @@ export class ClubPageComponent implements OnInit {
     });
   }
 
-  openDialogDeletePost(val:any){
+  openDialogDeletePost(val: any) {
     this.postService.setPostToDelete(val);
     const dialogRef = this.dialog.open(PopUpSupprClubComponent, { restoreFocus: false });
     dialogRef.afterClosed().subscribe(() => this.menuTrigger.focus());
@@ -324,7 +326,16 @@ export class ClubPageComponent implements OnInit {
       this.ngOnInit();
     });
   }
-  
+
+
+  isUserAdmin() {
+    this.club.admin.forEach((element: any) => {
+      if (element.idUser == this.authService.getUserConnect().idUser) {
+        this.checkAdmin = true;
+      }
+
+    });
+  }
 
 }
 
