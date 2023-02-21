@@ -337,6 +337,29 @@ export class ClubPageComponent implements OnInit {
     });
   }
 
+
+  deleteComment(idPost: any, idComment: any){
+    this.http.delete('http://localhost:8300/comment/delete/'+idPost+'/'+idComment).subscribe({
+      next: (data) => {
+        this.ngOnInit();
+
+      },
+      error: (err) => { console.log(err); }
+    });
+
+  }
+
+  deleteCommentInComment(idCommentSource: any, idComment: any){
+    this.http.delete('http://localhost:8300/comment/comment/delete/'+idCommentSource+'/'+idComment).subscribe({
+      next: (data) => {
+        this.ngOnInit();
+
+      },
+      error: (err) => { console.log(err); }
+    });
+  }
+
+
 }
 
 

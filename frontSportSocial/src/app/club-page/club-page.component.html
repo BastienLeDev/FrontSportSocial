@@ -119,7 +119,22 @@
                                                 src="{{c.createurComment.imageUser.nameImage}}" style="width: 100%">
                                         </div>
                                         <div class="col-11">
-                                            <p>{{c.createurComment.loginUser}}</p>
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <p>{{c.createurComment.loginUser}}</p>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div *ngIf="c.createurComment.idUser == idConnectedUser || checkAdmin == true" class="col-2">
+                                                        <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                                            <mat-icon>more_vert</mat-icon>
+                                                        </button>
+                                                        <mat-menu #menu="matMenu" xPosition="before">
+                                                            <button mat-menu-item (click)="deleteComment(f.idPost, c.idComment)">Supprimer le commentaire</button>
+                                                        </mat-menu>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
                                             <p id="just-line-break"> {{c.contentComment}}</p>
                                         </div>
                                     </div>
@@ -180,7 +195,21 @@
                                                             style="width: 100%">
                                                     </div>
                                                     <div class="col-11">
-                                                        <p>{{d.createurComment.loginUser}}</p>
+                                                        <div class="row">
+                                                            <div class="col-10">
+                                                                <p>{{d.createurComment.loginUser}}</p>
+                                                            </div>
+                                                            <div class="col-2">
+                                                                <div *ngIf="d.createurComment.idUser == idConnectedUser || checkAdmin == true" class="col-2">
+                                                                    <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                                                        <mat-icon>more_vert</mat-icon>
+                                                                    </button>
+                                                                    <mat-menu #menu="matMenu" xPosition="before">
+                                                                        <button mat-menu-item (click)="deleteCommentInComment(c.idComment, d.idComment)">Supprimer le commentaire</button>
+                                                                    </mat-menu>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <p id="just-line-break">{{d.contentComment}}</p>
                                                     </div>
                                                 </div>
